@@ -1,0 +1,2270 @@
+/* On enlève les spinners pour les inputs de nombres
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+*/
+/* Couleurs
+    Base marron = #5C2E05
+    Marron light = #BEAAA0
+*/
+div.charsheet,
+button.charsheet,
+span,
+input,
+select,
+table,
+tr,
+td,
+th{
+    box-sizing: border-box;
+    font-family: Verdana;
+    font-size: 12px;
+}
+tr,td,th {
+    vertical-align:middle !important;
+}
+.charsheet div.mainBg{
+    width: 822px;
+    background-color: white;
+    /* border:1px solid #5C2E05; */
+}
+table{
+    width:100%;
+    border-collapse: collapse;
+}
+table.tabsep{
+    border-collapse: separate;
+    border-spacing: 4px 2px;
+}
+.imghr{
+    width: 820px;
+    height: 5px;
+    padding: 0px;
+    text-align: center;
+    /* box-shadow: 1px 1px 8px #555; */
+}
+.imghr-up{
+    width: 820px;
+    height: 5px;
+    padding: 0px;
+    text-align: center;
+    margin-top: -24px;
+    /* box-shadow: 1px 1px 8px #555; */
+}
+.actionhr{
+ margin:1px; 
+ background-color: #5C2E05; 
+ height:1px;
+  
+}
+.sheet-rolltemplate-imghr{
+    width: 820px;
+    height: 5px;
+    padding: 0px;
+    text-align: center;
+}
+.boxtitre{
+    background-color: #5C2E05;
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    color: white;
+    border:none;
+    white-space: nowrap;
+    padding: 2px 4px 2px 4px;
+}
+.boxtitre-atk{
+    background-color: #CD171A;
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: white;
+    border:none;
+    white-space: nowrap;
+    padding: 2px 4px 2px 4px;
+}
+.boxtitre-car{
+    background-color: #08516D;
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: white;
+    border:none;
+    white-space: nowrap;
+    padding: 2px 4px 2px 4px;
+}
+.boxtitre-chance{
+    background-color: #8105D2;
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: white;
+    border:none;
+    white-space: nowrap;
+    padding: 2px 4px 2px 4px;
+}
+.boxtitre-def{
+    background-color: #009FE3;
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: white;
+    border:none;
+    white-space: nowrap;
+    padding: 2px 4px 2px 4px;
+}
+.boxtitre-pv{
+    background-color: #3FA535;
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: white;
+    border:none;
+    white-space: nowrap;
+    padding: 2px 4px 2px 4px;
+}
+.boxtitre-init{
+    background-color: #FF9900;
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: white;
+    border:none;
+    white-space: nowrap;
+    padding: 2px 4px 2px 4px;
+}
+.boxtitresmall{
+    background-color: #5C2E05;
+    text-align: center;
+    font-style: normal;
+    font-size: 12px;
+    font-weight: normal;
+    color: white;
+    border:none;
+    white-space: nowrap;
+    padding: 1px 2px 1px 2px;
+    vertical-align: top;
+}
+.boxinput{
+    background-color: white;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    color: black;
+    border: 1px solid #5C2E05;
+    white-space: nowrap;
+}
+.boxinput-atk{
+    background-color: white;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    color: #CD171A;
+    border: 1px solid #CD171A;
+    white-space: nowrap;
+}
+.boxinput-car{
+    background-color: white;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    color: #08516D;
+    border: 1px solid #08516D;
+    white-space: nowrap;
+}
+.boxinput-chance{
+    background-color: white;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    color: #8105D2;
+    border: 1px solid #8105D2;
+    white-space: nowrap;
+}
+.boxinput-def{
+    background-color: white;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    color: #009FE3;
+    border: 1px solid #009FE3;
+    white-space: nowrap;
+}
+.boxinput-pv{
+    background-color: white;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    color: #3FA535;
+    border: 1px solid #3FA535;
+    white-space: nowrap;
+}
+.boxinput-init{
+    background-color: white;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    color: #FF9900;
+    border: 1px solid #E68A00;
+    white-space: nowrap;
+}
+.boxinputleft{
+    background-color: white;
+    text-align: left;
+    font-style: normal;
+    font-weight: normal;
+    color: black;
+    border: 1px solid #5C2E05;
+    white-space: nowrap;
+}
+.boxinputleft-atk{
+    background-color: white;
+    text-align: left;
+    font-style: normal;
+    font-weight: normal;
+    color: #CD171A;
+    border: 1px solid #CD171A;
+    white-space: nowrap;
+}
+.boxinputleft-def{
+    background-color: white;
+    text-align: left;
+    font-style: normal;
+    font-weight: normal;
+    color: #009FE3;
+    border: 1px solid #009FE3;
+    white-space: nowrap;
+}
+.title{
+  margin-left:3px;
+  margin-right:3px;
+  width: 90%;
+}
+.atk {
+  color: #CD171A;
+}
+.car {
+  color: #08516D;
+}
+.chance {
+  color: #8105D2;
+}
+.def {
+  color: #009FE3;
+}
+.pv {
+  color: #3FA535;
+}
+.init {
+  color: #FF9900;
+}
+.boxinputlight{
+    background-color: white;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    color: black;
+    border: 1px solid #BEAAA0;
+    white-space: nowrap;
+}
+.boxinputlight-atk{
+    background-color: white;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    color: #CD171A;
+    border: 1px solid #CD171A;
+    white-space: nowrap;
+}
+.boxinputlight-car{
+    background-color: white;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    color: #08516D;
+    border: 1px solid #08516D;
+    white-space: nowrap;
+}
+.boxinputlight-chance{
+    background-color: white;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    color: #8105D2;
+    border: 1px solid #8105D2;
+    white-space: nowrap;
+}
+.boxinputlight-def{
+    background-color: white;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    color: #009FE3;
+    border: 1px solid #009FE3;
+    white-space: nowrap;
+}
+.boxinputlight-init{
+    background-color: white;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    color: #FF9900;
+    border: 1px solid #E68A00;
+    white-space: nowrap;
+}
+.boxvoie{
+    background-color: white;
+    text-align: left;
+    font-style: normal;
+    font-weight: normal;
+    color: black;
+    border-top: none;
+    border-bottom: 1px dotted #5C2E05;
+    border-left: 1px solid #5C2E05;
+    border-right: 1px solid #5C2E05;
+    white-space: nowrap;
+}
+
+.boxtext {
+  width: 266px;
+  padding: 2px;
+}
+
+textarea.boxability {
+  width: 100%;
+}
+
+span.boxability,
+.charsheet div.boxability {
+  white-space: pre-wrap;
+  font-size: x-small;
+  user-select: text;
+}
+
+.charsheet div.boxability {
+  padding: 5px;
+}
+
+input[type="text"].nomvoie {
+  width: 99%;
+  font-weight: bold;
+  text-align: center;
+}
+
+input[type="text"].titreability {
+  width: 80%;
+  font-size: x-small;
+  font-weight: bold;
+  margin-left:8px;
+}
+
+input[type="text"].titreability2 {
+  width: 94%;
+  font-weight: bold;
+  margin-left: -3px;
+}
+
+.sheet-rolltemplate-text{
+    color: #5C2E05;
+}
+
+.textfat{
+    font-weight: bold;
+    color: #5C2E05;
+    border: none;
+    text-align: center;
+}
+.textfat-atk{
+    font-weight: bold;
+    color: #CD171A;
+    border: none;
+    text-align: center;
+}
+.textfat-car{
+    font-weight: bold;
+    color: #08516D;
+    border: none;
+    text-align: center;
+}
+.textfat-chance{
+    font-weight: bold;
+    color: #8105D2;
+    border: none;
+    text-align: center;
+}
+.textfat-def{
+    font-weight: bold;
+    color: #009FE3;
+    border: none;
+    text-align: center;
+}
+.textfat-pv{
+    font-weight: bold;
+    color: #3FA535;
+    border: none;
+    text-align: center;
+}
+.textleft{
+    color: #5C2E05;
+    border: none;
+    text-align: left;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.textfatleft{
+    font-weight: bold;
+    color: #5C2E05;
+    border: none;
+    text-align: left;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.textfatleft-atk{
+    font-weight: bold;
+    color: #CD171A;
+    border: none;
+    text-align: left;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.textbase{
+    color: #5C2E05;
+    border: none;
+    text-align: center;
+}
+.textbase-atk{
+    color: #CD171A;
+    border: none;
+    text-align: center;
+}
+.textbase-car{
+    color: #08516D;
+    border: none;
+    text-align: center;
+}
+.textbase-chance{
+    color: #8105D2;
+    border: none;
+    text-align: center;
+}
+.textbase-def{
+    color: #009FE3;
+    border: none;
+    text-align: center;
+}
+.textbase-pv{
+    color: #3FA535;
+    border: none;
+    text-align: center;
+}
+.textbasesmall{
+    color: #5C2E05;
+    border: none;
+    font-size:11px;
+}
+.texttitresmall{
+    color: white;
+    font-size: 8px;
+    font-weight: normal;
+}
+.charsheet button[type="roll"].boxtitre,
+.charsheet button[type="roll"].boxtitre-atk,
+.charsheet button[type="roll"].boxtitre-car,
+.charsheet button[type="roll"].boxtitre-chance,
+.charsheet button[type="roll"].boxtitre-def,
+.charsheet button[type="roll"].boxtitre-pv,
+.charsheet button[type="roll"].boxtitre-init
+{
+    width: 88px !important;
+    min-width: 88px !important;
+    height: 20px !important;
+    min-height: 20px !important;
+    font-size: 10px !important;
+    height:20px;
+    font-size:11px;
+    font-family: Verdana;
+    font-weight: bold;
+    text-decoration:none;
+    background:none;
+    background-image:none;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+.charsheet button[type="roll"].boxtitre:hover{
+    background-color:#BEAAA0;
+    border: 1px solide white;
+}
+.charsheet button[type="roll"].boxtitre-atk:hover{
+    background-color:#F28C8E;
+    border: 1px solide white;
+}
+.charsheet button[type="roll"].boxtitre-car:hover{
+    background-color:#88D7F6;
+    border: 1px solide white;
+}
+.charsheet button[type="roll"].boxtitre-def:hover{
+    background-color:#80D9FF;
+    border: 1px solide white;
+}
+.charsheet button[type="roll"].boxtitre-pv:hover{
+    background-color:#A4E09F;
+    border: 1px solide white;
+}
+.charsheet button[type="roll"].boxtitre-init:hover{
+    background-color:#FFD699;
+    border: 1px solide white;
+}
+.charsheet button[type="roll"].neutre{
+    color: #5C2E05;
+    font-weight: normal;
+    font-size: 20px;
+    text-decoration:none;
+    background:none;
+    background-image:none;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    margin: 0px;
+}
+.charsheet button[type="action"].atk,
+.charsheet button[type="roll"].atk{
+    color: #CD171A;
+    font-weight: normal;
+    font-size: 20px;
+    text-decoration:none;
+    background:none;
+    background-image:none;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    margin: 0px;
+}
+.charsheet button[type="roll"].neutre:hover,
+.charsheet button[type="action"].atk:hover,
+.charsheet button[type="roll"].atk:hover,
+{
+    font-weight: bold;
+}
+button[type=action].d20-dice::before {
+    font-family: 'dicefontd20';
+    content: 'F ';
+}
+input, select{
+    border: none;
+    box-shadow: none;
+    max-height: 22px;
+    padding: 0px;
+    margin: 0px;
+}
+span.input{
+  vertical-align: middle;
+}
+select.carac{
+    width: 50px;
+}
+select.carac-atk{
+    width: 50px;
+    color: #CD171A;
+}
+select.carac-pv{
+    width: 44px;
+    color: #3FA535;
+}
+select.carac-def{
+    width: 50px;
+    color: #009FE3;
+}
+select.carac-chance{
+    width: 50px;
+    color: #8105D2;
+}
+select.selectmin{
+    width: 18px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+select.selectmin-car{
+    width: 18px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #08516D;
+}
+input[type="number"]{
+    width: 60px;
+    text-align: right;
+}
+input[type="text"]{
+    width: 100%;
+    text-align: left;
+    padding-left: 4px;
+}
+input[disabled]{
+    background-color: white;
+    font-style: italic;
+}
+input:not([disabled]):hover{
+    background-color: #BEAAA0;
+}
+input.atk:not([disabled]):hover{
+    background-color: #FCE8E8;
+}
+input.car:not([disabled]):hover{
+    background-color: #E7F7FD;
+}
+input.chance:not([disabled]):hover{
+    background-color: #F5E6FE;
+}
+input.def:not([disabled]):hover{
+    background-color: #E6F7FF;
+}
+input.pv:not([disabled]):hover{
+    background-color: #EDF9EC;
+}
+input.init:not([disabled]):hover{
+    background-color: #FFF5E6;
+}
+select:not([disabled]):hover{
+    background-color: #BEAAA0;
+}
+select.carac-atk:not([disabled]):hover{
+    background-color: #FCE8E8;
+}
+select.carac-pv:not([disabled]):hover{
+    background-color: #EDF9EC;
+}
+input.nobox{
+    border-bottom: 2px dotted #5C2E05;
+}
+.charsheet textarea{
+    box-sizing: border-box;
+    font-family: Verdana;
+    font-size: 12px;
+    border: none;
+    box-shadow: none;
+    padding: 1px;
+    margin: 0px;
+    resize: vertical;
+    vertical-align:top;
+}
+textarea.ligne{
+    height: 1.5em;
+}
+textarea.voixdesc{
+    resize: none;
+    height: 100%;
+    overflow-y: auto;
+}
+.container{
+  display:flex;
+  justify-content:space-between;
+}
+.containerl{
+  display:flex;
+}
+.containera{
+  display:flex;
+  justify-content:space-around;
+}
+
+/* TABS */
+.charsheet div.tab-content { display: none; }
+input.fp1:checked ~ div.fp1,
+input.fp2:checked ~ div.fp2,
+input.fp3:checked ~ div.fp3,
+input.fp4:checked ~ div.fp4,
+input.fp5:checked ~ div.fp5,
+input.tab1:checked ~ div.tab1,
+input.tab2:checked ~ div.tab2,
+input.tab3:checked ~ div.tab3,
+input.tab4:checked ~ div.tab4,
+input.tab5:checked ~ div.tab5,
+input.setting-generic:checked ~ div.setting-generic,
+input.setting-arran:checked ~ div.setting-arran,
+input.attacktab1:checked ~ div.attacktab1,
+input.attacktab2:checked ~ div.attacktab2,
+input.attacktab3:checked ~ div.attacktab3 { display: block; }
+input.attaque-droite:checked ~ div.attaque-droite,
+input.attaque-gauche:checked ~ div.attaque-gauche { display: inline; }
+
+input.tab {
+    width: 110px;
+    height: 18px;
+    position: relative;
+    color: #5C2E05;
+    vertical-align: middle;
+    left: 50px;
+    margin: -52px;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+}
+
+input.tab + span::before {
+    content: attr(title);
+    border: solid 1px #c8c8c8;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+    text-align: center;
+    display: inline-block;
+    background: #fff;
+    width: 108px;
+    height: 18px;
+    z-index: 1;
+}
+input.tab:checked + span::before {
+    background: #dcdcdc;
+    border-bottom-color: #fff;
+    border-bottom-width: 5px
+}
+input.hidden-tab {
+  display: none;
+  height: 0px;
+  position: relative;
+  top: -10px;
+}
+input.attacktab {
+    width: 110px;
+    height: 18px;
+    position: relative;
+    color: #5C2E05;
+    vertical-align: middle;
+    left: 50px;
+    margin: -52px;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+}
+
+input.attacktab + span::before {
+    content: attr(title);
+    border: solid 1px #c8c8c8;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+    text-align: center;
+    display: inline-block;
+    background: #fff;
+    width: 108px;
+    height: 18px;
+    z-index: 1;
+}
+input.attacktab:checked + span::before {
+    background: #dcdcdc;
+    border-bottom-color: #fff;
+    border-bottom-width: 5px
+}
+.block-switch{
+  z-index: 1;
+  position: relative;
+  margin-bottom: -10px;
+}
+.block-hidden, .block-show {
+  position:relative;
+  margin-top: -10px;
+}
+.block-hidden {
+  left: 15px;
+}
+.block-hidden,
+.block-switch:checked ~ .block-show {
+  display: block;
+}
+
+.block-show,
+.block-switch:checked ~ .block-hidden {
+  display: none;
+}
+
+/*Optional block switch, no margin */
+.optional-block-switch {
+  display: none;
+  position: relative;
+}
+.optional-block {
+  display: none;
+  position:relative;
+}
+.optional-block-switch:checked ~ .optional-block {
+  display: block;
+}
+
+/* Switch -- styled checkboxes */
+
+input[type="checkbox"].block-switch-arrow {
+    opacity: 0;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: 5px;
+    left: 6px;
+    margin: -10px;
+    cursor: pointer;
+    z-index: 2;    
+}
+input[type="checkbox"].block-switch-arrow + span::before {
+    line-height: 14px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    position:relative;
+    margin-left: 2px;
+    margin-right: -14px;
+    content: "►";
+    font-size: 12px;    
+    z-index: 1;    
+}
+input[type="checkbox"].block-switch-arrow:checked + span::before {
+    content: "▼";
+}
+.block-hidden-arrow,
+.block-switch-arrow:checked ~ .block-show-arrow {
+  display: block;
+}
+.block-show-arrow,
+.block-switch-arrow:checked ~ .block-hidden-arrow {
+  display: none;
+}
+
+input[type="checkbox"].block-switch-b {
+    opacity: 0;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: 5px;
+    left: 6px;
+    margin: -10px;
+    cursor: pointer;
+    z-index: 1;    
+}
+.block-hidden-b,
+.block-switch-b:checked ~ .block-show-b {
+  display: block;
+}
+.block-show-b,
+.block-switch-b:checked ~ .block-hidden-b {
+  display: none;
+}
+
+/* Optional display -- Gears */
+
+.options-flag {
+  opacity: 0;
+  top: -8px;
+  right: 0px;
+  position: absolute;
+  width: 16px;
+  min-height: 16px;
+  z-index: 2;
+}
+
+.options-flag + span {
+  top: -8px;
+  right: 0px;
+  position: absolute;
+  white-space: nowrap;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  font-family: pictos;
+  color: #BBBBBB;
+  cursor: pointer;
+  margin-top: 0px;
+  display: none;
+}
+
+.options-flag:hover + span,.options-flag:checked + span {
+  color: #C3996B;
+  display: block;
+}
+
+.charsheet button.flatbtn {
+  border: 0px;
+  background-color: transparent;
+  background-image: none;
+  font-size: 12px !important;
+}
+
+.charsheet button.iconbtn {
+  font-family: pictos;
+}
+
+span.iconbtn {
+  font-family: pictos;
+  font-size: large !important;
+}
+
+.charsheet button[type='roll'].iconbtn::before {
+  content: '';
+}
+
+.charsheet button[type='roll'].flatbtn::before {
+  content: '';
+}
+.attack:hover .options-flag + span {
+  display: block;
+}
+
+.options {
+  display: none;
+}
+
+.options-flag:checked ~ .options {
+  display: block;
+}
+
+.setup-abilities {
+  float: right;
+}
+
+/* Nombres sans spinners */
+input.nombre::-webkit-outer-spin-button,
+input.nombre::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"].nombre {
+    -moz-appearance: textfield;
+    width: 32px;
+    vertical-align: top;
+}
+
+/* TEMPLATES */
+.sheet-rolltemplate-co1 .sheet-rolltemplate-imghr{
+    width: 176px;
+    height: 4px;
+    padding: 0px;
+    margin: 0px;
+}
+.sheet-rolltemplate-co1 table {
+    width: 189px;
+    padding: 2px;
+    border: 1px solid #5C2E05;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+.sheet-rolltemplate-co1 th {
+    color: #5C2E05;
+    margin: 0px;
+    padding: 0px 5px 0px 5px;
+    font-size: 13px;
+    text-align: left;
+    font-family: 'Verdana';
+    font-variant: small-caps;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.sheet-rolltemplate-co1 .sheet-rolltemplate-subheader {
+    color: #000;
+    font-size: 12px;
+    font-style: italic;
+    font-family: 'Verdana';
+    font-variant: small-caps;
+    text-align: right;
+    white-space: nowrap;
+}
+.sheet-rolltemplate-co1 .sheet-rolltemplate-tcat {
+    font-family: 'Verdana';
+    font-size: 12px;
+    font-weight: normal;
+    text-align: right;
+    padding-right: 2px;
+}
+.sheet-rolltemplate-co1 div.sheet-rolltemplate-desc{
+    padding-top: 2px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+.sheet-rolltemplate-co1 td {
+    margin: 0px;
+    padding: 0px 5px 0px 5px;
+    font-family: 'Verdana';
+    font-size: 12px;
+    font-weight: normal;
+    white-space: nowrap;
+}
+.sheet-rolltemplate-co1 .inlinerollresult  {
+    background-color: rgba(255,255,255,0.9);
+    border-width: 1px;
+    border-color: #BEAAA0;
+    border-style: solid;
+    border-radius: 50%;
+}
+.sheet-rolltemplate-co1 .inlinerollresult.fullcrit {
+    color: #3FB315;
+    border-width: 2px;
+    border-color: #3FB315;
+    border-style: solid;
+    border-radius: 50%;
+}
+.sheet-rolltemplate-co1 .inlinerollresult.fullfail {
+    color: #B31515;
+    border-width: 2px;
+    border-color: #B31515;
+    border-style: solid;
+    border-radius: 50%;
+}
+.sheet-rolltemplate-co1 .inlinerollresult.importantroll {
+    color: #5C2E05;
+    border-width: 2px;
+    border-color: #5C2E05;
+    border-style: solid;
+    border-radius: 50%;
+}
+textarea.statblock {
+  margin: 5px;
+  border: 1px dashed;
+  height: 12em;
+  word-break: break-all;
+}
+
+/* COF-MOD-DIABLO-EQUIPMENT-CSS-v1 */
+.sheet-co-equip-wrapper,
+.co-equip-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  align-items: start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.co-equip-panel {
+  background: #f8f1df;
+  border: 1px solid #8a642f;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.55), 0 1px 3px rgba(0,0,0,0.18);
+  box-sizing: border-box;
+}
+
+.co-equip-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #4b2a0a;
+  background: linear-gradient(90deg, #caa15d, #ecd39a, #caa15d);
+  border: 1px solid #7c5524;
+  border-radius: 7px;
+  padding: 4px 6px;
+  margin-bottom: 9px;
+}
+
+
+.co-diablo-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr 1fr;
+  grid-template-areas:
+    '. tete .'
+    '. cou .'
+    'anneau1 armure anneau2'
+    'gants ceinture dos'
+    '. pieds .';
+  gap: 8px;
+  align-items: stretch;
+}
+
+.co-slot {
+  min-height: 58px;
+  background: #fff8e8;
+  border: 1px solid #9b7840;
+  border-radius: 8px;
+  padding: 5px;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: inset 0 0 6px rgba(60,34,10,0.08);
+}
+
+.co-slot label {
+  display: block;
+  font-size: 10px;
+  font-weight: bold;
+  color: #4f2e0b;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.co-slot input,
+.co-slot select {
+  width: 100%;
+  min-height: 24px;
+  box-sizing: border-box;
+  font-size: 11px;
+  background: #fffdf4;
+  border: 1px solid #b79a63;
+  border-radius: 5px;
+  color: #3d260a;
+}
+
+.co-slot-tete { grid-area: tete; }
+.co-slot-cou { grid-area: cou; }
+.co-slot-anneau1 { grid-area: anneau1; }
+.co-slot-armure { grid-area: armure; min-height: 76px; }
+.co-slot-anneau2 { grid-area: anneau2; }
+.co-slot-gants { grid-area: gants; }
+.co-slot-ceinture { grid-area: ceinture; }
+.co-slot-dos { grid-area: dos; }
+.co-slot-pieds { grid-area: pieds; }
+
+
+.co-legacy-slots {
+  margin-top: 10px;
+}
+
+.co-legacy-title {
+  font-weight: bold;
+  color: #5c2e05;
+  margin: 5px 0;
+}
+
+@media (max-width: 760px) {
+  .co-equip-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Types de dégâts étendus : largeur adaptée aux nouveaux domaines. */
+.charsheet select.type-degats-atk {
+    width: 132px;
+}
+
+/* ===== COFantasy Items - fiche OBJET ===== */
+.charsheet .co-item-sheet {
+  width: 790px;
+  box-sizing: border-box;
+  padding: 12px;
+  margin: 8px auto;
+  border: 1px solid #8c6d46;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.88);
+}
+.charsheet .co-item-sheet-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #5C2E05;
+  margin-bottom: 8px;
+}
+.charsheet .co-item-actions { text-align:center; margin-bottom:10px; }
+.charsheet .co-item-actions button { width:190px; font-weight:bold; }
+.charsheet .co-item-grid {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:8px 12px;
+}
+.charsheet .co-item-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+.charsheet .co-item-field { margin-bottom:8px; }
+.charsheet .co-item-field label {
+  display:block;
+  font-weight:bold;
+  color:#5C2E05;
+  margin-bottom:2px;
+}
+.charsheet .co-item-field input[type="text"],
+.charsheet .co-item-field input[type="number"],
+.charsheet .co-item-field select,
+.charsheet .co-item-field textarea { width:100%; box-sizing:border-box; }
+.charsheet .co-item-field textarea { min-height:54px; resize:vertical; }
+.charsheet .co-item-predicates textarea { min-height:100px; font-family:monospace; }
+.charsheet .co-item-section-title {
+  font-weight:bold;
+  font-size:14px;
+  color:#5C2E05;
+  border-bottom:1px solid #c9b08d;
+  margin:8px 0;
+  padding-bottom:2px;
+}
+.charsheet .co-item-radio-row { display:flex; gap:16px; align-items:center; }
+.charsheet .co-item-radio-row input { margin:0 3px 0 0; }
+.charsheet .co-itemcat-content { display:none; }
+.charsheet input.co-itemcat-arme:checked ~ .co-itemcat-weapon { display:block; }
+.charsheet input.co-itemcat-armure:checked ~ .co-itemcat-defense,
+.charsheet input.co-itemcat-accessoire:checked ~ .co-itemcat-defense { display:block; }
+.charsheet .co-item-small { width:45px !important; display:inline-block; }
+.charsheet .co-item-small-select { width:60px !important; display:inline-block; }
+.charsheet .co-item-help {
+  margin-top:10px;
+  padding:8px;
+  background:#f3eadf;
+  border-left:4px solid #8c6d46;
+  font-size:11px;
+}
+.charsheet .co-itemcat-label { margin-right:18px; font-weight:bold; }
+.charsheet .co-item-rarity { margin-top:10px; max-width:360px; }
+
+
+
+/* =========================================================
+   COFantasy Items v0.4 — refonte visuelle + équipement
+   ========================================================= */
+
+/* ---------- Thème général ---------- */
+.charsheet .mainBg {
+  width: 810px;
+  box-sizing: border-box;
+  padding: 10px 12px 16px;
+  background: linear-gradient(180deg,#f7f1e7 0,#eee3d3 100%);
+  border: 1px solid #b79b76;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(61,38,18,.18);
+  color: #38291d;
+}
+.charsheet .mainBg > div:first-of-type {
+  background: rgba(255,253,248,.82);
+  border: 1px solid #d1bea2;
+  border-radius: 9px;
+  padding: 7px 9px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 4px rgba(75,47,23,.10);
+}
+.charsheet .mainBg input[type="text"],
+.charsheet .mainBg input[type="number"],
+.charsheet .mainBg select,
+.charsheet .mainBg textarea {
+  border: 1px solid #c9b596;
+  border-radius: 5px;
+  background: #fffdf9;
+  color: #38291d;
+  box-shadow: inset 0 1px 1px rgba(55,35,20,.05);
+}
+.charsheet .mainBg input:focus,
+.charsheet .mainBg select:focus,
+.charsheet .mainBg textarea:focus {
+  outline: none;
+  border-color: #8b5a2b;
+  box-shadow: 0 0 0 2px rgba(139,90,43,.13);
+}
+.charsheet .mainBg input[disabled],
+.charsheet .mainBg textarea[disabled] {
+  background: #eee7dc;
+  color: #5d5146;
+}
+
+/* Onglets principaux : même mécanique qu'origine, rendu plus lisible. */
+.charsheet input.tab + span::before,
+.charsheet input.attacktab + span::before {
+  border: 1px solid #b99a73;
+  border-bottom: 2px solid #8c6841;
+  border-radius: 7px 7px 3px 3px;
+  background: linear-gradient(#fffaf1,#e8d9c4);
+  color: #5a3516;
+  font-weight: 700;
+  line-height: 18px;
+  box-shadow: 0 1px 2px rgba(60,35,15,.10);
+}
+.charsheet input.tab:checked + span::before,
+.charsheet input.attacktab:checked + span::before {
+  background: linear-gradient(#74451f,#573114);
+  color: #fff7eb;
+  border-color: #573114;
+  border-bottom-color: #573114;
+}
+
+/* Cartes pour caractéristiques / capacités, sans changer leurs données. */
+.charsheet .tab-content.tab1 .tabsep,
+.charsheet .tab-content.tab2 .tabsep {
+  background: rgba(255,253,248,.80);
+  border: 1px solid #d9c7ad;
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(65,40,20,.08);
+}
+.charsheet .tab-content.tab1 .textfat-car,
+.charsheet .tab-content.tab1 .textfat-atk,
+.charsheet .tab-content.tab1 .textfat-def,
+.charsheet .tab-content.tab1 .textfat-pv,
+.charsheet .tab-content.tab1 .textfat-chance,
+.charsheet .tab-content.tab2 .textfatleft {
+  color: #6c3e18;
+  letter-spacing: .03em;
+}
+.charsheet .boxtitre-car,
+.charsheet .boxtitre-atk,
+.charsheet .boxtitre-def,
+.charsheet .boxtitre-pv,
+.charsheet .boxtitre-init,
+.charsheet .boxtitre-chance {
+  border-radius: 4px;
+}
+.charsheet .tab-content.tab2 fieldset {
+  border: 1px solid #d9c7ad;
+  border-radius: 7px;
+  background: rgba(255,253,248,.62);
+  padding: 4px;
+  margin-bottom: 5px;
+}
+.charsheet .tab-content.tab4,
+.charsheet .tab-content.tab5 {
+  background: rgba(255,253,248,.70);
+  border: 1px solid #d3c0a5;
+  border-radius: 8px;
+  padding: 9px;
+}
+
+/* ---------- Équipement ---------- */
+.charsheet .co-equipment-page { padding: 4px 3px 14px; box-sizing: border-box; }
+.charsheet .co-equip-dashboard {
+  display: grid;
+  grid-template-columns: 1.25fr .75fr;
+  grid-template-rows: auto auto auto;
+  gap: 8px;
+  margin: 7px 0 12px;
+}
+.charsheet .co-card {
+  border: 1px solid #c4ad8c;
+  border-radius: 8px;
+  background: rgba(255,253,248,.90);
+  box-shadow: 0 2px 5px rgba(60,35,15,.10);
+  overflow: hidden;
+}
+.charsheet .co-card-title {
+  background: linear-gradient(90deg,#67401e,#80562d);
+  color: #fff9ef;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: 5px 9px;
+  font-size: 11px;
+}
+.charsheet .co-equip-dashboard > section:nth-of-type(1) { grid-column: 1 / -1; grid-row: 1; }
+.charsheet .co-equip-dashboard > section:nth-of-type(2) { grid-column: 1; grid-row: 2 / span 2; }
+.charsheet .co-equip-dashboard > section:nth-of-type(3) { grid-column: 2; grid-row: 2; }
+.charsheet .co-equip-dashboard > section:nth-of-type(4) { grid-column: 2; grid-row: 3; }
+
+/* Bourse compacte */
+.charsheet .co-wallet-compact { overflow: visible; }
+.charsheet .co-wallet-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px 4px;
+}
+.charsheet .co-wallet-coins {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0;
+  flex: 1 1 auto;
+}
+.charsheet .co-wallet-coins label {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin: 0;
+  color: #573519;
+  font-size: 10px;
+}
+.charsheet .co-wallet-coins input {
+  width: 48px !important;
+  height: 23px;
+  padding: 1px 3px;
+  text-align: center;
+}
+.charsheet .co-wallet-total {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  min-width: 50%;
+  margin: 0;
+  padding: 4px 6px;
+  background: #efe3d2;
+  border: 1px solid #d4bd9c;
+  border-radius: 6px;
+}
+.charsheet .co-wallet-total-label { font-weight: 800; color: #5a3618; margin-right: 3px; }
+.charsheet .co-wallet-unit-radio { margin: 0 1px 0 4px; }
+.charsheet .co-wallet-unit-label { font-size: 9px; font-weight: 700; color: #675541; }
+.charsheet .co-wallet-output { margin-left: auto; min-width: 95px; text-align: right; }
+.charsheet .wallet-out { display: none; white-space: nowrap; }
+.charsheet .wallet-out input {
+  width: 70px !important;
+  height: 23px;
+  margin-right: 3px;
+  padding: 1px 3px;
+  text-align: right;
+  font-weight: 800;
+  color: #633b18;
+  background: #fffaf1;
+}
+.charsheet .wallet-u-po:checked ~ .co-wallet-output .wallet-out-po,
+.charsheet .wallet-u-pa:checked ~ .co-wallet-output .wallet-out-pa,
+.charsheet .wallet-u-pc:checked ~ .co-wallet-output .wallet-out-pc { display: inline-block; }
+.charsheet .co-wallet-extra {
+  display: block;
+  width: calc(100% - 16px) !important;
+  height: 22px;
+  margin: 0 8px 6px;
+  padding: 1px 5px;
+  font-size: 10px;
+}
+
+/* Consommables / divers / notes */
+.charsheet .co-consumable-row {
+  display: grid;
+  grid-template-columns: minmax(150px,1fr) 76px 76px 30px;
+  gap: 5px;
+  align-items: center;
+  padding: 6px 7px;
+  border-bottom: 1px solid #e4d5c1;
+  position: relative;
+}
+.charsheet .co-consumable-row .co-consumable-name { width:100%!important; box-sizing:border-box; }
+.charsheet .co-consumable-row .co-consumable-qty { display:flex; align-items:center; justify-content:flex-end; gap:3px; margin:0; font-size:9px; font-weight:700; color:#6b543c; }
+.charsheet .co-consumable-row .co-consumable-qty input { width:46px!important; text-align:center; }
+.charsheet button[type='roll'].co-consumable-use {
+  width:72px; height:24px; margin:0; padding:1px 5px;
+  border:1px solid #8b5a2b; border-radius:5px;
+  background:linear-gradient(#8d5a2c,#6b3d19); color:#fff;
+  font-size:10px; font-weight:800; text-shadow:none;
+}
+.charsheet button[type='roll'].co-consumable-use::before { content:''; }
+.charsheet button[type='roll'].co-consumable-delete {
+  width:28px; height:24px; margin:0; padding:0;
+  border:1px solid #a33a32; border-radius:5px;
+  background:linear-gradient(#d9534f,#a8322c); color:#fff;
+  font-size:13px; line-height:20px; font-weight:900; text-shadow:none;
+  position:relative; z-index:4;
+}
+.charsheet button[type='roll'].co-consumable-delete::before { content:''; }
+/* Le contrôle natif Roll20 doit rester au-dessus de la ligne en mode Modify. */
+.charsheet .co-repeating-clean .repitem { position:relative; }
+.charsheet .co-repeating-clean .itemcontrol,
+.charsheet .co-repeating-clean .repcontrol_del,
+.charsheet .co-repeating-clean .repcontrol_move { z-index:50!important; pointer-events:auto!important; }
+.charsheet .co-consumable-row .co-consumable-effect { grid-column:1 / -1; margin-top:1px; }
+.charsheet .co-consumable-row .co-consumable-effect textarea { width:100%!important; min-height:30px!important; margin:0; box-sizing:border-box; resize:vertical; }
+.charsheet .co-large-textarea { width: calc(100% - 12px)!important; min-height: 72px!important; margin: 6px!important; }
+
+/* Sous-onglets Équipement / Équipement équipé.
+   Les radios restent réellement cliquables et recouvrent visuellement les boutons. */
+.charsheet .co-equip-subtabs { position: relative; margin-top: 10px; }
+.charsheet .co-equip-subtabs > input.equiptab {
+  display: inline-block;
+  position: relative;
+  z-index: 5;
+  width: 170px;
+  height: 32px;
+  margin: 0 -170px 0 0;
+  padding: 0;
+  opacity: 0;
+  cursor: pointer;
+  vertical-align: top;
+}
+.charsheet .co-equip-subtabs > input.equiptab + span.co-equip-tab-button {
+  display: inline-flex;
+  width: 170px;
+  height: 32px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px 0 0;
+  border: 1px solid #b4946d;
+  border-bottom: 2px solid #704018;
+  border-radius: 8px 8px 3px 3px;
+  background: linear-gradient(#fffaf2,#e6d5bf);
+  color: #5a3516;
+  font-weight: 800;
+  pointer-events: none;
+  box-shadow: 0 1px 3px rgba(65,40,20,.10);
+}
+.charsheet .co-equip-subtabs > input.equiptab:checked + span.co-equip-tab-button {
+  background: linear-gradient(#774920,#5b3415);
+  color: #fff;
+  border-color: #5b3415;
+}
+.charsheet .equiptab-content { display: none; border-top: 2px solid #68401d; padding-top: 9px; margin-top: 0; }
+.charsheet input.equiptab1:checked ~ div.equiptab1,
+.charsheet input.equiptab2:checked ~ div.equiptab2 { display: block; }
+
+.charsheet .co-section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  background: #efe3d3;
+  border-left: 4px solid #704018;
+  border-radius: 0 6px 6px 0;
+  padding: 5px 8px;
+  margin: 3px 0 7px;
+}
+.charsheet .co-section-heading span { font-weight: 800; text-transform: uppercase; color: #5b3213; }
+.charsheet .co-section-heading small { color: #75695d; }
+.charsheet .co-section-heading-small { margin-top: 11px; }
+.charsheet .co-equip-list-head,
+.charsheet .co-equip-list-row {
+  display: grid;
+  grid-template-columns: 28px minmax(175px,1.55fr) 112px 112px minmax(220px,2fr);
+  gap: 5px;
+  align-items: center;
+}
+.charsheet .co-equip-list-head {
+  padding: 4px 6px;
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #6c5c4b;
+}
+.charsheet .co-equip-list-head .co-defense-head {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4px;
+  text-align:center;
+}
+.charsheet .co-equip-list-row {
+  padding: 5px 6px;
+  border: 1px solid #e0d1bd;
+  border-radius: 6px;
+  margin-bottom: 4px;
+  background: #fffdf9;
+}
+.charsheet .co-equip-list-row input[type=text],
+.charsheet .co-equip-list-row select,
+.charsheet .co-equip-list-row input[type=number],
+.charsheet .co-equip-list-row textarea { width:100%!important; box-sizing:border-box; }
+.charsheet .co-equip-list-row .co-equip-check { grid-column:1; }
+.charsheet .co-equip-list-row .co-object-name { grid-column:2; }
+.charsheet .co-equip-list-row .co-equip-slot { grid-column:3; }
+.charsheet .co-defense-toggle { display:none!important; }
+.charsheet .co-defense-fields {
+  grid-column:4;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4px;
+  align-items:end;
+}
+.charsheet .co-defense-fields label { margin:0; }
+.charsheet .co-defense-fields input { height:24px; text-align:center; }
+
+.charsheet .co-defense-toggle:not(:checked) + .co-defense-fields { display:none; }
+.charsheet .co-equip-predicates { grid-column:5; min-height:34px!important; height:34px; resize:vertical; line-height:14px; }
+.charsheet .co-defense-toggle:not(:checked) ~ .co-equip-predicates { grid-column:4 / 6; }
+.charsheet .co-repeating-clean .repcontrol { margin: 5px 0 8px; }
+
+/* Vue Diablo */
+.charsheet .co-diablo-v2 {
+  width: 690px;
+  max-width: 100%;
+  margin: 12px auto;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px solid #a8865d;
+  border-radius: 12px;
+  background: radial-gradient(circle at center,#f8ecda 0,#ead7bc 68%,#dbc19e 100%);
+  box-shadow: inset 0 0 18px rgba(103,65,30,.12),0 2px 6px rgba(60,35,15,.13);
+  display: grid;
+  grid-template-columns: 145px 145px 145px 145px;
+  grid-template-areas:
+    '. head head .'
+    'neck ring1 ring2 back'
+    'handleft body body handright'
+    'gloves belt belt feet';
+  gap: 9px;
+  align-items: stretch;
+}
+.charsheet .co-dslot {
+  border: 1px solid #927047;
+  border-radius: 9px;
+  background: linear-gradient(#fffaf2,#ead8be);
+  min-height: 60px;
+  padding: 7px;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.48),0 2px 4px rgba(70,40,15,.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.charsheet .co-dslot label { display:block; font-size:9px; text-transform:uppercase; letter-spacing:.08em; font-weight:800; color:#75461b; margin-bottom:4px; }
+.charsheet .co-dslot span { font-weight:700; color:#39281a; }
+.charsheet .co-dslot select { width:100%; }
+.charsheet .co-dslot-main { min-height:104px; background:linear-gradient(#f7e8d0,#ddbd91); border-width:2px; }
+.charsheet .slot-head{grid-area:head}.charsheet .slot-neck{grid-area:neck}.charsheet .slot-ring1{grid-area:ring1}.charsheet .slot-ring2{grid-area:ring2}.charsheet .slot-handleft{grid-area:handleft}.charsheet .slot-body{grid-area:body}.charsheet .slot-handright{grid-area:handright}.charsheet .slot-gloves{grid-area:gloves}.charsheet .slot-belt{grid-area:belt}.charsheet .slot-back{grid-area:back}.charsheet .slot-feet{grid-area:feet}
+
+/* ---------- Fiche objet ---------- */
+.charsheet .co-item-sheet-v3 { max-width: 790px; margin: 8px auto; background:rgba(255,253,248,.72); border:1px solid #c9b28f; border-radius:9px; padding:9px; }
+.charsheet .co-item-sheet-v3 .co-item-meta-grid { display:grid; grid-template-columns:1.3fr 1fr 1fr 1.2fr; gap:8px; }
+.charsheet .co-item-sheet-v3 .co-item-section-title { margin-top:12px; border-radius:5px; }
+.charsheet .co-item-sheet-v3 textarea[readonly] { background:#f1eee8; color:#554b42; }
+.charsheet .co-item-sheet-v3 .co-item-actions { display:flex; justify-content:center; gap:6px; margin:7px 0 10px; }
+.charsheet .co-item-sheet-v3 .co-item-actions button { min-width:100px; }
+
+@media (max-width: 720px) {
+  .charsheet .co-equip-dashboard { grid-template-columns: 1fr; }
+  .charsheet .co-equip-dashboard > section { grid-column:1!important; grid-row:auto!important; }
+  .charsheet .co-wallet-line { flex-direction:column; align-items:stretch; }
+  .charsheet .co-wallet-total { min-width:0; }
+  .charsheet .co-diablo-v2 { grid-template-columns:1fr 1fr; grid-template-areas:'head head' 'neck back' 'ring1 ring2' 'body body' 'handleft handright' 'gloves feet' 'belt belt'; }
+}
+
+
+/* ===== COFantasy Items v0.5 : fiche consommable dédiée ===== */
+.charsheet .co-consumable-sheet-v5 {
+  max-width: 760px; margin: 10px auto; padding: 12px;
+  background: linear-gradient(180deg,rgba(255,253,247,.96),rgba(244,234,216,.94));
+  border: 1px solid #b99b70; border-radius: 10px; box-shadow: 0 2px 8px rgba(60,35,10,.14);
+}
+.charsheet .co-consumable-sheet-title {
+  font-family: Georgia,serif; font-weight: 700; letter-spacing: .08em; text-align:center;
+  color:#5b3213; font-size:18px; padding:7px; margin:-2px 0 8px;
+  border-bottom:2px solid #a87943;
+}
+.charsheet .co-consumable-sheet-v5 .co-item-actions { display:flex; justify-content:center; gap:7px; margin:7px 0 12px; }
+.charsheet .co-consumable-sheet-v5 .co-item-actions button { min-width:105px; }
+.charsheet .co-consumable-meta-grid { display:grid; grid-template-columns:1.3fr 1fr 1fr .9fr; gap:8px; }
+.charsheet .co-consumable-effect-card { margin-top:10px; padding:8px; border:1px solid #d0b894; border-radius:7px; background:rgba(255,250,240,.85); }
+.charsheet .co-consumable-sheet-v5 textarea[readonly] { background:#f1eee8; color:#554b42; }
+@media (max-width:720px){ .charsheet .co-consumable-meta-grid{grid-template-columns:1fr 1fr;} }
+
+
+/* COFantasy Items V1 — qualité d'ouvrage */
+.charsheet .co-item-quality-row {
+  display:grid;
+  grid-template-columns:150px 1fr;
+  gap:10px;
+  align-items:end;
+  margin:2px 0 10px 0;
+  padding:7px 9px;
+  background:#f3e7d5;
+  border:1px solid #d7b98f;
+  border-radius:5px;
+}
+.charsheet .co-item-quality-field { margin-bottom:0; }
+.charsheet .co-item-quality-help { font-size:10px; line-height:1.3; color:#694726; padding-bottom:4px; }
+
+
+/* ===== COF ITEMS V2 : REPOS / HEBERGEMENT ===== */
+.charsheet .co-rest-quick-actions { display:flex; gap:5px; margin-top:5px; justify-content:center; }
+.charsheet .co-rest-quick-actions button { padding:2px 8px; min-width:72px; font-size:10px; border-radius:4px; }
+.charsheet .co-active-rest-buff { margin-top:4px; padding:3px 5px; border:1px solid #d6c5ad; background:#f8f1e6; border-radius:4px; font-size:9px; color:#684c32; }
+.charsheet .co-active-rest-buff span[name="attr_coi_repos_buff_source"]:empty + .co-rest-buff-desc { display:none; }
+.charsheet .co-lodging-sheet { max-width:790px; margin:10px auto; padding:12px; border:1px solid #c5a77e; border-radius:10px; background:rgba(255,252,245,.94); box-shadow:0 2px 8px rgba(70,45,25,.12); }
+.charsheet .co-lodging-title { text-align:center; font-size:20px; font-weight:800; letter-spacing:.06em; color:#5a3519; padding:7px; border-bottom:2px solid #aa8358; margin-bottom:8px; }
+.charsheet .co-lodging-sheet .co-item-actions { display:flex; justify-content:center; gap:7px; margin-bottom:10px; }
+.charsheet .co-lodging-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.charsheet .co-lodging-grid-top { grid-template-columns:1.5fr 1fr .8fr 1fr; }
+.charsheet .co-lodging-recovery-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.charsheet .co-lodging-check { align-items:center; justify-content:center; text-align:center; }
+.charsheet .co-lodging-check input { width:auto; }
+.charsheet .co-recovery-box { border:1px solid #d8c4a9; background:#f8f2e9; padding:8px; border-radius:7px; text-align:center; }
+.charsheet .co-recovery-box > b { display:block; font-size:13px; color:#5a3519; margin-bottom:5px; }
+.charsheet .co-recovery-box label { display:block; font-size:10px; margin:3px 0; }
+.charsheet .co-recovery-box input[type="number"] { width:46px; }
+.charsheet .co-inline-check input[type="checkbox"] { width:auto; vertical-align:middle; }
+@media (max-width:760px) { .charsheet .co-lodging-grid-top,.charsheet .co-lodging-recovery-grid,.charsheet .co-lodging-grid { grid-template-columns:1fr; } }
+\n/* V3 - repos */
+.co-rest-familiar { display:block; margin-top:4px; font-size:10px; opacity:.78; }
+.co-rest-familiar input { width:auto !important; vertical-align:middle; }
+
+
+/* ============================================================
+   V3.3 — Onglet Caractéristiques en 2 colonnes
+   Base conservée : fiche actuelle 822px, aucun changement de back.
+   ============================================================ */
+
+.charsheet .co-pj-character-layout {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start !important;
+    margin: 4px 0 8px 0;
+}
+
+.charsheet .co-pj-character-column {
+    width: calc(47% - 5px) !important;
+    flex: 0 0 calc(47% - 5px) !important;
+}
+
+.charsheet .co-pj-card {
+    width: 100%;
+    margin: 0 0 10px 0;
+    padding: 6px;
+    background: #fffdf8;
+    border: 1px solid #d6c4a2;
+    border-radius: 7px;
+    box-shadow: 0 1px 3px rgba(92, 46, 5, 0.10);
+}
+
+.charsheet .co-pj-top-card {
+    min-height: 286px;
+}
+
+.charsheet .co-pj-bottom-card {
+    min-height: 148px;
+}
+
+.charsheet .co-pj-card table,
+.charsheet .co-pj-card table.tabsep {
+    width: 100%;
+}
+
+/* --- Caractéristiques : remplir proprement la demi-page --- */
+
+.charsheet .co-carac-card table.tabsep {
+    border-spacing: 4px 3px;
+}
+
+.charsheet .co-carac-card input[type="number"] {
+    width: 48px;
+}
+
+.charsheet .co-carac-card select.selectmin-car {
+    width: 20px;
+}
+
+.charsheet .co-carac-card td.boxtitre-car {
+    width: 72px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.charsheet .co-carac-card button.boxtitre-car {
+    width: 100%;
+    color: #fff !important;
+}
+
+/* Couleurs individuelles des boutons de caractéristiques */
+.charsheet .co-carac-card table tr:nth-child(2) td.boxtitre-car { background: #a7433a !important; } /* FOR */
+.charsheet .co-carac-card table tr:nth-child(3) td.boxtitre-car { background: #3f7b58 !important; } /* DEX */
+.charsheet .co-carac-card table tr:nth-child(4) td.boxtitre-car { background: #b57924 !important; } /* CON */
+.charsheet .co-carac-card table tr:nth-child(5) td.boxtitre-car { background: #356f96 !important; } /* INT */
+.charsheet .co-carac-card table tr:nth-child(6) td.boxtitre-car { background: #6e5792 !important; } /* SAG */
+.charsheet .co-carac-card table tr:nth-child(7) td.boxtitre-car { background: #8a5727 !important; } /* CHA */
+
+.charsheet .co-carac-card table tr:nth-child(2) button.boxtitre-car:hover { background: #c75d53 !important; }
+.charsheet .co-carac-card table tr:nth-child(3) button.boxtitre-car:hover { background: #5d9974 !important; }
+.charsheet .co-carac-card table tr:nth-child(4) button.boxtitre-car:hover { background: #d1953d !important; }
+.charsheet .co-carac-card table tr:nth-child(5) button.boxtitre-car:hover { background: #5590b7 !important; }
+.charsheet .co-carac-card table tr:nth-child(6) button.boxtitre-car:hover { background: #8d75af !important; }
+.charsheet .co-carac-card table tr:nth-child(7) button.boxtitre-car:hover { background: #a97642 !important; }
+
+/* --- Vitalité / Chance / Magie : un seul grand bloc haut droite --- */
+
+.charsheet .co-vital-card table.tabsep {
+    border-spacing: 4px 3px;
+}
+
+.charsheet .co-vital-card input[type="number"] {
+    width: 60px;
+}
+
+.charsheet .co-vital-card .co-rest-quick-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin: 4px 4px 6px;
+}
+
+.charsheet .co-vital-card .co-rest-quick-actions button {
+    width: 150px;
+    height: 24px;
+    padding: 1px 8px;
+    background: #3f7b58;
+    border: 1px solid #315f45;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    box-shadow: none;
+}
+
+.charsheet .co-vital-card .co-rest-quick-actions button:hover {
+    background: #55956c;
+}
+
+.charsheet .co-vital-secondary {
+    border-top: 1px solid #d8c6a5;
+    margin-top: 5px;
+    padding-top: 5px;
+}
+
+.charsheet .co-vital-secondary .textfat-chance {
+    display: block;
+    margin: 3px 0 2px;
+    text-align: left;
+}
+
+/* --- Défense : bloc bas gauche --- */
+
+.charsheet .co-defense-card table.tabsep {
+    border-spacing: 4px 3px;
+}
+
+.charsheet .co-defense-card input[type="number"] {
+    width: 48px;
+}
+
+.charsheet .co-defense-card textarea.ligne {
+    min-height: 24px;
+}
+
+/* --- Combat : bloc bas droite --- */
+
+.charsheet .co-combat-card table.tabsep {
+    border-spacing: 4px 3px;
+}
+
+.charsheet .co-combat-card td.boxtitre-atk,
+.charsheet .co-combat-card td.boxtitre-init {
+    width: 112px;
+}
+
+.charsheet .co-combat-card input[type="number"] {
+    width: 49px;
+}
+
+.charsheet .co-combat-card select.carac-atk {
+    width: 53px;
+}
+
+/* Aligne visuellement les deux rangées haut/bas */
+.charsheet .co-carac-card,
+.charsheet .co-vital-card {
+    min-height: 296px;
+}
+
+.charsheet .co-defense-card,
+.charsheet .co-combat-card {
+    min-height: 166px;
+}
+
+/* --- Familier : uniquement dans Configuration --- */
+
+.charsheet .co-familiar-config {
+    margin: 4px 0 12px 0;
+    padding: 8px 10px;
+    border: 1px solid #c9b58f;
+    border-radius: 6px;
+    background: #fffaf0;
+    color: #5C2E05;
+}
+
+.charsheet .co-familiar-config-title {
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #5C2E05;
+}
+
+.charsheet .co-familiar-config label {
+    display: block;
+    margin: 0;
+}
+
+.charsheet .co-familiar-config-help {
+    margin: 4px 0 0 20px;
+    color: #74624f;
+    font-size: 10px;
+}
+
+/* L'ancien style n'a plus de rôle dans l'onglet Caractéristiques */
+.charsheet .co-rest-familiar {
+    display: none;
+}
+
+
+
+/* ===== V3.3b adjustments from feedback ===== */
+.charsheet .co-pj-character-layout {
+    gap: 14px;
+    padding: 0 5px 0 2px;
+}
+
+.charsheet .co-pj-character-column {
+    width: calc(50% - 7px);
+    flex: 0 0 calc(50% - 7px);
+}
+
+.charsheet .co-pj-card {
+    margin: 0 0 14px 0;
+    padding: 7px;
+}
+
+.charsheet .co-carac-card,
+.charsheet .co-vital-card {
+    min-height: 302px;
+}
+
+.charsheet .co-defense-card,
+.charsheet .co-combat-card {
+    min-height: 176px;
+}
+
+/* Vitalité layout fixes */
+.charsheet .co-vital-main-table .co-vital-pv-inline {
+    white-space: nowrap;
+    text-align: center;
+}
+
+.charsheet .co-vital-main-table .co-vital-pv-inline .textbase-pv {
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.charsheet .co-pr-block .co-pr-inline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.charsheet .co-pr-block .co-pr-values {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.charsheet .co-pr-block .co-pr-pause {
+    font-size: 10px !important;
+    height: 20px;
+    padding: 1px 10px;
+    background: #3f7b58;
+    border: 1px solid #315f45;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    box-shadow: none;
+}
+
+.charsheet .co-pr-block .co-pr-pause:hover {
+    background: #55956c;
+}
+
+.charsheet .co-vital-card .co-rest-quick-actions {
+    display: none;
+}
+
+/* Chance in gold */
+.charsheet .co-vital-secondary .co-chance-block .textfat-chance {
+    color: #9c6a11 !important;
+}
+
+.charsheet .co-vital-secondary .co-chance-block .boxtitre-chance,
+.charsheet .co-vital-secondary .co-chance-block td.boxtitre-chance {
+    background: #c28b19 !important;
+    border-color: #9c6a11 !important;
+    color: #fff !important;
+}
+
+.charsheet .co-vital-secondary .co-chance-block .boxinput-chance {
+    border-color: #d4ab4a !important;
+}
+
+/* Magie title stays violet and ensure DM row is visible */
+.charsheet .co-vital-secondary .block-show > .textfat-chance {
+    color: #7a18d5 !important;
+}
+
+.charsheet .co-vital-secondary input[name="attr_option_mana_totale"] + span + .optional-block {
+    display: block !important;
+}
+
+/* Combat movement in green */
+.charsheet .co-combat-card table tr:last-child td.boxtitre-init,
+.charsheet .co-combat-card table tr:last-child button.boxtitre-init {
+    background: #3f7b58 !important;
+    border-color: #315f45 !important;
+    color: #fff !important;
+}
+
+
+
+/* ===== V3.3c feedback pass ===== */
+.charsheet .co-pj-character-layout{
+  gap:30px;
+  padding:0 8px 0 6px;
+}
+
+.charsheet .co-pj-character-column{
+  width:calc(48% - 8px);
+  flex:0 0 calc(48% - 8px);
+  min-width:0;
+}
+
+.charsheet .co-pj-card{
+  margin:0 0 16px 0;
+  padding:8px;
+  overflow:hidden;
+}
+
+.charsheet .co-pj-top-card{min-height:308px;}
+.charsheet .co-pj-bottom-card{min-height:190px;}
+
+.charsheet .co-carac-card table.tabsep,
+.charsheet .co-vital-card table.tabsep,
+.charsheet .co-defense-card table.tabsep,
+.charsheet .co-combat-card table.tabsep{
+  width:100%;
+  border-spacing:4px 4px;
+}
+
+/* Less cramped middle area */
+.charsheet .co-defense-card{margin-right:2px;}
+.charsheet .co-combat-card{margin-left:2px;}
+
+/* Better centered values */
+.charsheet .co-pj-card input[type="number"],
+.charsheet .co-pj-card input[type="text"],
+.charsheet .co-pj-card select,
+.charsheet .co-pj-card span.car{
+  text-align:center;
+  vertical-align:middle;
+}
+
+.charsheet .co-pj-card td{
+  vertical-align:middle;
+}
+
+/* Right-side overflow prevention */
+.charsheet .co-vital-card input[type="number"]{width:56px;}
+.charsheet .co-vital-card select.carac-pv{width:100%; max-width:100%;}
+.charsheet .co-combat-card input[type="number"]{width:44px;}
+.charsheet .co-combat-card select.carac-atk{width:52px;}
+.charsheet .co-defense-card input[type="number"]{width:46px;}
+.charsheet .co-combat-card td.boxtitre-atk,
+.charsheet .co-combat-card td.boxtitre-init{width:106px;}
+
+/* Vitality rows */
+.charsheet .co-vital-main-table .co-vital-pv-inline{
+  white-space:nowrap;
+  text-align:center;
+}
+.charsheet .co-vital-main-table .co-vital-pv-inline .textbase-pv{
+  display:inline-block;
+  margin-right:6px;
+}
+.charsheet .co-vital-card .textbase-pv{
+  display:inline-block;
+  min-width:74px;
+  text-align:center;
+}
+
+/* PR row and pause button */
+.charsheet .co-pr-block .co-pr-inline{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:6px;
+  white-space:nowrap;
+}
+
+.charsheet .co-pr-block .co-pr-values{
+  display:inline-flex;
+  align-items:center;
+  gap:3px;
+  flex:1 1 auto;
+}
+
+.charsheet .co-pr-block .co-pr-pause{
+  width:104px;
+  min-width:104px;
+  height:22px;
+  padding:0 6px;
+  line-height:20px;
+  font-size:11px;
+  background:#3f7b58;
+  border:1px solid #315f45;
+  border-radius:5px;
+  color:#fff;
+  font-weight:bold;
+  text-align:center;
+  box-shadow:none;
+}
+.charsheet .co-pr-block .co-pr-pause:hover{background:#55956c;}
+.charsheet .co-vital-card .co-rest-quick-actions{display:none;}
+
+/* Chance in gold */
+.charsheet .co-vital-secondary .co-chance-block .textfat-chance{
+  color:#9c6a11 !important;
+}
+.charsheet .co-vital-secondary .co-chance-block .boxtitre-chance,
+.charsheet .co-vital-secondary .co-chance-block td.boxtitre-chance,
+.charsheet .co-vital-secondary .co-chance-block button.boxtitre-chance{
+  background:#c28b19 !important;
+  border-color:#9c6a11 !important;
+  color:#fff !important;
+}
+.charsheet .co-vital-secondary .co-chance-block .boxinput-chance{
+  border-color:#d4ab4a !important;
+}
+
+/* DM visible and magic title violet */
+.charsheet .co-vital-secondary .block-show > .textfat-chance{
+  color:#7a18d5 !important;
+}
+.charsheet .co-vital-secondary input[name="attr_option_mana_totale"] + span + .optional-block{
+  display:block !important;
+}
+
+/* Movement row green, including fields */
+.charsheet .co-combat-card table tr:last-child td.boxtitre-init,
+.charsheet .co-combat-card table tr:last-child button.boxtitre-init{
+  background:#3f7b58 !important;
+  border-color:#315f45 !important;
+  color:#fff !important;
+}
+.charsheet .co-combat-card table tr:last-child td.boxinputlight-init,
+.charsheet .co-combat-card table tr:last-child td.boxinput-init{
+  border-color:#5ea173 !important;
+}
+.charsheet .co-combat-card table tr:last-child input.init{
+  border-color:#5ea173 !important;
+  color:#2b5f39;
+  font-weight:bold;
+}
+
+/* Center titles/values slightly better */
+.charsheet .co-combat-card .textbase-atk,
+.charsheet .co-defense-card .textbase-def,
+.charsheet .co-carac-card .textbase-car,
+.charsheet .co-vital-card .textbase-pv{
+  text-align:center;
+}
+
+
+
+/* ============================================================
+   COFantasy Items V4.1 — FICHE OBJET UNIFIÉE
+   Une seule fiche OBJET, affichage selon attr_objet_categorie.
+   ============================================================ */
+.charsheet .co-item-sheet-v41 {
+  max-width:790px;
+  margin:8px auto;
+  padding:10px;
+  border:1px solid #c9b28f;
+  border-radius:9px;
+  background:rgba(255,253,248,.78);
+  box-sizing:border-box;
+}
+.charsheet .co-item-sheet-v41 .co-item-sheet-title {
+  font-family:Georgia,serif;
+  letter-spacing:.07em;
+}
+.charsheet .co-item-sheet-v41 .co-item-actions {
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  flex-wrap:wrap;
+  margin:7px 0 10px;
+}
+.charsheet .co-item-sheet-v41 .co-item-actions button { min-width:105px; width:auto; padding:2px 10px; }
+.charsheet .co-object-kind { position:absolute !important; width:1px !important; height:1px !important; opacity:0 !important; pointer-events:none !important; }
+.charsheet .co-item-meta-grid-v41 { display:grid; grid-template-columns:1.45fr 1fr 1fr; gap:8px; }
+.charsheet .co-object-view { display:none; margin-top:9px; padding:8px; border:1px solid #dbc8a9; border-radius:7px; background:rgba(255,250,241,.72); }
+.charsheet input.co-kind-arme:checked ~ .co-object-views .co-view-arme,
+.charsheet input.co-kind-armure:checked ~ .co-object-views .co-view-armure,
+.charsheet input.co-kind-accessoire:checked ~ .co-object-views .co-view-accessoire,
+.charsheet input.co-kind-consommable:checked ~ .co-object-views .co-view-consommable,
+.charsheet input.co-kind-divers:checked ~ .co-object-views .co-view-divers,
+.charsheet input.co-kind-hebergement:checked ~ .co-object-views .co-view-hebergement { display:block; }
+.charsheet .co-action-lodging { display:none; }
+.charsheet input.co-kind-hebergement:checked ~ .co-item-actions .co-action-standard,
+.charsheet input.co-kind-hebergement:checked ~ .co-item-actions .co-action-affixes { display:none; }
+.charsheet input.co-kind-hebergement:checked ~ .co-item-actions .co-action-lodging { display:inline-block; }
+.charsheet input.co-kind-hebergement:checked ~ .co-item-description-common,
+.charsheet input.co-kind-hebergement:checked ~ .co-item-tech-common { display:none; }
+.charsheet .co-quality-compact { grid-template-columns:170px 1fr; align-items:center; }
+.charsheet .co-quality-result { padding:5px 8px; border-left:3px solid #b88843; background:#fff8ea; min-height:28px; box-sizing:border-box; font-size:10px; color:#5f4326; }
+.charsheet .co-dice-inline { display:flex; align-items:center; gap:4px; }
+.charsheet .co-item-tech-switch { width:auto !important; margin:3px 5px 3px 0; vertical-align:middle; }
+.charsheet .co-item-tech-switch-label { font-size:10px; font-weight:bold; color:#6b4a28; cursor:pointer; }
+.charsheet .co-item-tech-panel { display:none; margin-top:6px; padding:7px; border:1px dashed #cbb28d; border-radius:5px; background:#f7f0e5; }
+.charsheet .co-item-tech-switch:checked + .co-item-tech-switch-label + .co-item-tech-panel { display:block; }
+.charsheet .co-item-tech-common { margin-top:11px; padding-top:2px; }
+.charsheet .co-item-tech-common textarea[readonly] { background:#f1eee8; color:#554b42; }
+.charsheet .co-view-hebergement .co-lodging-grid-top { grid-template-columns:1.4fr .8fr .7fr 1fr .8fr; }
+@media (max-width:720px) {
+  .charsheet .co-item-meta-grid-v41,
+  .charsheet .co-item-sheet-v41 .co-item-grid,
+  .charsheet .co-item-sheet-v41 .co-item-grid-3,
+  .charsheet .co-quality-compact,
+  .charsheet .co-view-hebergement .co-lodging-grid-top,
+  .charsheet .co-view-hebergement .co-lodging-grid,
+  .charsheet .co-view-hebergement .co-lodging-recovery-grid { grid-template-columns:1fr; }
+}
+
+/* V4.1.4 — règle monétaire personnalisée x100 */
+.charsheet .co-wallet-rule {
+  text-align:center;
+  font-size:9px;
+  opacity:.75;
+  margin:8px 0 6px 0;
+}
+
+
+/* =========================================================
+   V4.1.4 — Actions portées par les fiches OBJET
+   ========================================================= */
+.charsheet .co-item-object-actions {
+  margin-top: 10px;
+  padding: 8px;
+  border: 1px solid #c9b08d;
+  border-radius: 7px;
+  background: rgba(255,250,241,.78);
+}
+.charsheet .co-item-action-toggle {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.charsheet .co-item-action-toggle label {
+  font-weight:bold;
+  color:#5C2E05;
+  cursor:pointer;
+}
+.charsheet .co-item-action-switch {
+  width:auto !important;
+  margin:0 5px 0 0;
+  vertical-align:middle;
+  float:left;
+}
+.charsheet .co-item-action-hint {
+  font-size:10px;
+  color:#75604b;
+}
+.charsheet .co-item-action-panel { display:none; margin-top:7px; }
+.charsheet .co-item-object-actions > .co-item-action-switch:checked ~ .co-item-action-panel { display:block; }
+.charsheet .co-item-action-row {
+  margin:7px 0;
+  padding:8px;
+  border:1px solid #d4bea0;
+  border-radius:6px;
+  background:#fffdf8;
+}
+.charsheet .co-item-action-head {
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:8px;
+}
+.charsheet .co-item-action-effective {
+  padding:5px 7px;
+  margin-top:3px;
+  border-left:3px solid #8c6d46;
+  background:#f3eadf;
+  font-size:10px;
+  white-space:pre-wrap;
+  word-break:break-word;
+}
+.charsheet input.co-kind-consommable:checked ~ .co-item-object-actions,
+.charsheet input.co-kind-hebergement:checked ~ .co-item-object-actions {
+  display:none;
+}
+@media (max-width:720px) {
+  .charsheet .co-item-action-head { grid-template-columns:1fr; }
+}
