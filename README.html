@@ -1,0 +1,2898 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>COFantasy Roll20 — Guide d’utilisation</title><style>
+:root{color-scheme:light dark}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.55;max-width:1100px;margin:0 auto;padding:32px 24px;background:#fff;color:#202124}h1,h2,h3,h4{line-height:1.25;margin-top:1.5em}h1{border-bottom:2px solid #ddd;padding-bottom:.35em}h2{border-bottom:1px solid #ddd;padding-bottom:.25em}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#f4f4f4;padding:.1em .3em;border-radius:4px}pre{background:#f6f8fa;border:1px solid #ddd;border-radius:8px;padding:14px;overflow:auto}pre code{background:none;padding:0}table{border-collapse:collapse;width:100%;margin:1em 0}th,td{border:1px solid #d0d7de;padding:8px 10px;text-align:left;vertical-align:top}th{background:#f6f8fa}blockquote{border-left:4px solid #d0d7de;margin-left:0;padding-left:1em;color:#555}a{color:#0969da}hr{border:0;border-top:1px solid #ddd;margin:2em 0}@media(prefers-color-scheme:dark){body{background:#0d1117;color:#e6edf3}h1,h2,pre,th,td{border-color:#30363d}code,pre,th{background:#161b22}blockquote{color:#9da7b3;border-color:#30363d}a{color:#58a6ff}}
+</style></head><body><h1>COFantasy Roll20 — Guide d’utilisation</h1>
+<p><strong>COFantasy + CoFItem + fiche de personnage Chroniques Oubliées</strong></p>
+<p>Ce document est un <strong>manuel d’utilisation</strong>, pas un journal de modifications. Il décrit comment les deux scripts et la fiche travaillent ensemble, puis regroupe les commandes utiles et les interfaces disponibles.</p>
+<p>Le pack complet contient également :</p>
+<ul>
+<li><code>Catalogue_objet_Magique.xlsx</code> : catalogue des objets, affixes, matériaux d’affinité et traitements anti-famille ;</li>
+<li><code>Monster_Creator_Affinites.xlsx</code> : créateur de monstres aligné sur le même référentiel ;</li>
+<li><code>MIGRATION.md</code> : table de correspondance destinée uniquement à la migration et à la compatibilité des anciennes données.</li>
+</ul>
+<h2>1. Les trois éléments du système</h2>
+<table>
+<thead>
+<tr>
+  <th>Élément</th>
+  <th>Rôle principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Fiche Chroniques Oubliées</strong></td>
+  <td>Stocke les caractéristiques, PV/PR/PC/PM, attaques, équipements, prédicats, listes d’actions et fiches OBJET.</td>
+</tr>
+<tr>
+  <td><strong>COFantasy</strong></td>
+  <td>Moteur de règles : combat, attaques, états, dégâts, soins, initiative, jets, mouvements, AO, zones, tests collectifs, défis, téléportations, invocations, Undo…</td>
+</tr>
+<tr>
+  <td><strong>CoFItem</strong></td>
+  <td>Couche objets et logistique : catalogue, affixes, fiches OBJET, consommables, ceinture/sac, échanges, pause de 5 minutes, repos, hébergements, butin et loot.</td>
+</tr>
+</tbody>
+</table>
+<p>Schéma logique :</p>
+<pre><code class="language-text">FICHE DE PERSONNAGE
+   ↕ attributs / attaques / prédicats / inventaire
+COFANTASY  ←→  COFITEM
+ règles          objets / repos / loot
+   ↖________ !cof-undo commun ________/
+</code></pre>
+<p>CoFItem est conçu pour être chargé à côté de COFantasy. Lorsque le pont entre les deux est disponible, les opérations CoFItem compatibles sont enregistrées dans l’historique COFantasy et peuvent être annulées avec <code>!cof-undo</code>.</p>
+<h2>2. Installation et mise en place</h2>
+<ol>
+<li>Installer <code>ChroniquesOubliees-Sheet.html</code> et <code>ChroniquesOubliees-Sheet.css</code> comme <strong>fiche Chroniques Oubliées personnalisée</strong> dans la partie Roll20.</li>
+<li>Ajouter <code>COFantasy.js</code> dans les scripts API Roll20.</li>
+<li>Ajouter <code>CoFItem.js</code> dans les scripts API de la même partie.</li>
+<li>Sauvegarder les scripts puis ouvrir une fiche de personnage pour laisser les sheetworkers synchroniser les champs dérivés.</li>
+<li>Côté MJ, lancer <code>!cof-set-macros</code> pour créer/actualiser les macros proposées par COFantasy.</li>
+<li>Créer un handout nommé <strong><code>Equipe PJ</code></strong> lorsque les fonctions de groupe sont utilisées : tests collectifs, distributions, pause/repos et butin s’appuient sur cette notion de groupe.</li>
+</ol>
+<p>Commandes de contrôle utiles : <code>!cof-options</code>, <code>!cof-doctor</code>, <code>!coi-equipe</code>, <code>!cof-statut</code>, <code>!cof-statut-ressources</code>.</p>
+<h2>3. La fiche de personnage et ses liens avec les scripts</h2>
+<h3>3.1 Tokens et ressources</h3>
+<p>Pour qu’un token soit exploitable par les scripts, il doit représenter une fiche de personnage. La fiche fournit notamment les ressources <strong>PV</strong>, <strong>PR</strong>, <strong>PC</strong> et <strong>PM</strong>. COFantasy et CoFItem lisent et modifient ces mêmes attributs ; il ne faut donc pas créer des doublons manuels portant des noms proches.</p>
+<p>La configuration historique des barres reste importante : <strong>barre 1 = PV</strong>, <strong>barre 2 = PM lorsqu’ils sont utilisés, sinon dommages temporaires selon la configuration</strong>, <strong>barre 3 = modificateur temporaire d’attaque</strong>.</p>
+<p>Le bouton <strong>Pause 5 min</strong> de la fiche appelle CoFItem et ouvre la pause de groupe. La commande <code>!cof-pause</code>, elle, est une pause technique de la partie qui verrouille le mouvement : ce sont deux fonctions différentes.</p>
+<h3>3.2 Attaques de la fiche → COFantasy</h3>
+<p>Chaque ligne d’attaque de la fiche alimente directement le moteur <code>!cof-attack</code>. Les champs importants sont :</p>
+<ul>
+<li><strong>Type d’attaque</strong> : Naturel, Arme 1 main, Arme 2 mains, Sortilège, Arme gauche ou Arme de jet.</li>
+<li><strong>Modificateurs</strong> : options sans argument comme <code>avantage</code>, <code>désavantage</code>, <code>auto</code>, <code>poudre</code>, <code>pasDeDmg</code>…</li>
+<li><strong>Type de dégâts</strong> : Tranchant, Contondant, Perçant, Feu, Eau, Air, Terre, Ombre, Lumière, Force, Toxique, Psychique ou Drain. Les anciens noms de dégâts ne sont plus proposés dans la fiche.</li>
+<li><strong>Options d’attaque</strong> : options COFantasy nécessitant des arguments (<code>--mana</code>, <code>--rang</code>, <code>--portee</code>, <code>--plus</code>, <code>--save</code>, <code>--effet</code>…).</li>
+<li><strong>Prédicats si porté</strong> : prédicats actifs uniquement lorsque l’arme concernée est portée/équipée.</li>
+</ul>
+<p>La valeur <code>-1</code> dans <code>!cof-attack</code> signifie « arme principale actuellement en main ». La main gauche utilise <code>-2</code>, mais la mécanique d’attaque d’opportunité ne se sert pas de la main gauche.</p>
+<h3>3.3 Onglet Script → prédicats et listes d’actions</h3>
+<p>Le champ <strong>Prédicats</strong> de l’onglet Script est une des principales interfaces entre la fiche et COFantasy. Un prédicat est un mot-clé, éventuellement suivi d’une valeur avec <code>:</code>. Les commentaires de ligne peuvent utiliser <code>//</code>.</p>
+<p>Exemples :</p>
+<pre><code class="language-text">volant
+bonusAttaqueMagique:2
+attaquesOpportunite:2
+// commentaire
+</code></pre>
+<p>Les <strong>listes d’actions</strong> de la fiche peuvent contenir des attaques, macros, abilities et commandes API. <code>!cof-liste-actions</code> affiche ces actions dans le chat pour le personnage concerné.</p>
+<h3>3.4 Équipement, consommables et actions d’objet → CoFItem</h3>
+<p>CoFItem alimente les sections d’équipement de la fiche et les fiches <strong>OBJET / COMPENDIUM</strong>. Les armes, armures et accessoires peuvent être donnés puis équipés ; les consommables sont empilés dans <code>repeating_equipement</code>, décrémentés à l’utilisation et peuvent exécuter une commande COFantasy. Les actions portées par un objet équipé sont également remontées vers le porteur lorsque la fiche le permet.</p>
+<p>Les commandes importantes sont <code>!coi-give</code>, <code>!coi-give-all-pj</code>, <code>!coi-use-conso</code>, <code>!coi-show</code>, <code>!coi-affixes</code> et <code>!coi-catalogue</code>. Les commandes de boutons techniques (<code>!coi-equip-choice</code>, <code>!coi-delete-conso</code>, etc.) sont normalement générées par l’interface et n’ont pas à être saisies à la main.</p>
+<h3>3.5 Fiches OBJET → CoFItem → COFantasy</h3>
+<p>La fiche possède un mode <strong>OBJET / COMPENDIUM</strong>. Une fiche OBJET peut représenter une arme, une armure/bouclier, un accessoire, un consommable, du matériel ou un hébergement.</p>
+<p>Les boutons de la fiche OBJET sont directement reliés à CoFItem :</p>
+<table>
+<thead>
+<tr>
+  <th>Bouton / champ de la fiche</th>
+  <th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Afficher</strong></td>
+  <td><code>!coi-show --character @{character_id}</code></td>
+</tr>
+<tr>
+  <td><strong>Affixes</strong></td>
+  <td><code>!coi-affixes --item @{character_id}</code></td>
+</tr>
+<tr>
+  <td><strong>Catalogue</strong></td>
+  <td><code>!coi-catalogue</code></td>
+</tr>
+<tr>
+  <td><strong>Afficher un hébergement</strong></td>
+  <td><code>!coi-hebergement-show --character @{character_id}</code></td>
+</tr>
+<tr>
+  <td><strong>Commande COFantasy à l’utilisation</strong> d’un consommable</td>
+  <td>Exécute la commande <code>!cof-*</code> stockée sur l’objet lors de son utilisation.</td>
+</tr>
+<tr>
+  <td><strong>Actions de l’objet</strong></td>
+  <td>Les actions générées ou personnalisées d’un objet équipé peuvent être proposées au porteur.</td>
+</tr>
+<tr>
+  <td><strong>Prédicats générés/manuels</strong></td>
+  <td>CoFItem les calcule/stocke ; COFantasy les exploite lorsque l’objet est porté dans le contexte prévu.</td>
+</tr>
+</tbody>
+</table>
+<p>Une <strong>commande personnalisée</strong> saisie sur une action d’objet est prioritaire sur la commande générée automatiquement. Cela permet d’utiliser le catalogue comme base tout en adaptant une capacité particulière sans modifier le script.</p>
+<h3>3.6 Référentiel actuel des dégâts et affinités</h3>
+<p>La fiche, COFantasy, CoFItem, le catalogue d’objets et le Monster Creator utilisent le même vocabulaire mécanique.</p>
+<h4>Dégâts physiques</h4>
+<ul>
+<li><strong>Tranchant</strong></li>
+<li><strong>Contondant</strong></li>
+<li><strong>Perçant</strong></li>
+</ul>
+<h4>Affinités</h4>
+<ul>
+<li><strong>Feu</strong></li>
+<li><strong>Eau</strong></li>
+<li><strong>Air</strong></li>
+<li><strong>Terre</strong></li>
+<li><strong>Ombre</strong></li>
+<li><strong>Lumière</strong></li>
+<li><strong>Force</strong></li>
+</ul>
+<p>Les six premières correspondent aux affinités planaires. <strong>Force</strong> représente une énergie magique brute sans affinité planaire. La propriété <code>--magique</code> reste indépendante : une attaque peut être magique et posséder n’importe quelle affinité.</p>
+<h4>Types particuliers</h4>
+<ul>
+<li><strong>Toxique</strong> : dégâts liés aux toxines, poisons ou maladies lorsqu’ils sont exprimés sous forme de dégâts.</li>
+<li><strong>Psychique</strong> : dégâts visant l’esprit ; COFantasy active également la logique d’attaque mentale associée.</li>
+<li><strong>Drain</strong> : type particulier conservé comme mécanique distincte.</li>
+</ul>
+<p><strong>Nature n’est pas une affinité.</strong> Une capacité de thème naturel reçoit l’affinité correspondant réellement à son effet : Terre pour certaines racines ou pierres, Air pour une tempête, Eau pour du froid ou de l’eau, etc. Une capacité naturelle peut aussi ne recevoir aucune affinité particulière.</p>
+<h4>Compatibilité des anciennes fiches et macros</h4>
+<p>Les anciens noms ne sont <strong>plus affichés dans les listes de la fiche ni utilisés pour les nouveaux objets</strong>. COFantasy continue néanmoins de les comprendre en interne afin de ne pas casser une ancienne macro ou une ancienne ligne d’attaque.</p>
+<table>
+<thead>
+<tr>
+  <th>Ancien mot-clé</th>
+  <th>Interprétation actuelle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>froid</code></td>
+  <td>Eau</td>
+</tr>
+<tr>
+  <td><code>electrique</code></td>
+  <td>Air</td>
+</tr>
+<tr>
+  <td><code>sonique</code></td>
+  <td>Air</td>
+</tr>
+<tr>
+  <td><code>acide</code></td>
+  <td>Terre</td>
+</tr>
+<tr>
+  <td><code>necrotique</code></td>
+  <td>Ombre</td>
+</tr>
+<tr>
+  <td><code>radiant</code></td>
+  <td>Lumière</td>
+</tr>
+<tr>
+  <td><code>arcane</code> / <code>energie</code></td>
+  <td>Force</td>
+</tr>
+<tr>
+  <td><code>poison</code> / <code>maladie</code></td>
+  <td>Toxique</td>
+</tr>
+<tr>
+  <td><code>mental</code></td>
+  <td>Psychique</td>
+</tr>
+<tr>
+  <td><code>nature</code></td>
+  <td>ancien type autonome, accepté uniquement pour compatibilité</td>
+</tr>
+</tbody>
+</table>
+<p>Cette compatibilité est volontairement <strong>invisible côté utilisateur</strong> : pour toute nouvelle capacité, utiliser les noms du référentiel actuel.</p>
+<h3>3.7 Matériaux d’affinité du catalogue</h3>
+<p>Les matériaux ci-dessous sont des noms RP portant une <strong>affinité de dégâts</strong>. Ils n’accordent aucune autre propriété implicite.</p>
+<table>
+<thead>
+<tr>
+  <th>Affinité</th>
+  <th>Matériau RP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Feu</td>
+  <td><strong>Phospharium</strong></td>
+</tr>
+<tr>
+  <td>Eau</td>
+  <td><strong>Hybberium</strong></td>
+</tr>
+<tr>
+  <td>Air</td>
+  <td><strong>Fulgurium</strong></td>
+</tr>
+<tr>
+  <td>Terre</td>
+  <td><strong>Tellurite</strong></td>
+</tr>
+<tr>
+  <td>Ombre</td>
+  <td><strong>Sombracier</strong></td>
+</tr>
+<tr>
+  <td>Lumière</td>
+  <td><strong>Héliolite</strong></td>
+</tr>
+<tr>
+  <td>Force</td>
+  <td><strong>Arcanite</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Le <strong>Laënk</strong> est volontairement séparé de cette table : il sert à l’<strong>éclairage</strong> et ne confère pas de dégâts Lumière.</p>
+<h3>3.8 Traitements anti-famille</h3>
+<p>Ces noms sont des matériaux, poudres, incrustations ou traitements RP. Leur seul rôle mécanique est le bonus contre la famille indiquée. Ils existent pour les armes de mêlée et pour les armes à distance/munitions ; dans ce dernier cas, le texte RP décrit généralement une pointe, un projectile, une poudre ou un traitement de munition.</p>
+<table>
+<thead>
+<tr>
+  <th>Famille</th>
+  <th>Matériau / traitement RP</th>
+  <th><code>typeCible</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Humanoïde</td>
+  <td><strong>Hématite rouge</strong></td>
+  <td><code>humanoide</code></td>
+</tr>
+<tr>
+  <td>Mort-vivant</td>
+  <td><strong>Argent alchimique</strong></td>
+  <td><code>mort-vivant</code></td>
+</tr>
+<tr>
+  <td>Bête</td>
+  <td><strong>Cornaline brute</strong></td>
+  <td><code>bete</code></td>
+</tr>
+<tr>
+  <td>Vermine</td>
+  <td><strong>Soufre blanc</strong></td>
+  <td><code>vermine</code></td>
+</tr>
+<tr>
+  <td>Aquatique</td>
+  <td><strong>Corail noir</strong></td>
+  <td><code>aquatique</code></td>
+</tr>
+<tr>
+  <td>Aberration</td>
+  <td><strong>Verre torsadé</strong></td>
+  <td><code>aberration</code></td>
+</tr>
+<tr>
+  <td>Plante</td>
+  <td><strong>Sève noire</strong></td>
+  <td><code>plante</code></td>
+</tr>
+<tr>
+  <td>Fée</td>
+  <td><strong>Poussière d’argent froid</strong></td>
+  <td><code>fee</code></td>
+</tr>
+<tr>
+  <td>Monstre</td>
+  <td><strong>Ferrite noire</strong></td>
+  <td><code>monstre</code></td>
+</tr>
+<tr>
+  <td>Vase</td>
+  <td><strong>Sel vitrifié</strong></td>
+  <td><code>vase</code></td>
+</tr>
+<tr>
+  <td>Démon</td>
+  <td><strong>Fer froid</strong></td>
+  <td><code>demon</code></td>
+</tr>
+<tr>
+  <td>Géant</td>
+  <td><strong>Osmium noir</strong></td>
+  <td><code>geant</code></td>
+</tr>
+<tr>
+  <td>Élémentaire</td>
+  <td><strong>Verre astral</strong></td>
+  <td><code>elementaire</code></td>
+</tr>
+<tr>
+  <td>Céleste</td>
+  <td><strong>Malachium</strong></td>
+  <td><code>celeste</code></td>
+</tr>
+<tr>
+  <td>Artificiel</td>
+  <td><strong>Magnétite vive</strong></td>
+  <td><code>artificiel</code></td>
+</tr>
+<tr>
+  <td>Esprit</td>
+  <td><strong>Étherium</strong></td>
+  <td><code>esprit</code></td>
+</tr>
+<tr>
+  <td>Dragon</td>
+  <td><strong>Dracacier</strong></td>
+  <td><code>dragon</code></td>
+</tr>
+</tbody>
+</table>
+<p>Le modèle standard du catalogue est un bonus conditionnel contre la famille correspondante, par exemple :</p>
+<pre><code class="language-text">--if typeCible celeste --bonusAttaque 1 --plus 1d6 --endif
+</code></pre>
+<p><strong>Malachium est uniquement anti-Céleste.</strong> Il ne donne pas automatiquement les propriétés Profane, Ombre ou une quelconque affinité.</p>
+<h3>3.9 Monster Creator</h3>
+<p>Le Monster Creator fourni avec le pack emploie les affinités <strong>Feu, Eau, Air, Terre, Ombre, Lumière et Force</strong> pour ses nouvelles résistances, vulnérabilités et affinités. Les familles de créatures correspondent aux catégories utilisées par les traitements anti-famille du catalogue.</p>
+<p>Les anciennes colonnes ou formules conservées pour compatibilité ne doivent pas servir de vocabulaire de référence pour de nouveaux monstres.</p>
+<h2>4. Macros, sélection et syntaxe commune</h2>
+<h3>4.1 Sélection et ciblage</h3>
+<p>Les commandes utilisent souvent <code>@{selected|token_id}</code> pour l’acteur et <code>@{target|token_id}</code> pour une cible. Plusieurs commandes COFantasy acceptent également <code>--target TOKEN_ID</code>, ainsi que des sélections de groupe comme <code>--allies</code>, <code>--equipe</code>, <code>--self</code>, <code>--disque</code> ou <code>--enVue</code> selon la commande.</p>
+<h3>4.2 Mana et sorts</h3>
+<p>Les options usuelles sont <code>--mana N</code>, <code>--rang N</code>, <code>--sortilege</code>, et les options de magie propres aux capacités. <code>--sansAO</code> indique qu’une action ne provoque pas l’attaque d’opportunité liée au fait de tirer ou d’incanter sous menace au contact.</p>
+<h3>4.3 Undo commun</h3>
+<p><code>!cof-undo</code> est le point de retour commun. Les transactions CoFItem qui utilisent le pont Undo (distribution, déplacement/transfert d’inventaire, pause/récupération, repos, loot, etc.) sont enregistrées pour pouvoir être annulées avec la même commande.</p>
+<h2>5. COFantasy — utilisation courante</h2>
+<h3>5.1 Combat</h3>
+<pre><code class="language-text">!cof-init
+!cof-attack @{selected|token_id} @{target|token_id} -1
+!cof-liste-actions
+!cof-tour-suivant
+!cof-fin-combat
+!cof-undo
+</code></pre>
+<p>Une attaque utilise les données de l’attaque de la fiche : score, critique, dégâts, portée, type, options et prédicats. Les attaques à distance sont reconnues par leur portée ; les sortilèges par leur type/options.</p>
+<h3>5.2 Menace et attaques d’opportunité</h3>
+<p>Une AO de contact utilise uniquement <strong>l’arme principale actuellement équipée</strong>. Si aucune arme n’est équipée, une attaque naturelle disponible peut être utilisée. Pas d’AO avec la main gauche, avec une arme à distance équipée, en étant désarmé, ou lorsque la menace est bloquée par les états ou la géométrie prévue. L’état <strong>Volant</strong> (<code>cof-afly</code>) empêche les AO de contact concernées.</p>
+<p>Les AO peuvent être provoquées par un déplacement normal qui quitte une menace, par une attaque à distance réalisée sous menace ou par un sort non-contact lancé sous menace. Le tir ou le sort se résout normalement puis les AO encore valides sont proposées. <code>--sansAO</code> exempte l’action.</p>
+<h3>5.3 États, statut et ressources</h3>
+<pre><code class="language-text">!cof-statut
+!cof-statut-ressources
+!cof-set-state ...
+!cof-doctor
+!cof-doctor --repair
+</code></pre>
+<p>Le statut synthétise les états et effets. Le Doctor sert au MJ pour détecter les incohérences de ressources et de liens de barres.</p>
+<h3>5.4 Test collectif et Défi</h3>
+<p><code>!cof-test-collectif</code> et <code>!cof-defi</code> ouvrent des assistants de configuration dans le chat. Les PJ principaux de <strong>Equipe PJ</strong> sont proposés par défaut ; les participants et les tests autorisés peuvent être modifiés par boutons. Le DD reste côté MJ.</p>
+<p>Les 26 compétences disponibles sont regroupées par caractéristique :</p>
+<ul>
+<li><strong>FOR</strong> : Athlétisme, Puissance, Protection</li>
+<li><strong>DEX</strong> : Acrobaties, Discrétion, Adresse</li>
+<li><strong>CON</strong> : Endurance, Résistance, Sang-froid, Récupération</li>
+<li><strong>INT</strong> : Arcanes, Histoire, Religion, Nature, Investigation, Technique</li>
+<li><strong>SAG</strong> : Perception, Perspicacité, Survie, Médecine, Instinct</li>
+<li><strong>CHA</strong> : Persuasion, Intimidation, Supercherie, Représentation, Commandement</li>
+</ul>
+<h3>5.5 Zones et pièges</h3>
+<ol>
+<li>Placer le token du piège sur le <strong>calque MJ</strong>.</li>
+<li>Le sélectionner puis lancer <code>!cof-zone</code>.</li>
+<li>Configurer Déclencheur, Cibles, Zone d’effet, Test/DD, Utilisations et Effets.</li>
+<li>Activer le piège.</li>
+</ol>
+<p>La surface de déclenchement correspond à l’<strong>emprise réelle orientée du token du piège</strong>. La taille et la rotation du token mobile sont prises en compte : un grand token déclenche dès qu’une partie de son emprise pénètre réellement dans la zone. Entrée, Sortie et Traversée sont distinguées.</p>
+<p>L’assistant permet d’ajouter des dégâts et états sans écrire de commande. Les commandes COFantasy brutes restent disponibles dans la partie avancée pour les effets particuliers.</p>
+<h3>5.6 Téléportation</h3>
+<pre><code class="language-text">!cof-teleportation TOKEN_ID [PORTÉE] [--fx EFFET] [--fxDepart EFFET] [--fxArrivee EFFET]
+</code></pre>
+<p>La téléportation ne provoque pas d’AO, n’active pas les zones du trajet et traite uniquement l’arrivée.</p>
+<h3>5.7 Invocations génériques</h3>
+<p>Les modèles sont des fiches dont le nom commence par <code>[INVOC]</code> et qui possèdent un token par défaut.</p>
+<pre><code class="language-text">!cof-invocations
+!cof-invoquer @{selected|token_id} Nom du modèle [options]
+!cof-renvoyer-invocation [TOKEN_ID]
+</code></pre>
+<p>Options importantes : <code>--quantite</code>, <code>--duree</code>, <code>--dureeCombat</code>, <code>--initiative</code>, <code>--sansInitiative</code>, <code>--hostile</code>, <code>--placement adjacent|surplace|libre|cible</code>, <code>--mana</code>, <code>--sortilege</code>, <code>--rang</code>, <code>--sansAO</code> et limites de ressources compatibles.</p>
+<h2>6. CoFItem — catalogue, objets et affixes</h2>
+<h3>6.1 Entrée principale</h3>
+<pre><code class="language-text">!coi-objets
+!coi-catalogue
+!coi-affix-index
+</code></pre>
+<p><code>!coi-objets</code> affiche les fiches OBJET présentes. <code>!coi-catalogue</code> permet de parcourir ou rechercher les bases d’objets et d’ouvrir les hébergements. <code>!coi-affix-index</code> donne une vue du catalogue d’affixes par type et famille.</p>
+<h3>6.1.1 Affinités et anti-familles dans le catalogue</h3>
+<p>Pour les nouvelles armes, choisir les <strong>affinités actuelles</strong> et les <strong>traitements anti-famille</strong> décrits aux sections 3.7 et 3.8. Les anciens affixes fondés sur froid, électrique, acide, sonique, nécrotique, radiant, arcane, poison ou maladie ne constituent plus le vocabulaire de création courant ; leur lecture reste assurée par COFantasy lorsque nécessaire pour la compatibilité.</p>
+<p>Les matériaux n’infèrent jamais une propriété cachée : un matériau d’affinité donne l’affinité explicitement prévue ; un traitement anti-famille donne uniquement son effet anti-famille ; un matériau utilitaire conserve uniquement son effet propre.</p>
+<h3>6.2 Créer et personnaliser un objet</h3>
+<pre><code class="language-text">!coi-new --name ?{Nom|Nouvel objet}
+!coi-new-conso --name ?{Nom|Nouvelle potion}
+!coi-new-hebergement --name ?{Nom|Auberge}
+</code></pre>
+<p>La méthode recommandée reste le <strong>Catalogue</strong> : créer la fiche depuis une base, ouvrir <strong>Affixes</strong>, choisir les propriétés compatibles, puis ajuster la fiche OBJET si nécessaire. Les affixes peuvent générer des prédicats, options d’arme, effets, commandes ou actions d’objet.</p>
+<h3>6.3 Donner et équiper</h3>
+<p>Depuis les cartes CoFItem, <strong>Donner</strong> utilise <code>!coi-give --item … --target …</code>, <strong>Donner + équiper</strong> ajoute <code>--equip</code>, et les consommables acceptent <code>--qty N</code>. <code>!coi-give-all-pj</code> distribue un consommable à chaque PJ principal détecté dans <strong>Equipe PJ</strong>. Lorsqu’un emplacement d’équipement est déjà occupé, CoFItem peut proposer le remplacement via ses boutons internes.</p>
+<h3>6.4 Consommables</h3>
+<p>Un consommable possède un texte lisible et une <strong>Commande COFantasy à l’utilisation</strong>. Lorsqu’il est utilisé, CoFItem décrémente la pile et exécute la commande COFantasy correspondante. Les rations peuvent être identifiées pour les fonctions de repos.</p>
+<h2>7. CoFItem — pause, repos et hébergements</h2>
+<h3>7.1 Pause de 5 minutes</h3>
+<pre><code class="language-text">!coi-pause
+</code></pre>
+<p>La commande représente la décision collective de faire une pause. Chaque personnage du groupe peut choisir individuellement de dépenser <strong>1 PR</strong> pour effectuer sa récupération de PV ; ceux qui ne récupèrent pas conservent leur PR. Mana, rations et buffs de repos ne sont pas modifiés par cette pause.</p>
+<h3>7.2 Repos de groupe</h3>
+<pre><code class="language-text">!coi-repos
+</code></pre>
+<p>L’assistant permet de gérer bivouac, rations, chasse, hébergement, paiement et récupération. Il utilise le groupe détecté via <strong>Equipe PJ</strong>. Les étapes techniques <code>!coi-rest-*</code> et <code>!coi-hunt-*</code> sont normalement déclenchées par les boutons de l’assistant.</p>
+<h3>7.3 Hébergements</h3>
+<p>Les fiches OBJET de catégorie <strong>Hébergement</strong> stockent coût, monnaie, tarification, repas compris, récupération PV/PM/PR et éventuellement un buff jusqu’au prochain repos. Elles sont accessibles avec <code>!coi-hebergements</code> et peuvent être utilisées directement dans le flux de repos.</p>
+<h2>8. CoFItem — butin et loot</h2>
+<h3>8.1 Partage simple de monnaie</h3>
+<pre><code class="language-text">!coi-butin
+!coi-butin 120 PA
+</code></pre>
+<p>Le partage simple cible les PJ principaux de <strong>Equipe PJ</strong> et exclut les familiers du partage de monnaie.</p>
+<h3>8.2 Loot attaché aux tokens</h3>
+<pre><code class="language-text">!coi-loot
+!coi-loot-help
+</code></pre>
+<p>Le système peut lire des blocs <code>[LOOT]</code> dans les GM Notes des tokens, afficher le contenu au MJ/joueurs, distribuer objets et monnaie, ajouter des lignes manuelles, archiver ce qui a été pris et réinitialiser un loot si nécessaire.</p>
+<h2>9. Exemples de chaînes fiche → script</h2>
+<h3>Une arme magique</h3>
+<pre><code class="language-text">Fiche OBJET (CoFItem)
+  → base Épée longue
+  → affixe ajouté
+  → prédicats/options générés
+  → objet donné et équipé au PJ
+  → attaque visible sur la fiche du PJ
+  → !cof-attack lit l’arme en main et ses options
+</code></pre>
+<h3>Une potion</h3>
+<pre><code class="language-text">Fiche OBJET consommable
+  → Commande COFantasy : !cof-soin 1d8
+  → CoFItem donne la potion au PJ
+  → ceinture ou sac
+  → Utiliser
+  → quantité -1
+  → COFantasy applique le soin
+  → !cof-undo peut annuler l’opération compatible
+</code></pre>
+<h3>Un hébergement</h3>
+<pre><code class="language-text">Fiche OBJET Hébergement
+  → coût / repas / récupérations / buff
+  → !coi-repos
+  → choix de l’hébergement
+  → paiement
+  → récupération du groupe
+  → éventuel prédicat de buff appliqué jusqu’au prochain repos
+</code></pre>
+<h2>10. Référence pratique des commandes et options COFantasy</h2>
+<p>Cette partie remplace l’ancienne lecture « index brut ». L’idée est de partir d’une commande utile, puis de voir ses options par famille. Les options ci-dessous sont celles que le script courant reconnaît ; les alias purement internes et les options extrêmement spécialisées restent dans l’index technique à la fin.</p>
+<h3>10.1 <code>!cof-attack</code> — syntaxe générale</h3>
+<pre><code class="language-text">!cof-attack ATTAQUANT_ID CIBLE_ID [LABEL_OU_NOM] [options]
+</code></pre>
+<p>Avec la fiche, <code>-1</code> désigne l’arme principale en main et <code>-2</code> la main gauche. Dans une <strong>liste d’actions</strong> de la fiche, la forme <code>#Attaque ...</code> appelle le même moteur en réutilisant automatiquement le personnage actif.</p>
+<h4>Définir ou modifier l’attaque</h4>
+<table>
+<thead>
+<tr>
+  <th>Option</th>
+  <th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--nom TEXTE</code></td>
+  <td>Nom affiché pour l’attaque.</td>
+</tr>
+<tr>
+  <td><code>--toucher N</code></td>
+  <td>Remplace le bonus de base de l’attaque. Les macros peuvent utiliser <code>@{ATKCAC}</code>, <code>@{ATKTIR}</code> ou <code>@{ATKMAG}</code>.</td>
+</tr>
+<tr>
+  <td><code>--crit N</code></td>
+  <td>Seuil de critique, borné par le moteur.</td>
+</tr>
+<tr>
+  <td><code>--dm EXPR</code></td>
+  <td>Dégâts de base (<code>1d8+2</code>, <code>2d6</code>, etc.).</td>
+</tr>
+<tr>
+  <td><code>--portee N</code></td>
+  <td>Portée en mètres. Une portée non nulle fait traiter l’action comme une attaque à distance.</td>
+</tr>
+<tr>
+  <td><code>--special TEXTE</code></td>
+  <td>Texte spécial affiché avec l’attaque.</td>
+</tr>
+<tr>
+  <td><code>--bonusAttaque N</code></td>
+  <td>Ajoute un bonus ou malus au jet d’attaque.</td>
+</tr>
+<tr>
+  <td><code>--bonusCritique N</code></td>
+  <td>Élargit la plage de critique.</td>
+</tr>
+<tr>
+  <td><code>--modifiePortee N</code></td>
+  <td>Ajoute N mètres à la portée.</td>
+</tr>
+<tr>
+  <td><code>--divisePortee N</code></td>
+  <td>Divise la portée de base avant les autres modifications.</td>
+</tr>
+<tr>
+  <td><code>--allonge N</code></td>
+  <td>Ajoute une allonge à une attaque de contact.</td>
+</tr>
+<tr>
+  <td><code>--seulementContact</code> / <code>--seulementDistance</code></td>
+  <td>Interdit l’utilisation si la cible n’est pas dans le bon mode de distance.</td>
+</tr>
+</tbody>
+</table>
+<h4>Dés, réussite et dégâts</h4>
+<table>
+<thead>
+<tr>
+  <th>Option</th>
+  <th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--avantage</code> / <code>--m2d20</code></td>
+  <td>Ajoute un dé et garde le meilleur ; plusieurs niveaux se cumulent.</td>
+</tr>
+<tr>
+  <td><code>--desavantage</code></td>
+  <td>Ajoute un dé et garde le moins bon ; annule d’abord un avantage éventuel.</td>
+</tr>
+<tr>
+  <td><code>--avecd12</code></td>
+  <td>Utilise un d12 au lieu du d20.</td>
+</tr>
+<tr>
+  <td><code>--avecd12crit</code></td>
+  <td>Comme <code>--avecd12</code>, avec adaptation de la plage de critique.</td>
+</tr>
+<tr>
+  <td><code>--auto</code></td>
+  <td>L’attaque réussit automatiquement ; utile pour les sorts/effets sans jet d’attaque.</td>
+</tr>
+<tr>
+  <td><code>--demiAuto</code></td>
+  <td>En cas d’échec, les sauvegardes partielles sont considérées réussies : pratique pour les effets qui font au moins la moitié des dégâts.</td>
+</tr>
+<tr>
+  <td><code>--pasDeDmg</code></td>
+  <td>Aucun dégât de base ; utile pour les attaques qui ne servent qu’à appliquer un état/effet.</td>
+</tr>
+<tr>
+  <td><code>--tempDmg</code></td>
+  <td>Dégâts temporaires.</td>
+</tr>
+<tr>
+  <td><code>--plus EXPR</code></td>
+  <td>Ajoute une composante de dégâts.</td>
+</tr>
+<tr>
+  <td><code>--plusCrit EXPR</code></td>
+  <td>Ajoute des dégâts seulement sur critique.</td>
+</tr>
+<tr>
+  <td><code>--dmSiRate EXPR</code></td>
+  <td>Inflige une valeur spécifique même si l’attaque rate.</td>
+</tr>
+<tr>
+  <td><code>--toucheDoubleDmg</code></td>
+  <td>Dégâts normaux sur échec et dégâts doublés sur réussite ; à ne pas combiner avec les autres modes d’échec.</td>
+</tr>
+<tr>
+  <td><code>--maxDmg</code></td>
+  <td>Maximise les dés de dégâts de base.</td>
+</tr>
+<tr>
+  <td><code>--diviseDmg N</code></td>
+  <td>Divise les dégâts de base.</td>
+</tr>
+<tr>
+  <td><code>--incrDmgCoef N</code></td>
+  <td>Augmente le coefficient des dégâts de base.</td>
+</tr>
+<tr>
+  <td><code>--incrCritCoef N</code></td>
+  <td>Augmente le coefficient critique.</td>
+</tr>
+<tr>
+  <td><code>--reroll1</code></td>
+  <td>Relance les 1 sur les dés de dégâts de base.</td>
+</tr>
+<tr>
+  <td><code>--explodeMax</code></td>
+  <td>Les valeurs maximales des dés de dégâts de base explosent.</td>
+</tr>
+<tr>
+  <td><code>--vampirise [POURCENT]</code></td>
+  <td>Soigne l’attaquant d’une part des dégâts infligés ; sans argument, 100 %.</td>
+</tr>
+<tr>
+  <td><code>--draineMana EXPR</code></td>
+  <td>Retire de la mana à la cible si l’attaque touche.</td>
+</tr>
+</tbody>
+</table>
+<h4>Types de dégâts, magie et résistances</h4>
+<table>
+<thead>
+<tr>
+  <th>Option</th>
+  <th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--tranchant</code> / <code>--percant</code> / <code>--contondant</code></td>
+  <td>Types physiques de l’arme, utilisés notamment par les RD.</td>
+</tr>
+<tr>
+  <td><code>--feu</code> / <code>--eau</code> / <code>--air</code> / <code>--terre</code></td>
+  <td>Affinités élémentaires classiques. Le type se rapporte au dernier bloc de dégâts concerné.</td>
+</tr>
+<tr>
+  <td><code>--ombre</code> / <code>--lumiere</code></td>
+  <td>Affinités planaires liées respectivement à l’Ombre et à la Lumière.</td>
+</tr>
+<tr>
+  <td><code>--force</code></td>
+  <td>Énergie magique brute sans affinité planaire. COFantasy la traite comme magique, mais elle reste distincte de la propriété générale <code>--magique</code>.</td>
+</tr>
+<tr>
+  <td><code>--toxique</code></td>
+  <td>Type particulier pour les dégâts toxiques.</td>
+</tr>
+<tr>
+  <td><code>--psychique</code></td>
+  <td>Type particulier pour les dégâts psychiques et active la logique d’attaque mentale.</td>
+</tr>
+<tr>
+  <td><code>--drain</code></td>
+  <td>Type particulier de drain, conservé séparément.</td>
+</tr>
+<tr>
+  <td><code>--magique [N]</code></td>
+  <td>Marque la source comme magique ; N peut préciser le niveau de magie. Ce n’est pas une affinité.</td>
+</tr>
+<tr>
+  <td><code>--beni</code></td>
+  <td>Marque la source comme bénie/sainte pour les résistances correspondantes.</td>
+</tr>
+<tr>
+  <td><code>--spectral</code></td>
+  <td>Permet de toucher les créatures intangibles.</td>
+</tr>
+<tr>
+  <td><code>--ignoreRD [N]</code></td>
+  <td>Sans argument, ignore toute la RD ; avec N, ignore jusqu’à N points.</td>
+</tr>
+<tr>
+  <td><code>--ignoreMoitieRD</code></td>
+  <td>Ignore la moitié de la RD.</td>
+</tr>
+<tr>
+  <td><code>--adamantium</code>, <code>--ferFroid</code>, <code>--metal</code></td>
+  <td>Propriétés spécifiques encore utilisées par différentes résistances/capacités ; elles ne définissent pas l’affinité des dégâts.</td>
+</tr>
+</tbody>
+</table>
+<p>Pour les anciennes macros seulement, COFantasy accepte encore <code>--froid</code>, <code>--electrique</code>, <code>--sonique</code>, <code>--acide</code>, <code>--necrotique</code>, <code>--radiant</code>, <code>--arcane</code>, <code>--energie</code>, <code>--poison</code>, <code>--maladie</code> et <code>--mental</code>, puis les interprète selon la table de compatibilité de la section 3.6.</p>
+<h4>Sauvegardes, états et effets</h4>
+<table>
+<thead>
+<tr>
+  <th>Option</th>
+  <th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--psave CARAC DD [options]</code></td>
+  <td>Sauvegarde partielle : sur réussite, dégâts divisés par 2. Une double caractéristique (<code>FORDEX</code>) choisit la meilleure.</td>
+</tr>
+<tr>
+  <td><code>--saveDM CARAC DD</code></td>
+  <td>Sauvegarde qui annule les dégâts.</td>
+</tr>
+<tr>
+  <td><code>--save CARAC DD [demiDuree]</code></td>
+  <td>Sauvegarde appliquée au dernier état/effet ajouté.</td>
+</tr>
+<tr>
+  <td><code>--saveParTour CARAC DD</code></td>
+  <td>Nouvelle sauvegarde en fin de tour.</td>
+</tr>
+<tr>
+  <td><code>--saveActifParTour CARAC DD</code></td>
+  <td>Ajoute un bouton permettant au joueur de faire la sauvegarde à son tour.</td>
+</tr>
+<tr>
+  <td><code>--saveParJour CARAC DD</code></td>
+  <td>Sauvegarde renouvelée à la fin de chaque jour.</td>
+</tr>
+<tr>
+  <td><code>--etat ETAT [CARAC DD]</code></td>
+  <td>Applique un état sur touche ; certains états peuvent recevoir leur propre test de sortie.</td>
+</tr>
+<tr>
+  <td><code>--finEtat ETAT</code></td>
+  <td>Retire un état.</td>
+</tr>
+<tr>
+  <td><code>--effet EFFET [DUREE]</code></td>
+  <td>Applique un effet temporaire à la cible.</td>
+</tr>
+<tr>
+  <td><code>--finEffet EFFET</code></td>
+  <td>Retire un effet temporaire.</td>
+</tr>
+<tr>
+  <td><code>--valeur ...</code></td>
+  <td>Donne une valeur au dernier effet configuré.</td>
+</tr>
+<tr>
+  <td><code>--optionEffet OPTION ...</code></td>
+  <td>Ajoute une option au dernier effet.</td>
+</tr>
+<tr>
+  <td><code>--peur DD DUREE</code></td>
+  <td>Ajoute un effet de peur avec test de résistance.</td>
+</tr>
+<tr>
+  <td><code>--affaiblirCarac CARAC N</code></td>
+  <td>Diminue une caractéristique ; <code>random</code> sélectionne aléatoirement.</td>
+</tr>
+<tr>
+  <td><code>--enflamme</code></td>
+  <td>Enflamme la cible et applique les dégâts périodiques gérés par COFantasy.</td>
+</tr>
+<tr>
+  <td><code>--malediction</code></td>
+  <td>Applique la malédiction gérée par le moteur.</td>
+</tr>
+</tbody>
+</table>
+<h4>Ressources, sorts et limites</h4>
+<p>| Option | Effet |
+|---|---|
+| <code>--sortilege</code> | Indique qu’il s’agit d’un sortilège et active les interactions magiques du moteur. |
+| <code>--sansAO</code> | Cette action ne provoque pas l’AO liée au tir ou à l’incantation sous menace. |
+| <code>--mana N</code> | Coût en PM ; même <code>--mana 0</code> identifie l’action comme liée à un lanceur de magie pour certaines gestions. |
+| <code>--rang N</code> | Rang de la capacité/sort, utilisé par plusieurs mécaniques de mana. |
+| <code>--magieRapide [N]</code> | Traite l’action comme une magie rapide et ajuste le coût selon la configuration. |
+| <code>--tempeteDeMana ...</code> | Active les options de Tempête de Mana (intensité, durée, portée, rapide, altruiste…). |
+| <code>--magieEnArmure [mana|N]</code> | Applique la gestion de magie en armure ; le mode <code>mana</code> transforme la gêne en coût supplémentaire lorsque prévu. |
+| <code>--puissant [oui|non|duree|portee|EFFET]</code> | Active les variantes de magie/attaque puissante ; <code>portee</code> augmente la portée, <code>duree</code> la durée selon la capacité. |
+| <code>--limiteParJour N [RESSOURCE]</code> | Nombre maximal d’utilisations par jour ; une ressource nommée peut être partagée entre plusieurs capacités. |
+| <code>--limiteParCombat [N] [RESSOURCE]</code> | Même principe, réinitialisé par combat. |
+| <code>--limiteParTour [N] [RESSOURCE]</code> | Même principe, réinitialisé par tour. |
+| <code>--tempsRecharge EFFET DUREE</code> | Bloque l’action tant que l’effet de recharge est actif puis crée cet effet pour la durée indiquée. |
+| <code>--decrAttribute NOM [N]</code> | Exige une ressource attribut positive puis la décrémente. |
+| <code>--decrLimitePredicatParTour NOM</code> | Utilise la valeur d’un prédicat comme nombre maximal d’utilisations par tour. |
+| <code>--munition LABEL</code> | Consomme les munitions associées au label. |
+| <code>--retourneEnMain</code> | Une arme de jet revient immédiatement en main. |</p>
+<h4>Zones, cibles et mouvement</h4>
+<table>
+<thead>
+<tr>
+  <th>Option</th>
+  <th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--ligne</code></td>
+  <td>Cible les créatures sur la ligne jusqu’à la portée de l’attaque.</td>
+</tr>
+<tr>
+  <td><code>--disque R</code></td>
+  <td>Zone circulaire de rayon R autour du token ciblé.</td>
+</tr>
+<tr>
+  <td><code>--cone [ANGLE]</code></td>
+  <td>Cône depuis l’attaquant ; angle par défaut géré par le moteur.</td>
+</tr>
+<tr>
+  <td><code>--explosion</code></td>
+  <td>Transforme l’attaque en explosion/disque basé sur sa portée.</td>
+</tr>
+<tr>
+  <td><code>--target TOKEN_ID</code></td>
+  <td>Ajoute explicitement une cible supplémentaire.</td>
+</tr>
+<tr>
+  <td><code>--saufAllies</code></td>
+  <td>Exclut les alliés de la sélection/zone.</td>
+</tr>
+<tr>
+  <td><code>--dmCible EXPR</code></td>
+  <td>Dans une AOE, remplace les dégâts spécifiquement pour la cible principale.</td>
+</tr>
+<tr>
+  <td><code>--ciblesDansDisque R</code></td>
+  <td>Impose que les différentes cibles soient regroupées dans un disque de rayon R.</td>
+</tr>
+<tr>
+  <td><code>--ricochets N</code></td>
+  <td>Autorise N ricochets avec l’arme de jet.</td>
+</tr>
+<tr>
+  <td><code>--canaliseParFamilier</code></td>
+  <td>Utilise le familier comme point d’origine lorsque la capacité le prévoit.</td>
+</tr>
+<tr>
+  <td><code>--deplaceDe MAX</code> / <code>--deplaceDe MIN MAX [saut]</code></td>
+  <td>Autorise un déplacement préalable pour arriver à portée ; le mouvement spécial ne provoque pas d’AO.</td>
+</tr>
+<tr>
+  <td><code>--terrainDifficile DUREE [NOM] [IMAGE]</code></td>
+  <td>Une AOE en disque crée une zone de terrain difficile temporaire.</td>
+</tr>
+</tbody>
+</table>
+<h4>Conditions et branches</h4>
+<p>Les blocs conditionnels permettent d’éviter de dupliquer les attaques :</p>
+<pre><code class="language-text">--if CONDITION
+  ... options appliquées si vrai ...
+--else
+  ... options alternatives ...
+--endif
+</code></pre>
+<table>
+<thead>
+<tr>
+  <th>Condition</th>
+  <th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--si CONDITION</code></td>
+  <td>Conditionne l’utilisation de l’attaque elle-même.</td>
+</tr>
+<tr>
+  <td><code>--if CONDITION ... --endif</code></td>
+  <td>Conditionne seulement un bloc d’options.</td>
+</tr>
+<tr>
+  <td><code>--ifSaveFails CARAC DD ... --else ... --endif</code></td>
+  <td>Branche selon le résultat d’une sauvegarde.</td>
+</tr>
+<tr>
+  <td><code>etat ETAT</code> / <code>etatCible ETAT</code></td>
+  <td>Teste un état sur l’attaquant ou la cible.</td>
+</tr>
+<tr>
+  <td><code>attribut NOM VALEUR</code> / <code>attributCible ...</code></td>
+  <td>Teste un attribut.</td>
+</tr>
+<tr>
+  <td><code>predicatCible PREDICAT [VALEUR]</code></td>
+  <td>Teste un prédicat de la cible.</td>
+</tr>
+<tr>
+  <td><code>typeCible TYPE</code></td>
+  <td>Teste la catégorie/race de la cible.</td>
+</tr>
+<tr>
+  <td><code>deAttaque N</code>, <code>touche</code>, <code>critique</code>, <code>echecCritique</code></td>
+  <td>Teste le résultat de l’attaque.</td>
+</tr>
+<tr>
+  <td><code>premiereAttaque</code></td>
+  <td>Teste si c’est la première attaque du combat.</td>
+</tr>
+</tbody>
+</table>
+<h4>Présentation et média</h4>
+<table>
+<thead>
+<tr>
+  <th>Option</th>
+  <th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--fx EFFET</code></td>
+  <td>FX directionnel de l’attaquant vers la cible.</td>
+</tr>
+<tr>
+  <td><code>--targetFx EFFET</code></td>
+  <td>FX joué directement sur la cible.</td>
+</tr>
+<tr>
+  <td><code>--message TEXTE</code></td>
+  <td>Ajoute un message dans la carte de résolution.</td>
+</tr>
+<tr>
+  <td><code>--secret</code></td>
+  <td>Réduit la visibilité de l’action aux personnes concernées et au MJ.</td>
+</tr>
+<tr>
+  <td><code>--soundAttack... SON</code></td>
+  <td>Sons généraux ou spécifiques au résultat (succès, critique, échec…).</td>
+</tr>
+<tr>
+  <td><code>--imgAttack... IMAGE</code></td>
+  <td>Images générales ou spécifiques au résultat.</td>
+</tr>
+</tbody>
+</table>
+<h4>Options tactiques spécialisées</h4>
+<table>
+<thead>
+<tr>
+  <th>Option</th>
+  <th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--attaqueAssuree</code></td>
+  <td>Bonus d’attaque avec dégâts réduits et critique neutralisé selon la règle intégrée.</td>
+</tr>
+<tr>
+  <td><code>--attaqueRisquee</code></td>
+  <td>Bonus offensif au prix d’un malus temporaire de DEF.</td>
+</tr>
+<tr>
+  <td><code>--attaqueDeGroupe N</code></td>
+  <td>Résolution d’une attaque menée par plusieurs créatures.</td>
+</tr>
+<tr>
+  <td><code>--attaqueAcrobatique [N]</code></td>
+  <td>Test d’acrobatie puis dégâts de type sournoise en cas de réussite.</td>
+</tr>
+<tr>
+  <td><code>--feinte</code></td>
+  <td>Prépare une attaque ultérieure contre la même cible.</td>
+</tr>
+<tr>
+  <td><code>--tirDouble [LABEL]</code></td>
+  <td>Effectue un second tir, éventuellement avec une autre attaque.</td>
+</tr>
+<tr>
+  <td><code>--tirDeBarrage</code></td>
+  <td>Mode de barrage spécialisé géré par le script.</td>
+</tr>
+<tr>
+  <td><code>--semonce</code></td>
+  <td>Mode de semonce spécialisé.</td>
+</tr>
+<tr>
+  <td><code>--grenaille</code></td>
+  <td>Mode de tir en cône pour les armes compatibles.</td>
+</tr>
+<tr>
+  <td><code>--arcComposite N</code></td>
+  <td>Ajoute la FOR aux dégâts jusqu’à N et applique le malus prévu si la FOR est insuffisante.</td>
+</tr>
+<tr>
+  <td><code>--aussiArmeDeJet LABEL</code></td>
+  <td>Associe une version de jet à une arme normalement utilisée au contact.</td>
+</tr>
+<tr>
+  <td><code>--affute</code></td>
+  <td>Améliore critique et dégâts critiques selon la règle intégrée.</td>
+</tr>
+<tr>
+  <td><code>--vicieux</code></td>
+  <td>Ajoute des dégâts en infligeant aussi un contrecoup à l’attaquant.</td>
+</tr>
+<tr>
+  <td><code>--pietine</code> / <code>--percute</code></td>
+  <td>Résolutions de choc avec opposition, renversement et effets de projection.</td>
+</tr>
+<tr>
+  <td><code>--peutAgripper</code></td>
+  <td>Autorise l’agrippement via l’attaque.</td>
+</tr>
+<tr>
+  <td><code>--ouvertureMortelle</code></td>
+  <td>Résolution spéciale de coup automatique/critique et interaction avec la sournoise.</td>
+</tr>
+</tbody>
+</table>
+<h3>10.2 <code>!cof-effet</code>, <code>!cof-effet-temp</code> et <code>!cof-effet-combat</code></h3>
+<pre><code class="language-text">!cof-effet EFFET [oui|non] [options]
+!cof-effet-temp EFFET DUREE [options]
+!cof-effet-combat EFFET [options]
+</code></pre>
+<p>Les trois commandes partagent une grande partie des options génériques. <code>DUREE</code> peut être un nombre, une expression Roll20 ou <code>fin</code>/<code>0</code> pour terminer certains effets temporaires.</p>
+<table>
+<thead>
+<tr>
+  <th>Option</th>
+  <th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--lanceur TOKEN_ID</code></td>
+  <td>Identifie explicitement la source de l’effet.</td>
+</tr>
+<tr>
+  <td><code>--target TOKEN_ID</code></td>
+  <td>Ajoute une cible précise.</td>
+</tr>
+<tr>
+  <td><code>--self</code>, <code>--allies</code>, <code>--alliesEnVue</code>, <code>--equipe NOM</code>, <code>--enVue</code></td>
+  <td>Méthodes de sélection de groupe lorsque la commande les accepte.</td>
+</tr>
+<tr>
+  <td><code>--portee [TOKEN_ID] N</code></td>
+  <td>Limite les cibles à portée du lanceur ou du token indiqué.</td>
+</tr>
+<tr>
+  <td><code>--mana N</code>, <code>--rang N</code>, <code>--magieRapide</code>, <code>--tempeteDeMana</code>, <code>--magieEnArmure</code></td>
+  <td>Gestion des ressources et règles de magie.</td>
+</tr>
+<tr>
+  <td><code>--limiteParJour</code>, <code>--limiteParCombat</code>, <code>--limiteParTour</code>, <code>--tempsRecharge</code></td>
+  <td>Limites d’utilisation.</td>
+</tr>
+<tr>
+  <td><code>--save</code>, <code>--saveParTour</code>, <code>--saveActifParTour</code></td>
+  <td>Sauvegardes liées à l’effet.</td>
+</tr>
+<tr>
+  <td><code>--valeur ...</code>, <code>--optionEffet ...</code>, <code>--accumuleDuree</code></td>
+  <td>Paramétrage avancé de l’effet.</td>
+</tr>
+<tr>
+  <td><code>--fx</code>, <code>--targetFx</code>, <code>--message</code>, <code>--messageMJ</code>, <code>--image</code>, <code>--son</code></td>
+  <td>Présentation.</td>
+</tr>
+<tr>
+  <td><code>--dose NOM</code>, <code>--decrAttribute NOM [N]</code>, <code>--depensePR [N] [PV]</code></td>
+  <td>Ressources génériques.</td>
+</tr>
+<tr>
+  <td><code>--degainer LABEL</code></td>
+  <td>Peut faire dégainer une arme dans le contexte d’une capacité.</td>
+</tr>
+<tr>
+  <td><code>--sansAO</code></td>
+  <td>Empêche cette action magique de provoquer l’AO d’incantation sous menace.</td>
+</tr>
+</tbody>
+</table>
+<h3>10.3 <code>!cof-jet</code> — tests et compétences</h3>
+<pre><code class="language-text">!cof-jet CARAC [DD] [options]
+</code></pre>
+<table>
+<thead>
+<tr>
+  <th>Option</th>
+  <th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--bonus N</code></td>
+  <td>Bonus numérique au test.</td>
+</tr>
+<tr>
+  <td><code>--attribut NOM</code></td>
+  <td>Ajoute la valeur d’un attribut ; peut être répété.</td>
+</tr>
+<tr>
+  <td><code>--predicat NOM</code></td>
+  <td>Ajoute la valeur d’un prédicat ; peut être répété.</td>
+</tr>
+<tr>
+  <td><code>--nom TEXTE</code></td>
+  <td>Nom affiché et recherche d’une compétence/prédicat du même nom.</td>
+</tr>
+<tr>
+  <td><code>--competences</code></td>
+  <td>Propose le choix d’une compétence compatible avec la caractéristique.</td>
+</tr>
+<tr>
+  <td><code>--secret</code></td>
+  <td>Résultat privé aux personnes concernées / MJ.</td>
+</tr>
+<tr>
+  <td><code>--plageEchecCritique N</code></td>
+  <td>Étend la plage d’échec critique.</td>
+</tr>
+<tr>
+  <td><code>--succes TEXTE</code></td>
+  <td>Message affiché en cas de réussite lorsque le DD est défini.</td>
+</tr>
+</tbody>
+</table>
+<p>Exemple :</p>
+<pre><code class="language-text">!cof-jet SAG 18 --predicat controleLoupGarou --nom Résister --succes évite de se transformer
+</code></pre>
+<h3>10.4 Téléportation et invocation</h3>
+<p><strong>Téléportation</strong></p>
+<pre><code class="language-text">!cof-teleportation TOKEN_ID [PORTÉE] [--fx FX] [--fxDepart FX] [--fxArrivee FX]
+</code></pre>
+<p><code>--fx</code> applique le même FX au départ et à l’arrivée ; les deux options spécialisées permettent de les différencier. Une portée de <code>0</code> signifie que la commande n’impose pas de limite de distance. La téléportation ne provoque pas d’AO de déplacement et ne traite que les zones d’arrivée.</p>
+<p><strong>Invocation générique</strong></p>
+<pre><code class="language-text">!cof-invoquer TOKEN_ID &quot;Nom du modèle&quot; [options]
+</code></pre>
+<table>
+<thead>
+<tr>
+  <th>Option</th>
+  <th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--quantite N</code></td>
+  <td>Crée de 1 à 20 exemplaires.</td>
+</tr>
+<tr>
+  <td><code>--duree N</code></td>
+  <td>Durée en tours.</td>
+</tr>
+<tr>
+  <td><code>--dureeCombat</code></td>
+  <td>Persiste jusqu’à la fin du combat.</td>
+</tr>
+<tr>
+  <td><code>--initiative</code> / <code>--sansInitiative</code></td>
+  <td>Force ou empêche l’ajout au tracker selon le contexte.</td>
+</tr>
+<tr>
+  <td><code>--hostile</code></td>
+  <td>Ne crée pas la relation d’allié avec l’invocateur.</td>
+</tr>
+<tr>
+  <td><code>--placement adjacent</code></td>
+  <td>Cherche une case libre adjacente.</td>
+</tr>
+<tr>
+  <td><code>--placement surplace</code></td>
+  <td>Crée sur la position de l’invocateur.</td>
+</tr>
+<tr>
+  <td><code>--placement libre PORTÉE</code></td>
+  <td>Crée puis arme un placement libre dans la portée.</td>
+</tr>
+<tr>
+  <td><code>--placement cible TOKEN_ID</code></td>
+  <td>Crée sur le token ciblé.</td>
+</tr>
+<tr>
+  <td><code>--nom TEXTE</code></td>
+  <td>Nom personnalisé de l’invocation.</td>
+</tr>
+<tr>
+  <td><code>--mana N</code>, <code>--sortilege</code>, <code>--rang N</code>, <code>--magieEnArmure</code></td>
+  <td>Intègre l’invocation au système de ressources magiques.</td>
+</tr>
+<tr>
+  <td><code>--limiteParJour/Combat/Tour</code>, <code>--tempsRecharge</code></td>
+  <td>Limites de capacité avant la création.</td>
+</tr>
+<tr>
+  <td><code>--sansAO</code></td>
+  <td>Le lancement ne provoque pas d’AO d’incantation.</td>
+</tr>
+</tbody>
+</table>
+<h2>11. Livre de recettes — exemples de capacités</h2>
+<p>Ces recettes sont volontairement variées. Certaines reprennent des usages déjà documentés dans l’ancien manuel, d’autres sont des exemples techniques construits uniquement avec des options reconnues par les scripts. Elles servent surtout à montrer <strong>comment combiner la fiche, les listes d’actions, COFantasy et CoFItem</strong>.</p>
+<h3>11.1 Charge brutale</h3>
+<p><strong>Montre :</strong> Déplacement spécial + attaque + bonus + dégâts supplémentaires.</p>
+<pre><code class="language-text">#Attaque -1 --deplaceDe 5 20 --bonusAttaque 2 --plus 1d6
+</code></pre>
+<p>À placer dans une liste d’actions. Le moteur déplace l’attaquant pour atteindre la cible puis résout l’attaque.</p>
+<h3>11.2 Flèche enflammée</h3>
+<p><strong>Montre :</strong> Attaque magique à distance + dégâts feu + FX + effet périodique + mana.</p>
+<pre><code class="language-text">#Attaque Flèche enflammée --toucher [[@{selected|ATKMAG}]] --dm 1d6+[[@{selected|INT}]] --portee 30 --sortilege --feu --enflamme --fx beam-fire --mana 1 --rang 2
+</code></pre>
+<p>Montre une attaque complètement décrite par options plutôt qu’une ligne d’arme complexe.</p>
+<h3>11.3 Boule de feu</h3>
+<p><strong>Montre :</strong> Attaque automatique + disque + sauvegarde partielle + FX de cible.</p>
+<pre><code class="language-text">#Attaque Boule de feu --toucher [[@{selected|ATKMAG}]] --dm 4d6+[[@{selected|INT}]] --feu --magique --portee 30 --sortilege --demiAuto --disque 6 --psave DEX [[10+@{selected|INT}]] --targetFx explode-fire --mana 2 --rang 4
+</code></pre>
+<p>Exemple de gros sort de zone. Sous menace au contact il provoque une AO, sauf ajout explicite de <code>--sansAO</code>.</p>
+<h3>11.4 Cône de froid</h3>
+<p><strong>Montre :</strong> Cône d’affinité Eau + sauvegarde conditionnelle + ralenti ou dégâts divisés.</p>
+<pre><code class="language-text">#Attaque Cône de froid --toucher [[@{selected|ATKMAG}]] --auto --dm 2d6+[[@{selected|INT}]] --eau --portee 20 --sortilege --cone 30 --fx breath-frost --ifSaveFails CON 13 --effet ralentiTemp 1 --else --diviseDmg 2 --endif
+</code></pre>
+<p>Montre les branches <code>--ifSaveFails / --else / --endif</code>.</p>
+<h3>11.5 Foudre traversante</h3>
+<p><strong>Montre :</strong> Ligne + sauvegarde partielle + affinité Air (l’effet RP est un éclair).</p>
+<pre><code class="language-text">#Attaque Foudre --toucher [[@{selected|ATKMAG}]] --dm 4d6+[[@{selected|CHA}]] --portee 10 --sortilege --air --psave DEX [[12+@{selected|DEX}]] --ligne --fx beam-holy --mana 2
+</code></pre>
+<p>La même commande peut toucher plusieurs tokens alignés.</p>
+<h3>11.6 Onde de choc</h3>
+<p><strong>Montre :</strong> AOE centrée sur la cible + renversement sauvegardable + alliés exclus.</p>
+<pre><code class="language-text">#Attaque Onde de choc --toucher [[@{selected|ATKMAG}]] --auto --dm 2d6 --contondant --portee 20 --sortilege --disque 3 --saufAllies --etat renverse --save FOR 15 --targetFx explode-smoke
+</code></pre>
+<p>Exemple technique : les dégâts restent automatiques, tandis que le dernier état reçoit sa sauvegarde.</p>
+<h3>11.7 Frappe consacrée</h3>
+<p><strong>Montre :</strong> Bonus conditionnel contre une catégorie de cible + affinité Lumière.</p>
+<pre><code class="language-text">#Attaque -1 --if typeCible mort-vivant --plus 2d6 --lumiere --endif
+</code></pre>
+<p>Montre comment enrichir une attaque existante sans créer une seconde arme.</p>
+<h3>11.8 Bénédiction de groupe</h3>
+<p><strong>Montre :</strong> Effet temporaire sur alliés visibles + soi.</p>
+<pre><code class="language-text">!cof-effet-temp benediction [[3+@{selected|SAG}]] --alliesEnVue --self --mana 0
+</code></pre>
+<p>Exemple de sélection de groupe sans jet d’attaque.</p>
+<h3>11.9 Arme enflammée</h3>
+<p><strong>Montre :</strong> Effet temporaire sur une cible précise avec lanceur, portée et mana.</p>
+<pre><code class="language-text">!cof-effet-temp armeEnflammee [[5+@{selected|INT}]] --lanceur @{selected|token_id} --target @{target|token_id} --portee 0 --mana 1
+</code></pre>
+<p>Montre le lien entre un effet, son lanceur et la cible.</p>
+<h3>11.10 Soins de groupe</h3>
+<p><strong>Montre :</strong> Commande de soin spécialisée + mana.</p>
+<pre><code class="language-text">!cof-soin @{selected|token_id} groupe --mana 1
+</code></pre>
+<p>Utilise la relation d’alliés du script au lieu de cibler les personnages un par un.</p>
+<h3>11.11 Pouvoir limité</h3>
+<p><strong>Montre :</strong> Limite par combat + recharge de plusieurs tours.</p>
+<pre><code class="language-text">#Attaque Onde solaire --toucher [[@{selected|ATKMAG}]] --dm 3d6 --lumiere --portee 20 --sortilege --limiteParCombat 1 ondeSolaire --tempsRecharge rechargeGen(OndeSolaire) 2
+</code></pre>
+<p>Montre deux systèmes de ressources différents ; en pratique on choisit l’un ou l’autre selon la capacité à modéliser.</p>
+<h3>11.12 Invocation sur une cible</h3>
+<p><strong>Montre :</strong> Invocation générique + placement cible + coût de sort + durée de combat.</p>
+<pre><code class="language-text">!cof-invoquer @{selected|token_id} &quot;Gardiens Invoquées&quot; --placement cible @{target|token_id} --mana 3 --sortilege --rang 3 --dureeCombat
+</code></pre>
+<p>Le modèle doit être une fiche <code>[INVOC] Gardiens Invoquées</code> avec token par défaut. Ajouter <code>--sansAO</code> si la capacité est explicitement conçue pour ne pas provoquer d’AO.</p>
+<h3>11.13 Pas dimensionnel</h3>
+<p><strong>Montre :</strong> Téléportation avec limite et FX distincts.</p>
+<pre><code class="language-text">!cof-teleportation @{selected|token_id} 20 --fxDepart smoke --fxArrivee magic
+</code></pre>
+<p>Après la commande, le joueur déplace son token vers la destination.</p>
+<h3>11.14 Résister à une transformation</h3>
+<p><strong>Montre :</strong> Test de caractéristique + prédicat + message de réussite.</p>
+<pre><code class="language-text">!cof-jet SAG 18 --predicat controleLoupGarou --nom Résister --succes évite de se transformer
+</code></pre>
+<p>Montre que <code>!cof-jet</code> peut assembler caractéristique, compétence/prédicat et narration.</p>
+<h3>11.15 Potion de soin</h3>
+<p><strong>Montre :</strong> Fiche OBJET consommable → commande COFantasy.</p>
+<pre><code class="language-text">!cof-soin 1d8
+</code></pre>
+<p>Dans le champ <strong>Commande COFantasy à l’utilisation</strong> de la fiche OBJET. CoFItem résout le porteur/cible et décrémente la ressource lors de l’utilisation.</p>
+<h3>11.16 Piège de flammes</h3>
+<p><strong>Montre :</strong> Assistant Zone/Piège + effets simples + commande avancée.</p>
+<pre><code class="language-text">Échec : 2d6 feu + Renversé` puis, si besoin, `!cof-set-state ...` en commande avancée
+</code></pre>
+<p>Ici la bonne pratique est de configurer les dégâts/états avec l’assistant ; les commandes brutes servent seulement pour les cas qui sortent des effets proposés.</p>
+<h3>Comment choisir où écrire la capacité ?</h3>
+<table>
+<thead>
+<tr>
+  <th>Si la capacité…</th>
+  <th>Emplacement conseillé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>modifie toujours le personnage</td>
+  <td>Prédicat de la fiche</td>
+</tr>
+<tr>
+  <td>ne vaut que lorsque l’arme est portée</td>
+  <td>Prédicat / options de l’arme</td>
+</tr>
+<tr>
+  <td>est une attaque alternative</td>
+  <td>Liste d’actions avec <code>#Attaque</code></td>
+</tr>
+<tr>
+  <td>applique un buff/debuff sans attaque</td>
+  <td><code>!cof-effet*</code></td>
+</tr>
+<tr>
+  <td>est un simple test</td>
+  <td><code>!cof-jet</code></td>
+</tr>
+<tr>
+  <td>est portée par un objet magique</td>
+  <td>Action d’une fiche OBJET CoFItem</td>
+</tr>
+<tr>
+  <td>est consommable</td>
+  <td>Fiche OBJET consommable + commande COFantasy</td>
+</tr>
+<tr>
+  <td>est une invocation</td>
+  <td>Modèle <code>[INVOC]</code> + <code>!cof-invoquer</code></td>
+</tr>
+<tr>
+  <td>est un piège/zone de scène</td>
+  <td>Assistant <code>!cof-zone</code></td>
+</tr>
+</tbody>
+</table>
+<h2>12. CoFItem — syntaxes et options utiles</h2>
+<p>| Commande / syntaxe | Usage |
+|---|---|
+| <code>!coi-objets</code> | Ouvre le compendium des fiches OBJET. |
+| <code>!coi-catalogue [--cat CAT] [--search TEXTE] [--page N]</code> | Parcourt le catalogue. <code>CAT</code> : armes, armures, accessoires, consommables, divers. |
+| <code>!coi-affix-index [--cat CAT] [--section S] [--family F] [--group G] [--search TEXTE] [--page N]</code> | Explore les affixes par catégorie/famille/groupe ou recherche. |
+| <code>!coi-affixes --item CHARACTER_ID [--page N] [--family F] [--group G] [--search TEXTE]</code> | Ouvre les affixes compatibles avec une fiche OBJET. |
+| <code>!coi-quality --item ID --value 0..5</code> | Change la qualité +N d’une arme ou armure/bouclier et recalcule ses données. |
+| <code>!coi-new --name NOM</code> | Crée une fiche OBJET vide. |
+| <code>!coi-new-conso --name NOM</code> | Crée un consommable vide. |
+| <code>!coi-from-base --id BASE_ID</code> | Crée une fiche depuis une base du catalogue. |
+| <code>!coi-show --character CHARACTER_ID</code> | Affiche la carte d’un objet. |
+| <code>!coi-give --item ITEM_ID --target CHARACTER_ID [--equip] [--qty N]</code> | Donne l’objet au PJ ; <code>--equip</code> équipe si possible, <code>--qty</code> sert surtout aux consommables. |
+| <code>!coi-give-all-pj --item ITEM_ID [--qty N]</code> | Distribue le consommable à tous les PJ principaux du groupe. |
+| <code>!coi-use-conso --target TOKEN_ID --attr ATTR_ID</code> | Commande normalement appelée par le bouton du consommable ; décrémente la pile et lance l’effet COFantasy. |
+| <code>!coi-import --cat all --confirm yes</code> | Importe les bases du catalogue. |
+| <code>!coi-refresh-bases --confirm yes</code> | Actualise les fiches importées et reconstruit les données dérivées. |
+| <code>!coi-butin [MONTANT] [PP|PO|PA|PC]</code> | Partage la monnaie entre les PJ principaux. Ex. <code>!coi-butin 120 PA</code>. |
+| <code>!coi-prmax --value N --character ID</code> | Règle le maximum de PR d’un personnage. |
+| <code>!coi-prmax --value N --all</code> | Règle le maximum de PR pour le groupe géré par CoFItem. |
+| <code>!coi-pause</code> | Pause de 5 minutes avec choix individuel de dépense de PR. |
+| <code>!coi-repos</code> | Assistant de repos long du groupe. |
+| <code>!coi-hebergements</code> | Bibliothèque des hébergements. |
+| <code>!coi-new-hebergement --name NOM [--preset PRESET]</code> | Crée une fiche d’hébergement. |
+| <code>!coi-loot</code> | Affiche le loot des tokens sélectionnés. |
+| <code>!coi-loot-add --text TEXTE</code> | Ajoute une ligne de loot au token sélectionné. |
+| <code>!coi-loot-clear</code> | Vide le loot spécifique sélectionné. |
+| <code>!coi-loot-reset</code> | Réinitialise les loots/sessions des tokens sélectionnés. |
+| <code>!coi-loot-help</code> | Affiche le format <code>[LOOT]</code> et les commandes de gestion. |</p>
+<h3>Fiche OBJET : où les scripts se rejoignent</h3>
+<p>La fiche OBJET fournit directement <strong>Afficher</strong>, <strong>Affixes</strong> et <strong>Catalogue</strong>. Elle stocke aussi les prédicats générés/manuels et les commandes d’action. Une commande personnalisée d’action est prioritaire sur la commande générée ; un consommable possède son propre champ <strong>Commande COFantasy à l’utilisation</strong>. Cela permet à CoFItem de préparer l’objet et à COFantasy de résoudre l’effet en jeu.</p>
+<h2>13. Aide rapide — commandes à connaître</h2>
+<h3>COFantasy</h3>
+<ul>
+<li><code>!cof-attack</code> — Attaque et moteur d’options principal.</li>
+<li><code>!cof-jet</code> — Tests de caractéristiques/compétences.</li>
+<li><code>!cof-effet</code>, <code>!cof-effet-temp</code>, <code>!cof-effet-combat</code> — Buffs, debuffs et effets.</li>
+<li><code>!cof-soin</code> — Soins.</li>
+<li><code>!cof-init</code> / <code>!cof-tour-suivant</code> / <code>!cof-fin-combat</code> — Combat et initiative.</li>
+<li><code>!cof-statut</code> / <code>!cof-statut-ressources</code> — Diagnostic du personnage.</li>
+<li><code>!cof-doctor</code> — Audit/réparation des données.</li>
+<li><code>!cof-zone</code> / <code>!cof-zones</code> — Pièges et zones.</li>
+<li><code>!cof-test-collectif</code> / <code>!cof-defi</code> — Assistants de groupe.</li>
+<li><code>!cof-teleportation</code> — Téléportation contrôlée.</li>
+<li><code>!cof-invocations</code> / <code>!cof-invoquer</code> — Invocations génériques.</li>
+<li><code>!cof-undo</code> — Annule le dernier événement compatible.</li>
+</ul>
+<h3>CoFItem</h3>
+<ul>
+<li><code>!coi-objets</code> / <code>!coi-catalogue</code> — Compendium et catalogue.</li>
+<li><code>!coi-affix-index</code> / <code>!coi-affixes</code> — Affixes.</li>
+<li><code>!coi-give</code> / <code>!coi-give-all-pj</code> — Distribution.</li>
+<li><code>!coi-pause</code> / <code>!coi-repos</code> — Récupération et repos.</li>
+<li><code>!coi-hebergements</code> — Hébergements.</li>
+<li><code>!coi-butin</code> — Partage de monnaie.</li>
+<li><code>!coi-loot</code> / <code>!coi-loot-help</code> — Loot de tokens.</li>
+</ul>
+<h2>14. Annexe technique — index exhaustif des commandes</h2>
+<p>Cet index sert surtout au diagnostic, à la maintenance et aux macros avancées. Pour apprendre à utiliser les scripts, il vaut mieux passer par les sections <strong>Référence des options</strong> et <strong>Livre de recettes</strong> ci-dessus.</p>
+<h3>14.1 COFantasy</h3>
+<table>
+<thead>
+<tr>
+  <th>Commande</th>
+  <th>Famille</th>
+  <th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>!cof-a-couvert</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-absorber-au-bouclier</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-absorber-coup-au-bouclier</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-absorber-sort-au-bouclier</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-action-defensive</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-affaiblir-carac</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-agrandir-page</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-agripper-de-demon</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-aile-forge-runique</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-animation-des-objets</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-animer-arbre</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-animer-cadavre</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-animer-mort</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-appliquer-manoeuvre</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-arme-secrete</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-armure-magique</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-arreter-statistiques</code></td>
+  <td>Administration</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-as</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-attack</code></td>
+  <td>Combat</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-attack-line</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-attack-line-from</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-attaque-a-outrance</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-attaque-magique</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-attaque-magique-contre-pv</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-attaque-opportunite</code></td>
+  <td>Combat</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-attaque-opportunite-ignorer</code></td>
+  <td>Combat</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-attendre</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-blessure-markers</code></td>
+  <td>Soins / ressources</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-blessure-recap</code></td>
+  <td>Soins / ressources</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-blessure-reset</code></td>
+  <td>Soins / ressources</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-boire-alcool</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-bonus-couvert</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-bouger</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-bourse</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-bouton-chance</code></td>
+  <td>Capacités / sorts</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-bouton-echec-total</code></td>
+  <td>Capacités / sorts</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-bouton-petit-veinard</code></td>
+  <td>Capacités / sorts</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-bouton-pousser-kiai</code></td>
+  <td>Capacités / sorts</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-bouton-rune-energie</code></td>
+  <td>Capacités / sorts</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-bouton-rune-puissance</code></td>
+  <td>Capacités / sorts</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-buf-def</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-canaliser</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-capitaine</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-centrer-sur-token</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-cercle-protection</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-chair-a-canon</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-changer-de-forme</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-charge-fantastique</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-clean-global-state</code></td>
+  <td>États / données</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-confirmer-attaque</code></td>
+  <td>Combat</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-conjuration-armee</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-conjuration-de-predateur</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-consommables</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-consommer-baie</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-corde-jumelle</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-creer-baies</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-creer-elixir</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-creer-rune</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-defaut-dans-la-cuirasse</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-defense-armee-des-morts</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-defi</code></td>
+  <td>Exploration / scènes</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-defi-afficher</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-defi-duelliste</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-defi-samourai</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-defi-supprimer</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-defi-test</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-degainer</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-delivrance</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-demarrer-statistiques</code></td>
+  <td>Administration</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-desaouler</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-desarmer</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-destruction-des-morts-vivants</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-devier-les-coups</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-distribuer-baies</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-division-vase</code></td>
+  <td>Lumière / vision</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-dmg</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-doctor</code></td>
+  <td>États / données</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-echange-consommable</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-echange-init</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-echapper-enveloppement</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-effet</code></td>
+  <td>États / données</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-effet-chaque-d20</code></td>
+  <td>États / données</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-effet-combat</code></td>
+  <td>Combat</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-effet-temp</code></td>
+  <td>États / données</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-elixirs</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-en-selle</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-encaisser-un-coup</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-enduire-poison</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-enkystement-lointain</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-enveloppement</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-escalier</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-esquive-acrobatique</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-esquive-de-la-magie</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-esquive-fatale</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-esquive-magistrale</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-eteindre-lumiere</code></td>
+  <td>Lumière / vision</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-exemplaire</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-expert-combat</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-expert-combat-bousculer</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-expert-combat-def</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-expert-combat-dm</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-expert-combat-touche</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-explosion</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-fin-changement-de-forme</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-fin-classe-effet</code></td>
+  <td>États / données</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-fin-combat</code></td>
+  <td>Combat</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-fin-reaction-violente</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-fiole-de-lumiere</code></td>
+  <td>Lumière / vision</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-fortifiant</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-foudre-du-temps</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-gerer-runes-mortes</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-guerir</code></td>
+  <td>Soins / ressources</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-guerison</code></td>
+  <td>Soins / ressources</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-hors-combat</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-huile-instable</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-ignorer-la-douleur</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-immunite-guerisseur</code></td>
+  <td>Soins / ressources</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-init</code></td>
+  <td>Combat</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-injonction</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-injonction-mortelle</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-intercepter</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-interposer</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-intervention-divine</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-invocations</code></td>
+  <td>Exploration / scènes</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-invoquer</code></td>
+  <td>Exploration / scènes</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-invoquer-demon</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-jet</code></td>
+  <td>Capacités / sorts</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-jet-confusion</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-jouer-son</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-lancer-sort</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-liberer-agrippe</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-liberer-ecrase</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-liste-actions</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-lumiere</code></td>
+  <td>Lumière / vision</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-manoeuvre</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-mettre-a-zero-pv</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-mettre-casque</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-mission-cancel</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-mission-config</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-mission-launch</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-mission-participant-toggle</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-mission-participants</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-mission-show</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-mission-test-toggle</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-mission-tests</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-mission-tests-all</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-montrer-resultats-attaque</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-montrer-resultats-jet</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-mot-de-pouvoir-immobilise</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-multi-cartes</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-multi-command</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-mur-de-force</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-nature-nourriciere</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-next-charge-fantastique</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-nouveau-jour</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-observation</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-ombre-mortelle</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-ombre-mouvante</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-open-door</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-options</code></td>
+  <td>Administration</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-options-d-attaque</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-pacte-sanglant</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-pacte-sanglant-def</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-parade-au-bouclier</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-parade-magistrale</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-parade-projectiles</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-pathfinder1</code></td>
+  <td>Administration</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-pause</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-pause-statistiques</code></td>
+  <td>Administration</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-petit-veinard</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-peur</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-poser-bombe</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-posture-de-combat</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-prescience</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-proteger-un-allie</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-prouesse</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-provocation</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-rage-du-berserk</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-recharger</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-recuperation</code></td>
+  <td>Soins / ressources</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-recupere-mana</code></td>
+  <td>Soins / ressources</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-remove-buf-def</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-renvoyer-invocation</code></td>
+  <td>Exploration / scènes</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-resister-a-la-magie</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-resultat-jet</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-retour-boomerang</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-reveler-nom</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-riposte-defi</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-rune-energie</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-rune-protection</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-rune-puissance</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-runes</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-save-effet</code></td>
+  <td>États / données</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-save-state</code></td>
+  <td>États / données</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-sentir-la-corruption</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-set-attribute</code></td>
+  <td>États / données</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-set-macros</code></td>
+  <td>Administration</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-set-predicate</code></td>
+  <td>États / données</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-set-state</code></td>
+  <td>États / données</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-skip-attack</code></td>
+  <td>Combat</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-soigner-affaiblissement</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-soin</code></td>
+  <td>Soins / ressources</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-soins</code></td>
+  <td>Soins / ressources</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-sommeil</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-sphere-de-feu</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-stabiliser-blessure</code></td>
+  <td>Soins / ressources</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-statistiques</code></td>
+  <td>Administration</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-statut</code></td>
+  <td>États / données</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-statut-ressources</code></td>
+  <td>États / données</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-strangulation</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-suivre</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-surprise</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-teleportation</code></td>
+  <td>Exploration / scènes</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-teleportation-annuler</code></td>
+  <td>Capacités / sorts</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-tempete-de-mana</code></td>
+  <td>Soins / ressources</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-tenebres</code></td>
+  <td>Lumière / vision</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-tenebres-magiques</code></td>
+  <td>Lumière / vision</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-test-attaque-opposee</code></td>
+  <td>Combat</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-test-collectif</code></td>
+  <td>Exploration / scènes</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-test-collectif-afficher</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-test-collectif-roll</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-test-mort</code></td>
+  <td>Soins / ressources</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-torche</code></td>
+  <td>Lumière / vision</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-tour-de-force</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-tour-force</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-tour-suivant</code></td>
+  <td>Combat</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-tp-auto</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-transe-guerison</code></td>
+  <td>Soins / ressources</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-tueur-fantasmagorique</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-undo</code></td>
+  <td>Combat</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-usure-off</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-utilise-consommable</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-vapeurs-ethyliques</code></td>
+  <td>Capacités / sorts</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-vision-nocturne</code></td>
+  <td>Lumière / vision</td>
+  <td>Spécialisée</td>
+</tr>
+<tr>
+  <td><code>!cof-zone</code></td>
+  <td>Exploration / scènes</td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!cof-zone-activer</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-zone-annuler</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-zone-commande</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-zone-config</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-zone-de-vie</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-zone-effet-add</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-zone-effet-del</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-zone-effets</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-zone-info</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-zone-modifier</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-zone-reset</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-zone-supprimer</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-zone-test</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-zone-wizard</code></td>
+  <td>Exploration / scènes</td>
+  <td>Interface / bouton</td>
+</tr>
+<tr>
+  <td><code>!cof-zones</code></td>
+  <td>Exploration / scènes</td>
+  <td>Commande principale</td>
+</tr>
+</tbody>
+</table>
+<h3>14.2 CoFItem</h3>
+<table>
+<thead>
+<tr>
+  <th>Commande</th>
+  <th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>!coi-affix-add</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-affix-detail</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-affix-index</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-affix-mode</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-affix-name</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-affix-remove</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-affixes</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-butin</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-catalogue</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-delete-conso</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-equip-choice</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-equipe</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-from-base</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-give</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-give-all-pj</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-hebergement-show</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-hebergements</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-hunt-env</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-hunt-run</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-hunt-set</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-hunt-toggle</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-import</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-loot</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-loot-add</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-loot-clear</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-loot-details</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-loot-give</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-loot-give-item</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-loot-help</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-loot-money</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-loot-reset</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-loot-show</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-loot-take</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-loot-take-all</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-new</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-new-conso</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-new-hebergement</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-objets</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-pause</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-prmax</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-quality</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-refresh-bases</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-repos</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-rest-bivouac</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-rest-camp-prepare</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-rest-final</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-rest-food-confirm</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-rest-food-menu</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-rest-food-toggle</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-rest-hunt-confirm</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-rest-lodging</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-rest-lodging-direct</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-rest-lodging-food</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-rest-lodgings</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-rest-pay</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+<tr>
+  <td><code>!coi-show</code></td>
+  <td>Commande principale</td>
+</tr>
+<tr>
+  <td><code>!coi-use-conso</code></td>
+  <td>Interface / bouton ou spécialisée</td>
+</tr>
+</tbody>
+</table>
+<h2>15. Dépannage</h2>
+<ul>
+<li><strong>Une attaque ne réagit pas comme prévu</strong> : vérifier d’abord le type d’attaque, la portée, les modificateurs, puis les options de la ligne d’attaque. Les options de la section 10 donnent l’ordre logique de contrôle.</li>
+<li><strong>Une capacité complexe devient illisible</strong> : déplacer la partie permanente dans un prédicat, laisser seulement les options contextuelles dans la liste d’actions.</li>
+<li><strong>Un sort de zone touche mal les cibles</strong> : vérifier <code>--ligne</code>, <code>--cone</code>, <code>--disque</code>, <code>--saufAllies</code> et la portée avant d’ajouter des conditions.</li>
+<li><strong>Un objet n’applique pas son effet</strong> : ouvrir sa fiche OBJET et contrôler la commande générée, la commande personnalisée, les prédicats générés et le champ du consommable.</li>
+<li><strong>Un groupe inclut les mauvaises fiches</strong> : vérifier le handout <code>Equipe PJ</code> et utiliser <code>!coi-equipe</code>.</li>
+<li><strong>Une ressource est incohérente</strong> : <code>!cof-doctor</code>, puis <code>!cof-doctor --repair</code> uniquement après lecture du diagnostic.</li>
+<li><strong>Retour arrière</strong> : <code>!cof-undo</code> pour les opérations couvertes par l’historique commun.</li>
+</ul>
+<blockquote>
+<p>Règle de conception : <strong>la fiche décrit le personnage</strong>, <strong>CoFItem construit et transporte les objets</strong>, <strong>COFantasy résout les règles</strong>. Une bonne capacité répartit l’information au bon endroit plutôt que de tout mettre dans une seule macro.</p>
+</blockquote>
+</body></html>
