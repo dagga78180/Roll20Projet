@@ -1,0 +1,4512 @@
+{
+  "commands": [
+    {
+      "command": "!cof-a-couvert",
+      "handler": "aCouvert",
+      "case_line": 52206,
+      "call_line": 52207,
+      "handler_line": 33146,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-a-couvert:"
+      ]
+    },
+    {
+      "command": "!cof-affaiblir-carac",
+      "handler": "parseAffaiblirCarac",
+      "case_line": 52209,
+      "call_line": 52210,
+      "handler_line": 47497,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Usage : !cof-affaiblir-carac carac valeur",
+        "La valeur d'affaiblissement doit être un nombre positif"
+      ]
+    },
+    {
+      "command": "!cof-agrandir-page",
+      "handler": "agrandirPage",
+      "case_line": 52212,
+      "call_line": 52213,
+      "handler_line": 47928,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque le facteur d'agrandissement",
+        "Commande réservée aux MJs"
+      ]
+    },
+    {
+      "command": "!cof-aile-forge-runique",
+      "handler": "entrerAileForgeRunique",
+      "case_line": 52215,
+      "call_line": 52216,
+      "handler_line": 45690,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Option de !cof-aile-forge-runique non reconnue"
+      ]
+    },
+    {
+      "command": "!cof-animation-des-objets",
+      "handler": "animationDesObjets",
+      "case_line": 52218,
+      "call_line": 52219,
+      "handler_line": 47260,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Usage : !cof-animation-des-objets @{selected|token_id} niveau",
+        "Le niveau de l'objet animé doit être un nombre positif"
+      ]
+    },
+    {
+      "command": "!cof-armure-magique",
+      "handler": "armureMagique",
+      "case_line": 52221,
+      "call_line": 52222,
+      "handler_line": 32085,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-attack",
+      "handler": "parseAttack",
+      "case_line": 52224,
+      "call_line": 52225,
+      "handler_line": 11772,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-attack:",
+        "Le premier argument de !cof-attack n'est pas un token valide",
+        "le second argument de !cof-attack doit être un token"
+      ]
+    },
+    {
+      "command": "!cof-attaque-opportunite",
+      "handler": "cofAttaqueOpportunite",
+      "case_line": 52227,
+      "call_line": 52228,
+      "handler_line": 52138,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "!cof-attack"
+      ]
+    },
+    {
+      "command": "!cof-attaque-opportunite-ignorer",
+      "handler": "cofAttaqueOpportuniteIgnorer",
+      "case_line": 52230,
+      "call_line": 52231,
+      "handler_line": 52162,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-attack-line",
+      "handler": "attaqueLigneBouger",
+      "case_line": 52233,
+      "call_line": 52234,
+      "handler_line": 48389,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque un argument à !cof-attack-line",
+        "Le premier argument de !cof-attack-line n'est pas un token valide",
+        "!cof-attack-line-from",
+        "Déplacer votre token jusqu'au bout de la ligne (l'emplacement doit être libre), et"
+      ]
+    },
+    {
+      "command": "!cof-attack-line-from",
+      "handler": "attaqueLigne",
+      "case_line": 52236,
+      "call_line": 52237,
+      "handler_line": 48437,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-attack-line:",
+        "Le premier argument de !cof-attack-line n'est pas un token valide",
+        "Il manque un argument à --distanceMax",
+        "!cof-attack",
+        "!cof-skip-attack"
+      ]
+    },
+    {
+      "command": "!cof-attendre",
+      "handler": "attendreInit",
+      "case_line": 52239,
+      "call_line": 52240,
+      "handler_line": 31258,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La fonction !cof-attendre : rien à faire, pas de token selectionné"
+      ]
+    },
+    {
+      "command": "!cof-observation",
+      "handler": "observation",
+      "case_line": 52242,
+      "call_line": 52243,
+      "handler_line": 31490,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "!cof-observation attend le type (danger ou etat), l'observateur et la cible"
+      ]
+    },
+    {
+      "command": "!cof-bonus-couvert",
+      "handler": "bonusCouvert",
+      "case_line": 52245,
+      "call_line": 52246,
+      "handler_line": 44286,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut un argument positif pour !cof-bonus-couvert",
+        "pas de token sélectionné pour !cof-bonus-couvert"
+      ]
+    },
+    {
+      "command": "!cof-bouger",
+      "handler": "decoincer",
+      "case_line": 52248,
+      "call_line": 52249,
+      "handler_line": 47993,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-bouton-chance",
+      "handler": "boutonChance",
+      "case_line": 52251,
+      "call_line": 52252,
+      "handler_line": 28712,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La fonction !cof-bouton-chance n'a pas assez d'arguments"
+      ]
+    },
+    {
+      "command": "!cof-bouton-pousser-kiai",
+      "handler": "kiai",
+      "case_line": 52254,
+      "call_line": 52255,
+      "handler_line": 29445,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque l'id de l'attaque sur laquelle pousser le kiai"
+      ]
+    },
+    {
+      "command": "!cof-buf-def",
+      "handler": "bufDef",
+      "case_line": 52257,
+      "call_line": 52258,
+      "handler_line": 32090,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La fonction !cof-buf-def attend un argument",
+        "Argument de !cof-buf-def invalide",
+        "Pas de token sélectionné pour !cof-buf-def"
+      ]
+    },
+    {
+      "command": "!cof-canaliser",
+      "handler": "canaliser",
+      "case_line": 52260,
+      "call_line": 52261,
+      "handler_line": 46990,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque le type de canalisation",
+        "Rien à canaliser. Il faut préciser un montant de soins ou de dégâts",
+        "Il faut sélectionner un personnage"
+      ]
+    },
+    {
+      "command": "!cof-changer-de-forme",
+      "handler": "changerDeForme",
+      "case_line": 52263,
+      "call_line": 52264,
+      "handler_line": 49539,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque le nom de la forme pour !cof-changer-de-forme",
+        "Utilisation de !cof-changer-de-forme sans sélection de token"
+      ]
+    },
+    {
+      "command": "!cof-clean-global-state",
+      "handler": "cleanGlobalState",
+      "case_line": 52266,
+      "call_line": 52267,
+      "handler_line": 49064,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-confirmer-attaque",
+      "handler": "confirmerAttaque",
+      "case_line": 52269,
+      "call_line": 52270,
+      "handler_line": 6100,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-confirmer-attaque"
+      ]
+    },
+    {
+      "command": "!cof-creer-baies",
+      "handler": "creerBaies",
+      "case_line": 52272,
+      "call_line": 52273,
+      "handler_line": 48244,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Utilisation de !cof-creer-baies sans sélection de token",
+        "!cof-consommer-baie"
+      ]
+    },
+    {
+      "command": "!cof-degainer",
+      "handler": "parseDegainer",
+      "case_line": 52275,
+      "call_line": 52276,
+      "handler_line": 32982,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "commande non formée",
+        "Qui doit dégainer ?"
+      ]
+    },
+    {
+      "command": "!cof-division-vase",
+      "handler": "divisionVase",
+      "case_line": 52278,
+      "call_line": 52279,
+      "handler_line": 49698,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-braise-solaire",
+      "handler": "braiseSolaireReaction",
+      "case_line": 52281,
+      "call_line": 52282,
+      "handler_line": 32320,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Commande Braise solaire mal formée"
+      ]
+    },
+    {
+      "command": "!cof-dmg",
+      "handler": "parseDmgDirects",
+      "case_line": 52284,
+      "call_line": 52285,
+      "handler_line": 32268,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-echange-init",
+      "handler": "echangeInit",
+      "case_line": 52287,
+      "call_line": 52288,
+      "handler_line": 33066,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-echange-init"
+      ]
+    },
+    {
+      "command": "!cof-effet-chaque-d20",
+      "handler": "setEffetChaqueD20",
+      "case_line": 52290,
+      "call_line": 52291,
+      "handler_line": 47843,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Commande réservée au MJ",
+        "Il manque l'effet",
+        "Le premier argument de !cof-effet-chaque-d20 est invalide",
+        "Le second argument de !cof-effet-chaque-d20 est invalide"
+      ]
+    },
+    {
+      "command": "!cof-effet-combat",
+      "handler": "effetCombat",
+      "case_line": 52293,
+      "call_line": 52294,
+      "handler_line": 33759,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-effet-combat"
+      ]
+    },
+    {
+      "command": "!cof-effet-temp",
+      "handler": "parseEffetTemporaire",
+      "case_line": 52296,
+      "call_line": 52297,
+      "handler_line": 33209,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-effet-temp",
+        "doit manier un bouclier pour lancer le défi",
+        "Le mode toggle de !cof-effet-temp nécessite une seule cible."
+      ]
+    },
+    {
+      "command": "!cof-expert-combat",
+      "handler": "expertDuCombat",
+      "case_line": 52299,
+      "call_line": 52302,
+      "handler_line": 29168,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas de token sélectionné pour !cof-expert-combat-touche"
+      ]
+    },
+    {
+      "command": "!cof-expert-combat-touche",
+      "handler": "expertDuCombat",
+      "case_line": 52300,
+      "call_line": 52302,
+      "handler_line": 29168,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas de token sélectionné pour !cof-expert-combat-touche"
+      ]
+    },
+    {
+      "command": "!cof-expert-combat-dm",
+      "handler": "expertDuCombat",
+      "case_line": 52301,
+      "call_line": 52302,
+      "handler_line": 29168,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas de token sélectionné pour !cof-expert-combat-touche"
+      ]
+    },
+    {
+      "command": "!cof-expert-combat-def",
+      "handler": "expertDuCombatDEF",
+      "case_line": 52304,
+      "call_line": 52305,
+      "handler_line": 29223,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La fonction !cof-expert-combat-def n'a pas assez d'arguments"
+      ]
+    },
+    {
+      "command": "!cof-expert-combat-bousculer",
+      "handler": "expertDuCombatBousculer",
+      "case_line": 52307,
+      "call_line": 52308,
+      "handler_line": 41631,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "On ne peut utiliser !cof-expert-combat-bousculer qu'en combat",
+        "Il manque des arguments à !cof-expert-combat-bousculer",
+        "Le premier argument de !cof-expert-combat-bousculer n'est pas un token valide",
+        "Le deuxième argument de !cof-expert-combat-bousculer n'est pas un token valide",
+        "!cof-dmg"
+      ]
+    },
+    {
+      "command": "!cof-explosion",
+      "handler": "attaqueExplosion",
+      "case_line": 52310,
+      "call_line": 52311,
+      "handler_line": 47797,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque le label de l'attaque à utiliser pour !cof-explosion",
+        "!cof-attack"
+      ]
+    },
+    {
+      "command": "!cof-fin-changement-de-forme",
+      "handler": "finChangementDeForme",
+      "case_line": 52313,
+      "call_line": 52314,
+      "handler_line": 49640,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Utilisation de !cof-fin-changement-de-forme sans sélection de token"
+      ]
+    },
+    {
+      "command": "!cof-hors-combat",
+      "handler": "sortirDuCombat",
+      "case_line": 52316,
+      "call_line": 52318,
+      "handler_line": 26635,
+      "params": [],
+      "clues": []
+    },
+    {
+      "command": "!cof-fin-combat",
+      "handler": "sortirDuCombat",
+      "case_line": 52317,
+      "call_line": 52318,
+      "handler_line": 26635,
+      "params": [],
+      "clues": []
+    },
+    {
+      "command": "!cof-fin-reaction-violente",
+      "handler": "finReactionViolente",
+      "case_line": 52320,
+      "call_line": 52321,
+      "handler_line": 47747,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Usage : !cof-fin-reaction-violente token_id",
+        "Le premier argument de !cof-fin-reaction-violente n'est pas un token valide"
+      ]
+    },
+    {
+      "command": "!cof-foudre-du-temps",
+      "handler": "setEffetChaqueD20",
+      "case_line": 52323,
+      "call_line": 52328,
+      "handler_line": 47843,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Commande réservée au MJ",
+        "Il manque l'effet",
+        "Le premier argument de !cof-effet-chaque-d20 est invalide",
+        "Le second argument de !cof-effet-chaque-d20 est invalide"
+      ]
+    },
+    {
+      "command": "!cof-gerer-runes-mortes",
+      "handler": "gererRunesMortes",
+      "case_line": 52330,
+      "call_line": 52331,
+      "handler_line": 48695,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "il manque l'id du personnage qui gère ses runes mortes",
+        "Il faut préciser le token à qui donner la rune",
+        "Il faut d'abord désactiver",
+        "!cof-gerer-runes-mortes"
+      ]
+    },
+    {
+      "command": "!cof-huile-instable",
+      "handler": "huileInstable",
+      "case_line": 52333,
+      "call_line": 52334,
+      "handler_line": 36295,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La fonction !cof-huile-instable attend en argument la personne dont il faut enflammer l'arme",
+        "Doit tenir son arme en main pour qu'on puisse appliquer l'huile instable"
+      ]
+    },
+    {
+      "command": "!cof-immunite-guerisseur",
+      "handler": "immuniteDuGuerisseur",
+      "case_line": 52336,
+      "call_line": 52337,
+      "handler_line": 48940,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque un argument à !cof-immunite-guerisseur",
+        "Utilisation de !cof-immunite-guerisseur sans sélection de token"
+      ]
+    },
+    {
+      "command": "!cof-init",
+      "handler": "initiativeInterface",
+      "case_line": 52339,
+      "call_line": 52340,
+      "handler_line": 13123,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Dans !cof-init : rien à faire, pas de token selectionné"
+      ]
+    },
+    {
+      "command": "!cof-jet",
+      "handler": "jet",
+      "case_line": 52342,
+      "call_line": 52343,
+      "handler_line": 9245,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque un argument à l'option",
+        "Le bonus doit être un nombre",
+        "La plage d'échecs critqiques doit être un nombre positif inférieur à 19",
+        "Utilisation de !cof-jet sans sélection de token",
+        "Il manque la caractéristique à utiliser pour la compétence"
+      ]
+    },
+    {
+      "command": "!cof-liste-actions",
+      "handler": "apiTurnAction",
+      "case_line": 52345,
+      "call_line": 52346,
+      "handler_line": 31077,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-mettre-a-zero-pv",
+      "handler": "interfaceMettreAZeroPV",
+      "case_line": 52348,
+      "call_line": 52349,
+      "handler_line": 25221,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut 3 ou 4 arguments pour !cof-mettre-a-zero-pv",
+        "Impossible de trouver le token du personnage qui doit mourrir"
+      ]
+    },
+    {
+      "command": "!cof-mettre-casque",
+      "handler": "mettreCasque",
+      "case_line": 52351,
+      "call_line": 52352,
+      "handler_line": 49256,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-montrer-resultats-attaque",
+      "handler": "montrerResultatsAttaque",
+      "case_line": 52354,
+      "call_line": 52355,
+      "handler_line": 22927,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-montrer-resultats-jet",
+      "handler": "montrerResultatJet",
+      "case_line": 52357,
+      "call_line": 52358,
+      "handler_line": 8437,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "manque l'argument de !cof-montrer-resultats-jet"
+      ]
+    },
+    {
+      "command": "!cof-nouveau-jour",
+      "handler": "parseNouveauJour",
+      "case_line": 52360,
+      "call_line": 52361,
+      "handler_line": 28095,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-open-door",
+      "handler": "openDoor",
+      "case_line": 52363,
+      "call_line": 52364,
+      "handler_line": 48369,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque un argument à !cof-open-door"
+      ]
+    },
+    {
+      "command": "!cof-options",
+      "handler": "setCofOptions",
+      "case_line": 52366,
+      "call_line": 52367,
+      "handler_line": 43333,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "!cof-options",
+        "!cof-jouer-son"
+      ]
+    },
+    {
+      "command": "!cof-pathfinder1",
+      "handler": "translateFromPathfinder1",
+      "case_line": 52369,
+      "call_line": 52370,
+      "handler_line": 45909,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-pause",
+      "handler": "pauseGame",
+      "case_line": 52372,
+      "call_line": 52373,
+      "handler_line": 48079,
+      "params": [],
+      "clues": [
+        "!cof-pause"
+      ]
+    },
+    {
+      "command": "!cof-poser-bombe",
+      "handler": "poserBombe",
+      "case_line": 52375,
+      "call_line": 52376,
+      "handler_line": 49102,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque des arguments pour !cof-poser-bombe",
+        "Le premier argument de !cof-poser-bombe n'est pas un token valide"
+      ]
+    },
+    {
+      "command": "!cof-recharger",
+      "handler": "recharger",
+      "case_line": 52378,
+      "call_line": 52379,
+      "handler_line": 28425,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La fonction !cof-recharger attend au moins un argument",
+        "!cof-recharger sans sélection de tokens",
+        "!cof-recharger requiert des tokens sélectionnés"
+      ]
+    },
+    {
+      "command": "!cof-riposte-defi",
+      "handler": "riposteDefiGuerrier",
+      "case_line": 52381,
+      "call_line": 52382,
+      "handler_line": 18671,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Commande de posture de riposte incomplète",
+        "doit manier un bouclier pour utiliser sa posture de riposte",
+        "!cof-attack"
+      ]
+    },
+    {
+      "command": "!cof-recuperation",
+      "handler": "parseRecuperer",
+      "case_line": 52384,
+      "call_line": 52385,
+      "handler_line": 28147,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "!cof-recuperation sans sélection de tokens",
+        "!cof-recuperation requiert des tokens sélectionnés"
+      ]
+    },
+    {
+      "command": "!cof-recupere-mana",
+      "handler": "recupereMana",
+      "case_line": 52387,
+      "call_line": 52388,
+      "handler_line": 49311,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque le montant de mana à récupérer pour !cof-recupere-mana"
+      ]
+    },
+    {
+      "command": "!cof-remove-buf-def",
+      "handler": "removeBufDef",
+      "case_line": 52390,
+      "call_line": 52391,
+      "handler_line": 32126,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas de token sélectionné pour !cof-remove-buf-def"
+      ]
+    },
+    {
+      "command": "!cof-resultat-jet",
+      "handler": "resultatJet",
+      "case_line": 52393,
+      "call_line": 52394,
+      "handler_line": 9401,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La fonction !cof-resultat-jet n'a pas assez d'arguments"
+      ]
+    },
+    {
+      "command": "!cof-retour-boomerang",
+      "handler": "retourBoomerang",
+      "case_line": 52396,
+      "call_line": 52397,
+      "handler_line": 48345,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque des arguments à !cof-retour-boomerang"
+      ]
+    },
+    {
+      "command": "!cof-rune-protection",
+      "handler": "runeProtection",
+      "case_line": 52399,
+      "call_line": 52400,
+      "handler_line": 40735,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-rune-puissance",
+      "handler": "runePuissance",
+      "case_line": 52402,
+      "call_line": 52404,
+      "handler_line": 29374,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut spécifier le label de l'arme sur laquelle la rune de puissance est inscrite",
+        "Pas de token sélectionné pour !cof-rune-puissance"
+      ]
+    },
+    {
+      "command": "!cof-bouton-rune-puissance",
+      "handler": "runePuissance",
+      "case_line": 52403,
+      "call_line": 52404,
+      "handler_line": 29374,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut spécifier le label de l'arme sur laquelle la rune de puissance est inscrite",
+        "Pas de token sélectionné pour !cof-rune-puissance"
+      ]
+    },
+    {
+      "command": "!cof-rune-energie",
+      "handler": "runeEnergie",
+      "case_line": 52406,
+      "call_line": 52408,
+      "handler_line": 29279,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas de token sélectionné pour !cof-rune-energie"
+      ]
+    },
+    {
+      "command": "!cof-bouton-rune-energie",
+      "handler": "runeEnergie",
+      "case_line": 52407,
+      "call_line": 52408,
+      "handler_line": 29279,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas de token sélectionné pour !cof-rune-energie"
+      ]
+    },
+    {
+      "command": "!cof-sentir-la-corruption",
+      "handler": "parseSentirLaCorruption",
+      "case_line": 52410,
+      "call_line": 52411,
+      "handler_line": 48138,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Usage : !cof-sentir-la-corruption token_id token_id",
+        "Le premier argument de !cof-sentir-la-corruption n'est pas un token valide",
+        "Le deuxième argument de !cof-sentir-la-corruption n'est pas un token valide"
+      ]
+    },
+    {
+      "command": "!cof-set-state",
+      "handler": "parseSetState",
+      "case_line": 52413,
+      "call_line": 52414,
+      "handler_line": 32524,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-set-state",
+        "Le premier argument de !cof-set-state n'est pas un état valide",
+        "Il manque la difficulté du jet de sauvegarde."
+      ]
+    },
+    {
+      "command": "!cof-jet-confusion",
+      "handler": "parseJetConfusion",
+      "case_line": 52416,
+      "call_line": 52417,
+      "handler_line": 32504,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-skip-attack",
+      "handler": "skipAttack",
+      "case_line": 52419,
+      "call_line": 52420,
+      "handler_line": 48611,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque l'id dans !cof-skip-attack"
+      ]
+    },
+    {
+      "command": "!cof-soigner-affaiblissement",
+      "handler": "soignerAffaiblissement",
+      "case_line": 52422,
+      "call_line": 52423,
+      "handler_line": 47405,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Usage : !cof-soigner-affaiblissement carac valeur",
+        "La valeur de soin d'affaiblissement doit être un nombre positif"
+      ]
+    },
+    {
+      "command": "!cof-sphere-de-feu",
+      "handler": "sphereDeFeu",
+      "case_line": 52425,
+      "call_line": 52426,
+      "handler_line": 42223,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas de commande"
+      ]
+    },
+    {
+      "command": "!cof-save-effet",
+      "handler": "parseSaveEffet",
+      "case_line": 52428,
+      "call_line": 52429,
+      "handler_line": 32841,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Paramètres de !cof-save-effet incorrects"
+      ]
+    },
+    {
+      "command": "!cof-save-state",
+      "handler": "parseSaveState",
+      "case_line": 52431,
+      "call_line": 52432,
+      "handler_line": 32716,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Paramètres de !cof-save-state incorrects"
+      ]
+    },
+    {
+      "command": "!cof-mission-config",
+      "handler": "cofMissionConfig",
+      "case_line": 52434,
+      "call_line": 52435,
+      "handler_line": 50431,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-mission-show",
+      "handler": "cofMissionShow",
+      "case_line": 52437,
+      "call_line": 52438,
+      "handler_line": 50445,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-mission-participants",
+      "handler": "cofMissionParticipantsUI",
+      "case_line": 52440,
+      "call_line": 52441,
+      "handler_line": 50450,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-mission-participant-toggle",
+      "handler": "cofMissionParticipantToggle",
+      "case_line": 52443,
+      "call_line": 52444,
+      "handler_line": 50456,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-mission-tests",
+      "handler": "cofMissionTestsUI",
+      "case_line": 52446,
+      "call_line": 52447,
+      "handler_line": 50463,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-mission-test-toggle",
+      "handler": "cofMissionTestToggle",
+      "case_line": 52449,
+      "call_line": 52450,
+      "handler_line": 50469,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-mission-tests-all",
+      "handler": "cofMissionTestsAll",
+      "case_line": 52452,
+      "call_line": 52453,
+      "handler_line": 50476,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-mission-launch",
+      "handler": "cofMissionDraftLaunch",
+      "case_line": 52455,
+      "call_line": 52456,
+      "handler_line": 50485,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-mission-cancel",
+      "handler": "cofMissionDraftCancel",
+      "case_line": 52458,
+      "call_line": 52459,
+      "handler_line": 50507,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-test-collectif",
+      "handler": "cofTestCollectif",
+      "case_line": 52461,
+      "call_line": 52462,
+      "handler_line": 50568,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-test-collectif-roll",
+      "handler": "cofTestCollectifRoll",
+      "case_line": 52464,
+      "call_line": 52465,
+      "handler_line": 50602,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-test-collectif-afficher",
+      "handler": "cofTestCollectifAfficher",
+      "case_line": 52467,
+      "call_line": 52468,
+      "handler_line": 50595,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-defi",
+      "handler": "cofDefi",
+      "case_line": 52470,
+      "call_line": 52471,
+      "handler_line": 50688,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-defi-test",
+      "handler": "cofDefiTest",
+      "case_line": 52473,
+      "call_line": 52474,
+      "handler_line": 50734,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-defi-afficher",
+      "handler": "cofDefiAfficher",
+      "case_line": 52476,
+      "call_line": 52477,
+      "handler_line": 50727,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-defi-supprimer",
+      "handler": "cofDefiSupprimer",
+      "case_line": 52479,
+      "call_line": 52480,
+      "handler_line": 50775,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-zone",
+      "handler": "cofZone",
+      "case_line": 52482,
+      "call_line": 52483,
+      "handler_line": 51194,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-zone-config",
+      "handler": "cofZoneConfig",
+      "case_line": 52485,
+      "call_line": 52486,
+      "handler_line": 51094,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-zone-wizard",
+      "handler": "cofZoneWizardShow",
+      "case_line": 52488,
+      "call_line": 52489,
+      "handler_line": 51135,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-zone-effets",
+      "handler": "cofZoneEffetsUI",
+      "case_line": 52491,
+      "call_line": 52492,
+      "handler_line": 51134,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-zone-effet-add",
+      "handler": "cofZoneEffetAdd",
+      "case_line": 52494,
+      "call_line": 52495,
+      "handler_line": 51136,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-zone-effet-del",
+      "handler": "cofZoneEffetDel",
+      "case_line": 52497,
+      "call_line": 52498,
+      "handler_line": 51142,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-zone-activer",
+      "handler": "cofZoneActiver",
+      "case_line": 52500,
+      "call_line": 52501,
+      "handler_line": 51143,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-zone-annuler",
+      "handler": "cofZoneAnnuler",
+      "case_line": 52503,
+      "call_line": 52504,
+      "handler_line": 51147,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-zones",
+      "handler": "cofZones",
+      "case_line": 52506,
+      "call_line": 52507,
+      "handler_line": 51240,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "!cof-zone-info",
+        "!cof-zone-modifier",
+        "!cof-zone-supprimer"
+      ]
+    },
+    {
+      "command": "!cof-zone-test",
+      "handler": "cofZoneTest",
+      "case_line": 52509,
+      "call_line": 52510,
+      "handler_line": 51313,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-zone-info",
+      "handler": "cofZoneInfo",
+      "case_line": 52512,
+      "call_line": 52513,
+      "handler_line": 51256,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-zone-modifier",
+      "handler": "cofZoneModifier",
+      "case_line": 52515,
+      "call_line": 52516,
+      "handler_line": 51264,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-zone-commande",
+      "handler": "cofZoneCommande",
+      "case_line": 52518,
+      "call_line": 52519,
+      "handler_line": 51272,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "!cof-zone-commande",
+        "?{Commande(s) COF — séparer plusieurs commandes par ;;|AUCUNE}",
+        "<div style=\"margin-top:5px\">Exemple : <b>!cof-dmg 2d6 --feu ;; !cof-set-state renverse true</b></div>",
+        "Définir la commande",
+        "⚠️ COMMANDES DE ZONE"
+      ]
+    },
+    {
+      "command": "!cof-zone-reset",
+      "handler": "cofZoneReset",
+      "case_line": 52521,
+      "call_line": 52522,
+      "handler_line": 51298,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-zone-supprimer",
+      "handler": "cofZoneSupprimer",
+      "case_line": 52524,
+      "call_line": 52525,
+      "handler_line": 51306,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-teleportation",
+      "handler": "cofTeleportation",
+      "case_line": 52527,
+      "call_line": 52528,
+      "handler_line": 51452,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "!cof-teleportation-annuler"
+      ]
+    },
+    {
+      "command": "!cof-teleportation-annuler",
+      "handler": "cofTeleportationAnnuler",
+      "case_line": 52530,
+      "call_line": 52531,
+      "handler_line": 51483,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-invoquer",
+      "handler": "cofInvoquer",
+      "case_line": 52533,
+      "call_line": 52534,
+      "handler_line": 51779,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Usage : <b>!cof-invoquer TOKEN_ID Nom du modèle</b><br>",
+        "</b> introuvable. Utilisez <b>!cof-invocations</b> pour afficher les modèles."
+      ]
+    },
+    {
+      "command": "!cof-invocations",
+      "handler": "cofInvocations",
+      "case_line": 52536,
+      "call_line": 52537,
+      "handler_line": 51761,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-renvoyer-invocation",
+      "handler": "cofRenvoyerInvocation",
+      "case_line": 52539,
+      "call_line": 52540,
+      "handler_line": 51860,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-statut",
+      "handler": "statut",
+      "case_line": 52542,
+      "call_line": 52543,
+      "handler_line": 31754,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Dans !cof-statut : rien à faire, pas de token selectionné",
+        "!cof-effet",
+        "!cof-set-attribute perteDeSubstance ?{Nombre de jours} --target",
+        "!cof-fin-changement-de-forme --target",
+        "!cof-statut-ressources"
+      ]
+    },
+    {
+      "command": "!cof-statut-ressources",
+      "handler": "statutRessources",
+      "case_line": 52545,
+      "call_line": 52546,
+      "handler_line": 31737,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-surprise",
+      "handler": "parseSurprise",
+      "case_line": 52548,
+      "call_line": 52549,
+      "handler_line": 29928,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "!cof-surprise sans sélection de token",
+        "!cof-surprise requiert de sélectionner des tokens"
+      ]
+    },
+    {
+      "command": "!cof-tenebres-magiques",
+      "handler": "tenebresMagiques",
+      "case_line": 52551,
+      "call_line": 52552,
+      "handler_line": 45653,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Option de !cof-tenebres-magiques non reconnue"
+      ]
+    },
+    {
+      "command": "!cof-tp-auto",
+      "handler": "setTPAuto",
+      "case_line": 52554,
+      "call_line": 52555,
+      "handler_line": 37384,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Argument de !cof-tp-auto invalide (",
+        "Aucun token sélectionné pour !cof-tp-auto"
+      ]
+    },
+    {
+      "command": "!cof-undo",
+      "handler": "undoEvent",
+      "case_line": 52557,
+      "call_line": 52558,
+      "handler_line": 5791,
+      "params": [
+        "evt"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-vision-nocturne",
+      "handler": "ajouterVisionNocturne",
+      "case_line": 52560,
+      "call_line": 52561,
+      "handler_line": 48627,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque un argument à !cof-vision-nocturne",
+        "Utilisation de !cof-vision-nocturne sans sélection de token"
+      ]
+    },
+    {
+      "command": "!cof-zone-de-vie",
+      "handler": "lancerZoneDeVie",
+      "case_line": 52563,
+      "call_line": 52564,
+      "handler_line": 48994,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque un argument à !cof-zone-de-vie",
+        "Utilisation de !cof-zone-de-vie sans sélection de token"
+      ]
+    },
+    {
+      "command": "!cof-effet",
+      "handler": "parseEffetIndetermine",
+      "case_line": 52566,
+      "call_line": 52567,
+      "handler_line": 34014,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-effet",
+        "On ne peut sélectionner qu'un token si on ne précise pas si il faut activer ou désactiver l'effet"
+      ]
+    },
+    {
+      "command": "!cof-fin-classe-effet",
+      "handler": "finClasseDEffet",
+      "case_line": 52569,
+      "call_line": 52570,
+      "handler_line": 34379,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque l'argument de !cof-fin-classe-effet"
+      ]
+    },
+    {
+      "command": "!cof-attaque-magique",
+      "handler": "parseAttaqueMagique",
+      "case_line": 52572,
+      "call_line": 52573,
+      "handler_line": 34662,
+      "params": [
+        "msg",
+        "type"
+      ],
+      "clues": [
+        "Il faut au moins 2 arguments à !cof-attaque-magique",
+        "Arguments de !cof-attaque-magique"
+      ]
+    },
+    {
+      "command": "!cof-injonction",
+      "handler": "parseAttaqueMagique",
+      "case_line": 52575,
+      "call_line": 52576,
+      "handler_line": 34662,
+      "params": [
+        "msg",
+        "type"
+      ],
+      "clues": [
+        "Il faut au moins 2 arguments à !cof-attaque-magique",
+        "Arguments de !cof-attaque-magique"
+      ]
+    },
+    {
+      "command": "!cof-sommeil",
+      "handler": "parseSommeil",
+      "case_line": 52578,
+      "call_line": 52579,
+      "handler_line": 35104,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La fonction !cof-sommeil a besoin du nom ou de l'id du lanceur de sort"
+      ]
+    },
+    {
+      "command": "!cof-attaque-magique-contre-pv",
+      "handler": "attaqueMagiqueContrePV",
+      "case_line": 52581,
+      "call_line": 52582,
+      "handler_line": 35267,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut au moins 2 arguments à !cof-attaque-magique-contre-pv",
+        "Arguments de !cof-attaque-magique-contre-pv incorrects"
+      ]
+    },
+    {
+      "command": "!cof-transe-guerison",
+      "handler": "transeGuerison",
+      "case_line": 52584,
+      "call_line": 52585,
+      "handler_line": 35347,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-soin",
+      "handler": "soigner",
+      "case_line": 52587,
+      "call_line": 52589,
+      "handler_line": 35423,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut au moins un argument à !cof-soin",
+        "Trop d'arguments à !cof-soin",
+        "Il faut préciser un soigneur pour ces options d'effet",
+        "--plusSoinSiPredicat nécessite une cible explicite à !cof-soin",
+        "Il faut préciser qui est le soigneur pour utiliser l'option --sacrifierPV",
+        "Il faut préciser qui est le soigneur pour utiliser l'option --transfer"
+      ]
+    },
+    {
+      "command": "!cof-soins",
+      "handler": "soigner",
+      "case_line": 52588,
+      "call_line": 52589,
+      "handler_line": 35423,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut au moins un argument à !cof-soin",
+        "Trop d'arguments à !cof-soin",
+        "Il faut préciser un soigneur pour ces options d'effet",
+        "--plusSoinSiPredicat nécessite une cible explicite à !cof-soin",
+        "Il faut préciser qui est le soigneur pour utiliser l'option --sacrifierPV",
+        "Il faut préciser qui est le soigneur pour utiliser l'option --transfer"
+      ]
+    },
+    {
+      "command": "!cof-nature-nourriciere",
+      "handler": "parseNatureNourriciere",
+      "case_line": 52591,
+      "call_line": 52592,
+      "handler_line": 36101,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-ignorer-la-douleur",
+      "handler": "ignorerLaDouleur",
+      "case_line": 52594,
+      "call_line": 52595,
+      "handler_line": 36164,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-fortifiant",
+      "handler": "fortifiant",
+      "case_line": 52597,
+      "call_line": 52598,
+      "handler_line": 36258,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La fonction !cof-fortifiant attend en argument le rang dans la Voie des élixirs du créateur"
+      ]
+    },
+    {
+      "command": "!cof-intercepter",
+      "handler": "intercepter",
+      "case_line": 52600,
+      "call_line": 52601,
+      "handler_line": 29575,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "L'argument de !cof-intercepter n'est pas une id de token valide (personnage non défini)"
+      ]
+    },
+    {
+      "command": "!cof-interposer",
+      "handler": "interposer",
+      "case_line": 52603,
+      "call_line": 52604,
+      "handler_line": 29675,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "L'argument de !cof-interposer n'est pas une id de token valide (personnage non défini)"
+      ]
+    },
+    {
+      "command": "!cof-esquive-fatale",
+      "handler": "doEsquiveFatale",
+      "case_line": 52606,
+      "call_line": 52607,
+      "handler_line": 29504,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque des arguments à !cof-esquive-fatale",
+        "Il faut cibler un token valide",
+        "Il faut cibler un autre adversaire que l'attaquant",
+        "doit choisir un adversaire au contact pour l'esquive fatale",
+        "Il faut cibler un adversaire au contact pour l'esquive fatale"
+      ]
+    },
+    {
+      "command": "!cof-exemplaire",
+      "handler": "exemplaire",
+      "case_line": 52609,
+      "call_line": 52610,
+      "handler_line": 29739,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-intervention-divine",
+      "handler": "interventionDivine",
+      "case_line": 52612,
+      "call_line": 52613,
+      "handler_line": 29787,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque l'option rate ou touche à Intervention Divine"
+      ]
+    },
+    {
+      "command": "!cof-lancer-sort",
+      "handler": "lancerSort",
+      "case_line": 52615,
+      "call_line": 52616,
+      "handler_line": 36324,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas de token sélectionée pour !cof-lancer-sort"
+      ]
+    },
+    {
+      "command": "!cof-as",
+      "handler": "emulerAs",
+      "case_line": 52618,
+      "call_line": 52619,
+      "handler_line": 36414,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque le nom du personnage pour !cof-as"
+      ]
+    },
+    {
+      "command": "!cof-peur",
+      "handler": "parsePeur",
+      "case_line": 52621,
+      "call_line": 52622,
+      "handler_line": 34521,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-peur",
+        "Le premier argument de !cof-peur, la difficulté du test de résistance, n'est pas un nombre",
+        "Le second argument de !cof-peur, la durée, n'est pas un nombre positif",
+        "Il manque l'argument de portée",
+        "Il manque l'argument de lanceur",
+        "Il manque le titre de l'action",
+        "Il manque l'argument de l'effet de peur"
+      ]
+    },
+    {
+      "command": "!cof-distribuer-baies",
+      "handler": "distribuerBaies",
+      "case_line": 52624,
+      "call_line": 52625,
+      "handler_line": 36648,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pour utiliser !cof-distribuer-baies, il faut sélectionner un token",
+        "Erreur de sélection dans !cof-distribuer-baies",
+        "!cof-consommer-baie"
+      ]
+    },
+    {
+      "command": "!cof-consommer-baie",
+      "handler": "consommerBaie",
+      "case_line": 52627,
+      "call_line": 52628,
+      "handler_line": 36681,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut un argument à !cof-consommer-baie",
+        "L'argument de !cof-consommer-baie doit être un nombre positif",
+        "Pas de token sélectionné pour !cof-consommer-baie"
+      ]
+    },
+    {
+      "command": "!cof-proteger-un-allie",
+      "handler": "protegerUnAllie",
+      "case_line": 52630,
+      "call_line": 52631,
+      "handler_line": 36738,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-proteger-un-allie:"
+      ]
+    },
+    {
+      "command": "!cof-corde-jumelle",
+      "handler": "cordeJumelle",
+      "case_line": 52633,
+      "call_line": 52634,
+      "handler_line": 36823,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-action-defensive",
+      "handler": "actionDefensive",
+      "case_line": 52636,
+      "call_line": 52637,
+      "handler_line": 36858,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut entrer en combat pour se défendre",
+        "Argument de !cof-action-defensive non reconnu"
+      ]
+    },
+    {
+      "command": "!cof-strangulation",
+      "handler": "strangulation",
+      "case_line": 52639,
+      "call_line": 52640,
+      "handler_line": 36909,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-strangulation:",
+        "ne peut pas maintenir la strangulation. Il faut (re)lancer le sort"
+      ]
+    },
+    {
+      "command": "!cof-ombre-mortelle",
+      "handler": "ombreMortelle",
+      "case_line": 52642,
+      "call_line": 52643,
+      "handler_line": 36970,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La durée doit être un nombre positif"
+      ]
+    },
+    {
+      "command": "!cof-escalier",
+      "handler": "escalier",
+      "case_line": 52645,
+      "call_line": 52646,
+      "handler_line": 37291,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas de sélection de token pour !cof-escalier",
+        "!cof-escalier requiert de sélectionner des tokens"
+      ]
+    },
+    {
+      "command": "!cof-defaut-dans-la-cuirasse",
+      "handler": "defautDansLaCuirasse",
+      "case_line": 52648,
+      "call_line": 52649,
+      "handler_line": 37445,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-defaut-dans-la-cuirasse"
+      ]
+    },
+    {
+      "command": "!cof-posture-de-combat",
+      "handler": "postureDeCombat",
+      "case_line": 52651,
+      "call_line": 52652,
+      "handler_line": 37470,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Impossible de trouve la commande !",
+        "Pas assez d'arguments pour !cof-posture-de-combat"
+      ]
+    },
+    {
+      "command": "!cof-attaque-a-outrance",
+      "handler": "attaqueAOutrance",
+      "case_line": 52654,
+      "call_line": 52655,
+      "handler_line": 37549,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-attaque-a-outrance"
+      ]
+    },
+    {
+      "command": "!cof-mur-de-force",
+      "handler": "murDeForce",
+      "case_line": 52657,
+      "call_line": 52658,
+      "handler_line": 36475,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Le deuxième argument de !cof-mur-de-force doit être une durée"
+      ]
+    },
+    {
+      "command": "!cof-capitaine",
+      "handler": "devientCapitaine",
+      "case_line": 52660,
+      "call_line": 52661,
+      "handler_line": 36587,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La fonction !cof-capitaine attend en argument l'id du capitaine",
+        "Le premier argument de !cof-capitaine doit être un token",
+        "Le bonus de capitaine (second argument) doit être un nombre positif",
+        "Pas de token sélectionné pour !cof-capitaine"
+      ]
+    },
+    {
+      "command": "!cof-tueur-fantasmagorique",
+      "handler": "parseAttaqueMagique",
+      "case_line": 52663,
+      "call_line": 52664,
+      "handler_line": 34662,
+      "params": [
+        "msg",
+        "type"
+      ],
+      "clues": [
+        "Il faut au moins 2 arguments à !cof-attaque-magique",
+        "Arguments de !cof-attaque-magique"
+      ]
+    },
+    {
+      "command": "!cof-enkystement-lointain",
+      "handler": "parseAttaqueMagique",
+      "case_line": 52666,
+      "call_line": 52667,
+      "handler_line": 34662,
+      "params": [
+        "msg",
+        "type"
+      ],
+      "clues": [
+        "Il faut au moins 2 arguments à !cof-attaque-magique",
+        "Arguments de !cof-attaque-magique"
+      ]
+    },
+    {
+      "command": "!cof-injonction-mortelle",
+      "handler": "parseInjonctionMortelle",
+      "case_line": 52669,
+      "call_line": 52670,
+      "handler_line": 35001,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut au moins 2 arguments à !cof-injonction-mortelle",
+        "Arguments de !cof-injonction-mortelle"
+      ]
+    },
+    {
+      "command": "!cof-tour-de-force",
+      "handler": "parseTourDeForce",
+      "case_line": 52672,
+      "call_line": 52673,
+      "handler_line": 37589,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque un argument à !cof-tour-de-force",
+        "le seuil de difficulté du tour de force doit être un nombre"
+      ]
+    },
+    {
+      "command": "!cof-prouesse",
+      "handler": "boutonProuesse",
+      "case_line": 52675,
+      "call_line": 52676,
+      "handler_line": 28777,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La fonction !cof-prouesse n'a pas assez d'arguments"
+      ]
+    },
+    {
+      "command": "!cof-tour-force",
+      "handler": "boutonTourDeForce",
+      "case_line": 52678,
+      "call_line": 52679,
+      "handler_line": 29022,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La fonction !cof-tour-force n'a pas assez d'arguments"
+      ]
+    },
+    {
+      "command": "!cof-pacte-sanglant",
+      "handler": "boutonPacteSanglant",
+      "case_line": 52681,
+      "call_line": 52682,
+      "handler_line": 28861,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La fonction !cof-pacte-sanglant n'a pas assez d'arguments",
+        "Il manque un choix de bonus au Pacte sanglant"
+      ]
+    },
+    {
+      "command": "!cof-pacte-sanglant-def",
+      "handler": "boutonPacteSanglantDef",
+      "case_line": 52684,
+      "call_line": 52685,
+      "handler_line": 28951,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La fonction !cof-pacte-sanglant-def n'a pas assez d'arguments",
+        "Il manque un choix de bonus au Pacte sanglant"
+      ]
+    },
+    {
+      "command": "!cof-encaisser-un-coup",
+      "handler": "doEncaisserUnCoup",
+      "case_line": 52687,
+      "call_line": 52688,
+      "handler_line": 37667,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-devier-les-coups",
+      "handler": "doDevierLesCoups",
+      "case_line": 52690,
+      "call_line": 52691,
+      "handler_line": 37734,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-parade-projectiles",
+      "handler": "doParadeProjectiles",
+      "case_line": 52693,
+      "call_line": 52694,
+      "handler_line": 37799,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-parade-au-bouclier",
+      "handler": "doParadeAuBouclier",
+      "case_line": 52696,
+      "call_line": 52697,
+      "handler_line": 38253,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-esquive-acrobatique",
+      "handler": "doEsquiveAcrobatique",
+      "case_line": 52699,
+      "call_line": 52700,
+      "handler_line": 38222,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-esquive-de-la-magie",
+      "handler": "doEsquiveDeLaMagie",
+      "case_line": 52702,
+      "call_line": 52703,
+      "handler_line": 38230,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-resister-a-la-magie",
+      "handler": "resisterALaMagie",
+      "case_line": 52705,
+      "call_line": 52706,
+      "handler_line": 38203,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-cercle-protection",
+      "handler": "cercleDeProtection",
+      "case_line": 52708,
+      "call_line": 52709,
+      "handler_line": 38212,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-parade-magistrale",
+      "handler": "doParadeMagistrale",
+      "case_line": 52711,
+      "call_line": 52712,
+      "handler_line": 38244,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-esquive-magistrale",
+      "handler": "doEsquiveMagistrale",
+      "case_line": 52714,
+      "call_line": 52715,
+      "handler_line": 38235,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-absorber-au-bouclier",
+      "handler": "absorberCoupAuBouclier",
+      "case_line": 52717,
+      "call_line": 52719,
+      "handler_line": 38169,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-absorber-coup-au-bouclier",
+      "handler": "absorberCoupAuBouclier",
+      "case_line": 52718,
+      "call_line": 52719,
+      "handler_line": 38169,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-absorber-sort-au-bouclier",
+      "handler": "absorberSortAuBouclier",
+      "case_line": 52721,
+      "call_line": 52722,
+      "handler_line": 38186,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-chair-a-canon",
+      "handler": "doChairACanon",
+      "case_line": 52724,
+      "call_line": 52725,
+      "handler_line": 38262,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "pas assez d'argumennts pour !cof-chair-a-canon",
+        "Le premier argument de !cof-chair-a-canon n'est pas un token de personnage",
+        "Le second argument de !cof-chair-a-canon n'est pas un token de personnage"
+      ]
+    },
+    {
+      "command": "!cof-demarrer-statistiques",
+      "handler": "displayStatistics",
+      "case_line": 52727,
+      "call_line": 52745,
+      "handler_line": 38438,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-arreter-statistiques",
+      "handler": "displayStatistics",
+      "case_line": 52735,
+      "call_line": 52745,
+      "handler_line": 38438,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-pause-statistiques",
+      "handler": "displayStatistics",
+      "case_line": 52738,
+      "call_line": 52745,
+      "handler_line": 38438,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-statistiques",
+      "handler": "displayStatistics",
+      "case_line": 52744,
+      "call_line": 52745,
+      "handler_line": 38438,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-doctor",
+      "handler": "cofDoctor",
+      "case_line": 52747,
+      "call_line": 52748,
+      "handler_line": 49999,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Seul le MJ peut lancer !cof-doctor."
+      ]
+    },
+    {
+      "command": "!cof-destruction-des-morts-vivants",
+      "handler": "parseDestructionDesMortsVivants",
+      "case_line": 52750,
+      "call_line": 52751,
+      "handler_line": 38483,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut au moins un argument à !cof-destruction-des-morts-vivants",
+        "Il faut sélectionner le lanceur de la destruction des morts-vivants"
+      ]
+    },
+    {
+      "command": "!cof-enduire-poison",
+      "handler": "parseEnduireDePoison",
+      "case_line": 52753,
+      "call_line": 52754,
+      "handler_line": 38683,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Usage : !cof-enduire-poison L type force save",
+        "Le dernier argument non optionnel doit être la difficulté du test de CON",
+        "Il faut un argument à --testINT"
+      ]
+    },
+    {
+      "command": "!cof-consommables",
+      "handler": "listeConsommables",
+      "case_line": 52756,
+      "call_line": 52757,
+      "handler_line": 39043,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "!cof-echange-consommable"
+      ]
+    },
+    {
+      "command": "!cof-utilise-consommable",
+      "handler": "utiliseConsommable",
+      "case_line": 52759,
+      "call_line": 52760,
+      "handler_line": 39151,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-echange-consommable",
+      "handler": "echangeConsommable",
+      "case_line": 52762,
+      "call_line": 52763,
+      "handler_line": 39231,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-provocation",
+      "handler": "parseProvocation",
+      "case_line": 52765,
+      "call_line": 52766,
+      "handler_line": 39417,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La commande !cof-provocation requiert 2 arguments",
+        "Le premier argument de !cof-provocation n'est pas un token valide",
+        "Le deuxième argument de !cof-provocation n'est pas un token valide"
+      ]
+    },
+    {
+      "command": "!cof-en-selle",
+      "handler": "enSelle",
+      "case_line": 52768,
+      "call_line": 52769,
+      "handler_line": 39555,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut 2 arguments pour !cof-en-selle",
+        "Premier argument de !cof-en-selle incorrect"
+      ]
+    },
+    {
+      "command": "!cof-creer-elixir",
+      "handler": "creerElixir",
+      "case_line": 52771,
+      "call_line": 52772,
+      "handler_line": 39654,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-creer-elixir"
+      ]
+    },
+    {
+      "command": "!cof-elixirs",
+      "handler": "gestionElixir",
+      "case_line": 52774,
+      "call_line": 52775,
+      "handler_line": 39788,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "!cof-creer-elixir"
+      ]
+    },
+    {
+      "command": "!cof-runes",
+      "handler": "gestionRunes",
+      "case_line": 52777,
+      "call_line": 52778,
+      "handler_line": 40061,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "!cof-creer-rune"
+      ]
+    },
+    {
+      "command": "!cof-creer-rune",
+      "handler": "creerRune",
+      "case_line": 52780,
+      "call_line": 52781,
+      "handler_line": 40092,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-creer-rune"
+      ]
+    },
+    {
+      "command": "!cof-rage-du-berserk",
+      "handler": "parseRageDuBerserk",
+      "case_line": 52783,
+      "call_line": 52784,
+      "handler_line": 40308,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-arme-secrete",
+      "handler": "parseArmeSecrete",
+      "case_line": 52786,
+      "call_line": 52787,
+      "handler_line": 40376,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut deux arguments à !cof-arme-secrete"
+      ]
+    },
+    {
+      "command": "!cof-animer-arbre",
+      "handler": "animerUnArbre",
+      "case_line": 52789,
+      "call_line": 52790,
+      "handler_line": 40637,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Le premier argument de !cof-animer-arbre n'est pas un token valide",
+        "Le deuxième argument de !cof-animer-arbre n'est pas un token"
+      ]
+    },
+    {
+      "command": "!cof-delivrance",
+      "handler": "delivrance",
+      "case_line": 52792,
+      "call_line": 52794,
+      "handler_line": 40801,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Le premier argument de !cof-delivrance n'est pas un token valide",
+        "Le deuxième argument de !cof-delivrance n'est pas un token valide"
+      ]
+    },
+    {
+      "command": "!cof-guerir",
+      "handler": "delivrance",
+      "case_line": 52793,
+      "call_line": 52794,
+      "handler_line": 40801,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Le premier argument de !cof-delivrance n'est pas un token valide",
+        "Le deuxième argument de !cof-delivrance n'est pas un token valide"
+      ]
+    },
+    {
+      "command": "!cof-guerison",
+      "handler": "guerison",
+      "case_line": 52796,
+      "call_line": 52797,
+      "handler_line": 40997,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Le premier argument de !cof-guerison n'est pas un token valide",
+        "Le deuxième argument de !cof-guerison n'est pas un token valide"
+      ]
+    },
+    {
+      "command": "!cof-test-attaque-opposee",
+      "handler": "testAttaqueOpposee",
+      "case_line": 52799,
+      "call_line": 52800,
+      "handler_line": 41226,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut 2 personnages pour un test d'attaque en opposition",
+        "Le premier argument de !cof-test-attaque-opposee doit être un token valide",
+        "Le deuxième argument de !cof-test-attaque-opposee doit être un token valide"
+      ]
+    },
+    {
+      "command": "!cof-etat-oppose",
+      "handler": "cofEtatOppose",
+      "case_line": 52802,
+      "call_line": 52803,
+      "handler_line": 41488,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "!cof-etat-oppose attend : attaquant cible état caracAttaquant caracCible",
+        "!cof-etat-oppose : attaquant ou cible invalide",
+        "!cof-etat-oppose : caractéristique invalide"
+      ]
+    },
+    {
+      "command": "!cof-manoeuvre",
+      "handler": "manoeuvreRisquee",
+      "case_line": 52805,
+      "call_line": 52806,
+      "handler_line": 41529,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Le premier argument de !cof-manoeuvre n'est pas un token valide",
+        "Le deuxième argument de !cof-manoeuvre n'est pas un token valide",
+        "!cof-attack",
+        "!cof-appliquer-manoeuvre"
+      ]
+    },
+    {
+      "command": "!cof-appliquer-manoeuvre",
+      "handler": "appliquerManoeuvre",
+      "case_line": 52808,
+      "call_line": 52809,
+      "handler_line": 41453,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Le premier argument de !cof-appliquer-manoeuvre n'est pas un token valide",
+        "Le deuxième argument de !cof-appliquer-manoeuvre n'est pas un token valide"
+      ]
+    },
+    {
+      "command": "!cof-desarmer",
+      "handler": "desarmer",
+      "case_line": 52811,
+      "call_line": 52812,
+      "handler_line": 41264,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque des arguments à !cof-desarmer",
+        "Le premier argument de !cof-desarmer n'est pas un token valide",
+        "Le deuxième argument de !cof-desarmer n'est pas un token valide",
+        "doit porter une arme de contact pour désarmer son adversaire."
+      ]
+    },
+    {
+      "command": "!cof-tempete-de-mana",
+      "handler": "optionsDeTempeteDeMana",
+      "case_line": 52814,
+      "call_line": 52815,
+      "handler_line": 9443,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque l'id du token pour l'option altruiste de la tempete de mana",
+        "Argument de !cof-tempete-de-mana inconnu",
+        "!cof-tempete-de-mana altruiste @{target|token_id}",
+        "!cof-tempete-de-mana"
+      ]
+    },
+    {
+      "command": "!cof-test-mort",
+      "handler": "blessurePJTestMort",
+      "case_line": 52817,
+      "call_line": 52818,
+      "handler_line": 25046,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-blessure-recap",
+      "handler": "blessurePJRecapCommande",
+      "case_line": 52820,
+      "call_line": 52821,
+      "handler_line": 25116,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-blessure-reset",
+      "handler": "blessurePJResetCommande",
+      "case_line": 52823,
+      "call_line": 52824,
+      "handler_line": 24836,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-blessure-markers",
+      "handler": "blessurePJMarkersDiagnostic",
+      "case_line": 52826,
+      "call_line": 52827,
+      "handler_line": 24824,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-stabiliser-blessure",
+      "handler": "blessurePJStabiliser",
+      "case_line": 52829,
+      "call_line": 52830,
+      "handler_line": 25016,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-tour-suivant",
+      "handler": "tourSuivant",
+      "case_line": 52832,
+      "call_line": 52833,
+      "handler_line": 55887,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-multi-command",
+      "handler": "multiCommand",
+      "case_line": 52835,
+      "call_line": 52836,
+      "handler_line": 41703,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-conjuration-de-predateur",
+      "handler": "conjurationPredateur",
+      "case_line": 52838,
+      "call_line": 52839,
+      "handler_line": 42079,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas de commande",
+        "Il faut un nombre comme premier argument de !cof-conjuration-de-predateur",
+        "Il faut sélectionner un seul token pour les options de tempête de mana"
+      ]
+    },
+    {
+      "command": "!cof-conjuration-armee",
+      "handler": "conjurationArmee",
+      "case_line": 52841,
+      "call_line": 52842,
+      "handler_line": 42317,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut sélectionner le lanceur de la conjuration d'arméé",
+        "Il faut sélectionner un seul token pour les options de tempête de mana"
+      ]
+    },
+    {
+      "command": "!cof-set-macros",
+      "handler": "setGameMacros",
+      "case_line": 52844,
+      "call_line": 52845,
+      "handler_line": 43002,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-lumiere",
+      "handler": "ajouteLumiere",
+      "case_line": 52847,
+      "call_line": 52848,
+      "handler_line": 43035,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut au moins 2 arguments à !cof-lumiere",
+        "le premier argument de !cof-lumière doit être un token",
+        "La distance de vue de la lumière doit être positive",
+        "La distance de vue de la lumière assombrie doit être un nombre"
+      ]
+    },
+    {
+      "command": "!cof-eteindre-lumiere",
+      "handler": "eteindreLumieres",
+      "case_line": 52850,
+      "call_line": 52851,
+      "handler_line": 43140,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas de cible sélectionnée pour !cof-eteindre-lumiere"
+      ]
+    },
+    {
+      "command": "!cof-torche",
+      "handler": "switchTorche",
+      "case_line": 52853,
+      "call_line": 52854,
+      "handler_line": 43233,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut préciser le token en argument de !cof-torche",
+        "Le deuxième argument de !cof-torche doit être un nombre strictement positif"
+      ]
+    },
+    {
+      "command": "!cof-defi-duelliste",
+      "handler": "lancerDefiDuelliste",
+      "case_line": 52856,
+      "call_line": 52857,
+      "handler_line": 43529,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-defi-samourai",
+      "handler": "lancerDefiSamourai",
+      "case_line": 52859,
+      "call_line": 52860,
+      "handler_line": 43524,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-enveloppement",
+      "handler": "parseEnveloppement",
+      "case_line": 52862,
+      "call_line": 52863,
+      "handler_line": 43534,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il manque des arguments à !cof-enveloppement"
+      ]
+    },
+    {
+      "command": "!cof-echapper-enveloppement",
+      "handler": "parseEchapperEnveloppement",
+      "case_line": 52865,
+      "call_line": 52866,
+      "handler_line": 43651,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "!cof-echapper-enveloppement sans sélection de token",
+        "!cof-echapper-enveloppement requiert de sélectionner des tokens"
+      ]
+    },
+    {
+      "command": "!cof-liberer-agrippe",
+      "handler": "parseLibererAgrippe",
+      "case_line": 52868,
+      "call_line": 52869,
+      "handler_line": 43760,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut l'id du token en argument de !cof-liberer-agrippe"
+      ]
+    },
+    {
+      "command": "!cof-liberer-ecrase",
+      "handler": "parseLibererEcrase",
+      "case_line": 52871,
+      "call_line": 52872,
+      "handler_line": 43921,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut l'id du token en argument de !cof-liberer-ecrase"
+      ]
+    },
+    {
+      "command": "!cof-animer-cadavre",
+      "handler": "animerCadavre",
+      "case_line": 52874,
+      "call_line": 52875,
+      "handler_line": 44030,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Le premier argument de !cof-animer-cadavre n'est pas un token valide",
+        "Le deuxième argument de !cof-animer-cadavre n'est pas un token valide"
+      ]
+    },
+    {
+      "command": "!cof-vapeurs-ethyliques",
+      "handler": "parseVapeursEthyliques",
+      "case_line": 52877,
+      "call_line": 52878,
+      "handler_line": 44107,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-desaouler",
+      "handler": "desaouler",
+      "case_line": 52880,
+      "call_line": 52881,
+      "handler_line": 44179,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Aucune sélection pour !cof-desaouler"
+      ]
+    },
+    {
+      "command": "!cof-boire-alcool",
+      "handler": "parseBoireAlcool",
+      "case_line": 52883,
+      "call_line": 52884,
+      "handler_line": 44198,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-jouer-son",
+      "handler": "jouerSon",
+      "case_line": 52886,
+      "call_line": 52887,
+      "handler_line": 44258,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-bouton-echec-total",
+      "handler": "echecTotal",
+      "case_line": 52889,
+      "call_line": 52890,
+      "handler_line": 29105,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "La fonction !cof-bouton-echec-total n'a pas assez d'arguments"
+      ]
+    },
+    {
+      "command": "!cof-usure-off",
+      "handler": "sendChat",
+      "case_line": 52892,
+      "call_line": 52896,
+      "handler_line": null,
+      "params": [],
+      "clues": []
+    },
+    {
+      "command": "!cof-set-attribute",
+      "handler": "setAttributeInterface",
+      "case_line": 52899,
+      "call_line": 52900,
+      "handler_line": 44325,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-set-attribute",
+        "pas de token sélectionné pour !cof-set-attribute"
+      ]
+    },
+    {
+      "command": "!cof-set-predicate",
+      "handler": "setPredicateInterface",
+      "case_line": 52902,
+      "call_line": 52903,
+      "handler_line": 44375,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-set-predicate",
+        "pas de token sélectionné pour !cof-set-predicate"
+      ]
+    },
+    {
+      "command": "!cof-options-d-attaque",
+      "handler": "optionsDAttaque",
+      "case_line": 52905,
+      "call_line": 52906,
+      "handler_line": 44490,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Argument de !cof-options-d-attaque non reconnu",
+        "!cof-options-d-attaque reset --target",
+        "!cof-options-d-attaque attaque_de_groupe ?{Combien d'adversaires par jet?}",
+        "!cof-options-d-attaque attaque_en_puissance_check ?{Attaque en puissance?|",
+        "!cof-options-d-attaque attaque_en_puissance ?{nombre de dés de bonus (-5 att par dé)?}"
+      ]
+    },
+    {
+      "command": "!cof-petit-veinard",
+      "handler": "petitVeinard",
+      "case_line": 52908,
+      "call_line": 52910,
+      "handler_line": 29843,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas de token sélectionné pour !cof-petit-veinard"
+      ]
+    },
+    {
+      "command": "!cof-bouton-petit-veinard",
+      "handler": "petitVeinard",
+      "case_line": 52909,
+      "call_line": 52910,
+      "handler_line": 29843,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas de token sélectionné pour !cof-petit-veinard"
+      ]
+    },
+    {
+      "command": "!cof-suivre",
+      "handler": "suivre",
+      "case_line": 52912,
+      "call_line": 52913,
+      "handler_line": 44737,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-suivre",
+        "Token sélectionne incorrect pour !cof-suivre",
+        "Cible incorrecte pour !cof-suivre"
+      ]
+    },
+    {
+      "command": "!cof-centrer-sur-token",
+      "handler": "centrerSurToken",
+      "case_line": 52915,
+      "call_line": 52916,
+      "handler_line": 44798,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut préciser un token sur lequel se centrer",
+        "Impossible de trouver le joueur qui a lancé la commande"
+      ]
+    },
+    {
+      "command": "!cof-bourse",
+      "handler": "gestionBourse",
+      "case_line": 52918,
+      "call_line": 52919,
+      "handler_line": 44891,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut spécifier un montant à",
+        "Il faut préciser les unités pour !cof-bourse fixer",
+        "Pas de personnage sélectionné pour !cof-bourse"
+      ]
+    },
+    {
+      "command": "!cof-mot-de-pouvoir-immobilise",
+      "handler": "motDePouvoirImmobilise",
+      "case_line": 52921,
+      "call_line": 52922,
+      "handler_line": 45089,
+      "params": [
+        "msg"
+      ],
+      "clues": []
+    },
+    {
+      "command": "!cof-charge-fantastique",
+      "handler": "chargeFantastque",
+      "case_line": 52924,
+      "call_line": 52925,
+      "handler_line": 45195,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-charge-fantastique",
+        "pas de token sélectionné pour !cof-charge-fantastique"
+      ]
+    },
+    {
+      "command": "!cof-next-charge-fantastique",
+      "handler": "nextTurnChargeFantastique",
+      "case_line": 52927,
+      "call_line": 52928,
+      "handler_line": 45133,
+      "params": [
+        "msg",
+        "oldTurnOrder"
+      ],
+      "clues": [
+        "!cof-next-charge-fantastique"
+      ]
+    },
+    {
+      "command": "!cof-tenebres",
+      "handler": "tenebres",
+      "case_line": 52930,
+      "call_line": 52931,
+      "handler_line": 42443,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "!cof-tenebres mal formé, il faut un token comme premier argument",
+        "Le premier argument de !cof-tenebres n'est pas un token valide",
+        "Le second argument de !cof-tenebres n'est pas un token valide"
+      ]
+    },
+    {
+      "command": "!cof-defense-armee-des-morts",
+      "handler": "defenseArmeeDesMorts",
+      "case_line": 52933,
+      "call_line": 52934,
+      "handler_line": 44447,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-defense-armee-des-morts",
+        "Le token renseigné pour !cof-defense-armee-des-morts est inconnu"
+      ]
+    },
+    {
+      "command": "!cof-invoquer-demon",
+      "handler": "invocationDemon",
+      "case_line": 52936,
+      "call_line": 52937,
+      "handler_line": 42655,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "!cof-invoquer-demon mal formé, il faut un token comme premier argument",
+        "Le premier argument de !cof-invoquer-demon n'est pas un token valie"
+      ]
+    },
+    {
+      "command": "!cof-animer-mort",
+      "handler": "animerMort",
+      "case_line": 52939,
+      "call_line": 52940,
+      "handler_line": 42784,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "!cof-animer-mort mal formé, il faut un token comme premier argument",
+        "Le premier argument de !cof-animer-mort n'est pas un token valie"
+      ]
+    },
+    {
+      "command": "!cof-prescience",
+      "handler": "utiliserPrescience",
+      "case_line": 52942,
+      "call_line": 52943,
+      "handler_line": 45268,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas assez d'arguments pour !cof-prescience"
+      ]
+    },
+    {
+      "command": "!cof-multi-cartes",
+      "handler": "multiCartes",
+      "case_line": 52945,
+      "call_line": 52946,
+      "handler_line": 45343,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Aucun token selectionné pour !cof-multi-cartes"
+      ]
+    },
+    {
+      "command": "!cof-ombre-mouvante",
+      "handler": "ombreMouvante",
+      "case_line": 52948,
+      "call_line": 52949,
+      "handler_line": 45396,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas de token sélectionné pour !cof-ombre-mouvante"
+      ]
+    },
+    {
+      "command": "!cof-reveler-nom",
+      "handler": "revelerNom",
+      "case_line": 52951,
+      "call_line": 52952,
+      "handler_line": 45462,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Pas de token sélectionné pour !cof-reveler-nom",
+        ", ce n'est pas encore géré dans !cof-reveler-nom"
+      ]
+    },
+    {
+      "command": "!cof-fiole-de-lumiere",
+      "handler": "fioleDeLumiere",
+      "case_line": 52954,
+      "call_line": 52955,
+      "handler_line": 45740,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut un argument à !cof-fiole-de-lumiere",
+        "La distance de vue de la lumière assombrie doit être un nombre"
+      ]
+    },
+    {
+      "command": "!cof-agripper-de-demon",
+      "handler": "agripperDeDemon",
+      "case_line": 52957,
+      "call_line": 52958,
+      "handler_line": 45792,
+      "params": [
+        "msg"
+      ],
+      "clues": [
+        "Il faut spécifier un attaquant et un défenseur pour !cof-agripper-de-demon",
+        "Le premier argument de !cof-agripper-de-demon doit être un token valide",
+        "Le deuxième argument de !cof-agripper-de-demon doit être un token valide"
+      ]
+    }
+  ],
+  "attack_options": [
+    "enflamme",
+    "ignoreMoitieRD",
+    "malediction",
+    "pressionMortelle",
+    "pietine",
+    "percute",
+    "maxDmg",
+    "ouvertureMortelle",
+    "seulementVivant",
+    "etreinteImmole",
+    "etreinteScorpion",
+    "seulementDistance",
+    "seulementContact",
+    "tempDmg",
+    "eclairDEnergie",
+    "attaqueOpportunite",
+    "sansAO",
+    "sansAo",
+    "sansao",
+    "affute",
+    "arc",
+    "arbalete",
+    "armeDArgent",
+    "artificiel",
+    "attaqueAssuree",
+    "attaqueFlamboyante",
+    "attaqueRisquee",
+    "attaqueOptions",
+    "beni",
+    "choc",
+    "dominationPsy",
+    "peutAgripper",
+    "spectral",
+    "epieu",
+    "hache",
+    "marteau",
+    "vicieux",
+    "attaqueMentale",
+    "auto",
+    "avecd12",
+    "demiAuto",
+    "energiePositive",
+    "explodeMax",
+    "explosion",
+    "feinte",
+    "ignoreObstacles",
+    "mainsDEnergie",
+    "pasDeDmg",
+    "pointsVitaux",
+    "poudre",
+    "metal",
+    "adamantium",
+    "ferFroid",
+    "reroll1",
+    "reroll2",
+    "semonce",
+    "sortilege",
+    "strigeSuce",
+    "tirDeBarrage",
+    "test",
+    "traquenard",
+    "tueurDeGeants",
+    "tueurDeGrands",
+    "grenaille",
+    "attaqueArmeeConjuree",
+    "difficultePVmax",
+    "difficultePV",
+    "lamesJumelles",
+    "riposte",
+    "secret",
+    "saufAllies",
+    "tirAveugle",
+    "attaqueBouclierRenverse",
+    "necromancie",
+    "runeDePuissance",
+    "aussiArmeDeJet",
+    "m2d20",
+    "avantage",
+    "désavantage",
+    "desavantage",
+    "avecd12crit",
+    "tranchant",
+    "contondant",
+    "percant",
+    "nom",
+    "special",
+    "toucher",
+    "modifiePortee",
+    "crit",
+    "dm",
+    "portee",
+    "frappeDesArcanes",
+    "attaqueMagiqueDe",
+    "imparable",
+    "tirDouble",
+    "secondTir",
+    "ignoreRD",
+    "tueurDe",
+    "magique",
+    "si",
+    "recharge",
+    "tempsRecharge",
+    "plus",
+    "plusCrit",
+    "dmSiRate",
+    "dmCible",
+    "icone",
+    "icône",
+    "marker",
+    "marqueur",
+    "attr",
+    "attribut",
+    "carac",
+    "caracteristique",
+    "caractéristique",
+    "effet",
+    "finEffet",
+    "valeur",
+    "accumuleDuree",
+    "optionEffet",
+    "etatSi",
+    "etat",
+    "finEtat",
+    "peur",
+    "feu",
+    "air",
+    "eau",
+    "terre",
+    "ombre",
+    "lumiere",
+    "force",
+    "toxique",
+    "psychique",
+    "nature",
+    "necrotique",
+    "radiant",
+    "arcane",
+    "froid",
+    "acide",
+    "electrique",
+    "sonique",
+    "poison",
+    "maladie",
+    "argent",
+    "drain",
+    "energie",
+    "sombracier",
+    "cordeJumelle",
+    "salve",
+    "salveSecondaire",
+    "naturel",
+    "sourceNaturelle",
+    "vampirise",
+    "sournoise",
+    "bondFelis",
+    "attaqueAcrobatique",
+    "disparition",
+    "fx",
+    "targetFx",
+    "psave",
+    "saveDM",
+    "save",
+    "saveParTour",
+    "saveActifParTour",
+    "saveParJour",
+    "retourneEnMain",
+    "mana",
+    "magieRapide",
+    "tempeteDeMana",
+    "magieEnArmure",
+    "rang",
+    "bonusAttaque",
+    "bonusContreBouclier",
+    "bonusContreArmure",
+    "bonusCritique",
+    "attaqueDeGroupe",
+    "puissant",
+    "oui",
+    "Oui",
+    "non",
+    "Non",
+    "duree",
+    "rate",
+    "touche",
+    "critique",
+    "echecCritique",
+    "pasDEchecCritique",
+    "munition",
+    "ligne",
+    "effigieAOE",
+    "disque",
+    "cone",
+    "target",
+    "canaliseParFamilier",
+    "ricochets",
+    "ciblesDansDisque",
+    "limiteParJour",
+    "limiteParCombat",
+    "limiteParTour",
+    "decrAttribute",
+    "decrLimitePredicatParTour",
+    "forceMinimum",
+    "arcComposite",
+    "incrDmgCoef",
+    "toucheDoubleDmg",
+    "diviseDmg",
+    "divisePortee",
+    "incrCritCoef",
+    "if",
+    "ifSaveFails",
+    "endif",
+    "else",
+    "message",
+    "allonge",
+    "enveloppe",
+    "etreinte",
+    "imgAttack",
+    "imgAttackEchec",
+    "imgAttackEchecCritique",
+    "imgAttackEchecClignotement",
+    "imgAttackSucces",
+    "imgAttackSuccesChampion",
+    "imgAttackSuccesCritique",
+    "soundAttack",
+    "soundAttackEchec",
+    "soundAttackEchecCritique",
+    "soundAttackEchecClignotement",
+    "soundAttackSucces",
+    "soundAttackSuccesChampion",
+    "soundAttackSuccesCritique",
+    "img-attack-echec-critique",
+    "img-attack-echec",
+    "img-attack-echec-clignotement",
+    "img-attack-normal-touch",
+    "img-attack-succes",
+    "img-attack-champion-succes",
+    "img-attack-succes-champion",
+    "img-attack-succes-critique",
+    "sound-attack-echec-critique",
+    "sound-attack-echec",
+    "sound-attack-echec-clignotement",
+    "sound-attack-normal-touch",
+    "sound-attack-succes",
+    "sound-attack-champion-succes",
+    "sound-attack-succes-champion",
+    "sound-attack-succes-critique",
+    "affaiblirCarac",
+    "dexterite",
+    "constitution",
+    "sagesse",
+    "intelligence",
+    "charisme",
+    "random",
+    "FOR",
+    "dextérité",
+    "DEX",
+    "CON",
+    "SAG",
+    "INT",
+    "CHA",
+    "rand",
+    "RAND",
+    "difficulteCarac",
+    "attackId",
+    "terrainDifficile",
+    "deplaceDe",
+    "draineMana",
+    "+N",
+    "flammeJumelle"
+  ],
+  "states": [
+    "assomme",
+    "mort",
+    "surpris",
+    "renverse",
+    "aveugle",
+    "affaibli",
+    "etourdi",
+    "paralyse",
+    "ralenti",
+    "immobilise",
+    "endormi",
+    "apeure",
+    "invisible",
+    "blesse",
+    "entrave",
+    "agrippe",
+    "desarme",
+    "deborde",
+    "provoque",
+    "effraye",
+    "charme",
+    "confus",
+    "silencieux",
+    "sommeil",
+    "expose",
+    "volant",
+    "inconscient",
+    "stabilise",
+    "encombre",
+    "penombre",
+    "enseveli",
+    "TempeteCanalise",
+    "chef"
+  ],
+  "effects": {
+    "messageEffetTemp": [
+      "entraveTemp",
+      "renverseTemp",
+      "agrippeTemp",
+      "desarmeTemp",
+      "debordeTemp",
+      "provoqueTemp",
+      "effrayeTemp",
+      "charmeTemp",
+      "confusTemp",
+      "silencieuxTemp",
+      "sommeilTemp",
+      "surprisTemp",
+      "exposeTemp",
+      "aCouvert",
+      "affecteParAura",
+      "affaibliTemp",
+      "apeureTemp",
+      "assommeTemp",
+      "attaqueADistanceRatee",
+      "aveugleTemp",
+      "benediction",
+      "blessureSanglante",
+      "carquoisMagique",
+      "chantDesHeros",
+      "drainDeForce",
+      "drainDeForceSup",
+      "effetTempGenerique",
+      "modAttributTemp",
+      "endormiTemp",
+      "etourdiTemp",
+      "formeDAnge",
+      "formeHybride",
+      "formeOurs",
+      "formeTigre",
+      "formeAigle",
+      "marqueArcanique",
+      "marqueVindicte",
+      "sceauxVindicte",
+      "TempeteCanalise",
+      "TempeteFoudre",
+      "FrissonSylvestre",
+      "marqueduTraqueur",
+      "frappeDesArcanes",
+      "frenesieMinotaure",
+      "inspiration",
+      "imageDecalee",
+      "immobiliseTemp",
+      "immuniteAmaladie",
+      "immuniteApoison",
+      "lycanthropie",
+      "paradeCroisee",
+      "paralyseTemp",
+      "paralyseGoule",
+      "peauDEcorce",
+      "peauDEcorceAmeLiee",
+      "penombreTemp",
+      "peurEtourdi",
+      "poisonAffaiblissantLatent",
+      "poisonParalysant",
+      "protectionContreLesProjectiles",
+      "ralentiTemp",
+      "rapideCommeLeVent",
+      "rayonAffaiblissant",
+      "rituelAssure",
+      "secoue",
+      "secretsDeLAuDela",
+      "souffleDeMort",
+      "tremblementMineur",
+      "ventDesAmes",
+      "zoneDeVie",
+      "nauseeuxTemp",
+      "invisibleTemp",
+      "aveugleManoeuvre",
+      "bloqueManoeuvre",
+      "diversionManoeuvre",
+      "menaceManoeuvre",
+      "tenuADistanceManoeuvre",
+      "epeeDansante",
+      "rapiereDansante",
+      "putrefaction",
+      "forgeron",
+      "armeEnflammee",
+      "armeElectrique",
+      "armesEnflammees",
+      "dotGen",
+      "rechargeGen",
+      "dmgArme",
+      "flou",
+      "agrandissement",
+      "formeGazeuse",
+      "intangible",
+      "intangibleInvisible",
+      "sousTension",
+      "strangulation",
+      "ombreMortelle",
+      "dedoublement",
+      "zoneDeSilence",
+      "danseIrresistible",
+      "confusion",
+      "murDeForce",
+      "asphyxie",
+      "forceDeGeant",
+      "saignementsSang",
+      "encaisserUnCoup",
+      "seulContreTous",
+      "absorberUnCoup",
+      "absorberUnSort",
+      "nueeDInsectes",
+      "nueeDeCriquets",
+      "nueeDeScorpions",
+      "toiles",
+      "prisonVegetale",
+      "protectionContreLesElements",
+      "masqueMortuaire",
+      "masqueMortuaireAmeLiee",
+      "armeBrulante",
+      "armureBrulante",
+      "masqueDuPredateur",
+      "masqueDuPredateurAmeLiee",
+      "aspectDeLaSuccube",
+      "aspectDuDemon",
+      "sangMordant",
+      "armeSecreteBarde",
+      "regeneration",
+      "arbreAnime",
+      "objetAnime",
+      "magnetisme",
+      "hate",
+      "ailesCelestes",
+      "sanctuaire",
+      "rechargeSouffle",
+      "paralysieRoublard",
+      "mutationOffensive",
+      "formeDArbre",
+      "statueDeBois",
+      "clignotement",
+      "agitAZeroPV",
+      "predateurConjure",
+      "invocationGenerique",
+      "champDeProtection",
+      "attaqueArmeeConjuree",
+      "rechargeDuKiai",
+      "memePasMalBonus",
+      "attaqueRisquee",
+      "bondFelisDEF",
+      "peauDePierreMag",
+      "expose",
+      "effetRetarde",
+      "messageRetarde",
+      "detectionDeLInvisible",
+      "bonusAttaqueTemp",
+      "enerve",
+      "cercleDeProtection",
+      "tenebres",
+      "brumes",
+      "progresserACouvert",
+      "cyclone",
+      "momentDePerfection",
+      "armeeDesMorts",
+      "demonInvoque",
+      "degradationZombie",
+      "hemorragie",
+      "lienDeSang",
+      "tenirADistance",
+      "defieParGuerrier",
+      "reactionViolente"
+    ],
+    "messageEffetCombat": [
+      "a0PVDepuis",
+      "armureMagique",
+      "armureDuFeu",
+      "ManteauRadieux",
+      "armureDuMage",
+      "armureDEau",
+      "armeDArgent",
+      "attaqueAOutrance",
+      "blessureQuiSaigne",
+      "bonusInitEmbuscade",
+      "bonusInitVariable",
+      "criDeGuerre",
+      "criDuPredateur",
+      "danseDesLames",
+      "detournerLeRegard",
+      "enflamme",
+      "enrage",
+      "fureurDrakonideCritique",
+      "malchance",
+      "protectionContreLeMal",
+      "putrefactionOutreTombe",
+      "rage",
+      "rageDuBerserk",
+      "defiDuelliste",
+      "defiSamourai",
+      "agrippe",
+      "estAgrippePar",
+      "devore",
+      "estDevorePar",
+      "ecrase",
+      "estEcrasePar",
+      "aGobe",
+      "estGobePar",
+      "inconfort",
+      "noyade",
+      "poisonAffaiblissant",
+      "jugeVindicte",
+      "ascensionSolaire",
+      "marqueVindicte",
+      "sceauxVindicte"
+    ],
+    "messageEffetIndetermine": [
+      "armesNaturelles",
+      "armureDeFeu",
+      "ManteauRadieux",
+      "charme",
+      "conditionsHostiles",
+      "constructionTailleHumaine",
+      "dominationPsy",
+      "fievreux",
+      "foretVivanteEnnemie",
+      "grandeTaille",
+      "lameDeLigneePerdue",
+      "marcheSylvestre",
+      "mutationCuirasse",
+      "mutationEcaillesRouges",
+      "mutationFourrureViolette",
+      "mutationMusclesHypertrophies",
+      "mutationOuies",
+      "mutationSangNoir",
+      "mutationSilhouetteFiliforme",
+      "mutationSilhouetteMassive",
+      "presenceGlaciale",
+      "sensDuDevoir",
+      "sixiemeSens",
+      "espaceExigu",
+      "sangDeLArbreCoeur",
+      "ondesCorruptrices",
+      "petrifie",
+      "poisonAffaiblissantLong",
+      "reactionAllergique"
+    ]
+  },
+  "predicates": [
+    "aberration",
+    "absorptionEnergie",
+    "actionDegainer",
+    "actionLibre",
+    "actionsPossiblesTransforme",
+    "adaptable",
+    "agripper",
+    "allongeOpportunite",
+    "ambidextreDuelliste",
+    "ambidextrie",
+    "ameFeline",
+    "ameLieeAvec",
+    "ancreInvincible",
+    "animal",
+    "anneauProtection",
+    "apparition",
+    "arcDeMaitre",
+    "argumentDeTaille",
+    "armeDeLEte",
+    "armeDePredilection",
+    "armeParDefaut",
+    "armureDeVent",
+    "armureLourdeGuerrier",
+    "armureProtection",
+    "ascensionSolaire",
+    "asDeLaGachette",
+    "attaqueAuBouclier",
+    "attaqueEnMeute",
+    "attaquesOpportunite",
+    "attaqueSournoise",
+    "attaqueViolente",
+    "aucuneActionCombat",
+    "auDessusDeLaMelee",
+    "auraDeProfanation",
+    "auraDrainDeForce",
+    "auraDrainDeForceSup",
+    "autoriteNaturelle",
+    "baroudHonneur",
+    "batonDesRunesMortes",
+    "benedictionSuperieure",
+    "blessureSanglante",
+    "bonus_",
+    "bonus_DEF",
+    "bonus_DEF(anneau)",
+    "bonus_RD",
+    "bonusAttaqueBouclier",
+    "bonusAttaqueMagique",
+    "bonusDMSous50PV",
+    "bonusFeinte",
+    "bonusInitiative",
+    "bonusSaveContre_",
+    "bonusSlotsConsommables",
+    "bonusTests_",
+    "bonusTests_CHA",
+    "bonusTests_charisme",
+    "bonusTests_CON",
+    "bonusTests_constitution",
+    "bonusTests_DEX",
+    "bonusTests_dexterite",
+    "bonusTests_dexterité",
+    "bonusTests_FOR",
+    "bonusTests_force",
+    "bonusTests_INT",
+    "bonusTests_intelligence",
+    "bonusTests_SAG",
+    "bonusTests_sagesse",
+    "bonusTousTests",
+    "botteMortelle",
+    "botteMortelleEtFeinte",
+    "botteSecrete",
+    "bouclierDeLaFoi",
+    "bouclierProtection",
+    "bouclierPsi",
+    "boutefeu",
+    "braiseSolaire",
+    "briseurDOs",
+    "bucheron",
+    "cavalierEmerite",
+    "chairACanon",
+    "champion",
+    "chasseurDeSorciere",
+    "chasseurEmerite",
+    "chatimentDuMale",
+    "chimiste",
+    "ciblesMultiples",
+    "coefPVMana",
+    "combatADeuxArmes",
+    "combatADeuxArmesAmeliore",
+    "combatEnPhalange",
+    "combatKinetique",
+    "combattreLaCorruption",
+    "commandant",
+    "connaissanceDuPoison",
+    "controleDuMetabolisme",
+    "controleSanguin",
+    "corpsElementaire",
+    "corrompu",
+    "coupDeBouclier",
+    "courage",
+    "creatureArtificielle",
+    "creatureDeLHiver",
+    "creatureIntangible",
+    "critiqueEpiqueSorts",
+    "crocEnJambe",
+    "deCanalisation",
+    "DEF",
+    "DEF_magie",
+    "defDeriveeDe",
+    "defenseIntuitive",
+    "defierLaMort",
+    "dentellesEtRapiere",
+    "devorer",
+    "difficulteOmbreMouvante",
+    "diviseEffet_",
+    "diviseEffet_elementaire",
+    "dragon",
+    "dragonInvincble",
+    "dragonInvincible",
+    "drainDeSang",
+    "durACuire",
+    "démon",
+    "ecraser",
+    "ecuyer",
+    "ecuyerDe",
+    "effigie",
+    "elfe",
+    "elfeNoir",
+    "embuscade",
+    "emissaireDuDragonInvincible",
+    "enchainement",
+    "energieDeLaMort",
+    "energieImpie",
+    "ennemiDuBatonDesRunesMortes",
+    "espritVide",
+    "esquive",
+    "esquiveDeLaMagie",
+    "esquiveVoleur",
+    "estUneIllusion",
+    "exemplaire",
+    "expertDuCombat",
+    "expertiseSpecialisee",
+    "explosionFinale",
+    "exsangue",
+    "faireMouche",
+    "familier",
+    "fauchage",
+    "fievreChene",
+    "formeHybrideSuperieure",
+    "fortifiantAvance",
+    "frappeChirurgicale",
+    "frappeDuVide",
+    "frenesie",
+    "fureurDrakonide",
+    "fée",
+    "gardeEliteVengeance",
+    "generalVengeance",
+    "gobelin",
+    "gober",
+    "graceFeline",
+    "graceFelineVoleur",
+    "grosMonstreGrosseArme",
+    "grosseTete",
+    "guetteur",
+    "géant",
+    "hachesEtMarteaux",
+    "hausserLeTon",
+    "hemorragiePestrilax",
+    "horsDePortee",
+    "humanoide",
+    "ignorerLaDouleur",
+    "imageDecaleeAvancee",
+    "immunite_",
+    "immunite_contondant",
+    "immunite_destruction",
+    "immunite_endormi",
+    "immunite_magique",
+    "immunite_mental",
+    "immunite_percant",
+    "immunite_petrification",
+    "immunite_peur",
+    "immunite_psychique",
+    "immunite_surpris",
+    "immunite_tranchant",
+    "immunite_tueurFantasmagorique",
+    "immuniteAbsorptionVampire",
+    "immuniteAuxArmes",
+    "immuniteAuxCritiques",
+    "immuniteAuxSournoises",
+    "immuniteMagieGolem",
+    "immuniteSaignement",
+    "increvable",
+    "increvableHumain",
+    "inderacinable",
+    "initiativeDeriveeDe",
+    "insecte",
+    "insensibleAffaibli",
+    "insignifiant",
+    "instinctDeSurvie",
+    "instinctDeSurvieHumain",
+    "intelligenceDuCombat",
+    "interchangeable",
+    "invisibleEnCombat",
+    "invulnerable",
+    "joliCoup",
+    "laissezLeMoi",
+    "lameConsacree",
+    "langageSombreHetre",
+    "liberateurDAnathazerin",
+    "liberateurDeDorn",
+    "liberateurDeKerserac",
+    "liberteDAction",
+    "lienEpique",
+    "loupParmiLesLoups",
+    "lutinGrosBill",
+    "lycanthrope",
+    "lycanthropeEventre",
+    "magieDeCombat",
+    "magieEnArmure",
+    "magieEnArmureFacilitee",
+    "manoeuvreDuelliste",
+    "marcheSylvestre",
+    "massacrerLaPietaille",
+    "mauvais",
+    "memePasMal",
+    "messageSiCritique",
+    "monture",
+    "montureDe",
+    "montureLoyale",
+    "montureMagique",
+    "morsureDuSerpent",
+    "mortDemandeConfirmation",
+    "mortVivant",
+    "nAbandonneJamais",
+    "natureNourriciereBaies",
+    "nbCorpsElementaire",
+    "nbDesFeinte",
+    "necromancien",
+    "neProvoquePasAttaqueOpportunite",
+    "nonVivant",
+    "ordreDuChevalierDragon",
+    "pacifisme",
+    "pacteSanglant",
+    "pasAttaqueOpportunite",
+    "pasDuVent",
+    "peauDEcorceAvancee",
+    "peauDePierre",
+    "pecheThassilion",
+    "perteDeSubstance",
+    "petiteTaille",
+    "peutEnrager",
+    "phylactereNegatif",
+    "phylacterePositif",
+    "piquresDInsectes",
+    "pirouettes",
+    "plusViteQueSonOmbre",
+    "porteurDuBouclierDeGrabuge",
+    "poudrePuissante",
+    "projection",
+    "proprioception",
+    "protectionDMZone",
+    "protectionDMZone_",
+    "protectionSouffleDeDragon",
+    "protegerUnAllieAvance",
+    "PVPartagesAvec",
+    "quadrupede",
+    "radarMental",
+    "rageDuBerserkAmelioree",
+    "raillerieImpossible",
+    "rapideCommeSonOmbre",
+    "RD_critique",
+    "rdSouffleDeDragon",
+    "reduireLaDistance",
+    "reflexesFelins",
+    "regardPetrifiant",
+    "riposte",
+    "saisirEtBroyer",
+    "sangDeFerIf",
+    "sangFroid",
+    "sansEsprit",
+    "sansPeur",
+    "scienceDuCritique",
+    "secondeChanceObjet",
+    "secondSouffle",
+    "sensAffutes",
+    "sergent",
+    "siphonDesAmes",
+    "siphonDesAmesPrioritaire",
+    "sournoisesParTour",
+    "specialisationGuerrier",
+    "tailleFauchage",
+    "techniqueDuSabre",
+    "tenacite",
+    "tirDeSemonce",
+    "tirDouble",
+    "tirFatal",
+    "tirParabolique",
+    "tirPrecis",
+    "tokenFormeDArbre",
+    "tour",
+    "tourDeForce",
+    "toutPetit",
+    "transformationRegeneratrice",
+    "tropPetit",
+    "vampire",
+    "vegetatif",
+    "ventreMou",
+    "vetementsSacres",
+    "vieArtificielle",
+    "violenceCiblee",
+    "visionDansLeNoir",
+    "vitaliteEpique",
+    "vitaliteSurnaturelle",
+    "vitesseDuFelin",
+    "voieDeLaConjuration",
+    "voieDeLAlchimie",
+    "voieDeLaMagieElementaliste",
+    "voieDeLArcEtDuCheval",
+    "voieDeLArchange",
+    "voieDeLaSurvie",
+    "voieDesElixirs",
+    "voieDesExplosifs",
+    "voieDesForets",
+    "voieDesRunes",
+    "voieDesSoins",
+    "voieDesVegetaux",
+    "voieDuGuerisseur",
+    "voieDuMeneurDHomme",
+    "voieDuSoldat",
+    "voieOutreTombe",
+    "volant",
+    "vulnerableCritique",
+    "volantSuspendu",
+    "maindroite",
+    "pnj_for",
+    "pnj_dex",
+    "pnj_con",
+    "pnj_int",
+    "pnj_sag",
+    "pnj_cha",
+    "mutationMusclesHypertrophies",
+    "grandeTaille",
+    "lycanthropie",
+    "mutationSilhouetteFiliforme",
+    "agrandissement",
+    "niveau",
+    "ETATDE",
+    "poisonAffaiblissant",
+    "poisonAffaiblissantLong",
+    "statueDeBois",
+    "souffleDeMort",
+    "petrifie",
+    "attributDeCombat_premiereAttaque",
+    "frappeDesArcanes",
+    "forgeron(",
+    "defbouclier",
+    "limiteParCombat_dejaFrappeContact",
+    "aura",
+    "objetAnime",
+    "blessureStabilise",
+    "etatExsangue",
+    "formeDArbre",
+    "DMTEMP",
+    "osBrises",
+    "blessureQuiSaigne",
+    "reactionAllergique",
+    "DV",
+    "ATKCAC_DIV",
+    "mod_atkcac",
+    "atkcac_base",
+    "ATKTIR_DIV",
+    "mod_atktir",
+    "atktir_base",
+    "ATKMAG_DIV",
+    "mod_atkmag",
+    "atkmag_base",
+    "changementDeFormeUtiliseAttaqueMag",
+    "PV",
+    "espaceExigu",
+    "defarmureon",
+    "defarmuremalus",
+    "defbouclieron",
+    "defboucliermalus",
+    "foretVivanteEnnemie",
+    "monteSur",
+    "runeLizura",
+    "runeMitrah",
+    "chantDesHeros",
+    "benediction",
+    "inspiration",
+    "lameDeLigneePerdue",
+    "strangulation",
+    "nueeDInsectes",
+    "nueeDeCriquets",
+    "nueeDeScorpions",
+    "putrefactionOutreTombe",
+    "ondesCorruptrices",
+    "sangDeLArbreCoeur",
+    "fievreux",
+    "secoue",
+    "sensDuDevoir",
+    "tremblementMineur",
+    "casque_on",
+    "casque_malus",
+    "aspectDuDemon",
+    "constructionTailleHumaine",
+    "formeHybride",
+    "rayonAffaiblissant",
+    "secretsDeLAuDela",
+    "aspectDeLaSuccube",
+    "mutationSilhouetteMassive",
+    "mortMaisNAbandonnePas",
+    "malediction",
+    "option_pc",
+    "jets_caches",
+    "runeForgesort_énergie",
+    "paradeCroisee",
+    "formeDAnge",
+    "pnj_init",
+    "INIT_DIV",
+    "mod_initiative",
+    "sixiemeSens",
+    "masqueDuPredateur",
+    "masqueDuPredateurAmeLiee",
+    "cadavreAnime",
+    "prescienceUtilisee",
+    "rapideCommeLeVent",
+    "PVsDebutCombat",
+    "bonusInitVariable",
+    "detournerLeRegard",
+    "runeMelianil",
+    "danseIrresistible",
+    "forceDeGeant",
+    "armeBrulante",
+    "prisonVegetale",
+    "toiles",
+    "armeSecreteBarde",
+    "agrippeParUnDemon",
+    "inconfort",
+    "bonusAttaqueTemp",
+    "defarmure",
+    "pnj_def",
+    "armureDEau",
+    "armureDuMage",
+    "DEFDIV",
+    "attributDeCombat_pacifismeAnnule",
+    "peauDEcorce",
+    "peauDEcorceAmeLiee",
+    "champDeProtection",
+    "mutationCuirasse",
+    "aveugleManoeuvre",
+    "detectionDeLInvisible",
+    "magnetisme",
+    "diversionManoeuvre",
+    "protectionContreLeMal",
+    "frenesieMinotaure",
+    "attaqueRisquee",
+    "bondFelisDEF",
+    "progresserACouvert",
+    "etreinteImmole",
+    "etreinteScorpionRatee",
+    "presenceGlaciale",
+    "cyclone",
+    "tenirADistance",
+    "danseDesLames",
+    "rage",
+    "limiteParTour_ascensionSolaireTouche",
+    "reactionViolente",
+    "drainDeForce",
+    "malchance",
+    "enrage",
+    "noyade",
+    "fureurDrakonideCritique",
+    "attaque_en_puissance_check",
+    "attaque_en_puissance",
+    "attaque_assuree_check",
+    "attaque_dm_temp_check",
+    "attaque_de_groupe",
+    "criDuPredateur",
+    "baroudHonneurActif",
+    "zoneDeSilence",
+    "attaque_risquee_check",
+    "enerve",
+    "armesNaturelles",
+    "jugeVindicte",
+    "expose",
+    "criDeGuerre",
+    "intangible",
+    "intangibleInvisible",
+    "paralysieRoublard",
+    "rageDuBerserk",
+    "drainDeForceSup",
+    "ombreMortelle",
+    "tenuADistanceManoeuvre(",
+    "limiteParTour_frappeDuVidePossible",
+    "sanctuaire",
+    "immuniteA",
+    "armureDeFeu",
+    "ManteauRadieux",
+    "formeGazeuse",
+    "defieParGuerrier",
+    "rituelAssure",
+    "masqueMortuaire",
+    "masqueMortuaireAmeLiee",
+    "menaceManoeuvre(",
+    "etreinteImmolePar",
+    "clignotement",
+    "momentDePerfection",
+    "imageDecalee",
+    "runeForgesort_protection",
+    "encaisserUnCoup",
+    "absorberUnSort",
+    "absorberUnCoup",
+    "cercleDeProtection",
+    "runeForgesort_puissance(",
+    "dedouble",
+    "dedoublement",
+    "limiteParTour_exemplaire",
+    "carquoisMagique",
+    "memePasMalBonus",
+    "armesEnflammees",
+    "hemorragie",
+    "attaqueArmeeConjuree",
+    "sousTension",
+    "sangMordant",
+    "rechargeDuKiai",
+    "seulContreTous",
+    "protectionContreLesProjectiles",
+    "flou",
+    "mutationFourrureViolette",
+    "mutationEcaillesRouges",
+    "mutationSangNoir",
+    "armureMagique",
+    "protectionContreLesElements",
+    "option_pr",
+    "endormi",
+    "blessureInconscient",
+    "secondeChanceObjetUtilisee",
+    "aAgiAZeroPV",
+    "agitAZeroPV",
+    "aCouvert",
+    "casque_rd",
+    "peauDePierreMag",
+    "dominationPsy",
+    "attributDeCombat_sergentUtilise",
+    "increvableHumainUtilise",
+    "estGobePar",
+    "enveloppePar",
+    "confusion",
+    "secondSouffleUtilise",
+    "de_mana",
+    "interposer",
+    "hate",
+    "ventDesAmes",
+    "etreinteScorpionPar",
+    "estEcrasePar",
+    "estAgrippePar",
+    "estDevorePar",
+    "montrerattaques",
+    "montrerarmeenmain",
+    "intangiblePuissant",
+    "intangibleInvisiblePuissant",
+    "runeIsulys",
+    "lumiere",
+    "cercleDeProtectionActif",
+    "marqueVindicte",
+    "sceauxVindicte",
+    "tailleDeTokenNormale",
+    "immunise24HA_injonction",
+    "limiteParJour_tueurFantasmagorique",
+    "limiteParJour_enkystementLointain",
+    "injonctionMortelle",
+    "transeDeGuérison",
+    "option_pm",
+    "estMontePar",
+    "pointsDeSang",
+    "putrefaction",
+    "bourse_pp",
+    "bourse_po",
+    "bourse_pa",
+    "bourse_pc",
+    "bourse_",
+    "decoince",
+    "rune",
+    "teteequipe",
+    "changementDeToken",
+    "changementDeForme",
+    "defenseArmeeDesMorts",
+    "bloqueManoeuvre",
+    "affaibli",
+    "runeBryniza"
+  ],
+  "predicate_families": [
+    "immunite_",
+    "protectionDMZone_",
+    "diviseEffet_",
+    "absorptionA_",
+    "faiblesseMajeureA_",
+    "resistanceA_",
+    "vulnerableA_",
+    "bonusSaveContre_",
+    "bonusTests_",
+    "bonus_",
+    "actionDegainer"
+  ],
+  "damage_types": [
+    "feu",
+    "air",
+    "eau",
+    "terre",
+    "ombre",
+    "lumiere",
+    "force",
+    "toxique",
+    "psychique",
+    "nature",
+    "necrotique",
+    "radiant",
+    "arcane",
+    "froid",
+    "acide",
+    "electrique",
+    "sonique",
+    "poison",
+    "maladie",
+    "argent",
+    "drain",
+    "energie",
+    "tranchant",
+    "percant",
+    "contondant"
+  ],
+  "options": [
+    {
+      "name": "poudre_explosif",
+      "explanation": "Les armes à poudre font des dégâts explosifs",
+      "default": "true",
+      "type": "bool"
+    },
+    {
+      "name": "blessures_graves",
+      "explanation": "Si on arrive à 0 PV, on perd 1PR, et si on a plus de PR, on a une blessure grave.",
+      "default": "true",
+      "type": "bool"
+    },
+    {
+      "name": "dm_explosifs",
+      "explanation": "Tous les dés de DM sont explosifs",
+      "default": "false",
+      "type": "bool"
+    },
+    {
+      "name": "mana_totale",
+      "explanation": "Tous les sorts ont un coût, celui des tempêtes de mana est multiplié par 3",
+      "default": "false",
+      "type": "bool"
+    },
+    {
+      "name": "contrecoup",
+      "explanation": "Avec la Mana Totale, permet au lanceur de sort de payer un déficit de PM en PV (COF p. 181)",
+      "default": "false",
+      "type": "bool"
+    },
+    {
+      "name": "actions_par_defaut",
+      "explanation": "Sans ability #Actions#, affiche la liste des abilities",
+      "default": "true",
+      "type": "bool"
+    },
+    {
+      "name": "montre_def",
+      "explanation": "montre la DEF des adversaires dans les cadres de combat",
+      "default": "true",
+      "type": "bool"
+    },
+    {
+      "name": "duree_effets",
+      "explanation": "Le script indique la durée des effets associés aux tokens",
+      "default": "false",
+      "type": "bool"
+    },
+    {
+      "name": "markers_personnalises",
+      "explanation": "Utilisation des markers personnalisés commençant par cof",
+      "default": "true",
+      "type": "bool"
+    },
+    {
+      "name": "depense_mana",
+      "explanation": "Le script précise la quantité de mana utilisée dans le chat à chaque fois",
+      "default": "false",
+      "type": "bool"
+    }
+  ]
+}

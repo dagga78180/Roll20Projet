@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>COAlaric V2 ��� Guide exhaustif</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="docs/guide.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">COAlaric V2 ��� Guide exhaustif</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#coalaric-v2-guide-du-commerce-et-de-la-boutique"
+id="toc-coalaric-v2-guide-du-commerce-et-de-la-boutique">COAlaric V2 —
+Guide du commerce et de la boutique</a>
+<ul>
+<li><a href="#pourquoi-séparer-le-commerce-du-catalogue"
+id="toc-pourquoi-séparer-le-commerce-du-catalogue">1. Pourquoi séparer
+le commerce du catalogue</a></li>
+<li><a href="#pré-requis" id="toc-pré-requis">2. Pré-requis</a></li>
+<li><a href="#flux-normal-dun-achat" id="toc-flux-normal-dun-achat">3.
+Flux normal d’un achat</a></li>
+<li><a href="#achat-direct" id="toc-achat-direct">4. Achat
+direct</a></li>
+<li><a href="#marchandage-pourquoi-le-dd-dépend-de-la-remise"
+id="toc-marchandage-pourquoi-le-dd-dépend-de-la-remise">5. Marchandage :
+pourquoi le DD dépend de la remise</a></li>
+<li><a href="#affinité-commerciale" id="toc-affinité-commerciale">6.
+Affinité commerciale</a></li>
+<li><a href="#ardoise-une-dette-qui-modifie-réellement-les-prix"
+id="toc-ardoise-une-dette-qui-modifie-réellement-les-prix">7. Ardoise :
+une dette qui modifie réellement les prix</a></li>
+<li><a href="#vol-risque-accès-et-exposition"
+id="toc-vol-risque-accès-et-exposition">8. Vol : risque, accès et
+exposition</a></li>
+<li><a href="#revente" id="toc-revente">9. Revente</a></li>
+<li><a href="#undo-et-sécurité-transactionnelle"
+id="toc-undo-et-sécurité-transactionnelle">10. Undo et sécurité
+transactionnelle</a></li>
+<li><a href="#ce-que-le-joueur-voit-ce-que-le-mj-décide"
+id="toc-ce-que-le-joueur-voit-ce-que-le-mj-décide">11. Ce que le joueur
+voit / ce que le MJ décide</a>
+<ul>
+<li><a href="#joueur" id="toc-joueur">Joueur</a></li>
+<li><a href="#mj" id="toc-mj">MJ</a></li>
+</ul></li>
+<li><a href="#commandes-courantes" id="toc-commandes-courantes">12.
+Commandes courantes</a></li>
+<li><a href="#dépannage" id="toc-dépannage">13. Dépannage</a>
+<ul>
+<li><a href="#lachat-a-débité-mais-lobjet-nest-pas-là"
+id="toc-lachat-a-débité-mais-lobjet-nest-pas-là">« L’achat a débité mais
+l’objet n’est pas là »</a></li>
+<li><a href="#le-pj-ne-peut-pas-marchander"
+id="toc-le-pj-ne-peut-pas-marchander">« Le PJ ne peut pas marchander
+»</a></li>
+<li><a href="#le-prix-du-site-et-le-prix-roll20-divergent"
+id="toc-le-prix-du-site-et-le-prix-roll20-divergent">« Le prix du site
+et le prix Roll20 divergent »</a></li>
+<li><a href="#le-panier-est-ancien" id="toc-le-panier-est-ancien">« Le
+panier est ancien »</a></li>
+</ul></li>
+<li><a href="#référence-exhaustive-des-sous-commandes-coalaric"
+id="toc-référence-exhaustive-des-sous-commandes-coalaric">14. Référence
+exhaustive des sous-commandes COAlaric</a></li>
+<li><a href="#contrat-complet-dintégration-avec-cofitem"
+id="toc-contrat-complet-dintégration-avec-cofitem">15. Contrat complet
+d’intégration avec CoFItem</a></li>
+<li><a href="#flux-de-créationtest-complet"
+id="toc-flux-de-créationtest-complet">16. Flux de création/test
+complet</a></li>
+<li><a href="#fiches-techniques-des-sous-commandes-coalaric"
+id="toc-fiches-techniques-des-sous-commandes-coalaric">17. Fiches
+techniques des sous-commandes COAlaric</a>
+<ul>
+<li><a href="#co-alaric"
+id="toc-co-alaric"><code>!co-alaric</code></a></li>
+<li><a href="#co-alaric-affinite"
+id="toc-co-alaric-affinite"><code>!co-alaric affinite</code></a></li>
+<li><a href="#co-alaric-affinity-delta"
+id="toc-co-alaric-affinity-delta"><code>!co-alaric affinity-delta</code></a></li>
+<li><a href="#co-alaric-affinity-set"
+id="toc-co-alaric-affinity-set"><code>!co-alaric affinity-set</code></a></li>
+<li><a href="#co-alaric-ardoise"
+id="toc-co-alaric-ardoise"><code>!co-alaric ardoise</code></a></li>
+<li><a href="#co-alaric-buy-offer"
+id="toc-co-alaric-buy-offer"><code>!co-alaric buy-offer</code></a></li>
+<li><a href="#co-alaric-debt-clear"
+id="toc-co-alaric-debt-clear"><code>!co-alaric debt-clear</code></a></li>
+<li><a href="#co-alaric-debt-pay"
+id="toc-co-alaric-debt-pay"><code>!co-alaric debt-pay</code></a></li>
+<li><a href="#co-alaric-debt-refuse"
+id="toc-co-alaric-debt-refuse"><code>!co-alaric debt-refuse</code></a></li>
+<li><a href="#co-alaric-debt-request"
+id="toc-co-alaric-debt-request"><code>!co-alaric debt-request</code></a></li>
+<li><a href="#co-alaric-debt-set"
+id="toc-co-alaric-debt-set"><code>!co-alaric debt-set</code></a></li>
+<li><a href="#co-alaric-diagnostic"
+id="toc-co-alaric-diagnostic"><code>!co-alaric diagnostic</code></a></li>
+<li><a href="#co-alaric-haggle-force-roll"
+id="toc-co-alaric-haggle-force-roll"><code>!co-alaric haggle-force-roll</code></a></li>
+<li><a href="#co-alaric-haggle-offer"
+id="toc-co-alaric-haggle-offer"><code>!co-alaric haggle-offer</code></a></li>
+<li><a href="#co-alaric-haggle-resolve"
+id="toc-co-alaric-haggle-resolve"><code>!co-alaric haggle-resolve</code></a></li>
+<li><a href="#co-alaric-menu"
+id="toc-co-alaric-menu"><code>!co-alaric menu</code></a></li>
+<li><a href="#co-alaric-panier"
+id="toc-co-alaric-panier"><code>!co-alaric panier</code></a></li>
+<li><a href="#co-alaric-purchase-accept"
+id="toc-co-alaric-purchase-accept"><code>!co-alaric purchase-accept</code></a></li>
+<li><a href="#co-alaric-sale-accept-offer"
+id="toc-co-alaric-sale-accept-offer"><code>!co-alaric sale-accept-offer</code></a></li>
+<li><a href="#co-alaric-sale-ask"
+id="toc-co-alaric-sale-ask"><code>!co-alaric sale-ask</code></a></li>
+<li><a href="#co-alaric-sale-force-roll"
+id="toc-co-alaric-sale-force-roll"><code>!co-alaric sale-force-roll</code></a></li>
+<li><a href="#co-alaric-sale-haggle"
+id="toc-co-alaric-sale-haggle"><code>!co-alaric sale-haggle</code></a></li>
+<li><a href="#co-alaric-sale-open"
+id="toc-co-alaric-sale-open"><code>!co-alaric sale-open</code></a></li>
+<li><a href="#co-alaric-sale-payout"
+id="toc-co-alaric-sale-payout"><code>!co-alaric sale-payout</code></a></li>
+<li><a href="#co-alaric-sale-player-accept"
+id="toc-co-alaric-sale-player-accept"><code>!co-alaric sale-player-accept</code></a></li>
+<li><a href="#co-alaric-sale-price"
+id="toc-co-alaric-sale-price"><code>!co-alaric sale-price</code></a></li>
+<li><a href="#co-alaric-sale-resolve"
+id="toc-co-alaric-sale-resolve"><code>!co-alaric sale-resolve</code></a></li>
+<li><a href="#co-alaric-select-all"
+id="toc-co-alaric-select-all"><code>!co-alaric select-all</code></a></li>
+<li><a href="#co-alaric-select-cancel"
+id="toc-co-alaric-select-cancel"><code>!co-alaric select-cancel</code></a></li>
+<li><a href="#co-alaric-select-confirm"
+id="toc-co-alaric-select-confirm"><code>!co-alaric select-confirm</code></a></li>
+<li><a href="#co-alaric-select-none"
+id="toc-co-alaric-select-none"><code>!co-alaric select-none</code></a></li>
+<li><a href="#co-alaric-select-start"
+id="toc-co-alaric-select-start"><code>!co-alaric select-start</code></a></li>
+<li><a href="#co-alaric-select-toggle"
+id="toc-co-alaric-select-toggle"><code>!co-alaric select-toggle</code></a></li>
+<li><a href="#co-alaric-theft-abort"
+id="toc-co-alaric-theft-abort"><code>!co-alaric theft-abort</code></a></li>
+<li><a href="#co-alaric-theft-debt"
+id="toc-co-alaric-theft-debt"><code>!co-alaric theft-debt</code></a></li>
+<li><a href="#co-alaric-theft-finish-failure"
+id="toc-co-alaric-theft-finish-failure"><code>!co-alaric theft-finish-failure</code></a></li>
+<li><a href="#co-alaric-theft-roll"
+id="toc-co-alaric-theft-roll"><code>!co-alaric theft-roll</code></a></li>
+<li><a href="#co-alaric-theft-set"
+id="toc-co-alaric-theft-set"><code>!co-alaric theft-set</code></a></li>
+<li><a href="#co-alaric-theft-stolen-only"
+id="toc-co-alaric-theft-stolen-only"><code>!co-alaric theft-stolen-only</code></a></li>
+<li><a href="#co-alaric-tx-block"
+id="toc-co-alaric-tx-block"><code>!co-alaric tx-block</code></a></li>
+<li><a href="#co-alaric-tx-cancel"
+id="toc-co-alaric-tx-cancel"><code>!co-alaric tx-cancel</code></a></li>
+<li><a href="#co-alaric-vendre"
+id="toc-co-alaric-vendre"><code>!co-alaric vendre</code></a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="coalaric-v2-guide-du-commerce-et-de-la-boutique">COAlaric V2 —
+Guide du commerce et de la boutique</h1>
+<p>COAlaric ajoute une couche <strong>sociale et économique</strong>
+autour de CoFItem. Un achat n’est plus seulement « retirer des pièces et
+donner un objet » : la relation avec Alaric, le marchandage, une dette
+éventuelle et le risque d’un vol peuvent influencer la transaction.</p>
+<p>COAlaric ne remplace ni CoFItem ni COFantasy :</p>
+<ul>
+<li><strong>CoFItem</strong> sait ce qu’est l’objet et comment le
+donner/retirer ;</li>
+<li><strong>COFantasy</strong> sait faire les jets et fournit l’Undo
+;</li>
+<li><strong>COAlaric</strong> orchestre la transaction.</li>
+</ul>
+<hr />
+<h2 id="pourquoi-séparer-le-commerce-du-catalogue">1. Pourquoi séparer
+le commerce du catalogue</h2>
+<p>Le catalogue répond à « <strong>qu’est-ce que cet objet ?</strong> ».
+Le commerce répond à « <strong>dans quelles conditions ce personnage
+peut-il l’obtenir ?</strong> ».</p>
+<p>Cette séparation permet d’utiliser le même objet dans plusieurs
+contextes sans changer ses règles : prix négocié, dette, cadeau, vol ou
+revente ne modifient pas la définition mécanique de l’objet.</p>
+<hr />
+<h2 id="pré-requis">2. Pré-requis</h2>
+<ul>
+<li>COFantasy V2 actif ;</li>
+<li>CoFItem V2 actif ;</li>
+<li>COAlaric V2 actif ;</li>
+<li>PJ représenté par une fiche valide ;</li>
+<li>joueur contrôlant le PJ pour les choix joueur.</li>
+</ul>
+<p>Diagnostic :</p>
+<pre class="text"><code>!co-alaric diagnostic</code></pre>
+<p>Menu MJ :</p>
+<pre class="text"><code>!co-alaric</code></pre>
+<hr />
+<h2 id="flux-normal-dun-achat">3. Flux normal d’un achat</h2>
+<ol type="1">
+<li>Le site Alaric prépare un panier et génère <strong>Copier pour
+Roll20</strong>.</li>
+<li>Le MJ colle la commande dans le chat.</li>
+<li>Le panier est associé au PJ concerné.</li>
+<li>Le joueur choisit acheter, marchander ou tenter un vol selon les
+options proposées.</li>
+<li>COAlaric vérifie à nouveau monnaie/conditions au moment de
+valider.</li>
+<li>CoFItem distribue l’objet.</li>
+<li>COAlaric débite la monnaie et enregistre la transaction.</li>
+<li>En cas d’échec intermédiaire, l’opération est rollbackée.</li>
+</ol>
+<p>Pourquoi revérifier au dernier moment ? Parce qu’un joueur peut
+dépenser des pièces ou modifier son inventaire entre l’ouverture du
+panier et le clic final.</p>
+<hr />
+<h2 id="achat-direct">4. Achat direct</h2>
+<p>L’achat direct est la voie sans test : si le PJ peut acheter et
+possède les fonds, le prix est payé et l’objet est remis via
+CoFItem.</p>
+<p>La monnaie est gérée en PP/PO/PA/PC. La conversion est faite par le
+script pour éviter les erreurs de calcul manuel.</p>
+<p>Une <strong>ardoise</strong> peut appliquer une majoration au prix.
+Cette majoration sert simultanément à rembourser une partie de la dette
+restante.</p>
+<hr />
+<h2 id="marchandage-pourquoi-le-dd-dépend-de-la-remise">5. Marchandage :
+pourquoi le DD dépend de la remise</h2>
+<p>Le marchandage mesure non pas « est-ce que le PJ est sympathique ? »,
+mais <strong>jusqu’où il essaie de pousser le marchand</strong>. Une
+petite remise est plausible ; une remise énorme devient difficile.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Remise demandée</th>
+<th style="text-align: right;">DD de base Persuasion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">≤ 5 %</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">≤ 10 %</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">≤ 15 %</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">≤ 20 %</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">≤ 25 %</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">≤ 30 %</td>
+<td style="text-align: right;">30</td>
+</tr>
+</tbody>
+</table>
+<p>Au-delà de 30 %, le MJ reprend la main : refuser, fixer un prix ou
+autoriser un DD spécial.</p>
+<p>L’<strong>affinité commerciale</strong> modifie la situation. Elle ne
+remplace pas le jet : elle représente la relation accumulée avec
+Alaric.</p>
+<hr />
+<h2 id="affinité-commerciale">6. Affinité commerciale</h2>
+<p>Attribut : <code>coalaric_affinite</code>, de -3 à +3.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Valeur</th>
+<th>Relation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">-3</td>
+<td>Rupture</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-2</td>
+<td>Mauvaise relation</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-1</td>
+<td>Méfiance</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td>Neutre</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">+1</td>
+<td>Apprécié</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">+2</td>
+<td>Très apprécié</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">+3</td>
+<td>Favori</td>
+</tr>
+</tbody>
+</table>
+<p>Commande MJ :</p>
+<pre class="text"><code>!co-alaric affinite --target CHARACTER_ID</code></pre>
+<p>Pourquoi un score persistant ? Pour que la relation commerciale soit
+une conséquence de campagne et pas seulement un jet isolé à chaque
+visite.</p>
+<p>Une affinité négative peut bloquer le marchandage. Associée à une
+ardoise active, elle peut suspendre les achats/ventes ordinaires.</p>
+<hr />
+<h2 id="ardoise-une-dette-qui-modifie-réellement-les-prix">7. Ardoise :
+une dette qui modifie réellement les prix</h2>
+<p>COAlaric utilise :</p>
+<ul>
+<li><code>coalaric_ardoise_initiale</code> ;</li>
+<li><code>coalaric_ardoise_restante</code>.</li>
+</ul>
+<p>Commande :</p>
+<pre class="text"><code>!co-alaric ardoise --target CHARACTER_ID</code></pre>
+<p>Majoration selon la proportion encore due :</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Dette restante</th>
+<th style="text-align: right;">Majoration</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">&gt; 75 % de l’ardoise initiale</td>
+<td style="text-align: right;">+40 %</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">&gt; 50 %</td>
+<td style="text-align: right;">+30 %</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">&gt; 25 %</td>
+<td style="text-align: right;">+20 %</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">≤ 25 %</td>
+<td style="text-align: right;">+10 %</td>
+</tr>
+</tbody>
+</table>
+<p>L’objectif est que la dette soit visible dans le jeu : elle ne se
+contente pas d’être un chiffre caché, elle affecte les transactions
+suivantes jusqu’à remboursement.</p>
+<hr />
+<h2 id="vol-risque-accès-et-exposition">8. Vol : risque, accès et
+exposition</h2>
+<p>Le vol est volontairement un flux <strong>MJ → réglages →
+jet</strong>, car le DD dépend de la situation physique du magasin.</p>
+<p>Trois facteurs de 0 à 3 :</p>
+<ul>
+<li>accès ;</li>
+<li>exposition ;</li>
+<li>encombrement.</li>
+</ul>
+<p>Formule :</p>
+<pre class="text"><code>DD = 10 + 2 × (accès + exposition + encombrement)</code></pre>
+<p>Le MJ peut ajouter un modificateur circonstanciel de -4, -2, 0, +2 ou
++4.</p>
+<p>Le test utilise <strong>Adresse</strong>. Une marge positive réussit.
+Une marge de -1 à -4 donne une chance de sauvetage (17+ sur 1d20).</p>
+<p>En cas d’échec, le script peut <strong>proposer</strong> une
+modification d’ardoise/affinité, mais le MJ conserve la décision finale.
+C’est important : la conséquence sociale d’un vol dépend de la fiction,
+pas seulement d’une formule.</p>
+<hr />
+<h2 id="revente">9. Revente</h2>
+<pre class="text"><code>!co-alaric vendre --target CHARACTER_ID</code></pre>
+<p>L’offre de base vaut <strong>50 % de la valeur
+catalogue</strong>.</p>
+<p>Si le joueur marchande sa revente :</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Prix demandé / catalogue</th>
+<th style="text-align: right;">DD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">55 %</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">60 %</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">65 %</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">70 %</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">75 %</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">80 %</td>
+<td style="text-align: right;">30</td>
+</tr>
+</tbody>
+</table>
+<p>Après accord, CoFItem retire l’objet et COAlaric crédite la monnaie
+ou rembourse l’ardoise selon le choix.</p>
+<p>Pourquoi ne pas revendre à 100 % ? Parce qu’Alaric assume ensuite le
+risque, l’immobilisation du stock et la marge commerciale.</p>
+<hr />
+<h2 id="undo-et-sécurité-transactionnelle">10. Undo et sécurité
+transactionnelle</h2>
+<pre class="text"><code>!cof-undo</code></pre>
+<p>Une transaction comporte souvent plusieurs mutations : monnaie,
+inventaire, dette. COAlaric essaye de les traiter comme une seule
+opération logique. En cas d’échec technique, il rollbacke. En cas
+d’erreur utilisateur après succès, <code>!cof-undo</code> est le premier
+outil à utiliser.</p>
+<hr />
+<h2 id="ce-que-le-joueur-voit-ce-que-le-mj-décide">11. Ce que le joueur
+voit / ce que le MJ décide</h2>
+<h3 id="joueur">Joueur</h3>
+<ul>
+<li>choisir les objets ;</li>
+<li>accepter un achat ;</li>
+<li>demander un marchandage ;</li>
+<li>tenter un vol lorsque proposé ;</li>
+<li>accepter/refuser certaines propositions.</li>
+</ul>
+<h3 id="mj">MJ</h3>
+<ul>
+<li>contexte de transaction ;</li>
+<li>autoriser/refuser les demandes extrêmes ;</li>
+<li>régler les facteurs d’un vol ;</li>
+<li>décider des conséquences sociales ;</li>
+<li>ajuster affinité et ardoise.</li>
+</ul>
+<p>Cette séparation évite que le script « joue Alaric » à la place du
+MJ.</p>
+<hr />
+<h2 id="commandes-courantes">12. Commandes courantes</h2>
+<pre class="text"><code>!co-alaric
+!co-alaric diagnostic
+!co-alaric affinite --target CHARACTER_ID
+!co-alaric ardoise --target CHARACTER_ID
+!co-alaric vendre --target CHARACTER_ID</code></pre>
+<p>Les commandes <code>sale-*</code>, <code>haggle-*</code>,
+<code>theft-*</code>, <code>select-*</code> et autres sous-commandes
+sont surtout des routes de boutons. Les saisir manuellement est rarement
+utile.</p>
+<hr />
+<h2 id="dépannage">13. Dépannage</h2>
+<h3 id="lachat-a-débité-mais-lobjet-nest-pas-là">« L’achat a débité mais
+l’objet n’est pas là »</h3>
+<p>C’est une situation anormale. Vérifier la sandbox et utiliser
+<code>!cof-undo</code> avant de modifier manuellement la
+monnaie/inventaire.</p>
+<h3 id="le-pj-ne-peut-pas-marchander">« Le PJ ne peut pas marchander
+»</h3>
+<p>Vérifier l’affinité et l’existence d’une ardoise. Une relation
+négative peut volontairement interdire le marchandage.</p>
+<h3 id="le-prix-du-site-et-le-prix-roll20-divergent">« Le prix du site
+et le prix Roll20 divergent »</h3>
+<p>Les deux doivent utiliser le même modèle de prix. Vérifier
+<code>Catalogue_pricing_model.json</code> et la version de CoFItem/du
+site déployée.</p>
+<h3 id="le-panier-est-ancien">« Le panier est ancien »</h3>
+<p>Le prix/les fonds sont revérifiés au moment du paiement. Recréer un
+panier est préférable après une modification importante du
+catalogue.</p>
+<hr />
+<h2 id="référence-exhaustive-des-sous-commandes-coalaric">14. Référence
+exhaustive des sous-commandes COAlaric</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Commande</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>!co-alaric</code></td>
+<td>Menu principal.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric affinite</code></td>
+<td>Flux commerce : affinite.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric affinity-delta</code></td>
+<td>Flux commerce : affinity delta.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric affinity-set</code></td>
+<td>Flux commerce : affinity set.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric ardoise</code></td>
+<td>Flux commerce : ardoise.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric buy-offer</code></td>
+<td>Flux commerce : buy offer.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric debt-clear</code></td>
+<td>Flux commerce : debt clear.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric debt-pay</code></td>
+<td>Flux commerce : debt pay.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric debt-refuse</code></td>
+<td>Flux commerce : debt refuse.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric debt-request</code></td>
+<td>Flux commerce : debt request.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric debt-set</code></td>
+<td>Flux commerce : debt set.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric diagnostic</code></td>
+<td>Flux commerce : diagnostic.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric haggle-force-roll</code></td>
+<td>Flux commerce : haggle force roll.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric haggle-offer</code></td>
+<td>Flux commerce : haggle offer.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric haggle-resolve</code></td>
+<td>Flux commerce : haggle resolve.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric menu</code></td>
+<td>Flux commerce : menu.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric panier</code></td>
+<td>Flux commerce : panier.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric purchase-accept</code></td>
+<td>Flux commerce : purchase accept.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric sale-accept-offer</code></td>
+<td>Flux commerce : sale accept offer.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric sale-ask</code></td>
+<td>Flux commerce : sale ask.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric sale-force-roll</code></td>
+<td>Flux commerce : sale force roll.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric sale-haggle</code></td>
+<td>Flux commerce : sale haggle.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric sale-open</code></td>
+<td>Flux commerce : sale open.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric sale-payout</code></td>
+<td>Flux commerce : sale payout.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric sale-player-accept</code></td>
+<td>Flux commerce : sale player accept.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric sale-price</code></td>
+<td>Flux commerce : sale price.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric sale-resolve</code></td>
+<td>Flux commerce : sale resolve.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric select-all</code></td>
+<td>Flux commerce : select all.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric select-cancel</code></td>
+<td>Flux commerce : select cancel.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric select-confirm</code></td>
+<td>Flux commerce : select confirm.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric select-none</code></td>
+<td>Flux commerce : select none.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric select-start</code></td>
+<td>Flux commerce : select start.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric select-toggle</code></td>
+<td>Flux commerce : select toggle.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric theft-abort</code></td>
+<td>Flux commerce : theft abort.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric theft-debt</code></td>
+<td>Flux commerce : theft debt.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric theft-finish-failure</code></td>
+<td>Flux commerce : theft finish failure.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric theft-roll</code></td>
+<td>Flux commerce : theft roll.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric theft-set</code></td>
+<td>Flux commerce : theft set.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric theft-stolen-only</code></td>
+<td>Flux commerce : theft stolen only.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric tx-block</code></td>
+<td>Flux commerce : tx block.</td>
+</tr>
+<tr class="odd">
+<td><code>!co-alaric tx-cancel</code></td>
+<td>Flux commerce : tx cancel.</td>
+</tr>
+<tr class="even">
+<td><code>!co-alaric vendre</code></td>
+<td>Flux commerce : vendre.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="contrat-complet-dintégration-avec-cofitem">15. Contrat complet
+d’intégration avec CoFItem</h2>
+<p>COAlaric ne doit pas écrire directement les bonus d’un objet sur un
+PJ. Il valide/prépare le <code>cofSpec</code>, demande à CoFItem de
+donner l’objet, puis enregistre la transaction afin que
+<code>!cof-undo</code> puisse revenir en arrière lorsque le pont est
+disponible. Le prix affiché dans Roll20 doit provenir du même modèle
+catalogue que le site Alaric.</p>
+<p>Une entrée de panier exploitable contient au minimum l’identité de
+l’objet, son prix, sa rareté et <code>cofSpec.base</code>.
+<code>cofSpec.quality</code>, <code>cofSpec.affixes</code> et
+<code>cofSpec.mode</code> ne sont présents que lorsque nécessaires. Le
+nom/prix/rareté de haut niveau et ceux de <code>cofSpec</code> doivent
+rester cohérents.</p>
+<h2 id="flux-de-créationtest-complet">16. Flux de création/test
+complet</h2>
+<ol type="1">
+<li>Générer ou choisir un article sur le site Alaric.</li>
+<li>Importer le panier avec <code>!co-alaric panier</code>.</li>
+<li>Utiliser le menu pour choisir l’acheteur et l’action (achat,
+marchandage, vol, dette).</li>
+<li>Laisser COAlaric calculer/valider le prix et créer la
+transaction.</li>
+<li>Laisser CoFItem créer/transférer l’objet : ne pas dupliquer l’objet
+à la main.</li>
+<li>Vérifier le message de succès et, en cas d’erreur, utiliser le
+diagnostic ou <code>!cof-undo</code> plutôt que corriger les attributs
+au hasard.</li>
+</ol>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<h2 id="fiches-techniques-des-sous-commandes-coalaric">17. Fiches
+techniques des sous-commandes COAlaric</h2>
+<p>Cette partie montre les flags réellement lus par chaque étape de
+transaction. Les commandes contenant <code>--tx</code> manipulent une
+transaction temporaire générée par COAlaric : en usage normal, utilisez
+les boutons du menu afin de ne pas réutiliser un identifiant expiré.</p>
+<h3 id="co-alaric"><code>!co-alaric</code></h3>
+<pre class="text"><code>!co-alaric</code></pre>
+<p>Cette entrée ouvre un menu ou un flux sans paramètre direct
+supplémentaire.</p>
+<p><strong>Moteur :</strong> <code>mainMenu</code>.</p>
+<h3 id="co-alaric-affinite"><code>!co-alaric affinite</code></h3>
+<pre class="text"><code>!co-alaric affinite [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--target</code>.</p>
+<p><strong>Moteur :</strong> <code>affinityMenu</code>.</p>
+<h3
+id="co-alaric-affinity-delta"><code>!co-alaric affinity-delta</code></h3>
+<pre class="text"><code>!co-alaric affinity-delta [--delta VALEUR] [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--delta</code>, <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>affinityDelta</code>.</p>
+<h3
+id="co-alaric-affinity-set"><code>!co-alaric affinity-set</code></h3>
+<pre class="text"><code>!co-alaric affinity-set [--target VALEUR] [--value VALEUR]</code></pre>
+<p>Flags/options observés : <code>--target</code>,
+<code>--value</code>.</p>
+<p><strong>Moteur :</strong> <code>affinitySet</code>.</p>
+<h3 id="co-alaric-ardoise"><code>!co-alaric ardoise</code></h3>
+<pre class="text"><code>!co-alaric ardoise [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--target</code>.</p>
+<p><strong>Moteur :</strong> <code>slateMenu</code>.</p>
+<h3 id="co-alaric-buy-offer"><code>!co-alaric buy-offer</code></h3>
+<pre class="text"><code>!co-alaric buy-offer [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>buyOffer</code>.</p>
+<h3 id="co-alaric-debt-clear"><code>!co-alaric debt-clear</code></h3>
+<pre class="text"><code>!co-alaric debt-clear [--amount VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--amount</code>,
+<code>--target</code>.</p>
+<p><strong>Moteur :</strong> <code>debtSet</code>.</p>
+<h3 id="co-alaric-debt-pay"><code>!co-alaric debt-pay</code></h3>
+<pre class="text"><code>!co-alaric debt-pay [--amount VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--amount</code>,
+<code>--target</code>.</p>
+<p><strong>Moteur :</strong> <code>debtPay</code>.</p>
+<h3 id="co-alaric-debt-refuse"><code>!co-alaric debt-refuse</code></h3>
+<pre class="text"><code>!co-alaric debt-refuse [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--target</code>.</p>
+<p><strong>Moteur :</strong> <code>debtRefuse</code>.</p>
+<h3
+id="co-alaric-debt-request"><code>!co-alaric debt-request</code></h3>
+<pre class="text"><code>!co-alaric debt-request [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--target</code>.</p>
+<p><strong>Moteur :</strong> <code>debtRequest</code>.</p>
+<h3 id="co-alaric-debt-set"><code>!co-alaric debt-set</code></h3>
+<pre class="text"><code>!co-alaric debt-set [--amount VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--amount</code>,
+<code>--target</code>.</p>
+<p><strong>Moteur :</strong> <code>debtSet</code>.</p>
+<h3 id="co-alaric-diagnostic"><code>!co-alaric diagnostic</code></h3>
+<pre class="text"><code>!co-alaric diagnostic</code></pre>
+<p>Cette entrée ouvre un menu ou un flux sans paramètre direct
+supplémentaire.</p>
+<p><strong>Moteur :</strong> <code>diagnostic</code>.</p>
+<h3
+id="co-alaric-haggle-force-roll"><code>!co-alaric haggle-force-roll</code></h3>
+<pre class="text"><code>!co-alaric haggle-force-roll [--dd VALEUR] [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--dd</code>, <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>forceHaggleRoll</code>.</p>
+<h3
+id="co-alaric-haggle-offer"><code>!co-alaric haggle-offer</code></h3>
+<pre class="text"><code>!co-alaric haggle-offer [--offer VALEUR] [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--offer</code>, <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>haggleOffer</code>.</p>
+<h3
+id="co-alaric-haggle-resolve"><code>!co-alaric haggle-resolve</code></h3>
+<pre class="text"><code>!co-alaric haggle-resolve [--price VALEUR] [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--price</code>, <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>haggleResolve</code>.</p>
+<h3 id="co-alaric-menu"><code>!co-alaric menu</code></h3>
+<pre class="text"><code>!co-alaric menu</code></pre>
+<p>Cette entrée ouvre un menu ou un flux sans paramètre direct
+supplémentaire.</p>
+<p><strong>Moteur :</strong> <code>mainMenu</code>.</p>
+<h3 id="co-alaric-panier"><code>!co-alaric panier</code></h3>
+<pre class="text"><code>!co-alaric panier [--data VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--data</code>,
+<code>--target</code>.</p>
+<p><strong>Moteur :</strong> <code>importCart</code>.</p>
+<h3
+id="co-alaric-purchase-accept"><code>!co-alaric purchase-accept</code></h3>
+<pre class="text"><code>!co-alaric purchase-accept [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--tx</code>.</p>
+<p>Contrôles utiles : Paiement impossible.</p>
+<p><strong>Moteur :</strong> <code>purchaseAccept</code>.</p>
+<h3
+id="co-alaric-sale-accept-offer"><code>!co-alaric sale-accept-offer</code></h3>
+<pre class="text"><code>!co-alaric sale-accept-offer [--price VALEUR] [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--price</code>, <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>saleAcceptOffer</code>.</p>
+<h3 id="co-alaric-sale-ask"><code>!co-alaric sale-ask</code></h3>
+<pre class="text"><code>!co-alaric sale-ask [--ask VALEUR] [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--ask</code>, <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>saleAsk</code>.</p>
+<h3
+id="co-alaric-sale-force-roll"><code>!co-alaric sale-force-roll</code></h3>
+<pre class="text"><code>!co-alaric sale-force-roll [--dd VALEUR] [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--dd</code>, <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>saleForceRoll</code>.</p>
+<h3 id="co-alaric-sale-haggle"><code>!co-alaric sale-haggle</code></h3>
+<pre class="text"><code>!co-alaric sale-haggle [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>saleHaggle</code>.</p>
+<h3 id="co-alaric-sale-open"><code>!co-alaric sale-open</code></h3>
+<pre class="text"><code>!co-alaric sale-open [--i VALEUR] [--pick VALEUR] [--qty VALEUR] [--ref VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--i</code>, <code>--pick</code>,
+<code>--qty</code>, <code>--ref</code>, <code>--target</code>.</p>
+<p>Contrôles utiles : Référence de bouton invalide. Relance le menu de
+vente. / Cible PJ invalide dans le bouton. Relance le menu de
+vente..</p>
+<p><strong>Moteur :</strong> <code>saleOpen</code>.</p>
+<h3 id="co-alaric-sale-payout"><code>!co-alaric sale-payout</code></h3>
+<pre class="text"><code>!co-alaric sale-payout [--mode VALEUR] [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--mode</code>, <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>salePayout</code>.</p>
+<h3
+id="co-alaric-sale-player-accept"><code>!co-alaric sale-player-accept</code></h3>
+<pre class="text"><code>!co-alaric sale-player-accept [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>salePlayerAcceptCmd</code>.</p>
+<h3 id="co-alaric-sale-price"><code>!co-alaric sale-price</code></h3>
+<pre class="text"><code>!co-alaric sale-price [--price VALEUR] [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--price</code>, <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>salePrice</code>.</p>
+<h3
+id="co-alaric-sale-resolve"><code>!co-alaric sale-resolve</code></h3>
+<pre class="text"><code>!co-alaric sale-resolve [--price VALEUR] [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--price</code>, <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>saleResolve</code>.</p>
+<h3 id="co-alaric-select-all"><code>!co-alaric select-all</code></h3>
+<pre class="text"><code>!co-alaric select-all [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>selectAll</code>.</p>
+<h3
+id="co-alaric-select-cancel"><code>!co-alaric select-cancel</code></h3>
+<pre class="text"><code>!co-alaric select-cancel [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>selectCancel</code>.</p>
+<h3
+id="co-alaric-select-confirm"><code>!co-alaric select-confirm</code></h3>
+<pre class="text"><code>!co-alaric select-confirm [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>selectConfirm</code>.</p>
+<h3 id="co-alaric-select-none"><code>!co-alaric select-none</code></h3>
+<pre class="text"><code>!co-alaric select-none [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>selectAll</code>.</p>
+<h3
+id="co-alaric-select-start"><code>!co-alaric select-start</code></h3>
+<pre class="text"><code>!co-alaric select-start [--mode VALEUR] [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--mode</code>, <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>selectStart</code>.</p>
+<h3
+id="co-alaric-select-toggle"><code>!co-alaric select-toggle</code></h3>
+<pre class="text"><code>!co-alaric select-toggle [--index VALEUR] [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--index</code>, <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>selectToggle</code>.</p>
+<h3 id="co-alaric-theft-abort"><code>!co-alaric theft-abort</code></h3>
+<pre class="text"><code>!co-alaric theft-abort [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>theftAbort</code>.</p>
+<h3 id="co-alaric-theft-debt"><code>!co-alaric theft-debt</code></h3>
+<pre class="text"><code>!co-alaric theft-debt [--amount VALEUR] [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--amount</code>,
+<code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>theftDebt</code>.</p>
+<h3
+id="co-alaric-theft-finish-failure"><code>!co-alaric theft-finish-failure</code></h3>
+<pre class="text"><code>!co-alaric theft-finish-failure [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>theftFinishFailure</code>.</p>
+<h3 id="co-alaric-theft-roll"><code>!co-alaric theft-roll</code></h3>
+<pre class="text"><code>!co-alaric theft-roll [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>theftRoll</code>.</p>
+<h3 id="co-alaric-theft-set"><code>!co-alaric theft-set</code></h3>
+<pre class="text"><code>!co-alaric theft-set [--field VALEUR] [--tx VALEUR] [--value VALEUR]</code></pre>
+<p>Flags/options observés : <code>--field</code>, <code>--tx</code>,
+<code>--value</code>.</p>
+<p><strong>Moteur :</strong> <code>theftSet</code>.</p>
+<h3
+id="co-alaric-theft-stolen-only"><code>!co-alaric theft-stolen-only</code></h3>
+<pre class="text"><code>!co-alaric theft-stolen-only [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>stolenOnly</code>.</p>
+<h3 id="co-alaric-tx-block"><code>!co-alaric tx-block</code></h3>
+<pre class="text"><code>!co-alaric tx-block [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--tx</code>.</p>
+<p><strong>Moteur :</strong> <code>blockTx</code>.</p>
+<h3 id="co-alaric-tx-cancel"><code>!co-alaric tx-cancel</code></h3>
+<pre class="text"><code>!co-alaric tx-cancel [--tx VALEUR]</code></pre>
+<p>Flags/options observés : <code>--tx</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>cancelTx</code>.</p>
+<h3 id="co-alaric-vendre"><code>!co-alaric vendre</code></h3>
+<pre class="text"><code>!co-alaric vendre [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--target</code>.</p>
+<p><strong>Moteur :</strong> <code>saleMenu</code>.</p>
+</body>
+</html>

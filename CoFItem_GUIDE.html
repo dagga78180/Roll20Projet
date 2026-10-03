@@ -1,0 +1,5502 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>CoFItem V2 ��� Guide exhaustif</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="docs/guide.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">CoFItem V2 ��� Guide exhaustif</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#cofitem-v2-guide-des-objets-affixes-et-de-la-logistique"
+id="toc-cofitem-v2-guide-des-objets-affixes-et-de-la-logistique">CoFItem
+V2 — Guide des objets, affixes et de la logistique</a>
+<ul>
+<li><a href="#pourquoi-utiliser-des-fiches-objet"
+id="toc-pourquoi-utiliser-des-fiches-objet">1. Pourquoi utiliser des
+fiches OBJET</a></li>
+<li><a href="#entrées-principales" id="toc-entrées-principales">2.
+Entrées principales</a></li>
+<li><a href="#créer-un-objet" id="toc-créer-un-objet">3. Créer un
+objet</a>
+<ul>
+<li><a href="#depuis-une-base" id="toc-depuis-une-base">3.1 Depuis une
+base</a></li>
+<li><a href="#objet-vide" id="toc-objet-vide">3.2 Objet vide</a></li>
+</ul></li>
+<li><a href="#qualité-q-fabrication-physique"
+id="toc-qualité-q-fabrication-physique">4. Qualité Q : fabrication
+physique</a></li>
+<li><a href="#puissance-p-et-affixes-la-valeur-magique"
+id="toc-puissance-p-et-affixes-la-valeur-magique">5. Puissance P et
+affixes : la valeur magique</a>
+<ul>
+<li><a href="#pourquoi-le-coefficient-daffixe-existe"
+id="toc-pourquoi-le-coefficient-daffixe-existe">Pourquoi le coefficient
+d’affixe existe</a></li>
+<li><a href="#difficulté-denchantement"
+id="toc-difficulté-denchantement">Difficulté d’enchantement</a></li>
+</ul></li>
+<li><a href="#choisir-des-affixes" id="toc-choisir-des-affixes">6.
+Choisir des affixes</a></li>
+<li><a href="#donner-équiper-et-transférer"
+id="toc-donner-équiper-et-transférer">7. Donner, équiper et
+transférer</a>
+<ul>
+<li><a href="#donner" id="toc-donner">7.1 Donner</a></li>
+<li><a href="#pourquoi-léquipement-est-un-état-important"
+id="toc-pourquoi-léquipement-est-un-état-important">7.2 Pourquoi
+l’équipement est un état important</a></li>
+<li><a href="#remplacement-demplacement"
+id="toc-remplacement-demplacement">7.3 Remplacement
+d’emplacement</a></li>
+<li><a href="#confirmation-de-transfert"
+id="toc-confirmation-de-transfert">7.4 Confirmation de
+transfert</a></li>
+</ul></li>
+<li><a href="#consommables" id="toc-consommables">8.
+Consommables</a></li>
+<li><a href="#pause-de-5-minutes-récupération-rapide"
+id="toc-pause-de-5-minutes-récupération-rapide">9. Pause de 5 minutes :
+récupération rapide</a></li>
+<li><a href="#repos-long-logistique-de-groupe"
+id="toc-repos-long-logistique-de-groupe">10. Repos long : logistique de
+groupe</a>
+<ul>
+<li><a href="#pourquoi-ce-flux-est-guidé"
+id="toc-pourquoi-ce-flux-est-guidé">Pourquoi ce flux est guidé</a></li>
+<li><a href="#chasse-et-nourriture" id="toc-chasse-et-nourriture">Chasse
+et nourriture</a></li>
+</ul></li>
+<li><a href="#hébergements" id="toc-hébergements">11.
+Hébergements</a></li>
+<li><a href="#butin-et-loot" id="toc-butin-et-loot">12. Butin et
+loot</a>
+<ul>
+<li><a href="#partage-simple-de-monnaie"
+id="toc-partage-simple-de-monnaie">12.1 Partage simple de
+monnaie</a></li>
+<li><a href="#loot-attaché-aux-tokens"
+id="toc-loot-attaché-aux-tokens">12.2 Loot attaché aux tokens</a></li>
+</ul></li>
+<li><a href="#fiche-objet-où-cofitem-rejoint-cofantasy"
+id="toc-fiche-objet-où-cofitem-rejoint-cofantasy">13. Fiche OBJET : où
+CoFItem rejoint COFantasy</a></li>
+<li><a href="#rareté" id="toc-rareté">14. Rareté</a></li>
+<li><a href="#import-et-maintenance-du-catalogue"
+id="toc-import-et-maintenance-du-catalogue">15. Import et maintenance du
+catalogue</a></li>
+<li><a href="#dépannage" id="toc-dépannage">16. Dépannage</a>
+<ul>
+<li><a href="#lobjet-est-donné-mais-son-bonus-ne-sapplique-pas"
+id="toc-lobjet-est-donné-mais-son-bonus-ne-sapplique-pas">« L’objet est
+donné mais son bonus ne s’applique pas »</a></li>
+<li><a href="#le-prix-semble-étrange" id="toc-le-prix-semble-étrange">«
+Le prix semble étrange »</a></li>
+<li><a href="#le-transfert-na-pas-lair-davoir-marché"
+id="toc-le-transfert-na-pas-lair-davoir-marché">« Le transfert n’a pas
+l’air d’avoir marché »</a></li>
+<li><a href="#jai-donné-le-mauvais-objet"
+id="toc-jai-donné-le-mauvais-objet">« J’ai donné le mauvais objet
+»</a></li>
+</ul></li>
+<li><a href="#commandes-principales-à-retenir"
+id="toc-commandes-principales-à-retenir">17. Commandes principales à
+retenir</a></li>
+<li><a href="#référence-exhaustive-des-commandes-cofitem"
+id="toc-référence-exhaustive-des-commandes-cofitem">18. Référence
+exhaustive des commandes CoFItem</a></li>
+<li><a href="#catalogue-des-affixes-référence-intégrée"
+id="toc-catalogue-des-affixes-référence-intégrée">19. Catalogue des
+affixes — référence intégrée</a></li>
+<li><a href="#prix-magique" id="toc-prix-magique">Prix magique</a></li>
+<li><a href="#accessoire" id="toc-accessoire">Accessoire</a></li>
+<li><a href="#armes" id="toc-armes">Armes</a></li>
+<li><a href="#armure-bouclier" id="toc-armure-bouclier">Armure /
+Bouclier</a></li>
+<li><a href="#règle-dauteur-cofitem" id="toc-règle-dauteur-cofitem">20.
+Règle d’auteur CoFItem</a></li>
+<li><a href="#fiches-techniques-des-commandes-cofitem"
+id="toc-fiches-techniques-des-commandes-cofitem">21. Fiches techniques
+des commandes CoFItem</a>
+<ul>
+<li><a href="#coi-affix-"
+id="toc-coi-affix-"><code>!coi-affix-</code></a></li>
+<li><a href="#coi-affix-add"
+id="toc-coi-affix-add"><code>!coi-affix-add</code></a></li>
+<li><a href="#coi-affix-detail"
+id="toc-coi-affix-detail"><code>!coi-affix-detail</code></a></li>
+<li><a href="#coi-affix-index"
+id="toc-coi-affix-index"><code>!coi-affix-index</code></a></li>
+<li><a href="#coi-affix-mode"
+id="toc-coi-affix-mode"><code>!coi-affix-mode</code></a></li>
+<li><a href="#coi-affix-name"
+id="toc-coi-affix-name"><code>!coi-affix-name</code></a></li>
+<li><a href="#coi-affix-remove"
+id="toc-coi-affix-remove"><code>!coi-affix-remove</code></a></li>
+<li><a href="#coi-affixes"
+id="toc-coi-affixes"><code>!coi-affixes</code></a></li>
+<li><a href="#coi-bag-to-belt"
+id="toc-coi-bag-to-belt"><code>!coi-bag-to-belt</code></a></li>
+<li><a href="#coi-belt-to-bag"
+id="toc-coi-belt-to-bag"><code>!coi-belt-to-bag</code></a></li>
+<li><a href="#coi-butin"
+id="toc-coi-butin"><code>!coi-butin</code></a></li>
+<li><a href="#coi-catalogue"
+id="toc-coi-catalogue"><code>!coi-catalogue</code></a></li>
+<li><a href="#coi-delete-bag"
+id="toc-coi-delete-bag"><code>!coi-delete-bag</code></a></li>
+<li><a href="#coi-delete-conso"
+id="toc-coi-delete-conso"><code>!coi-delete-conso</code></a></li>
+<li><a href="#coi-equip-choice"
+id="toc-coi-equip-choice"><code>!coi-equip-choice</code></a></li>
+<li><a href="#coi-equipe"
+id="toc-coi-equipe"><code>!coi-equipe</code></a></li>
+<li><a href="#coi-from-base"
+id="toc-coi-from-base"><code>!coi-from-base</code></a></li>
+<li><a href="#coi-give"
+id="toc-coi-give"><code>!coi-give</code></a></li>
+<li><a href="#coi-give-all-pj"
+id="toc-coi-give-all-pj"><code>!coi-give-all-pj</code></a></li>
+<li><a href="#coi-give-spec"
+id="toc-coi-give-spec"><code>!coi-give-spec</code></a></li>
+<li><a href="#coi-hebergement-show"
+id="toc-coi-hebergement-show"><code>!coi-hebergement-show</code></a></li>
+<li><a href="#coi-hebergements"
+id="toc-coi-hebergements"><code>!coi-hebergements</code></a></li>
+<li><a href="#coi-hunt-env"
+id="toc-coi-hunt-env"><code>!coi-hunt-env</code></a></li>
+<li><a href="#coi-hunt-run"
+id="toc-coi-hunt-run"><code>!coi-hunt-run</code></a></li>
+<li><a href="#coi-hunt-set"
+id="toc-coi-hunt-set"><code>!coi-hunt-set</code></a></li>
+<li><a href="#coi-hunt-toggle"
+id="toc-coi-hunt-toggle"><code>!coi-hunt-toggle</code></a></li>
+<li><a href="#coi-import"
+id="toc-coi-import"><code>!coi-import</code></a></li>
+<li><a href="#coi-loot"
+id="toc-coi-loot"><code>!coi-loot</code></a></li>
+<li><a href="#coi-loot-add"
+id="toc-coi-loot-add"><code>!coi-loot-add</code></a></li>
+<li><a href="#coi-loot-clear"
+id="toc-coi-loot-clear"><code>!coi-loot-clear</code></a></li>
+<li><a href="#coi-loot-details"
+id="toc-coi-loot-details"><code>!coi-loot-details</code></a></li>
+<li><a href="#coi-loot-give"
+id="toc-coi-loot-give"><code>!coi-loot-give</code></a></li>
+<li><a href="#coi-loot-give-item"
+id="toc-coi-loot-give-item"><code>!coi-loot-give-item</code></a></li>
+<li><a href="#coi-loot-help"
+id="toc-coi-loot-help"><code>!coi-loot-help</code></a></li>
+<li><a href="#coi-loot-money"
+id="toc-coi-loot-money"><code>!coi-loot-money</code></a></li>
+<li><a href="#coi-loot-reset"
+id="toc-coi-loot-reset"><code>!coi-loot-reset</code></a></li>
+<li><a href="#coi-loot-show"
+id="toc-coi-loot-show"><code>!coi-loot-show</code></a></li>
+<li><a href="#coi-loot-take"
+id="toc-coi-loot-take"><code>!coi-loot-take</code></a></li>
+<li><a href="#coi-loot-take-all"
+id="toc-coi-loot-take-all"><code>!coi-loot-take-all</code></a></li>
+<li><a href="#coi-new" id="toc-coi-new"><code>!coi-new</code></a></li>
+<li><a href="#coi-new-conso"
+id="toc-coi-new-conso"><code>!coi-new-conso</code></a></li>
+<li><a href="#coi-new-hebergement"
+id="toc-coi-new-hebergement"><code>!coi-new-hebergement</code></a></li>
+<li><a href="#coi-objets"
+id="toc-coi-objets"><code>!coi-objets</code></a></li>
+<li><a href="#coi-pause"
+id="toc-coi-pause"><code>!coi-pause</code></a></li>
+<li><a href="#coi-prmax"
+id="toc-coi-prmax"><code>!coi-prmax</code></a></li>
+<li><a href="#coi-quality"
+id="toc-coi-quality"><code>!coi-quality</code></a></li>
+<li><a href="#coi-refresh-bases"
+id="toc-coi-refresh-bases"><code>!coi-refresh-bases</code></a></li>
+<li><a href="#coi-repos"
+id="toc-coi-repos"><code>!coi-repos</code></a></li>
+<li><a href="#coi-rest-bivouac"
+id="toc-coi-rest-bivouac"><code>!coi-rest-bivouac</code></a></li>
+<li><a href="#coi-rest-camp-prepare"
+id="toc-coi-rest-camp-prepare"><code>!coi-rest-camp-prepare</code></a></li>
+<li><a href="#coi-rest-final"
+id="toc-coi-rest-final"><code>!coi-rest-final</code></a></li>
+<li><a href="#coi-rest-food-confirm"
+id="toc-coi-rest-food-confirm"><code>!coi-rest-food-confirm</code></a></li>
+<li><a href="#coi-rest-food-menu"
+id="toc-coi-rest-food-menu"><code>!coi-rest-food-menu</code></a></li>
+<li><a href="#coi-rest-food-toggle"
+id="toc-coi-rest-food-toggle"><code>!coi-rest-food-toggle</code></a></li>
+<li><a href="#coi-rest-hunt-confirm"
+id="toc-coi-rest-hunt-confirm"><code>!coi-rest-hunt-confirm</code></a></li>
+<li><a href="#coi-rest-lodging"
+id="toc-coi-rest-lodging"><code>!coi-rest-lodging</code></a></li>
+<li><a href="#coi-rest-lodging-direct"
+id="toc-coi-rest-lodging-direct"><code>!coi-rest-lodging-direct</code></a></li>
+<li><a href="#coi-rest-lodging-food"
+id="toc-coi-rest-lodging-food"><code>!coi-rest-lodging-food</code></a></li>
+<li><a href="#coi-rest-lodgings"
+id="toc-coi-rest-lodgings"><code>!coi-rest-lodgings</code></a></li>
+<li><a href="#coi-rest-pay"
+id="toc-coi-rest-pay"><code>!coi-rest-pay</code></a></li>
+<li><a href="#coi-show"
+id="toc-coi-show"><code>!coi-show</code></a></li>
+<li><a href="#coi-transfer-armor"
+id="toc-coi-transfer-armor"><code>!coi-transfer-armor</code></a></li>
+<li><a href="#coi-transfer-bag"
+id="toc-coi-transfer-bag"><code>!coi-transfer-bag</code></a></li>
+<li><a href="#coi-transfer-belt"
+id="toc-coi-transfer-belt"><code>!coi-transfer-belt</code></a></li>
+<li><a href="#coi-transfer-weapon"
+id="toc-coi-transfer-weapon"><code>!coi-transfer-weapon</code></a></li>
+<li><a href="#coi-use-conso"
+id="toc-coi-use-conso"><code>!coi-use-conso</code></a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="cofitem-v2-guide-des-objets-affixes-et-de-la-logistique">CoFItem
+V2 — Guide des objets, affixes et de la logistique</h1>
+<p>CoFItem transforme l’équipement en <strong>données jouables</strong>.
+Un objet n’est pas seulement un nom dans un inventaire : il peut porter
+une qualité, des affixes, des prédicats, une action, un prix, un
+emplacement et une commande COFantasy.</p>
+<p>L’idée centrale est simple : <strong>CoFItem prépare et transporte
+l’objet ; COFantasy résout ses effets en jeu</strong>.</p>
+<h2 id="pourquoi-utiliser-des-fiches-objet">1. Pourquoi utiliser des
+fiches OBJET</h2>
+<p>Une fiche OBJET sert de source réutilisable. Elle permet de :</p>
+<ul>
+<li>conserver le nom, la description, le prix et la rareté ;</li>
+<li>stocker la base catalogue et les affixes ;</li>
+<li>calculer les bonus de qualité ;</li>
+<li>générer les prédicats/options nécessaires à COFantasy ;</li>
+<li>donner l’objet à un PJ sans recopier manuellement ses données ;</li>
+<li>garder une trace cohérente lors d’un transfert, d’un loot ou d’une
+vente.</li>
+</ul>
+<p>Le flux normal est :</p>
+<pre class="text"><code>Catalogue → fiche OBJET → affixes/qualité → donner → équiper → COFantasy lit les effets</code></pre>
+<hr />
+<h2 id="entrées-principales">2. Entrées principales</h2>
+<pre class="text"><code>!coi-objets
+!coi-catalogue
+!coi-affix-index</code></pre>
+<ul>
+<li><code>!coi-objets</code> : compendium des fiches OBJET déjà créées
+;</li>
+<li><code>!coi-catalogue</code> : bases d’armes, armures, accessoires,
+consommables, matériel ;</li>
+<li><code>!coi-affix-index</code> : affixes, familles et recherche.</li>
+</ul>
+<p>Pour un MJ qui ne veut pas toucher au code, <strong>le Catalogue doit
+être le point de départ</strong>.</p>
+<hr />
+<h2 id="créer-un-objet">3. Créer un objet</h2>
+<h3 id="depuis-une-base">3.1 Depuis une base</h3>
+<pre class="text"><code>!coi-from-base --id BASE_ID</code></pre>
+<p>ou utiliser les boutons de <code>!coi-catalogue</code>.</p>
+<h3 id="objet-vide">3.2 Objet vide</h3>
+<pre class="text"><code>!coi-new --name ?{Nom|Nouvel objet}
+!coi-new-conso --name ?{Nom|Nouvelle potion}
+!coi-new-hebergement --name ?{Nom|Auberge}</code></pre>
+<p>Un objet vide est utile pour un artefact narratif ou une création
+hors catalogue, mais une base catalogue offre davantage de cohérence et
+de contrôles.</p>
+<hr />
+<h2 id="qualité-q-fabrication-physique">4. Qualité Q : fabrication
+physique</h2>
+<p>La <strong>qualité</strong> représente la fabrication, l’équilibrage,
+les matériaux et la finition. Elle ne représente pas l’enchantement.</p>
+<p>Effet mécanique du catalogue actuel :</p>
+<ul>
+<li>arme Qn : bonus de qualité appliqué à l’arme selon le modèle de
+fiche ;</li>
+<li>armure/bouclier Qn : bonus de DEF au-dessus de la base ;</li>
+<li>accessoires et consommables : pas de qualité sauf définition
+spécifique.</li>
+</ul>
+<p>Courbe économique de référence :</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Q</th>
+<th style="text-align: right;">Coût de référence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Q1</td>
+<td style="text-align: right;">3 PO</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Q2</td>
+<td style="text-align: right;">10 PO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Q3</td>
+<td style="text-align: right;">30 PO</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Q4</td>
+<td style="text-align: right;">90 PO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Q5</td>
+<td style="text-align: right;">300 PO</td>
+</tr>
+</tbody>
+</table>
+<p>La matière du support garde une influence, mais de manière
+<strong>compressée</strong> pour éviter qu’une armure chère fasse
+exploser le prix de façon linéaire.</p>
+<p>Formule utilisée pour le coût Q :</p>
+<pre class="text"><code>coût Q = référence_Q × (prix_base_PA / 5 PA)^0,25</code></pre>
+<p>Puis le prix de base de l’objet est ajouté.</p>
+<p>Pourquoi une racine quatrième ? Parce que le prix de base représente
+déjà la quantité/valeur de matière, mais cette matière ne doit pas
+multiplier tout le prix magique ou artisanal.</p>
+<hr />
+<h2 id="puissance-p-et-affixes-la-valeur-magique">5. Puissance P et
+affixes : la valeur magique</h2>
+<p>Un affixe possède :</p>
+<ul>
+<li>un <strong>palier P1 à P5</strong> ;</li>
+<li>un <strong>coefficient de valeur</strong> issu de son apport réel
+;</li>
+<li>la <strong>difficulté d’enchantement</strong> du support ;</li>
+<li>une petite variation de prix de <strong>±5 %</strong>.</li>
+</ul>
+<p>Courbe de référence :</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">P</th>
+<th style="text-align: right;">Coût de référence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">4 PO</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">15 PO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">50 PO</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">P4</td>
+<td style="text-align: right;">180 PO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">P5</td>
+<td style="text-align: right;">600 PO</td>
+</tr>
+</tbody>
+</table>
+<p>Formule d’un affixe :</p>
+<pre class="text"><code>coût affixe = référence_P × difficulté_support × coefficient_affixe × aléa</code></pre>
+<p>avec <code>aléa</code> entre <code>0,95</code> et
+<code>1,05</code>.</p>
+<h3 id="pourquoi-le-coefficient-daffixe-existe">Pourquoi le coefficient
+d’affixe existe</h3>
+<p>Deux P2 ne sont pas forcément aussi utiles. Un bonus permanent très
+universel peut valoir davantage qu’un effet situationnel. Le P fixe la
+<strong>classe de puissance</strong>, le coefficient positionne l’affixe
+<strong>à l’intérieur de sa classe</strong>.</p>
+<p>Le scoring utilisé pour classer les affixes tient compte de :</p>
+<ul>
+<li>impact ;</li>
+<li>fréquence d’utilisation ;</li>
+<li>universalité ;</li>
+<li>fiabilité ;</li>
+<li>contraintes/conditions.</li>
+</ul>
+<h3 id="difficulté-denchantement">Difficulté d’enchantement</h3>
+<p>Ce coefficient ne représente pas la masse de matière. Il représente
+la difficulté à stabiliser de la magie sur le support. Exemple : un
+anneau contient peu de matière, mais concentrer une magie complexe dans
+un petit support peut être plus difficile qu’enchanter une arme
+classique.</p>
+<hr />
+<h2 id="choisir-des-affixes">6. Choisir des affixes</h2>
+<pre class="text"><code>!coi-affixes --item CHARACTER_ID</code></pre>
+<p>Le catalogue filtre les affixes compatibles avec la base et le mode
+de l’objet. Les groupes servent à empêcher certaines combinaisons
+redondantes ou incompatibles.</p>
+<p>Le vocabulaire actuel des affinités est :</p>
+<ul>
+<li>Feu, Eau, Air, Terre, Ombre, Lumière, Force ;</li>
+<li>physiques : Tranchant, Contondant, Perçant ;</li>
+<li>spéciaux : Toxique, Psychique, Drain.</li>
+</ul>
+<p>Matériaux d’affinité :</p>
+<table>
+<thead>
+<tr class="header">
+<th>Affinité</th>
+<th>Matériau</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Feu</td>
+<td>Phospharium</td>
+</tr>
+<tr class="even">
+<td>Eau</td>
+<td>Hybberium</td>
+</tr>
+<tr class="odd">
+<td>Air</td>
+<td>Fulgurium</td>
+</tr>
+<tr class="even">
+<td>Terre</td>
+<td>Tellurite</td>
+</tr>
+<tr class="odd">
+<td>Ombre</td>
+<td>Sombracier</td>
+</tr>
+<tr class="even">
+<td>Lumière</td>
+<td>Héliolite</td>
+</tr>
+<tr class="odd">
+<td>Force</td>
+<td>Arcanite</td>
+</tr>
+</tbody>
+</table>
+<p><code>Laënk</code> reste un matériau d’éclairage et ne donne pas
+automatiquement des dégâts Lumière.</p>
+<p>La référence exhaustive des <strong>569 affixes</strong> est intégrée
+plus bas dans cette page.</p>
+<hr />
+<h2 id="donner-équiper-et-transférer">7. Donner, équiper et
+transférer</h2>
+<h3 id="donner">7.1 Donner</h3>
+<pre class="text"><code>!coi-give --item ITEM_ID --target CHARACTER_ID
+!coi-give --item ITEM_ID --target CHARACTER_ID --equip
+!coi-give --item ITEM_ID --target CHARACTER_ID --qty N</code></pre>
+<p><code>--equip</code> demande l’équipement immédiat si l’emplacement
+le permet. <code>--qty</code> sert surtout aux consommables.</p>
+<h3 id="pourquoi-léquipement-est-un-état-important">7.2 Pourquoi
+l’équipement est un état important</h3>
+<p>Un affixe peut produire un prédicat <strong>uniquement quand l’objet
+est porté</strong>. Donner un objet et l’équiper ne sont donc pas la
+même action. Cette distinction évite qu’un objet au fond du sac donne
+encore un bonus de DEF, une résistance ou une action.</p>
+<h3 id="remplacement-demplacement">7.3 Remplacement d’emplacement</h3>
+<p>Si un emplacement est occupé, CoFItem peut proposer le remplacement.
+Le moteur doit retirer proprement les effets de l’ancien équipement
+avant d’activer ceux du nouveau.</p>
+<h3 id="confirmation-de-transfert">7.4 Confirmation de transfert</h3>
+<p>Après un transfert réussi, CoFItem affiche explicitement :</p>
+<pre class="text"><code>✅ Transfert effectué.
+Nom de l’objet → Nom du personnage</code></pre>
+<p>Cette confirmation est volontaire : une opération d’inventaire peut
+modifier plusieurs attributs invisibles et il doit être évident dans le
+chat qu’elle a réellement abouti.</p>
+<p>Les transferts compatibles avec le pont Undo peuvent être annulés par
+:</p>
+<pre class="text"><code>!cof-undo</code></pre>
+<hr />
+<h2 id="consommables">8. Consommables</h2>
+<p>Un consommable contient :</p>
+<ul>
+<li>quantité ;</li>
+<li>texte d’effet ;</li>
+<li>éventuellement une <strong>commande COFantasy à
+l’utilisation</strong>.</li>
+</ul>
+<p>À l’utilisation, CoFItem :</p>
+<ol type="1">
+<li>vérifie la pile ;</li>
+<li>décrémente la quantité ;</li>
+<li>exécute la commande COFantasy ;</li>
+<li>enregistre l’opération lorsque le pont Undo le permet.</li>
+</ol>
+<p>Commande technique principale :</p>
+<pre class="text"><code>!coi-use-conso --target TOKEN_ID --attr ATTR_ID</code></pre>
+<p>Dans l’usage normal, le joueur clique le bouton du consommable au
+lieu de saisir cette commande.</p>
+<hr />
+<h2 id="pause-de-5-minutes-récupération-rapide">9. Pause de 5 minutes :
+récupération rapide</h2>
+<pre class="text"><code>!coi-pause</code></pre>
+<p>La pause représente une <strong>décision courte et
+individuelle</strong> : chaque PJ choisit s’il dépense 1 PR pour
+récupérer des PV. Elle ne doit pas être confondue avec un repos
+long.</p>
+<p>Pourquoi ne pas rendre automatiquement tout le groupe ? Parce que le
+PR est une ressource : le choix de le conserver ou non fait partie de la
+gestion de l’aventure.</p>
+<p>La commande historique <code>!cof-pause</code> de COFantasy est
+différente : elle sert à une pause technique/verrouillage de partie, pas
+à la récupération CoFItem.</p>
+<hr />
+<h2 id="repos-long-logistique-de-groupe">10. Repos long : logistique de
+groupe</h2>
+<pre class="text"><code>!coi-repos</code></pre>
+<p>Le repos long est un assistant MJ qui peut intégrer :</p>
+<ul>
+<li>groupe <code>Equipe PJ</code> ;</li>
+<li>rations ;</li>
+<li>chasse/survie ;</li>
+<li>hébergement ;</li>
+<li>paiement ;</li>
+<li>récupération PV/PM/PR ;</li>
+<li>buffs d’hébergement.</li>
+</ul>
+<h3 id="pourquoi-ce-flux-est-guidé">Pourquoi ce flux est guidé</h3>
+<p>Un repos touche plusieurs personnages et plusieurs ressources. Une
+série de boutons avec récapitulatif évite les erreurs de saisie et
+permet au MJ de vérifier le coût avant validation.</p>
+<h3 id="chasse-et-nourriture">Chasse et nourriture</h3>
+<p>La chasse utilise notamment la compétence Survie. Un repos sans
+nourriture suffisante peut réduire la récupération. Les chasseurs
+peuvent également récupérer moins, car ils ont consacré une partie du
+temps de repos à l’activité.</p>
+<hr />
+<h2 id="hébergements">11. Hébergements</h2>
+<pre class="text"><code>!coi-hebergements
+!coi-new-hebergement --name NOM [--preset PRESET]</code></pre>
+<p>Une fiche Hébergement peut stocker :</p>
+<ul>
+<li>prix et monnaie ;</li>
+<li>tarification par personne ou groupe ;</li>
+<li>repas inclus ;</li>
+<li>nombre de récupérations PV/PM ;</li>
+<li>PR rendus ;</li>
+<li>récupération au maximum ;</li>
+<li>buff jusqu’au prochain repos.</li>
+</ul>
+<p>L’hébergement sert donc à transformer « nous dormons à l’auberge » en
+une vraie décision économique et mécanique.</p>
+<hr />
+<h2 id="butin-et-loot">12. Butin et loot</h2>
+<h3 id="partage-simple-de-monnaie">12.1 Partage simple de monnaie</h3>
+<pre class="text"><code>!coi-butin
+!coi-butin 120 PA</code></pre>
+<p>Les PJ principaux de <code>Equipe PJ</code> sont utilisés ; les
+familiers ne reçoivent pas automatiquement une part monétaire.</p>
+<h3 id="loot-attaché-aux-tokens">12.2 Loot attaché aux tokens</h3>
+<pre class="text"><code>!coi-loot
+!coi-loot-help</code></pre>
+<p>Les GM Notes d’un token peuvent contenir un bloc <code>[LOOT]</code>.
+Le système sait afficher, distribuer, archiver et réinitialiser ces
+loots.</p>
+<p>Pourquoi attacher le loot au token ? Parce que l’inventaire d’un
+ennemi reste alors lié à la scène qui l’a produit et n’a pas besoin
+d’être recopié dans un handout séparé.</p>
+<hr />
+<h2 id="fiche-objet-où-cofitem-rejoint-cofantasy">13. Fiche OBJET : où
+CoFItem rejoint COFantasy</h2>
+<p>Une fiche OBJET peut stocker :</p>
+<ul>
+<li>base catalogue ;</li>
+<li>qualité ;</li>
+<li>affixes ;</li>
+<li>prédicats générés/manuels ;</li>
+<li>options d’arme ;</li>
+<li>action personnalisée ;</li>
+<li>commande de consommable.</li>
+</ul>
+<p>Une <strong>commande personnalisée</strong> d’action est prioritaire
+sur la commande générée. Cela permet au MJ de garder la commodité du
+catalogue tout en écrivant une capacité unique.</p>
+<hr />
+<h2 id="rareté">14. Rareté</h2>
+<p>La rareté suit le rang le plus élevé de l’objet (qualité ou puissance
+d’affixe dans le modèle actuel). Elle sert surtout à présenter et
+filtrer ; elle ne remplace pas le prix, car deux affixes du même P
+peuvent avoir des coefficients différents.</p>
+<hr />
+<h2 id="import-et-maintenance-du-catalogue">15. Import et maintenance du
+catalogue</h2>
+<pre class="text"><code>!coi-import --cat all --confirm yes
+!coi-refresh-bases --confirm yes</code></pre>
+<p>Ces commandes sont des outils MJ. <code>refresh</code> recalcule les
+données dérivées des bases existantes. Faire une sauvegarde/duplication
+de campagne avant une migration massive reste une bonne pratique.</p>
+<hr />
+<h2 id="dépannage">16. Dépannage</h2>
+<h3 id="lobjet-est-donné-mais-son-bonus-ne-sapplique-pas">« L’objet est
+donné mais son bonus ne s’applique pas »</h3>
+<p>Vérifier qu’il est <strong>équipé</strong> et que l’emplacement est
+correct. Les prédicats « si porté » ne sont pas actifs dans le sac.</p>
+<h3 id="le-prix-semble-étrange">« Le prix semble étrange »</h3>
+<p>Vérifier la base, le Q, les IDs d’affixe et la difficulté
+d’enchantement. Le prix ne correspond plus à l’ancien système
+<code>prix de base × énorme multiplicateur</code>.</p>
+<h3 id="le-transfert-na-pas-lair-davoir-marché">« Le transfert n’a pas
+l’air d’avoir marché »</h3>
+<p>Attendre la carte <code>✅ Transfert effectué</code>. Si elle
+n’apparaît pas, ne considérez pas l’opération comme confirmée et
+vérifiez le chat/API.</p>
+<h3 id="jai-donné-le-mauvais-objet">« J’ai donné le mauvais objet »</h3>
+<p>Utiliser <code>!cof-undo</code> immédiatement si l’opération a été
+enregistrée dans le pont Undo.</p>
+<hr />
+<h2 id="commandes-principales-à-retenir">17. Commandes principales à
+retenir</h2>
+<pre class="text"><code>!coi-objets
+!coi-catalogue
+!coi-affix-index
+!coi-affixes
+!coi-give
+!coi-give-all-pj
+!coi-pause
+!coi-repos
+!coi-hebergements
+!coi-butin
+!coi-loot
+!coi-loot-help</code></pre>
+<hr />
+<h2 id="référence-exhaustive-des-commandes-cofitem">18. Référence
+exhaustive des commandes CoFItem</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Commande</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>!coi-affix-add</code></td>
+<td>Commande/interface CoFItem : Affix add.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-affix-detail</code></td>
+<td>Commande/interface CoFItem : Affix detail.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-affix-index</code></td>
+<td>Consulter l’index des affixes.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-affix-mode</code></td>
+<td>Commande/interface CoFItem : Affix mode.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-affix-name</code></td>
+<td>Commande/interface CoFItem : Affix name.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-affix-remove</code></td>
+<td>Commande/interface CoFItem : Affix remove.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-affixes</code></td>
+<td>Modifier les affixes d’une fiche OBJET.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-bag-to-belt</code></td>
+<td>Commande/interface CoFItem : Bag to belt.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-belt-to-bag</code></td>
+<td>Commande/interface CoFItem : Belt to bag.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-butin</code></td>
+<td>Distribution simple de monnaie.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-catalogue</code></td>
+<td>Parcourir le catalogue et les bases d’objets.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-delete-bag</code></td>
+<td>Commande/interface CoFItem : Delete bag.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-delete-conso</code></td>
+<td>Commande/interface CoFItem : Delete conso.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-equip-choice</code></td>
+<td>Commande/interface CoFItem : Equip choice.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-equipe</code></td>
+<td>Afficher l’équipe PJ gérée.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-from-base</code></td>
+<td>Commande/interface CoFItem : From base.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-give</code></td>
+<td>Donner un objet à un PJ.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-give-all-pj</code></td>
+<td>Distribuer un objet à tous les PJ principaux.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-give-spec</code></td>
+<td>Commande/interface CoFItem : Give spec.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-hebergement-show</code></td>
+<td>Commande/interface CoFItem : Hebergement show.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-hebergements</code></td>
+<td>Commande/interface CoFItem : Hebergements.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-hunt-env</code></td>
+<td>Commande/interface CoFItem : Hunt env.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-hunt-run</code></td>
+<td>Commande/interface CoFItem : Hunt run.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-hunt-set</code></td>
+<td>Commande/interface CoFItem : Hunt set.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-hunt-toggle</code></td>
+<td>Commande/interface CoFItem : Hunt toggle.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-import</code></td>
+<td>Commande/interface CoFItem : Import.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-loot</code></td>
+<td>Assistant de loot tokenisé.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-loot-add</code></td>
+<td>Commande/interface CoFItem : Loot add.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-loot-clear</code></td>
+<td>Commande/interface CoFItem : Loot clear.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-loot-details</code></td>
+<td>Commande/interface CoFItem : Loot details.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-loot-give</code></td>
+<td>Commande/interface CoFItem : Loot give.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-loot-give-item</code></td>
+<td>Commande/interface CoFItem : Loot give item.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-loot-help</code></td>
+<td>Commande/interface CoFItem : Loot help.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-loot-money</code></td>
+<td>Commande/interface CoFItem : Loot money.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-loot-reset</code></td>
+<td>Commande/interface CoFItem : Loot reset.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-loot-show</code></td>
+<td>Commande/interface CoFItem : Loot show.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-loot-take</code></td>
+<td>Commande/interface CoFItem : Loot take.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-loot-take-all</code></td>
+<td>Commande/interface CoFItem : Loot take all.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-new</code></td>
+<td>Commande/interface CoFItem : New.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-new-conso</code></td>
+<td>Commande/interface CoFItem : New conso.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-new-hebergement</code></td>
+<td>Commande/interface CoFItem : New hebergement.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-objets</code></td>
+<td>Lister les fiches OBJET.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-pause</code></td>
+<td>Pause de groupe de 5 minutes.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-prmax</code></td>
+<td>Commande/interface CoFItem : Prmax.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-quality</code></td>
+<td>Commande/interface CoFItem : Quality.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-refresh-bases</code></td>
+<td>Commande/interface CoFItem : Refresh bases.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-repos</code></td>
+<td>Assistant de repos.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-rest-bivouac</code></td>
+<td>Commande/interface CoFItem : Rest bivouac.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-rest-camp-prepare</code></td>
+<td>Commande/interface CoFItem : Rest camp prepare.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-rest-final</code></td>
+<td>Commande/interface CoFItem : Rest final.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-rest-food-confirm</code></td>
+<td>Commande/interface CoFItem : Rest food confirm.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-rest-food-menu</code></td>
+<td>Commande/interface CoFItem : Rest food menu.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-rest-food-toggle</code></td>
+<td>Commande/interface CoFItem : Rest food toggle.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-rest-hunt-confirm</code></td>
+<td>Commande/interface CoFItem : Rest hunt confirm.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-rest-lodging</code></td>
+<td>Commande/interface CoFItem : Rest lodging.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-rest-lodging-direct</code></td>
+<td>Commande/interface CoFItem : Rest lodging direct.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-rest-lodging-food</code></td>
+<td>Commande/interface CoFItem : Rest lodging food.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-rest-lodgings</code></td>
+<td>Commande/interface CoFItem : Rest lodgings.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-rest-pay</code></td>
+<td>Commande/interface CoFItem : Rest pay.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-show</code></td>
+<td>Afficher une fiche OBJET.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-transfer-armor</code></td>
+<td>Commande/interface CoFItem : Transfer armor.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-transfer-bag</code></td>
+<td>Commande/interface CoFItem : Transfer bag.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-transfer-belt</code></td>
+<td>Commande/interface CoFItem : Transfer belt.</td>
+</tr>
+<tr class="even">
+<td><code>!coi-transfer-weapon</code></td>
+<td>Commande/interface CoFItem : Transfer weapon.</td>
+</tr>
+<tr class="odd">
+<td><code>!coi-use-conso</code></td>
+<td>Commande/interface CoFItem : Use conso.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="catalogue-des-affixes-référence-intégrée">19. Catalogue des
+affixes — référence intégrée</h2>
+<p>Le catalogue V2 contient les affixes réellement utilisables par
+CoFItem. <strong>P</strong> est le palier de puissance validé ; le
+coefficient module le prix à l’intérieur du palier. Les compatibilités
+base/affixe restent contrôlées par CoFItem.</p>
+<h2 id="prix-magique">Prix magique</h2>
+<p><code>coût magique = base du palier P × difficulté d’enchantement du support × coefficient de valeur × aléa fixe du référentiel</code></p>
+<p>Paliers : <strong>P1 4 PO · P2 15 PO · P3 50 PO · P4 180 PO · P5 600
+PO</strong>.</p>
+<h2 id="accessoire">Accessoire</h2>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Nom</th>
+<th style="text-align: right;">P</th>
+<th style="text-align: right;">Coef</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>AX_IMM_SURPRIS</code></td>
+<td>Vigilance éternelle</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.054</td>
+<td>Immunité à l’état surpris.</td>
+</tr>
+<tr class="even">
+<td><code>AX_IMM_ASSOMME</code></td>
+<td>Crâne de fer</td>
+<td style="text-align: right;">P4</td>
+<td style="text-align: right;">1.100</td>
+<td>Immunité à l’état étourdi.</td>
+</tr>
+<tr class="odd">
+<td><code>AX_IMM_RENVERSE</code></td>
+<td>Ancrage inébranlable</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.019</td>
+<td>Immunité à l’état renversé.</td>
+</tr>
+<tr class="even">
+<td><code>AX_IMM_AVEUGLE</code></td>
+<td>Vision intérieure</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.102</td>
+<td>Immunité à l’état aveuglé.</td>
+</tr>
+<tr class="odd">
+<td><code>AX_IMM_AFFAIBLI</code></td>
+<td>Vitalité inaltérable</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.078</td>
+<td>Immunité à l’état affaibli.</td>
+</tr>
+<tr class="even">
+<td><code>AX_IMM_PARALYSE</code></td>
+<td>Liberté du corps</td>
+<td style="text-align: right;">P4</td>
+<td style="text-align: right;">1.072</td>
+<td>Immunité à l’état paralysé.</td>
+</tr>
+<tr class="odd">
+<td><code>AX_IMM_ENDORMI</code></td>
+<td>Veille éternelle</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.024</td>
+<td>Immunité à l’état sommeil.</td>
+</tr>
+<tr class="even">
+<td><code>AX_IMM_APEURE</code></td>
+<td>Cœur intrépide</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.043</td>
+<td>Immunité à l’état effrayé.</td>
+</tr>
+<tr class="odd">
+<td><code>AX_PROTECTRICE</code></td>
+<td>Protectrice</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.042</td>
+<td>Réduit les dégâts supplémentaires d’un critique et d’une attaque
+sournoise selon la mécanique Anneau de protection.</td>
+</tr>
+<tr class="even">
+<td><code>AX_SECONDE_CHANCE</code></td>
+<td>Seconde chance</td>
+<td style="text-align: right;">P4</td>
+<td style="text-align: right;">0.952</td>
+<td>La première fois que le porteur devrait tomber à 0 PV et mourir, il
+reste à 1 PV. Effet consommé pour ce personnage.</td>
+</tr>
+<tr class="odd">
+<td><code>AXST_STAT_FOR_1</code></td>
+<td>Force du Titan</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 FOR</td>
+</tr>
+<tr class="even">
+<td><code>AXST_STAT_DEX_1</code></td>
+<td>Grâce du Félin</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 DEX</td>
+</tr>
+<tr class="odd">
+<td><code>AXST_STAT_CON_1</code></td>
+<td>Vigueur de l’Ours</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 CON</td>
+</tr>
+<tr class="even">
+<td><code>AXST_STAT_INT_1</code></td>
+<td>Esprit du Sage</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 INT</td>
+</tr>
+<tr class="odd">
+<td><code>AXST_STAT_SAG_1</code></td>
+<td>Clairvoyance de l’Oracle</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 SAG</td>
+</tr>
+<tr class="even">
+<td><code>AXST_STAT_CHA_1</code></td>
+<td>Présence du Souverain</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 CHA</td>
+</tr>
+<tr class="odd">
+<td><code>AXMOVE_1</code></td>
+<td>Pas du voyageur</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.982</td>
+<td>+1 Initiative, +1 m de déplacement</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_ATHLETISME_2</code></td>
+<td>Élan de l’Athlète</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Athlétisme</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_PUISSANCE_2</code></td>
+<td>Poigne du Colosse</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Puissance</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_PROTECTION_2</code></td>
+<td>Garde du Rempart</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Protection</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_ACROBATIES_2</code></td>
+<td>Grâce de l’Acrobate</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Acrobaties</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_DISCRETION_2</code></td>
+<td>Pas de l’Ombre</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.017</td>
+<td>+2 aux tests de Discrétion</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_ADRESSE_2</code></td>
+<td>Main du Virtuose</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Adresse</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_ENDURANCE_2</code></td>
+<td>Souffle du Marathonien</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Endurance</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_RESISTANCE_2</code></td>
+<td>Cœur de Fer</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Résistance</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_SANG_FROID_2</code></td>
+<td>Nerfs d’Acier</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Sang-eau</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_RECUPERATION_2</code></td>
+<td>Second Souffle</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Récupération</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_ARCANES_2</code></td>
+<td>Savoir de l’Arcaniste</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Arcanes</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_HISTOIRE_2</code></td>
+<td>Mémoire des Âges</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Histoire</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_RELIGION_2</code></td>
+<td>Savoir du Théologien</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Religion</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_NATURE_2</code></td>
+<td>Instinct du Naturaliste</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Nature</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_INVESTIGATION_2</code></td>
+<td>Œil de l’Enquêteur</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Investigation</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_TECHNIQUE_2</code></td>
+<td>Main de l’Artisan</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Technique</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_PERCEPTION_2</code></td>
+<td>Œil du Guetteur</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Perception</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_PERSPICACITE_2</code></td>
+<td>Regard du Juge</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Perspicacité</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_SURVIE_2</code></td>
+<td>Instinct du Pisteur</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Survie</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_MEDECINE_2</code></td>
+<td>Main du Guérisseur</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Médecine</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_INSTINCT_2</code></td>
+<td>Sixième Sens</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Instinct</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_PERSUASION_2</code></td>
+<td>Voix d’Argent</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Persuasion</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_INTIMIDATION_2</code></td>
+<td>Aura du Prédateur</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Intimidation</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_SUPERCHERIE_2</code></td>
+<td>Langue du Renard</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Supercherie</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_REPRESENTATION_2</code></td>
+<td>Grâce de l’Artiste</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Représentation</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_COMMANDEMENT_2</code></td>
+<td>Voix du Commandant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Commandement</td>
+</tr>
+<tr class="even">
+<td><code>AXST_STAT_FOR_2</code></td>
+<td>Force du Titan</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 FOR</td>
+</tr>
+<tr class="odd">
+<td><code>AXST_STAT_DEX_2</code></td>
+<td>Grâce du Félin</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 DEX</td>
+</tr>
+<tr class="even">
+<td><code>AXST_STAT_CON_2</code></td>
+<td>Vigueur de l’Ours</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 CON</td>
+</tr>
+<tr class="odd">
+<td><code>AXST_STAT_INT_2</code></td>
+<td>Esprit du Sage</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 INT</td>
+</tr>
+<tr class="even">
+<td><code>AXST_STAT_SAG_2</code></td>
+<td>Clairvoyance de l’Oracle</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 SAG</td>
+</tr>
+<tr class="odd">
+<td><code>AXST_STAT_CHA_2</code></td>
+<td>Présence du Souverain</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 CHA</td>
+</tr>
+<tr class="even">
+<td><code>AXRD_FEU_2</code></td>
+<td>Garde des braises</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de feu.</td>
+</tr>
+<tr class="odd">
+<td><code>AXRD_AIR_2</code></td>
+<td>Garde des vents</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de air.</td>
+</tr>
+<tr class="even">
+<td><code>AXRD_EAU_2</code></td>
+<td>Garde des marées</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de eau.</td>
+</tr>
+<tr class="odd">
+<td><code>AXRD_TERRE_2</code></td>
+<td>Garde de pierre</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de terre.</td>
+</tr>
+<tr class="even">
+<td><code>AXRD_NECROTIQUE_2</code></td>
+<td>Garde funéraire</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de ombre.</td>
+</tr>
+<tr class="odd">
+<td><code>AXRD_RADIANT_2</code></td>
+<td>Garde solaire</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de lumière.</td>
+</tr>
+<tr class="even">
+<td><code>AXRD_ARCANE_2</code></td>
+<td>Garde arcanique</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de force.</td>
+</tr>
+<tr class="odd">
+<td><code>AXRD_POISON_2</code></td>
+<td>Garde du serpent</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de toxique.</td>
+</tr>
+<tr class="even">
+<td><code>AXRD_DRAIN_2</code></td>
+<td>Garde vitale</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de drain.</td>
+</tr>
+<tr class="odd">
+<td><code>AXRD_MENTAL_2</code></td>
+<td>Garde de l’esprit</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de psychique.</td>
+</tr>
+<tr class="even">
+<td><code>AXRD_TRANCHANT_2</code></td>
+<td>Garde des lames</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de tranchant.</td>
+</tr>
+<tr class="odd">
+<td><code>AXRD_PERCANT_2</code></td>
+<td>Garde des pointes</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de percant.</td>
+</tr>
+<tr class="even">
+<td><code>AXRD_CONTONDANT_2</code></td>
+<td>Garde du roc</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de contondant.</td>
+</tr>
+<tr class="odd">
+<td><code>AXMOVE_2</code></td>
+<td>Pas du voyageur</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.965</td>
+<td>+2 Initiative, +2 m de déplacement</td>
+</tr>
+<tr class="even">
+<td><code>AX_ANTICRIT_2</code></td>
+<td>Anti-critique</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.944</td>
+<td>RD 2 supplémentaire uniquement contre les coups critiques.</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_ATHLETISME_4</code></td>
+<td>Élan de l’Athlète</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Athlétisme</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_PUISSANCE_4</code></td>
+<td>Poigne du Colosse</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Puissance</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_PROTECTION_4</code></td>
+<td>Garde du Rempart</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Protection</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_ACROBATIES_4</code></td>
+<td>Grâce de l’Acrobate</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Acrobaties</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_DISCRETION_4</code></td>
+<td>Pas de l’Ombre</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.048</td>
+<td>+4 aux tests de Discrétion</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_ADRESSE_4</code></td>
+<td>Main du Virtuose</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Adresse</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_ENDURANCE_4</code></td>
+<td>Souffle du Marathonien</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Endurance</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_RESISTANCE_4</code></td>
+<td>Cœur de Fer</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Résistance</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_SANG_FROID_4</code></td>
+<td>Nerfs d’Acier</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Sang-eau</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_RECUPERATION_4</code></td>
+<td>Second Souffle</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Récupération</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_ARCANES_4</code></td>
+<td>Savoir de l’Arcaniste</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Arcanes</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_HISTOIRE_4</code></td>
+<td>Mémoire des Âges</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Histoire</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_RELIGION_4</code></td>
+<td>Savoir du Théologien</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Religion</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_NATURE_4</code></td>
+<td>Instinct du Naturaliste</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Nature</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_INVESTIGATION_4</code></td>
+<td>Œil de l’Enquêteur</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Investigation</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_TECHNIQUE_4</code></td>
+<td>Main de l’Artisan</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Technique</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_PERCEPTION_4</code></td>
+<td>Œil du Guetteur</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Perception</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_PERSPICACITE_4</code></td>
+<td>Regard du Juge</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Perspicacité</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_SURVIE_4</code></td>
+<td>Instinct du Pisteur</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Survie</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_MEDECINE_4</code></td>
+<td>Main du Guérisseur</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Médecine</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_INSTINCT_4</code></td>
+<td>Sixième Sens</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Instinct</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_PERSUASION_4</code></td>
+<td>Voix d’Argent</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Persuasion</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_INTIMIDATION_4</code></td>
+<td>Aura du Prédateur</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Intimidation</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_SUPERCHERIE_4</code></td>
+<td>Langue du Renard</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Supercherie</td>
+</tr>
+<tr class="odd">
+<td><code>AXSK_REPRESENTATION_4</code></td>
+<td>Grâce de l’Artiste</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Représentation</td>
+</tr>
+<tr class="even">
+<td><code>AXSK_COMMANDEMENT_4</code></td>
+<td>Voix du Commandant</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Commandement</td>
+</tr>
+<tr class="odd">
+<td><code>AXRD_FEU_4</code></td>
+<td>Garde des braises</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de feu.</td>
+</tr>
+<tr class="even">
+<td><code>AXRD_AIR_4</code></td>
+<td>Garde des vents</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de air.</td>
+</tr>
+<tr class="odd">
+<td><code>AXRD_EAU_4</code></td>
+<td>Garde des marées</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de eau.</td>
+</tr>
+<tr class="even">
+<td><code>AXRD_TERRE_4</code></td>
+<td>Garde de pierre</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de terre.</td>
+</tr>
+<tr class="odd">
+<td><code>AXRD_NECROTIQUE_4</code></td>
+<td>Garde funéraire</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de ombre.</td>
+</tr>
+<tr class="even">
+<td><code>AXRD_RADIANT_4</code></td>
+<td>Garde solaire</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de lumière.</td>
+</tr>
+<tr class="odd">
+<td><code>AXRD_ARCANE_4</code></td>
+<td>Garde arcanique</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de force.</td>
+</tr>
+<tr class="even">
+<td><code>AXRD_POISON_4</code></td>
+<td>Garde du serpent</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de toxique.</td>
+</tr>
+<tr class="odd">
+<td><code>AXRD_DRAIN_4</code></td>
+<td>Garde vitale</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de drain.</td>
+</tr>
+<tr class="even">
+<td><code>AXRD_MENTAL_4</code></td>
+<td>Garde de l’esprit</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de psychique.</td>
+</tr>
+<tr class="odd">
+<td><code>AXRD_TRANCHANT_4</code></td>
+<td>Garde des lames</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de tranchant.</td>
+</tr>
+<tr class="even">
+<td><code>AXRD_PERCANT_4</code></td>
+<td>Garde des pointes</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de percant.</td>
+</tr>
+<tr class="odd">
+<td><code>AXRD_CONTONDANT_4</code></td>
+<td>Garde du roc</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de contondant.</td>
+</tr>
+<tr class="even">
+<td><code>AX_ANTICRIT_4</code></td>
+<td>Anti-critique</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.900</td>
+<td>RD 4 supplémentaire uniquement contre les coups critiques.</td>
+</tr>
+<tr class="odd">
+<td><code>A214</code></td>
+<td>Précision du duelliste</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.075</td>
+<td>+1 aux tests d’attaque</td>
+</tr>
+<tr class="even">
+<td><code>A216</code></td>
+<td>Présence du Souverain</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 CHA</td>
+</tr>
+<tr class="odd">
+<td><code>A218</code></td>
+<td>Vigueur de l’Ours</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 CON</td>
+</tr>
+<tr class="even">
+<td><code>A220</code></td>
+<td>Égide du gardien</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.087</td>
+<td>+1 DEF</td>
+</tr>
+<tr class="odd">
+<td><code>A222</code></td>
+<td>Grâce du Félin</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 DEX</td>
+</tr>
+<tr class="even">
+<td><code>A226</code></td>
+<td>Force du Titan</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 FOR</td>
+</tr>
+<tr class="odd">
+<td><code>A228</code></td>
+<td>Esprit du Sage</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 INT</td>
+</tr>
+<tr class="even">
+<td><code>A229</code></td>
+<td>Pas du voyageur</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.949</td>
+<td>+1 m de déplacement</td>
+</tr>
+<tr class="odd">
+<td><code>A231</code></td>
+<td>Égide de l’alchimiste</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM d’terre</td>
+</tr>
+<tr class="even">
+<td><code>A232</code></td>
+<td>Égide du roc</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM contondants</td>
+</tr>
+<tr class="odd">
+<td><code>A233</code></td>
+<td>Égide des braises</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de feu</td>
+</tr>
+<tr class="even">
+<td><code>A234</code></td>
+<td>Égide de l’orage</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de air</td>
+</tr>
+<tr class="odd">
+<td><code>A235</code></td>
+<td>Égide du givre</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de eau</td>
+</tr>
+<tr class="even">
+<td><code>A236</code></td>
+<td>Égide des pointes</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM perforants</td>
+</tr>
+<tr class="odd">
+<td><code>A237</code></td>
+<td>Égide du serpent</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de toxique</td>
+</tr>
+<tr class="even">
+<td><code>A238</code></td>
+<td>Égide des lames</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM tranchants</td>
+</tr>
+<tr class="odd">
+<td><code>A242</code></td>
+<td>Clairvoyance de l’Oracle</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 SAG</td>
+</tr>
+<tr class="even">
+<td><code>A248</code></td>
+<td>Présence du Souverain</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 CHA</td>
+</tr>
+<tr class="odd">
+<td><code>A250</code></td>
+<td>Vigueur de l’Ours</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 CON</td>
+</tr>
+<tr class="even">
+<td><code>A252</code></td>
+<td>Égide du gardien</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.180</td>
+<td>+2 DEF</td>
+</tr>
+<tr class="odd">
+<td><code>A254</code></td>
+<td>Grâce du Félin</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 DEX</td>
+</tr>
+<tr class="even">
+<td><code>A258</code></td>
+<td>Force du Titan</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 FOR</td>
+</tr>
+<tr class="odd">
+<td><code>A259</code></td>
+<td>Liberté de mouvement</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.091</td>
+<td>Immunité à l’état immobilisé.</td>
+</tr>
+<tr class="even">
+<td><code>A260</code></td>
+<td>Vivacité inaltérable</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.043</td>
+<td>Immunité à l’état entravé.</td>
+</tr>
+<tr class="odd">
+<td><code>A262</code></td>
+<td>Esprit du Sage</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 INT</td>
+</tr>
+<tr class="even">
+<td><code>A263</code></td>
+<td>Pas du voyageur</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.916</td>
+<td>+3 m de déplacement</td>
+</tr>
+<tr class="odd">
+<td><code>A265</code></td>
+<td>Égide de l’alchimiste</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM d’terre</td>
+</tr>
+<tr class="even">
+<td><code>A266</code></td>
+<td>Égide du roc</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM contondants</td>
+</tr>
+<tr class="odd">
+<td><code>A267</code></td>
+<td>Égide des braises</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de feu</td>
+</tr>
+<tr class="even">
+<td><code>A268</code></td>
+<td>Égide de l’orage</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de air</td>
+</tr>
+<tr class="odd">
+<td><code>A269</code></td>
+<td>Égide du givre</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de eau</td>
+</tr>
+<tr class="even">
+<td><code>A270</code></td>
+<td>Égide des pointes</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM perforants</td>
+</tr>
+<tr class="odd">
+<td><code>A271</code></td>
+<td>Égide du serpent</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de toxique</td>
+</tr>
+<tr class="even">
+<td><code>A272</code></td>
+<td>Égide des lames</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM tranchants</td>
+</tr>
+<tr class="odd">
+<td><code>A276</code></td>
+<td>Clairvoyance de l’Oracle</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 SAG</td>
+</tr>
+<tr class="even">
+<td><code>A278</code></td>
+<td>Précision du duelliste</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.024</td>
+<td>+2 aux tests d’attaque</td>
+</tr>
+<tr class="odd">
+<td><code>A288</code></td>
+<td>CON de base</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>CON de base : Mod +2</td>
+</tr>
+<tr class="even">
+<td><code>A289</code></td>
+<td>CON en plus</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 CON</td>
+</tr>
+<tr class="odd">
+<td><code>A290</code></td>
+<td>Consommables équipables</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.003</td>
+<td>+1 consommable équipable</td>
+</tr>
+<tr class="even">
+<td><code>A291</code></td>
+<td>DEX de base</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>DEX de base : Mod +2</td>
+</tr>
+<tr class="odd">
+<td><code>A292</code></td>
+<td>DEX en plus</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 DEX</td>
+</tr>
+<tr class="even">
+<td><code>A293</code></td>
+<td>FOR de base</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>FOR de base : Mod +2</td>
+</tr>
+<tr class="odd">
+<td><code>A294</code></td>
+<td>FOR en plus</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 FOR</td>
+</tr>
+<tr class="even">
+<td><code>A295</code></td>
+<td>CON de base</td>
+<td style="text-align: right;">P4</td>
+<td style="text-align: right;">1.150</td>
+<td>CON de base : Mod +3</td>
+</tr>
+<tr class="odd">
+<td><code>A296</code></td>
+<td>CON en plus</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 CON</td>
+</tr>
+<tr class="even">
+<td><code>A297</code></td>
+<td>Consommables équipables</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.006</td>
+<td>+2 consommable équipable</td>
+</tr>
+<tr class="odd">
+<td><code>A298</code></td>
+<td>DEX de base</td>
+<td style="text-align: right;">P4</td>
+<td style="text-align: right;">1.150</td>
+<td>DEX de base : Mod +3</td>
+</tr>
+<tr class="even">
+<td><code>A299</code></td>
+<td>DEX en plus</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 DEX</td>
+</tr>
+<tr class="odd">
+<td><code>A300</code></td>
+<td>FOR de base</td>
+<td style="text-align: right;">P4</td>
+<td style="text-align: right;">1.150</td>
+<td>FOR de base : Mod +3</td>
+</tr>
+<tr class="even">
+<td><code>A301</code></td>
+<td>FOR en plus</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 FOR</td>
+</tr>
+<tr class="odd">
+<td><code>A302</code></td>
+<td>CON de base</td>
+<td style="text-align: right;">P5</td>
+<td style="text-align: right;">1.150</td>
+<td>CON de base : Mod +4</td>
+</tr>
+<tr class="even">
+<td><code>A303</code></td>
+<td>Consommables équipables</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.000</td>
+<td>+3 consommable équipable</td>
+</tr>
+<tr class="odd">
+<td><code>A304</code></td>
+<td>DEX de base</td>
+<td style="text-align: right;">P5</td>
+<td style="text-align: right;">1.150</td>
+<td>DEX de base : Mod +4</td>
+</tr>
+<tr class="even">
+<td><code>A305</code></td>
+<td>FOR de base</td>
+<td style="text-align: right;">P5</td>
+<td style="text-align: right;">1.150</td>
+<td>FOR de base : Mod +4</td>
+</tr>
+<tr class="odd">
+<td><code>A306</code></td>
+<td>Héritage de classe</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.100</td>
+<td>Capacité de Classe Rang 1</td>
+</tr>
+<tr class="even">
+<td><code>A307</code></td>
+<td>Héritage de classe</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.100</td>
+<td>Capacité de Classe Rang 2</td>
+</tr>
+<tr class="odd">
+<td><code>A308</code></td>
+<td>Héritage de classe</td>
+<td style="text-align: right;">P4</td>
+<td style="text-align: right;">1.100</td>
+<td>Capacité de Classe Rang 3</td>
+</tr>
+<tr class="even">
+<td><code>A309</code></td>
+<td>Héritage de classe</td>
+<td style="text-align: right;">P5</td>
+<td style="text-align: right;">1.100</td>
+<td>Capacité de Classe Rang 4</td>
+</tr>
+<tr class="odd">
+<td><code>A310</code></td>
+<td>Héritage de classe</td>
+<td style="text-align: right;">P5</td>
+<td style="text-align: right;">1.100</td>
+<td>Capacité de Classe Rang 5</td>
+</tr>
+<tr class="even">
+<td><code>A311</code></td>
+<td>Discrétion</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.017</td>
+<td>+2 aux tests de Discrétion</td>
+</tr>
+<tr class="odd">
+<td><code>A312</code></td>
+<td>RD Terre</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM d’terre</td>
+</tr>
+<tr class="even">
+<td><code>A313</code></td>
+<td>RD Feu</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de feu</td>
+</tr>
+<tr class="odd">
+<td><code>A314</code></td>
+<td>RD Air</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de air</td>
+</tr>
+<tr class="even">
+<td><code>A315</code></td>
+<td>RD Eau</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de eau</td>
+</tr>
+<tr class="odd">
+<td><code>A316</code></td>
+<td>RD Toxique</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de toxique</td>
+</tr>
+<tr class="even">
+<td><code>A317</code></td>
+<td>Représentation</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Représentation</td>
+</tr>
+<tr class="odd">
+<td><code>A318</code></td>
+<td>Résistance</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Résistance</td>
+</tr>
+<tr class="even">
+<td><code>A319</code></td>
+<td>Survie</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Survie</td>
+</tr>
+<tr class="odd">
+<td><code>A320</code></td>
+<td>Discrétion</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.048</td>
+<td>+4 aux tests de Discrétion</td>
+</tr>
+<tr class="even">
+<td><code>A321</code></td>
+<td>RD Terre</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM d’terre</td>
+</tr>
+<tr class="odd">
+<td><code>A322</code></td>
+<td>RD Feu</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de feu</td>
+</tr>
+<tr class="even">
+<td><code>A323</code></td>
+<td>RD Air</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de air</td>
+</tr>
+<tr class="odd">
+<td><code>A324</code></td>
+<td>RD Eau</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de eau</td>
+</tr>
+<tr class="even">
+<td><code>A325</code></td>
+<td>RD Toxique</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de toxique</td>
+</tr>
+<tr class="odd">
+<td><code>A326</code></td>
+<td>Représentation</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Représentation</td>
+</tr>
+<tr class="even">
+<td><code>A327</code></td>
+<td>Résistance</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Résistance</td>
+</tr>
+<tr class="odd">
+<td><code>A328</code></td>
+<td>Survie</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Survie</td>
+</tr>
+<tr class="even">
+<td><code>A329</code></td>
+<td>Adresse</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Adresse</td>
+</tr>
+<tr class="odd">
+<td><code>A330</code></td>
+<td>Athlétisme</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Athlétisme</td>
+</tr>
+<tr class="even">
+<td><code>A331</code></td>
+<td>Attaque</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.075</td>
+<td>+1 aux tests d’attaque</td>
+</tr>
+<tr class="odd">
+<td><code>A332</code></td>
+<td>DEF</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.087</td>
+<td>+1 DEF</td>
+</tr>
+<tr class="even">
+<td><code>A334</code></td>
+<td>Puissance</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Puissance</td>
+</tr>
+<tr class="odd">
+<td><code>A336</code></td>
+<td>Adresse</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Adresse</td>
+</tr>
+<tr class="even">
+<td><code>A337</code></td>
+<td>Athlétisme</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Athlétisme</td>
+</tr>
+<tr class="odd">
+<td><code>A338</code></td>
+<td>DEF</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.180</td>
+<td>+2 DEF</td>
+</tr>
+<tr class="even">
+<td><code>A340</code></td>
+<td>Puissance</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Puissance</td>
+</tr>
+<tr class="odd">
+<td><code>A341</code></td>
+<td>Attaque</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.024</td>
+<td>+2 aux tests d’attaque</td>
+</tr>
+<tr class="even">
+<td><code>A345</code></td>
+<td>Mouvement</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.949</td>
+<td>+1 m de déplacement</td>
+</tr>
+<tr class="odd">
+<td><code>A346</code></td>
+<td>RD Terre</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM d’terre</td>
+</tr>
+<tr class="even">
+<td><code>A347</code></td>
+<td>RD Contondant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM contondants</td>
+</tr>
+<tr class="odd">
+<td><code>A348</code></td>
+<td>RD Feu</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de feu</td>
+</tr>
+<tr class="even">
+<td><code>A349</code></td>
+<td>RD Air</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de air</td>
+</tr>
+<tr class="odd">
+<td><code>A350</code></td>
+<td>RD Eau</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de eau</td>
+</tr>
+<tr class="even">
+<td><code>A351</code></td>
+<td>RD Perforant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM perforants</td>
+</tr>
+<tr class="odd">
+<td><code>A352</code></td>
+<td>RD Toxique</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de toxique</td>
+</tr>
+<tr class="even">
+<td><code>A353</code></td>
+<td>RD Tranchant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM tranchants</td>
+</tr>
+<tr class="odd">
+<td><code>A356</code></td>
+<td>Immunité immobilisé</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.091</td>
+<td>Immunité à l’état immobilisé.</td>
+</tr>
+<tr class="even">
+<td><code>A357</code></td>
+<td>Immunité ralenti</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.043</td>
+<td>Immunité à l’état entravé.</td>
+</tr>
+<tr class="odd">
+<td><code>A358</code></td>
+<td>Mouvement</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.916</td>
+<td>+3 m de déplacement</td>
+</tr>
+<tr class="even">
+<td><code>A359</code></td>
+<td>RD Terre</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM d’terre</td>
+</tr>
+<tr class="odd">
+<td><code>A360</code></td>
+<td>RD Contondant</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM contondants</td>
+</tr>
+<tr class="even">
+<td><code>A361</code></td>
+<td>RD Feu</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de feu</td>
+</tr>
+<tr class="odd">
+<td><code>A362</code></td>
+<td>RD Air</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de air</td>
+</tr>
+<tr class="even">
+<td><code>A363</code></td>
+<td>RD Eau</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de eau</td>
+</tr>
+<tr class="odd">
+<td><code>A364</code></td>
+<td>RD Perforant</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM perforants</td>
+</tr>
+<tr class="even">
+<td><code>A365</code></td>
+<td>RD Toxique</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de toxique</td>
+</tr>
+<tr class="odd">
+<td><code>A366</code></td>
+<td>RD Tranchant</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM tranchants</td>
+</tr>
+<tr class="even">
+<td><code>A369</code></td>
+<td>CHA de base</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>CHA de base : Mod +2</td>
+</tr>
+<tr class="odd">
+<td><code>A370</code></td>
+<td>CHA en plus</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 CHA</td>
+</tr>
+<tr class="even">
+<td><code>A371</code></td>
+<td>INT de base</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>INT de base : Mod +2</td>
+</tr>
+<tr class="odd">
+<td><code>A372</code></td>
+<td>INT en plus</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 INT</td>
+</tr>
+<tr class="even">
+<td><code>A373</code></td>
+<td>RD Contondant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM contondants</td>
+</tr>
+<tr class="odd">
+<td><code>A374</code></td>
+<td>RD Perforant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM perforants</td>
+</tr>
+<tr class="even">
+<td><code>A375</code></td>
+<td>RD Tranchant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM tranchants</td>
+</tr>
+<tr class="odd">
+<td><code>A376</code></td>
+<td>SAG de base</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>SAG de base : Mod +2</td>
+</tr>
+<tr class="even">
+<td><code>A377</code></td>
+<td>SAG en plus</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 SAG</td>
+</tr>
+<tr class="odd">
+<td><code>A378</code></td>
+<td>CHA de base</td>
+<td style="text-align: right;">P4</td>
+<td style="text-align: right;">1.150</td>
+<td>CHA de base : Mod +3</td>
+</tr>
+<tr class="even">
+<td><code>A379</code></td>
+<td>CHA en plus</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 CHA</td>
+</tr>
+<tr class="odd">
+<td><code>A380</code></td>
+<td>INT de base</td>
+<td style="text-align: right;">P4</td>
+<td style="text-align: right;">1.150</td>
+<td>INT de base : Mod +3</td>
+</tr>
+<tr class="even">
+<td><code>A381</code></td>
+<td>INT en plus</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 INT</td>
+</tr>
+<tr class="odd">
+<td><code>A382</code></td>
+<td>RD Contondant</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM contondants</td>
+</tr>
+<tr class="even">
+<td><code>A383</code></td>
+<td>RD Perforant</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM perforants</td>
+</tr>
+<tr class="odd">
+<td><code>A384</code></td>
+<td>RD Tranchant</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM tranchants</td>
+</tr>
+<tr class="even">
+<td><code>A385</code></td>
+<td>SAG de base</td>
+<td style="text-align: right;">P4</td>
+<td style="text-align: right;">1.150</td>
+<td>SAG de base : Mod +3</td>
+</tr>
+<tr class="odd">
+<td><code>A386</code></td>
+<td>SAG en plus</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 SAG</td>
+</tr>
+<tr class="even">
+<td><code>A387</code></td>
+<td>CHA de base</td>
+<td style="text-align: right;">P5</td>
+<td style="text-align: right;">1.150</td>
+<td>CHA de base : Mod +4</td>
+</tr>
+<tr class="odd">
+<td><code>A388</code></td>
+<td>INT de base</td>
+<td style="text-align: right;">P5</td>
+<td style="text-align: right;">1.150</td>
+<td>INT de base : Mod +4</td>
+</tr>
+<tr class="even">
+<td><code>A389</code></td>
+<td>SAG de base</td>
+<td style="text-align: right;">P5</td>
+<td style="text-align: right;">1.150</td>
+<td>SAG de base : Mod +4</td>
+</tr>
+<tr class="odd">
+<td><code>A525</code></td>
+<td>Égide des vents</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM d’air</td>
+</tr>
+<tr class="even">
+<td><code>A526</code></td>
+<td>Égide des vents</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM d’air</td>
+</tr>
+<tr class="odd">
+<td><code>A527</code></td>
+<td>Égide des marées</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM d’eau</td>
+</tr>
+<tr class="even">
+<td><code>A528</code></td>
+<td>Égide des marées</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM d’eau</td>
+</tr>
+<tr class="odd">
+<td><code>A529</code></td>
+<td>Égide de pierre</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de terre</td>
+</tr>
+<tr class="even">
+<td><code>A530</code></td>
+<td>Égide de pierre</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de terre</td>
+</tr>
+<tr class="odd">
+<td><code>A533</code></td>
+<td>Égide funéraire</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM ombre</td>
+</tr>
+<tr class="even">
+<td><code>A534</code></td>
+<td>Égide funéraire</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM ombre</td>
+</tr>
+<tr class="odd">
+<td><code>A535</code></td>
+<td>Égide solaire</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM lumière</td>
+</tr>
+<tr class="even">
+<td><code>A536</code></td>
+<td>Égide solaire</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM lumière</td>
+</tr>
+<tr class="odd">
+<td><code>A537</code></td>
+<td>Égide arcanique</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM force</td>
+</tr>
+<tr class="even">
+<td><code>A538</code></td>
+<td>Égide arcanique</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM force</td>
+</tr>
+<tr class="odd">
+<td><code>A539</code></td>
+<td>Égide du silence</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM air</td>
+</tr>
+<tr class="even">
+<td><code>A540</code></td>
+<td>Égide du silence</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM air</td>
+</tr>
+<tr class="odd">
+<td><code>A543</code></td>
+<td>Égide vitale</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de drain</td>
+</tr>
+<tr class="even">
+<td><code>A544</code></td>
+<td>Égide vitale</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de drain</td>
+</tr>
+<tr class="odd">
+<td><code>A545</code></td>
+<td>Égide de l’esprit</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM psychique</td>
+</tr>
+<tr class="even">
+<td><code>A546</code></td>
+<td>Égide de l’esprit</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM psychique</td>
+</tr>
+<tr class="odd">
+<td><code>A547</code></td>
+<td>Réserve de mana</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.983</td>
+<td>1 fois par jour, récupère 1 dé de mana.</td>
+</tr>
+<tr class="even">
+<td><code>A548</code></td>
+<td>Réserve de mana</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.054</td>
+<td>2 fois par jour, récupère 1 dé de mana.</td>
+</tr>
+<tr class="odd">
+<td><code>A549</code></td>
+<td>Réserve de mana</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.024</td>
+<td>3 fois par jour, récupère 1 dé de mana.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="armes">Armes</h2>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Nom</th>
+<th style="text-align: right;">P</th>
+<th style="text-align: right;">Coef</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>A001</code></td>
+<td>Affûté</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.043</td>
+<td>+1 à la plage de critique.</td>
+</tr>
+<tr class="even">
+<td><code>A002</code></td>
+<td>Gardienne</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.087</td>
+<td>+1 DEF tant que l’arme est tenue en main.</td>
+</tr>
+<tr class="odd">
+<td><code>WSKM_ATHLETISME_2</code></td>
+<td>Élan de l’Athlète</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Athlétisme</td>
+</tr>
+<tr class="even">
+<td><code>WSKM_PUISSANCE_2</code></td>
+<td>Poigne du Colosse</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Puissance</td>
+</tr>
+<tr class="odd">
+<td><code>WSKM_ADRESSE_2</code></td>
+<td>Main du Virtuose</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Adresse</td>
+</tr>
+<tr class="even">
+<td><code>WSKM_ACROBATIES_2</code></td>
+<td>Grâce de l’Acrobate</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Acrobaties</td>
+</tr>
+<tr class="odd">
+<td><code>WSKD_ADRESSE_2</code></td>
+<td>Main du Virtuose</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Adresse</td>
+</tr>
+<tr class="even">
+<td><code>WSKD_ACROBATIES_2</code></td>
+<td>Grâce de l’Acrobate</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Acrobaties</td>
+</tr>
+<tr class="odd">
+<td><code>WSKD_PERCEPTION_2</code></td>
+<td>Œil du Guetteur</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Perception</td>
+</tr>
+<tr class="even">
+<td><code>WSKD_SURVIE_2</code></td>
+<td>Instinct du Pisteur</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Survie</td>
+</tr>
+<tr class="odd">
+<td><code>WSKD_TECHNIQUE_2</code></td>
+<td>Main de l’Artisan</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Technique</td>
+</tr>
+<tr class="even">
+<td><code>WSKD_NATURE_2</code></td>
+<td>Instinct du Naturaliste</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Nature</td>
+</tr>
+<tr class="odd">
+<td><code>WSKF_PERCEPTION_2</code></td>
+<td>Œil du Guetteur</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Perception</td>
+</tr>
+<tr class="even">
+<td><code>WSKF_TECHNIQUE_2</code></td>
+<td>Main de l’Artisan</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Technique</td>
+</tr>
+<tr class="odd">
+<td><code>WSKF_ARCANES_2</code></td>
+<td>Savoir de l’Arcaniste</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Arcanes</td>
+</tr>
+<tr class="even">
+<td><code>WSKF_RELIGION_2</code></td>
+<td>Savoir du Théologien</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Religion</td>
+</tr>
+<tr class="odd">
+<td><code>WSKF_NATURE_2</code></td>
+<td>Instinct du Naturaliste</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Nature</td>
+</tr>
+<tr class="even">
+<td><code>WSKF_INVESTIGATION_2</code></td>
+<td>Œil de l’Enquêteur</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Investigation</td>
+</tr>
+<tr class="odd">
+<td><code>A003</code></td>
+<td>Équilibrée</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.075</td>
+<td>+1 en attaque avec cette arme.</td>
+</tr>
+<tr class="even">
+<td><code>WSKM_ATHLETISME_4</code></td>
+<td>Élan de l’Athlète</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Athlétisme</td>
+</tr>
+<tr class="odd">
+<td><code>WSKM_PUISSANCE_4</code></td>
+<td>Poigne du Colosse</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Puissance</td>
+</tr>
+<tr class="even">
+<td><code>WSKM_ADRESSE_4</code></td>
+<td>Main du Virtuose</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Adresse</td>
+</tr>
+<tr class="odd">
+<td><code>WSKM_ACROBATIES_4</code></td>
+<td>Grâce de l’Acrobate</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Acrobaties</td>
+</tr>
+<tr class="even">
+<td><code>WSKD_ADRESSE_4</code></td>
+<td>Main du Virtuose</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Adresse</td>
+</tr>
+<tr class="odd">
+<td><code>WSKD_ACROBATIES_4</code></td>
+<td>Grâce de l’Acrobate</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Acrobaties</td>
+</tr>
+<tr class="even">
+<td><code>WSKD_PERCEPTION_4</code></td>
+<td>Œil du Guetteur</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Perception</td>
+</tr>
+<tr class="odd">
+<td><code>WSKD_SURVIE_4</code></td>
+<td>Instinct du Pisteur</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Survie</td>
+</tr>
+<tr class="even">
+<td><code>WSKD_TECHNIQUE_4</code></td>
+<td>Main de l’Artisan</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Technique</td>
+</tr>
+<tr class="odd">
+<td><code>WSKD_NATURE_4</code></td>
+<td>Instinct du Naturaliste</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Nature</td>
+</tr>
+<tr class="even">
+<td><code>WSKF_PERCEPTION_4</code></td>
+<td>Œil du Guetteur</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Perception</td>
+</tr>
+<tr class="odd">
+<td><code>WSKF_TECHNIQUE_4</code></td>
+<td>Main de l’Artisan</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Technique</td>
+</tr>
+<tr class="even">
+<td><code>WSKF_ARCANES_4</code></td>
+<td>Savoir de l’Arcaniste</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Arcanes</td>
+</tr>
+<tr class="odd">
+<td><code>WSKF_RELIGION_4</code></td>
+<td>Savoir du Théologien</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Religion</td>
+</tr>
+<tr class="even">
+<td><code>WSKF_NATURE_4</code></td>
+<td>Instinct du Naturaliste</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Nature</td>
+</tr>
+<tr class="odd">
+<td><code>WSKF_INVESTIGATION_4</code></td>
+<td>Œil de l’Enquêteur</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Investigation</td>
+</tr>
+<tr class="even">
+<td><code>A005</code></td>
+<td>Cornaline brute</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.120</td>
+<td>+1 attaque, +1d6 DM contre les bêtes.</td>
+</tr>
+<tr class="odd">
+<td><code>A006</code></td>
+<td>Soufre blanc</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.960</td>
+<td>+1 attaque, +1d6 DM contre les vermines.</td>
+</tr>
+<tr class="even">
+<td><code>A007</code></td>
+<td>Argent alchimique</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 attaque, +1d6 DM contre les mort-vivants.</td>
+</tr>
+<tr class="odd">
+<td><code>A008</code></td>
+<td>Hématite rouge</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.200</td>
+<td>+1 attaque, +1d6 DM contre les humanoïdes.</td>
+</tr>
+<tr class="even">
+<td><code>A009</code></td>
+<td>Corail noir</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.940</td>
+<td>+1 attaque, +1d6 DM contre les créatures aquatiques.</td>
+</tr>
+<tr class="odd">
+<td><code>A010</code></td>
+<td>Dracacier</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.920</td>
+<td>+1 attaque, +1d6 DM contre les dragons.</td>
+</tr>
+<tr class="even">
+<td><code>A011</code></td>
+<td>Fer froid</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.080</td>
+<td>+1 attaque, +1d6 DM contre les démons.</td>
+</tr>
+<tr class="odd">
+<td><code>A012</code></td>
+<td>Laënk solaire</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.955</td>
+<td>Éclaire sur 10 m ; aucune affinité de dégâts.</td>
+</tr>
+<tr class="even">
+<td><code>A013</code></td>
+<td>Magnétite vive</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.060</td>
+<td>+1 attaque, +1d6 DM contre les créatures artificielles.</td>
+</tr>
+<tr class="odd">
+<td><code>A014</code></td>
+<td>Poussière d’argent froid</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.030</td>
+<td>+1 attaque, +1d6 DM contre les fées.</td>
+</tr>
+<tr class="even">
+<td><code>A015</code></td>
+<td>Sève noire</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.960</td>
+<td>+1 attaque, +1d6 DM contre les plantes.</td>
+</tr>
+<tr class="odd">
+<td><code>A016</code></td>
+<td>Osmium noir</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.050</td>
+<td>+1 attaque, +1d6 DM contre les géants.</td>
+</tr>
+<tr class="even">
+<td><code>A017</code></td>
+<td>Verre astral</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.030</td>
+<td>+1 attaque, +1d6 DM contre les élémentaires.</td>
+</tr>
+<tr class="odd">
+<td><code>A018</code></td>
+<td>Verre torsadé</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+1 attaque, +1d6 DM contre les aberrations.</td>
+</tr>
+<tr class="even">
+<td><code>A019</code></td>
+<td>Finesse</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.043</td>
+<td>Le porteur peut utiliser son mod. de DEX à la place de son mod. de
+FOR comme Carac. de dommage avec cette arme.</td>
+</tr>
+<tr class="odd">
+<td><code>A020</code></td>
+<td>Gardienne</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.120</td>
+<td>+2 DEF tant que l’arme est tenue en main.</td>
+</tr>
+<tr class="even">
+<td><code>A022</code></td>
+<td>Adamantium</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.995</td>
+<td>Ignore 2 points de RD. +2 aux tests pour briser objets, armes,
+boucliers ou portes.</td>
+</tr>
+<tr class="odd">
+<td><code>A023</code></td>
+<td>Arcanite</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.965</td>
+<td>+1d4 DM d’affinité Force.</td>
+</tr>
+<tr class="even">
+<td><code>A024</code></td>
+<td>en durium</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.959</td>
+<td>-1 attaque, mais le dé de DM augmente d’une catégorie. Arme quasi
+indestructible.</td>
+</tr>
+<tr class="odd">
+<td><code>A025</code></td>
+<td>Fulgurium</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.965</td>
+<td>+1d4 DM d’affinité Air.</td>
+</tr>
+<tr class="even">
+<td><code>A026</code></td>
+<td>Hybberium</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.965</td>
+<td>+1d4 DM d’affinité Eau.</td>
+</tr>
+<tr class="odd">
+<td><code>A027</code></td>
+<td>Laënk solaire</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.899</td>
+<td>Éclaire sur 20 m ; aucune affinité de dégâts.</td>
+</tr>
+<tr class="even">
+<td><code>A028</code></td>
+<td>Malachium</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.900</td>
+<td>+1 attaque, +1d6 DM contre les célestes.</td>
+</tr>
+<tr class="odd">
+<td><code>A029</code></td>
+<td>Mithral</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.978</td>
+<td>+2 m de déplacement, +2 initiative.</td>
+</tr>
+<tr class="even">
+<td><code>A030</code></td>
+<td>Phospharium</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.965</td>
+<td>+1d4 DM d’affinité Feu.</td>
+</tr>
+<tr class="odd">
+<td><code>A031</code></td>
+<td>Tellurite</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.965</td>
+<td>+1d4 DM d’affinité Terre.</td>
+</tr>
+<tr class="even">
+<td><code>A032</code></td>
+<td>Sombracier</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.965</td>
+<td>+1d4 DM d’affinité Ombre.</td>
+</tr>
+<tr class="odd">
+<td><code>A034</code></td>
+<td>Héliolite</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.965</td>
+<td>+1d4 DM d’affinité Lumière.</td>
+</tr>
+<tr class="even">
+<td><code>A035</code></td>
+<td>Double chasse</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.050</td>
+<td>+1 attaque, +1d6 DM contre deux types de créatures cohérents.</td>
+</tr>
+<tr class="odd">
+<td><code>A037</code></td>
+<td>Adamantium</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.102</td>
+<td>Ignore 4 points de RD. +4 aux tests pour briser objets, armes,
+boucliers ou portes.</td>
+</tr>
+<tr class="even">
+<td><code>A038</code></td>
+<td>Arcanite</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.988</td>
+<td>+1d6 DM d’affinité Force.</td>
+</tr>
+<tr class="odd">
+<td><code>A039</code></td>
+<td>Fulgurium</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.988</td>
+<td>+1d6 DM d’affinité Air.</td>
+</tr>
+<tr class="even">
+<td><code>A040</code></td>
+<td>Hybberium</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.988</td>
+<td>+1d6 DM d’affinité Eau.</td>
+</tr>
+<tr class="odd">
+<td><code>A042</code></td>
+<td>Mithral</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.068</td>
+<td>+4 m de déplacement, +4 initiative.</td>
+</tr>
+<tr class="even">
+<td><code>A043</code></td>
+<td>Phospharium</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.988</td>
+<td>+1d6 DM d’affinité Feu.</td>
+</tr>
+<tr class="odd">
+<td><code>A044</code></td>
+<td>Tellurite</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.988</td>
+<td>+1d6 DM d’affinité Terre.</td>
+</tr>
+<tr class="even">
+<td><code>A045</code></td>
+<td>Sombracier</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.988</td>
+<td>+1d6 DM d’affinité Ombre.</td>
+</tr>
+<tr class="odd">
+<td><code>A047</code></td>
+<td>Héliolite</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.988</td>
+<td>+1d6 DM d’affinité Lumière.</td>
+</tr>
+<tr class="even">
+<td><code>A050</code></td>
+<td>canalisatrice</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.075</td>
+<td>+1 aux tests d’attaque magique</td>
+</tr>
+<tr class="odd">
+<td><code>A051</code></td>
+<td>Héritage de classe</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.100</td>
+<td>Capacité de Classe Rang 1</td>
+</tr>
+<tr class="even">
+<td><code>A052</code></td>
+<td>sort mineur lié</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.063</td>
+<td>1 fois par jour, permet de lancer un sort de rang 1 sans dépenser de
+PM.</td>
+</tr>
+<tr class="odd">
+<td><code>A053</code></td>
+<td>Canalisation feu</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.947</td>
+<td>+1d4 DM de feu aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="even">
+<td><code>A055</code></td>
+<td>Canalisation toxique</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.947</td>
+<td>+1d4 DM de toxique aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="odd">
+<td><code>A058</code></td>
+<td>Canalisation force</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.947</td>
+<td>+1d4 DM force aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="even">
+<td><code>A061</code></td>
+<td>canalisatrice supérieure</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.120</td>
+<td>+2 aux tests d’attaque magique</td>
+</tr>
+<tr class="odd">
+<td><code>A062</code></td>
+<td>de puissance arcanique</td>
+<td style="text-align: right;">P4</td>
+<td style="text-align: right;">1.180</td>
+<td>Categorie de dés des sort +1 1d4 =&gt; 1d6</td>
+</tr>
+<tr class="even">
+<td><code>A063</code></td>
+<td>Héritage de classe</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.100</td>
+<td>Capacité de Classe Rang 2</td>
+</tr>
+<tr class="odd">
+<td><code>A064</code></td>
+<td>réserve de mana</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.983</td>
+<td>Peut etre utiliser 1 fois par jour pour recuperer 1dMana</td>
+</tr>
+<tr class="even">
+<td><code>A065</code></td>
+<td>sort lié</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.100</td>
+<td>1 fois par jour, permet de lancer un sort de rang 2 ou 3 sans
+dépenser de PM.</td>
+</tr>
+<tr class="odd">
+<td><code>A066</code></td>
+<td>Canalisation feu</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.006</td>
+<td>+2d4 DM de feu aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="even">
+<td><code>A068</code></td>
+<td>Canalisation toxique</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.006</td>
+<td>+2d4 DM de toxique aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="odd">
+<td><code>A071</code></td>
+<td>Canalisation force</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.006</td>
+<td>+2d4 DM force aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="even">
+<td><code>A074</code></td>
+<td>de puissance arcanique supérieure</td>
+<td style="text-align: right;">P5</td>
+<td style="text-align: right;">1.200</td>
+<td>Categorie de dés des sort +2 1d4 =&gt; 1d8</td>
+</tr>
+<tr class="odd">
+<td><code>A075</code></td>
+<td>Héritage de classe</td>
+<td style="text-align: right;">P4</td>
+<td style="text-align: right;">1.100</td>
+<td>Capacité de Classe Rang 3</td>
+</tr>
+<tr class="even">
+<td><code>A076</code></td>
+<td>réserve de mana supérieure</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.054</td>
+<td>Peut etre utiliser 2 fois par jour pour recuperer 1dMana</td>
+</tr>
+<tr class="odd">
+<td><code>A077</code></td>
+<td>Héritage de classe</td>
+<td style="text-align: right;">P5</td>
+<td style="text-align: right;">1.100</td>
+<td>Capacité de Classe Rang 4</td>
+</tr>
+<tr class="even">
+<td><code>A078</code></td>
+<td>réserve de mana majeure</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.024</td>
+<td>Peut etre utiliser 3 fois par jour pour recuperer 1dMana</td>
+</tr>
+<tr class="odd">
+<td><code>A079</code></td>
+<td>sort majeur lié</td>
+<td style="text-align: right;">P4</td>
+<td style="text-align: right;">1.100</td>
+<td>1 fois par jour, permet de lancer un sort de rang 4 ou 5 sans
+dépenser de PM.</td>
+</tr>
+<tr class="even">
+<td><code>A080</code></td>
+<td>Héritage de classe</td>
+<td style="text-align: right;">P5</td>
+<td style="text-align: right;">1.100</td>
+<td>Capacité de Classe Rang 5</td>
+</tr>
+<tr class="odd">
+<td><code>A081</code></td>
+<td>corde de tendon d’ogre</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.800</td>
+<td>+1 DM, mais -1 attaque à distance.</td>
+</tr>
+<tr class="even">
+<td><code>A083</code></td>
+<td>Visée juste</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.075</td>
+<td>+1 en attaque à distance avec cette arme.</td>
+</tr>
+<tr class="odd">
+<td><code>A084</code></td>
+<td>Cornaline brute</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.120</td>
+<td>+1 attaque, +1d6 DM contre les bêtes.</td>
+</tr>
+<tr class="even">
+<td><code>A085</code></td>
+<td>Soufre blanc</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.960</td>
+<td>+1 attaque, +1d6 DM contre les vermines.</td>
+</tr>
+<tr class="odd">
+<td><code>A086</code></td>
+<td>Argent alchimique</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 attaque, +1d6 DM contre les mort-vivants.</td>
+</tr>
+<tr class="even">
+<td><code>A087</code></td>
+<td>Hématite rouge</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.200</td>
+<td>+1 attaque, +1d6 DM contre les humanoïdes.</td>
+</tr>
+<tr class="odd">
+<td><code>A088</code></td>
+<td>Corail noir</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.940</td>
+<td>+1 attaque, +1d6 DM contre les créatures aquatiques.</td>
+</tr>
+<tr class="even">
+<td><code>A089</code></td>
+<td>Dracacier</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.920</td>
+<td>+1 attaque, +1d6 DM contre les dragons.</td>
+</tr>
+<tr class="odd">
+<td><code>A090</code></td>
+<td>Fer froid</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.080</td>
+<td>+1 attaque, +1d6 DM contre les démons.</td>
+</tr>
+<tr class="even">
+<td><code>A091</code></td>
+<td>Magnétite vive</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.060</td>
+<td>+1 attaque, +1d6 DM contre les créatures artificielles.</td>
+</tr>
+<tr class="odd">
+<td><code>A092</code></td>
+<td>Poussière d’argent froid</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.030</td>
+<td>+1 attaque, +1d6 DM contre les fées.</td>
+</tr>
+<tr class="even">
+<td><code>A093</code></td>
+<td>Sève noire</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.960</td>
+<td>+1 attaque, +1d6 DM contre les plantes.</td>
+</tr>
+<tr class="odd">
+<td><code>A094</code></td>
+<td>Osmium noir</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.050</td>
+<td>+1 attaque, +1d6 DM contre les géants.</td>
+</tr>
+<tr class="even">
+<td><code>A095</code></td>
+<td>Verre astral</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.030</td>
+<td>+1 attaque, +1d6 DM contre les élémentaires.</td>
+</tr>
+<tr class="odd">
+<td><code>A096</code></td>
+<td>Verre torsadé</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+1 attaque, +1d6 DM contre les aberrations.</td>
+</tr>
+<tr class="even">
+<td><code>A097</code></td>
+<td>corde de nerf de dragon</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.965</td>
+<td>+5 m portée et +1 DM.</td>
+</tr>
+<tr class="odd">
+<td><code>A098</code></td>
+<td>corde jumelle</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.049</td>
+<td>1 fois par combat, peut relancer un jet d’attaque à distance raté de
+1 ou 2 points.</td>
+</tr>
+<tr class="even">
+<td><code>A100</code></td>
+<td>Visée juste</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.120</td>
+<td>+2 en attaque à distance avec cette arme.</td>
+</tr>
+<tr class="odd">
+<td><code>A101</code></td>
+<td>Arcanite</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.965</td>
+<td>+1d4 DM d’affinité Force.</td>
+</tr>
+<tr class="even">
+<td><code>A102</code></td>
+<td>en bois de chêne</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.947</td>
+<td>Portée divisée par 2, mais le dé de DM augmente de 2 catégorie.</td>
+</tr>
+<tr class="odd">
+<td><code>A103</code></td>
+<td>en bois de fer</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.043</td>
+<td>Ajoute la FOR aux mod de degats</td>
+</tr>
+<tr class="even">
+<td><code>A104</code></td>
+<td>en bois de saule</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.043</td>
+<td>Ajoute la DEX aux mod de degats</td>
+</tr>
+<tr class="odd">
+<td><code>A105</code></td>
+<td>Bois d’if</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.978</td>
+<td>+2 m de déplacement, +2 initiative tant que l’arme est portée ou
+prête.</td>
+</tr>
+<tr class="even">
+<td><code>A106</code></td>
+<td>Fulgurium</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.965</td>
+<td>+1d4 DM d’affinité Air.</td>
+</tr>
+<tr class="odd">
+<td><code>A107</code></td>
+<td>Hybberium</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.965</td>
+<td>+1d4 DM d’affinité Eau.</td>
+</tr>
+<tr class="even">
+<td><code>A108</code></td>
+<td>Malachium</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.900</td>
+<td>+1 attaque, +1d6 DM contre les célestes.</td>
+</tr>
+<tr class="odd">
+<td><code>A109</code></td>
+<td>Phospharium</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.965</td>
+<td>+1d4 DM d’affinité Feu.</td>
+</tr>
+<tr class="even">
+<td><code>A110</code></td>
+<td>Tellurite</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.965</td>
+<td>+1d4 DM d’affinité Terre.</td>
+</tr>
+<tr class="odd">
+<td><code>A112</code></td>
+<td>Héliolite</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.965</td>
+<td>+1d4 DM d’affinité Lumière.</td>
+</tr>
+<tr class="even">
+<td><code>A113</code></td>
+<td>fidèle</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.971</td>
+<td>Une arme de lancer revient immédiatement dans la main du porteur
+après l’attaque.</td>
+</tr>
+<tr class="odd">
+<td><code>A114</code></td>
+<td>Tir imperturbable</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.031</td>
+<td>Ignore les malus d’obstacle</td>
+</tr>
+<tr class="even">
+<td><code>A115</code></td>
+<td>Double chasse</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.050</td>
+<td>+1 attaque, +1d6 DM contre deux types de créatures cohérents.</td>
+</tr>
+<tr class="odd">
+<td><code>A116</code></td>
+<td>Salve enchaînée</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>Une fois par combat, après une attaque réussie, permet une seconde
+attaque à -5 contre une autre cible située à 5 m maximum de la
+première.</td>
+</tr>
+<tr class="even">
+<td><code>A117</code></td>
+<td>Arcanite</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.988</td>
+<td>+1d6 DM d’affinité Force.</td>
+</tr>
+<tr class="odd">
+<td><code>A118</code></td>
+<td>Bois d’if</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.068</td>
+<td>+4 m de déplacement, +4 initiative tant que l’arme est portée ou
+prête.</td>
+</tr>
+<tr class="even">
+<td><code>A119</code></td>
+<td>Fulgurium</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.988</td>
+<td>+1d6 DM d’affinité Air.</td>
+</tr>
+<tr class="odd">
+<td><code>A120</code></td>
+<td>Hybberium</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.988</td>
+<td>+1d6 DM d’affinité Eau.</td>
+</tr>
+<tr class="even">
+<td><code>A122</code></td>
+<td>Phospharium</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.988</td>
+<td>+1d6 DM d’affinité Feu.</td>
+</tr>
+<tr class="odd">
+<td><code>A123</code></td>
+<td>Tellurite</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.988</td>
+<td>+1d6 DM d’affinité Terre.</td>
+</tr>
+<tr class="even">
+<td><code>A125</code></td>
+<td>Héliolite</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.988</td>
+<td>+1d6 DM d’affinité Lumière.</td>
+</tr>
+<tr class="odd">
+<td><code>A126</code></td>
+<td>Tir imperturbable</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.100</td>
+<td>Ignore les malus d’obstacle et +1 attaque</td>
+</tr>
+<tr class="even">
+<td><code>A127</code></td>
+<td>Salve enchaînée</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.910</td>
+<td>Une fois par combat, permet une seconde attaque à -2 contre une
+autre cible située à 5 m maximum de la première.</td>
+</tr>
+<tr class="odd">
+<td><code>A470</code></td>
+<td>Mordant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.975</td>
+<td>+1d6 DM supplémentaires sur un coup critique.</td>
+</tr>
+<tr class="even">
+<td><code>A503</code></td>
+<td>Canalisation air</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.947</td>
+<td>+1d4 DM d’air aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="odd">
+<td><code>A504</code></td>
+<td>Canalisation eau</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.947</td>
+<td>+1d4 DM d’eau aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="even">
+<td><code>A505</code></td>
+<td>Canalisation terre</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.947</td>
+<td>+1d4 DM de terre aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="odd">
+<td><code>A507</code></td>
+<td>Canalisation ombre</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.947</td>
+<td>+1d4 DM ombre aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="even">
+<td><code>A508</code></td>
+<td>Canalisation lumière</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.947</td>
+<td>+1d4 DM lumière aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="odd">
+<td><code>A509</code></td>
+<td>Canalisation drain</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.947</td>
+<td>+1d4 DM de drain aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="even">
+<td><code>A510</code></td>
+<td>Canalisation psychique</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.947</td>
+<td>+1d4 DM psychique aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="odd">
+<td><code>A511</code></td>
+<td>Canalisation tranchant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.947</td>
+<td>+1d4 DM tranchants aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="even">
+<td><code>A512</code></td>
+<td>Canalisation perçant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.947</td>
+<td>+1d4 DM perçants aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="odd">
+<td><code>A513</code></td>
+<td>Canalisation contondant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.947</td>
+<td>+1d4 DM contondants aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="even">
+<td><code>A514</code></td>
+<td>Canalisation air</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.006</td>
+<td>+2d4 DM d’air aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="odd">
+<td><code>A515</code></td>
+<td>Canalisation eau</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.006</td>
+<td>+2d4 DM d’eau aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="even">
+<td><code>A516</code></td>
+<td>Canalisation terre</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.006</td>
+<td>+2d4 DM de terre aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="odd">
+<td><code>A518</code></td>
+<td>Canalisation ombre</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.006</td>
+<td>+2d4 DM ombre aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="even">
+<td><code>A519</code></td>
+<td>Canalisation lumière</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.006</td>
+<td>+2d4 DM lumière aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="odd">
+<td><code>A520</code></td>
+<td>Canalisation drain</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.006</td>
+<td>+2d4 DM de drain aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="even">
+<td><code>A521</code></td>
+<td>Canalisation psychique</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.006</td>
+<td>+2d4 DM psychique aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="odd">
+<td><code>A522</code></td>
+<td>Canalisation tranchant</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.006</td>
+<td>+2d4 DM tranchants aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="even">
+<td><code>A523</code></td>
+<td>Canalisation perçant</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.006</td>
+<td>+2d4 DM perçants aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="odd">
+<td><code>A524</code></td>
+<td>Canalisation contondant</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.006</td>
+<td>+2d4 DM contondants aux sorts offensifs canalisés via l’arme.</td>
+</tr>
+<tr class="even">
+<td><code>A550</code></td>
+<td>Fiable</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.995</td>
+<td>Relance les résultats de 1 sur les dés de DM de base de l’arme.</td>
+</tr>
+<tr class="odd">
+<td><code>A551</code></td>
+<td>Fiable</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.995</td>
+<td>Relance les résultats de 1 sur les dés de DM de base de l’arme.</td>
+</tr>
+<tr class="even">
+<td><code>A552</code></td>
+<td>Perce-cœur</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.043</td>
+<td>+1 à la plage de critique.</td>
+</tr>
+<tr class="odd">
+<td><code>A553</code></td>
+<td>Fracassant</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.043</td>
+<td>+1 à la plage de critique.</td>
+</tr>
+<tr class="even">
+<td><code>A554</code></td>
+<td>Empaleur</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.975</td>
+<td>+1d6 DM supplémentaires sur un coup critique.</td>
+</tr>
+<tr class="odd">
+<td><code>A555</code></td>
+<td>Écrasant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.975</td>
+<td>+1d6 DM supplémentaires sur un coup critique.</td>
+</tr>
+<tr class="even">
+<td><code>A556</code></td>
+<td>Brise-armure</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.995</td>
+<td>Ignore 2 points de RD.</td>
+</tr>
+<tr class="odd">
+<td><code>A557</code></td>
+<td>Perce-armure</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.995</td>
+<td>Ignore 2 points de RD.</td>
+</tr>
+<tr class="even">
+<td><code>A558</code></td>
+<td>Ferrite noire</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.180</td>
+<td>+1 attaque, +1d6 DM contre les monstres.</td>
+</tr>
+<tr class="odd">
+<td><code>A559</code></td>
+<td>Ferrite noire</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.180</td>
+<td>+1 attaque, +1d6 DM contre les monstres.</td>
+</tr>
+<tr class="even">
+<td><code>A560</code></td>
+<td>Sel vitrifié</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.920</td>
+<td>+1 attaque, +1d6 DM contre les vases.</td>
+</tr>
+<tr class="odd">
+<td><code>A561</code></td>
+<td>Sel vitrifié</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.920</td>
+<td>+1 attaque, +1d6 DM contre les vases.</td>
+</tr>
+<tr class="even">
+<td><code>A562</code></td>
+<td>Étherium</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.100</td>
+<td>+1 attaque, +1d6 DM contre les esprits.</td>
+</tr>
+<tr class="odd">
+<td><code>A563</code></td>
+<td>Étherium</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.100</td>
+<td>+1 attaque, +1d6 DM contre les esprits.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="armure-bouclier">Armure / Bouclier</h2>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Nom</th>
+<th style="text-align: right;">P</th>
+<th style="text-align: right;">Coef</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>AR_IMM_APEURE</code></td>
+<td>Cœur intrépide</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.043</td>
+<td>Immunité à l’état effrayé.</td>
+</tr>
+<tr class="even">
+<td><code>AR_IMM_ENDORMI</code></td>
+<td>Veille éternelle</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.024</td>
+<td>Immunité à l’état sommeil.</td>
+</tr>
+<tr class="odd">
+<td><code>AR_IMM_ETOURDI</code></td>
+<td>Esprit lucide</td>
+<td style="text-align: right;">P4</td>
+<td style="text-align: right;">1.100</td>
+<td>Immunité à l’état étourdi.</td>
+</tr>
+<tr class="even">
+<td><code>AR_IMM_RALENTI</code></td>
+<td>Pas infatigable</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.043</td>
+<td>Immunité à l’état entravé.</td>
+</tr>
+<tr class="odd">
+<td><code>AR_IMM_RENVERSE</code></td>
+<td>Ancrage inébranlable</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.019</td>
+<td>Immunité à l’état renversé.</td>
+</tr>
+<tr class="even">
+<td><code>AR_IMM_AFFAIBLI</code></td>
+<td>Vitalité inaltérable</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.078</td>
+<td>Immunité à l’état affaibli.</td>
+</tr>
+<tr class="odd">
+<td><code>AR_PROTECTRICE</code></td>
+<td>Protectrice</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.042</td>
+<td>Réduit les dégâts supplémentaires des critiques et attaques
+sournoises lorsque l’armure est portée.</td>
+</tr>
+<tr class="even">
+<td><code>AR_BOUCLIER_PROTECTEUR</code></td>
+<td>Protecteur</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.042</td>
+<td>Réduit les dégâts supplémentaires des critiques et attaques
+sournoises lorsque le bouclier est porté.</td>
+</tr>
+<tr class="odd">
+<td><code>AR_TISSU_BOUCLIER_PSI</code></td>
+<td>Voile psychique</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.050</td>
+<td>+5 DEF contre les attaques psychiquees.</td>
+</tr>
+<tr class="even">
+<td><code>ARD_CLOTH_TRANCHANT_1</code></td>
+<td>RD Tranchant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.965</td>
+<td>RD 1 contre les DM tranchant</td>
+</tr>
+<tr class="odd">
+<td><code>ARD_CLOTH_PERCANT_1</code></td>
+<td>RD Perçant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.965</td>
+<td>RD 1 contre les DM perçant</td>
+</tr>
+<tr class="even">
+<td><code>ARD_CLOTH_CONTONDANT_1</code></td>
+<td>RD Contondant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.965</td>
+<td>RD 1 contre les DM contondant</td>
+</tr>
+<tr class="odd">
+<td><code>AR_STAT_INT_1</code></td>
+<td>Esprit du Sage</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 INT</td>
+</tr>
+<tr class="even">
+<td><code>AR_STAT_SAG_1</code></td>
+<td>Clairvoyance de l’Oracle</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 SAG</td>
+</tr>
+<tr class="odd">
+<td><code>AR_STAT_CHA_1</code></td>
+<td>Présence du Souverain</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 CHA</td>
+</tr>
+<tr class="even">
+<td><code>AR_STAT_DEX_1</code></td>
+<td>Grâce du Félin</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 DEX</td>
+</tr>
+<tr class="odd">
+<td><code>AR_STAT_FOR_1</code></td>
+<td>Force du Titan</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 FOR</td>
+</tr>
+<tr class="even">
+<td><code>AR_STAT_CON_1</code></td>
+<td>Vigueur de l’Ours</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.150</td>
+<td>+1 CON</td>
+</tr>
+<tr class="odd">
+<td><code>AR_BOUCLIER_PERCUTEUR_1</code></td>
+<td>Percuteur</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.019</td>
+<td>+1 aux attaques réalisées avec le bouclier.</td>
+</tr>
+<tr class="even">
+<td><code>ARD_AIR_2</code></td>
+<td>RD Air</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM air</td>
+</tr>
+<tr class="odd">
+<td><code>ARD_EAU_2</code></td>
+<td>RD Eau</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM eau</td>
+</tr>
+<tr class="even">
+<td><code>ARD_TERRE_2</code></td>
+<td>RD Terre</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM terre</td>
+</tr>
+<tr class="odd">
+<td><code>ARD_NECROTIQUE_2</code></td>
+<td>RD Ombre</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM ombre</td>
+</tr>
+<tr class="even">
+<td><code>ARD_RADIANT_2</code></td>
+<td>RD Lumière</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM lumière</td>
+</tr>
+<tr class="odd">
+<td><code>ARD_ARCANE_2</code></td>
+<td>RD Force</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM force</td>
+</tr>
+<tr class="even">
+<td><code>ARD_MALADIE_2</code></td>
+<td>RD Toxique</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM toxique</td>
+</tr>
+<tr class="odd">
+<td><code>ARD_DRAIN_2</code></td>
+<td>RD Drain</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM drain</td>
+</tr>
+<tr class="even">
+<td><code>ARD_MENTAL_2</code></td>
+<td>RD Psychique</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM psychique</td>
+</tr>
+<tr class="odd">
+<td><code>ARD_CLOTH_TRANCHANT_2</code></td>
+<td>RD Tranchant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.931</td>
+<td>RD 2 contre les DM tranchant</td>
+</tr>
+<tr class="even">
+<td><code>ARD_CLOTH_PERCANT_2</code></td>
+<td>RD Perçant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.931</td>
+<td>RD 2 contre les DM perçant</td>
+</tr>
+<tr class="odd">
+<td><code>ARD_CLOTH_CONTONDANT_2</code></td>
+<td>RD Contondant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.931</td>
+<td>RD 2 contre les DM contondant</td>
+</tr>
+<tr class="even">
+<td><code>AR_STAT_INT_2</code></td>
+<td>Esprit du Sage</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 INT</td>
+</tr>
+<tr class="odd">
+<td><code>AR_STAT_SAG_2</code></td>
+<td>Clairvoyance de l’Oracle</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 SAG</td>
+</tr>
+<tr class="even">
+<td><code>AR_STAT_CHA_2</code></td>
+<td>Présence du Souverain</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 CHA</td>
+</tr>
+<tr class="odd">
+<td><code>AR_STAT_DEX_2</code></td>
+<td>Grâce du Félin</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 DEX</td>
+</tr>
+<tr class="even">
+<td><code>AR_STAT_FOR_2</code></td>
+<td>Force du Titan</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 FOR</td>
+</tr>
+<tr class="odd">
+<td><code>AR_STAT_CON_2</code></td>
+<td>Vigueur de l’Ours</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.150</td>
+<td>+2 CON</td>
+</tr>
+<tr class="even">
+<td><code>ARSK_ARCANES_2</code></td>
+<td>Savoir de l’Arcaniste</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Arcanes</td>
+</tr>
+<tr class="odd">
+<td><code>ARSK_RELIGION_2</code></td>
+<td>Savoir du Théologien</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Religion</td>
+</tr>
+<tr class="even">
+<td><code>ARSK_HISTOIRE_2</code></td>
+<td>Mémoire des Âges</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Histoire</td>
+</tr>
+<tr class="odd">
+<td><code>ARSK_NATURE_2</code></td>
+<td>Instinct du Naturaliste</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Nature</td>
+</tr>
+<tr class="even">
+<td><code>ARSK_SANG_FROID_2</code></td>
+<td>Nerfs d’Acier</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Sang-eau</td>
+</tr>
+<tr class="odd">
+<td><code>ARSK_RESISTANCE_2</code></td>
+<td>Cœur de Fer</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Résistance</td>
+</tr>
+<tr class="even">
+<td><code>ARSK_ACROBATIES_2</code></td>
+<td>Grâce de l’Acrobate</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Acrobaties</td>
+</tr>
+<tr class="odd">
+<td><code>ARSK_DISCRETION_2</code></td>
+<td>Pas de l’Ombre</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.017</td>
+<td>+2 aux tests de Discrétion</td>
+</tr>
+<tr class="even">
+<td><code>ARSK_ADRESSE_2</code></td>
+<td>Main du Virtuose</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Adresse</td>
+</tr>
+<tr class="odd">
+<td><code>ARSK_ATHLETISME_2</code></td>
+<td>Élan de l’Athlète</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Athlétisme</td>
+</tr>
+<tr class="even">
+<td><code>ARSK_SURVIE_2</code></td>
+<td>Instinct du Pisteur</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Survie</td>
+</tr>
+<tr class="odd">
+<td><code>ARSK_PERCEPTION_2</code></td>
+<td>Œil du Guetteur</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Perception</td>
+</tr>
+<tr class="even">
+<td><code>ARSK_PUISSANCE_2</code></td>
+<td>Poigne du Colosse</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Puissance</td>
+</tr>
+<tr class="odd">
+<td><code>ARSK_ENDURANCE_2</code></td>
+<td>Souffle du Marathonien</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Endurance</td>
+</tr>
+<tr class="even">
+<td><code>ARSK_INTIMIDATION_2</code></td>
+<td>Aura du Prédateur</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Intimidation</td>
+</tr>
+<tr class="odd">
+<td><code>ARSK_PROTECTION_2</code></td>
+<td>Garde du Rempart</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.993</td>
+<td>+2 aux tests de Protection</td>
+</tr>
+<tr class="even">
+<td><code>AR_ANTICRIT_2</code></td>
+<td>Anti-critique</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.944</td>
+<td>RD 2 supplémentaire uniquement contre les coups critiques.</td>
+</tr>
+<tr class="odd">
+<td><code>AR_BOUCLIER_PERCUTEUR_2</code></td>
+<td>Percuteur</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.024</td>
+<td>+2 aux attaques réalisées avec le bouclier.</td>
+</tr>
+<tr class="even">
+<td><code>ARD_AIR_4</code></td>
+<td>RD Air</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM air</td>
+</tr>
+<tr class="odd">
+<td><code>ARD_EAU_4</code></td>
+<td>RD Eau</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM eau</td>
+</tr>
+<tr class="even">
+<td><code>ARD_TERRE_4</code></td>
+<td>RD Terre</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM terre</td>
+</tr>
+<tr class="odd">
+<td><code>ARD_NECROTIQUE_4</code></td>
+<td>RD Ombre</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM ombre</td>
+</tr>
+<tr class="even">
+<td><code>ARD_RADIANT_4</code></td>
+<td>RD Lumière</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM lumière</td>
+</tr>
+<tr class="odd">
+<td><code>ARD_ARCANE_4</code></td>
+<td>RD Force</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM force</td>
+</tr>
+<tr class="even">
+<td><code>ARD_MALADIE_4</code></td>
+<td>RD Toxique</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM toxique</td>
+</tr>
+<tr class="odd">
+<td><code>ARD_DRAIN_4</code></td>
+<td>RD Drain</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM drain</td>
+</tr>
+<tr class="even">
+<td><code>ARD_MENTAL_4</code></td>
+<td>RD Psychique</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM psychique</td>
+</tr>
+<tr class="odd">
+<td><code>ARSK_ARCANES_4</code></td>
+<td>Savoir de l’Arcaniste</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Arcanes</td>
+</tr>
+<tr class="even">
+<td><code>ARSK_RELIGION_4</code></td>
+<td>Savoir du Théologien</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Religion</td>
+</tr>
+<tr class="odd">
+<td><code>ARSK_HISTOIRE_4</code></td>
+<td>Mémoire des Âges</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Histoire</td>
+</tr>
+<tr class="even">
+<td><code>ARSK_NATURE_4</code></td>
+<td>Instinct du Naturaliste</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Nature</td>
+</tr>
+<tr class="odd">
+<td><code>ARSK_SANG_FROID_4</code></td>
+<td>Nerfs d’Acier</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Sang-eau</td>
+</tr>
+<tr class="even">
+<td><code>ARSK_RESISTANCE_4</code></td>
+<td>Cœur de Fer</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Résistance</td>
+</tr>
+<tr class="odd">
+<td><code>ARSK_ACROBATIES_4</code></td>
+<td>Grâce de l’Acrobate</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Acrobaties</td>
+</tr>
+<tr class="even">
+<td><code>ARSK_DISCRETION_4</code></td>
+<td>Pas de l’Ombre</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.048</td>
+<td>+4 aux tests de Discrétion</td>
+</tr>
+<tr class="odd">
+<td><code>ARSK_ADRESSE_4</code></td>
+<td>Main du Virtuose</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Adresse</td>
+</tr>
+<tr class="even">
+<td><code>ARSK_ATHLETISME_4</code></td>
+<td>Élan de l’Athlète</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Athlétisme</td>
+</tr>
+<tr class="odd">
+<td><code>ARSK_SURVIE_4</code></td>
+<td>Instinct du Pisteur</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Survie</td>
+</tr>
+<tr class="even">
+<td><code>ARSK_PERCEPTION_4</code></td>
+<td>Œil du Guetteur</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Perception</td>
+</tr>
+<tr class="odd">
+<td><code>ARSK_PUISSANCE_4</code></td>
+<td>Poigne du Colosse</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Puissance</td>
+</tr>
+<tr class="even">
+<td><code>ARSK_ENDURANCE_4</code></td>
+<td>Souffle du Marathonien</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Endurance</td>
+</tr>
+<tr class="odd">
+<td><code>ARSK_INTIMIDATION_4</code></td>
+<td>Aura du Prédateur</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Intimidation</td>
+</tr>
+<tr class="even">
+<td><code>ARSK_PROTECTION_4</code></td>
+<td>Garde du Rempart</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>+4 aux tests de Protection</td>
+</tr>
+<tr class="odd">
+<td><code>AR_ANTICRIT_4</code></td>
+<td>Anti-critique</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">0.900</td>
+<td>RD 4 supplémentaire uniquement contre les coups critiques.</td>
+</tr>
+<tr class="even">
+<td><code>A134</code></td>
+<td>Protection renforcée</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.087</td>
+<td>+1 DEF</td>
+</tr>
+<tr class="odd">
+<td><code>A135</code></td>
+<td>Allègement</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.015</td>
+<td>Réduit le malus d’armure de 1</td>
+</tr>
+<tr class="even">
+<td><code>A136</code></td>
+<td>Mobilité</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.982</td>
+<td>+1 Initiative, +1 m de déplacement</td>
+</tr>
+<tr class="odd">
+<td><code>A137</code></td>
+<td>RD Terre</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM d’terre</td>
+</tr>
+<tr class="even">
+<td><code>A138</code></td>
+<td>RD Contondant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.965</td>
+<td>RD 1 contre les DM contondants</td>
+</tr>
+<tr class="odd">
+<td><code>A139</code></td>
+<td>RD Feu</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de feu</td>
+</tr>
+<tr class="even">
+<td><code>A140</code></td>
+<td>RD Air</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de air</td>
+</tr>
+<tr class="odd">
+<td><code>A141</code></td>
+<td>RD Eau</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de eau</td>
+</tr>
+<tr class="even">
+<td><code>A142</code></td>
+<td>RD Perforant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.965</td>
+<td>RD 1 contre les DM perforants</td>
+</tr>
+<tr class="odd">
+<td><code>A143</code></td>
+<td>RD Toxique</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de toxique</td>
+</tr>
+<tr class="even">
+<td><code>A144</code></td>
+<td>RD Tranchant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.965</td>
+<td>RD 1 contre les DM tranchants</td>
+</tr>
+<tr class="odd">
+<td><code>A145</code></td>
+<td>Protection renforcée</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.180</td>
+<td>+2 DEF</td>
+</tr>
+<tr class="even">
+<td><code>A146</code></td>
+<td>Égide runique</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.060</td>
+<td>1 fois par combat, lorsque le porteur est pris pour cible par une
+attaque, il peut se placer immédiatement en défense simple jusqu’au
+début de son prochain tour.</td>
+</tr>
+<tr class="odd">
+<td><code>A147</code></td>
+<td>Allègement</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.030</td>
+<td>Réduit le malus d’armure de 2</td>
+</tr>
+<tr class="even">
+<td><code>A148</code></td>
+<td>Mobilité</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.965</td>
+<td>+2 Initiative, +2 m de déplacement</td>
+</tr>
+<tr class="odd">
+<td><code>A149</code></td>
+<td>RD Terre</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM d’terre</td>
+</tr>
+<tr class="even">
+<td><code>A150</code></td>
+<td>RD Contondant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.931</td>
+<td>RD 2 contre les DM contondants</td>
+</tr>
+<tr class="odd">
+<td><code>A151</code></td>
+<td>RD Feu</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de feu</td>
+</tr>
+<tr class="even">
+<td><code>A152</code></td>
+<td>RD Air</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de air</td>
+</tr>
+<tr class="odd">
+<td><code>A153</code></td>
+<td>RD Eau</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de eau</td>
+</tr>
+<tr class="even">
+<td><code>A154</code></td>
+<td>RD Perforant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.931</td>
+<td>RD 2 contre les DM perforants</td>
+</tr>
+<tr class="odd">
+<td><code>A155</code></td>
+<td>RD Toxique</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de toxique</td>
+</tr>
+<tr class="even">
+<td><code>A156</code></td>
+<td>RD Tranchant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.931</td>
+<td>RD 2 contre les DM tranchants</td>
+</tr>
+<tr class="odd">
+<td><code>A157</code></td>
+<td>Égide runique</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.050</td>
+<td>1 fois par combat, lorsque le porteur est pris pour cible par une
+attaque, il peut se placer immédiatement en défense totale jusqu’au
+début de son prochain tour.</td>
+</tr>
+<tr class="even">
+<td><code>A158</code></td>
+<td>Protection renforcée</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.087</td>
+<td>+1 DEF</td>
+</tr>
+<tr class="odd">
+<td><code>A159</code></td>
+<td>Silencieuse</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.060</td>
+<td>+3 aux tests de discrétion</td>
+</tr>
+<tr class="even">
+<td><code>A160</code></td>
+<td>Allègement</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.015</td>
+<td>Réduit le malus d’armure de 1</td>
+</tr>
+<tr class="odd">
+<td><code>A161</code></td>
+<td>Mobilité</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.982</td>
+<td>+1 Initiative, +1 m de déplacement</td>
+</tr>
+<tr class="even">
+<td><code>A162</code></td>
+<td>RD Terre</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM d’terre</td>
+</tr>
+<tr class="odd">
+<td><code>A163</code></td>
+<td>RD Contondant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.965</td>
+<td>RD 1 contre les DM contondants</td>
+</tr>
+<tr class="even">
+<td><code>A164</code></td>
+<td>RD Feu</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de feu</td>
+</tr>
+<tr class="odd">
+<td><code>A165</code></td>
+<td>RD Air</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de air</td>
+</tr>
+<tr class="even">
+<td><code>A166</code></td>
+<td>RD Eau</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de eau</td>
+</tr>
+<tr class="odd">
+<td><code>A167</code></td>
+<td>RD Perforant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.965</td>
+<td>RD 1 contre les DM perforants</td>
+</tr>
+<tr class="even">
+<td><code>A168</code></td>
+<td>RD Toxique</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de toxique</td>
+</tr>
+<tr class="odd">
+<td><code>A169</code></td>
+<td>RD Tranchant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.965</td>
+<td>RD 1 contre les DM tranchants</td>
+</tr>
+<tr class="even">
+<td><code>A170</code></td>
+<td>Protection renforcée</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.180</td>
+<td>+2 DEF</td>
+</tr>
+<tr class="odd">
+<td><code>A172</code></td>
+<td>Silencieuse</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.078</td>
+<td>+5 aux tests de discrétion</td>
+</tr>
+<tr class="even">
+<td><code>A173</code></td>
+<td>Allègement</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.030</td>
+<td>Réduit le malus d’armure de 2</td>
+</tr>
+<tr class="odd">
+<td><code>A174</code></td>
+<td>Mobilité</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.965</td>
+<td>+2 Initiative, +2 m de déplacement</td>
+</tr>
+<tr class="even">
+<td><code>A175</code></td>
+<td>RD Terre</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM d’terre</td>
+</tr>
+<tr class="odd">
+<td><code>A176</code></td>
+<td>RD Contondant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.931</td>
+<td>RD 2 contre les DM contondants</td>
+</tr>
+<tr class="even">
+<td><code>A177</code></td>
+<td>RD Feu</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de feu</td>
+</tr>
+<tr class="odd">
+<td><code>A178</code></td>
+<td>RD Air</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de air</td>
+</tr>
+<tr class="even">
+<td><code>A179</code></td>
+<td>RD Eau</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de eau</td>
+</tr>
+<tr class="odd">
+<td><code>A180</code></td>
+<td>RD Perforant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.931</td>
+<td>RD 2 contre les DM perforants</td>
+</tr>
+<tr class="even">
+<td><code>A181</code></td>
+<td>RD Toxique</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de toxique</td>
+</tr>
+<tr class="odd">
+<td><code>A182</code></td>
+<td>RD Tranchant</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.931</td>
+<td>RD 2 contre les DM tranchants</td>
+</tr>
+<tr class="even">
+<td><code>A186</code></td>
+<td>Protection renforcée</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.087</td>
+<td>+1 DEF</td>
+</tr>
+<tr class="odd">
+<td><code>A187</code></td>
+<td>Silencieuse</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.060</td>
+<td>+3 aux tests de discrétion</td>
+</tr>
+<tr class="even">
+<td><code>A189</code></td>
+<td>Mobilité</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.982</td>
+<td>+1 Initiative, +1 m de déplacement</td>
+</tr>
+<tr class="odd">
+<td><code>A190</code></td>
+<td>RD Terre</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM d’terre</td>
+</tr>
+<tr class="even">
+<td><code>A192</code></td>
+<td>RD Feu</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de feu</td>
+</tr>
+<tr class="odd">
+<td><code>A193</code></td>
+<td>RD Air</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de air</td>
+</tr>
+<tr class="even">
+<td><code>A194</code></td>
+<td>RD Eau</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de eau</td>
+</tr>
+<tr class="odd">
+<td><code>A196</code></td>
+<td>RD Toxique</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 2 contre les DM de toxique</td>
+</tr>
+<tr class="even">
+<td><code>A198</code></td>
+<td>Protection renforcée</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.180</td>
+<td>+2 DEF</td>
+</tr>
+<tr class="odd">
+<td><code>A200</code></td>
+<td>Silencieuse</td>
+<td style="text-align: right;">P3</td>
+<td style="text-align: right;">1.078</td>
+<td>+5 aux tests de discrétion</td>
+</tr>
+<tr class="even">
+<td><code>A202</code></td>
+<td>Mobilité</td>
+<td style="text-align: right;">P1</td>
+<td style="text-align: right;">0.965</td>
+<td>+2 Initiative, +2 m de déplacement</td>
+</tr>
+<tr class="odd">
+<td><code>A203</code></td>
+<td>RD Terre</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM d’terre</td>
+</tr>
+<tr class="even">
+<td><code>A205</code></td>
+<td>RD Feu</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de feu</td>
+</tr>
+<tr class="odd">
+<td><code>A206</code></td>
+<td>RD Air</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de air</td>
+</tr>
+<tr class="even">
+<td><code>A207</code></td>
+<td>RD Eau</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de eau</td>
+</tr>
+<tr class="odd">
+<td><code>A209</code></td>
+<td>RD Toxique</td>
+<td style="text-align: right;">P2</td>
+<td style="text-align: right;">1.000</td>
+<td>RD 4 contre les DM de toxique</td>
+</tr>
+</tbody>
+</table>
+<h2 id="règle-dauteur-cofitem">20. Règle d’auteur CoFItem</h2>
+<p>Pour créer un objet sans aide extérieure : choisir une base valide,
+définir <code>Q</code>, choisir uniquement des affixes compatibles,
+renseigner le mode/commande des affixes manuels, puis utiliser les
+commandes <code>!coi-show</code>, <code>!coi-affixes</code>,
+<code>!coi-quality</code> et <code>!coi-give</code>. CoFItem reconstruit
+les prédicats et commandes injectés sur la fiche du porteur ; <strong>ne
+pas recopier manuellement</strong> un bonus d’affixe dans
+<code>predicats_script</code> si l’objet le fournit déjà.</p>
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<h2 id="fiches-techniques-des-commandes-cofitem">21. Fiches techniques
+des commandes CoFItem</h2>
+<p>Référence générée depuis les handlers de CoFItem. Les commandes de
+transfert, repos, loot et édition d’affixes utilisent souvent des
+identifiants de session/ligne créés par les menus : quand un bouton
+existe, il est plus sûr de l’utiliser ; la syntaxe ci-dessous permet
+néanmoins de comprendre exactement les flags attendus.</p>
+<h3 id="coi-affix-"><code>!coi-affix-</code></h3>
+<pre class="text"><code>!coi-affix- [--character VALEUR] [--entry VALEUR] [--item VALEUR] [--sid VALEUR] [--target VALEUR] [--token VALEUR] [--value VALEUR] [sélection Roll20]</code></pre>
+<p>Flags/options observés : <code>--all</code>,
+<code>--character</code>, <code>--entry</code>, <code>--item</code>,
+<code>--name</code>, <code>--sid</code>, <code>--target</code>,
+<code>--text</code>, <code>--token</code>, <code>--value</code>.</p>
+<p>Travaille avec la sélection Roll20 dans au moins un chemin.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Le partage de butin est réservé au MJ. / Format
+inconnu. Utilise <code>!coi-butin</code>, <code>!coi-butin 120</code> ou
+<code>!coi-butin 120 PA</code>. / Le montant doit être supérieur à
+0..</p>
+<p><strong>Moteur :</strong> <code>chat</code>.</p>
+<h3 id="coi-affix-add"><code>!coi-affix-add</code></h3>
+<pre class="text"><code>!coi-affix-add [--affix VALEUR] [--family VALEUR] [--group VALEUR] [--item VALEUR] [--page VALEUR] [--type1 VALEUR] [--type2 VALEUR]</code></pre>
+<p>Flags/options observés : <code>--affix</code>, <code>--family</code>,
+<code>--group</code>, <code>--item</code>, <code>--page</code>,
+<code>--type1</code>, <code>--type2</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>changeAffix</code>.</p>
+<h3 id="coi-affix-detail"><code>!coi-affix-detail</code></h3>
+<pre class="text"><code>!coi-affix-detail [--affix VALEUR] [--family VALEUR] [--group VALEUR] [--item VALEUR] [--page VALEUR]</code></pre>
+<p>Flags/options observés : <code>--affix</code>, <code>--family</code>,
+<code>--group</code>, <code>--item</code>, <code>--page</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>affixDetail</code>.</p>
+<h3 id="coi-affix-index"><code>!coi-affix-index</code></h3>
+<pre class="text"><code>!coi-affix-index [--cat VALEUR] [--family VALEUR] [--group VALEUR] [--page VALEUR] [--section VALEUR]</code></pre>
+<p>Flags/options observés : <code>--cat</code>, <code>--family</code>,
+<code>--group</code>, <code>--page</code>, <code>--section</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>affixIndex</code>.</p>
+<h3 id="coi-affix-mode"><code>!coi-affix-mode</code></h3>
+<pre class="text"><code>!coi-affix-mode [--confirm VALEUR] [--item VALEUR] [--value VALEUR]</code></pre>
+<p>Flags/options observés : <code>--confirm</code>, <code>--item</code>,
+<code>--value</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>changeAffixMode</code>.</p>
+<h3 id="coi-affix-name"><code>!coi-affix-name</code></h3>
+<pre class="text"><code>!coi-affix-name [--affix VALEUR] [--item VALEUR] [--page VALEUR]</code></pre>
+<p>Flags/options observés : <code>--affix</code>, <code>--item</code>,
+<code>--page</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>setNameAffix</code>.</p>
+<h3 id="coi-affix-remove"><code>!coi-affix-remove</code></h3>
+<pre class="text"><code>!coi-affix-remove [--affix VALEUR] [--family VALEUR] [--group VALEUR] [--item VALEUR] [--page VALEUR] [--type1 VALEUR] [--type2 VALEUR]</code></pre>
+<p>Flags/options observés : <code>--affix</code>, <code>--family</code>,
+<code>--group</code>, <code>--item</code>, <code>--page</code>,
+<code>--type1</code>, <code>--type2</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>changeAffix</code>.</p>
+<h3 id="coi-affixes"><code>!coi-affixes</code></h3>
+<pre class="text"><code>!coi-affixes</code></pre>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>affixMenu</code>.</p>
+<h3 id="coi-bag-to-belt"><code>!coi-bag-to-belt</code></h3>
+<pre class="text"><code>!coi-bag-to-belt [--attr VALEUR] [--character VALEUR] [--qty VALEUR] [--row VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--attr</code>,
+<code>--character</code>, <code>--qty</code>, <code>--row</code>,
+<code>--target</code>.</p>
+<p><strong>Moteur :</strong> <code>moveInventory</code>.</p>
+<h3 id="coi-belt-to-bag"><code>!coi-belt-to-bag</code></h3>
+<pre class="text"><code>!coi-belt-to-bag [--attr VALEUR] [--character VALEUR] [--qty VALEUR] [--row VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--attr</code>,
+<code>--character</code>, <code>--qty</code>, <code>--row</code>,
+<code>--target</code>.</p>
+<p><strong>Moteur :</strong> <code>moveInventory</code>.</p>
+<h3 id="coi-butin"><code>!coi-butin</code></h3>
+<pre class="text"><code>!coi-butin</code></pre>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Le partage de butin est réservé au MJ. / Format
+inconnu. Utilise <code>!coi-butin</code>, <code>!coi-butin 120</code> ou
+<code>!coi-butin 120 PA</code>. / Le montant doit être supérieur à
+0..</p>
+<p><strong>Moteur :</strong> <code>distributeLoot</code>.</p>
+<h3 id="coi-catalogue"><code>!coi-catalogue</code></h3>
+<pre class="text"><code>!coi-catalogue [--cat VALEUR] [--page VALEUR]</code></pre>
+<p>Flags/options observés : <code>--cat</code>, <code>--page</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>catalogue</code>.</p>
+<h3 id="coi-delete-bag"><code>!coi-delete-bag</code></h3>
+<pre class="text"><code>!coi-delete-bag [--attr VALEUR] [--character VALEUR] [--row VALEUR]</code></pre>
+<p>Flags/options observés : <code>--attr</code>,
+<code>--character</code>, <code>--row</code>.</p>
+<p><strong>Moteur :</strong> <code>deleteBagItem</code>.</p>
+<h3 id="coi-delete-conso"><code>!coi-delete-conso</code></h3>
+<pre class="text"><code>!coi-delete-conso [--attr VALEUR] [--character VALEUR] [--row VALEUR]</code></pre>
+<p>Flags/options observés : <code>--attr</code>,
+<code>--character</code>, <code>--row</code>.</p>
+<p><strong>Moteur :</strong> <code>deleteConsumable</code>.</p>
+<h3 id="coi-equip-choice"><code>!coi-equip-choice</code></h3>
+<pre class="text"><code>!coi-equip-choice [--new VALEUR] [--old VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--new</code>, <code>--old</code>,
+<code>--target</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>equipChoice</code>.</p>
+<h3 id="coi-equipe"><code>!coi-equipe</code></h3>
+<pre class="text"><code>!coi-equipe</code></pre>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>partyDiagnostic</code>.</p>
+<h3 id="coi-from-base"><code>!coi-from-base</code></h3>
+<pre class="text"><code>!coi-from-base</code></pre>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>createFromBase</code>.</p>
+<h3 id="coi-give"><code>!coi-give</code></h3>
+<pre class="text"><code>!coi-give [--item VALEUR] [--qty VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--equip</code>, <code>--item</code>,
+<code>--qty</code>, <code>--target</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>give</code>.</p>
+<h3 id="coi-give-all-pj"><code>!coi-give-all-pj</code></h3>
+<pre class="text"><code>!coi-give-all-pj [--item VALEUR] [--qty VALEUR]</code></pre>
+<p>Flags/options observés : <code>--item</code>, <code>--qty</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>giveConsumableToAllPJ</code>.</p>
+<h3 id="coi-give-spec"><code>!coi-give-spec</code></h3>
+<pre class="text"><code>!coi-give-spec [--data VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--data</code>,
+<code>--target</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>giveSpec</code>.</p>
+<h3 id="coi-hebergement-show"><code>!coi-hebergement-show</code></h3>
+<pre class="text"><code>!coi-hebergement-show [--character VALEUR] [--entry VALEUR] [--item VALEUR] [--sid VALEUR] [--target VALEUR] [--token VALEUR] [--value VALEUR] [sélection Roll20]</code></pre>
+<p>Flags/options observés : <code>--all</code>,
+<code>--character</code>, <code>--entry</code>, <code>--item</code>,
+<code>--name</code>, <code>--sid</code>, <code>--target</code>,
+<code>--text</code>, <code>--token</code>, <code>--value</code>.</p>
+<p>Travaille avec la sélection Roll20 dans au moins un chemin.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Le partage de butin est réservé au MJ. / Format
+inconnu. Utilise <code>!coi-butin</code>, <code>!coi-butin 120</code> ou
+<code>!coi-butin 120 PA</code>. / Le montant doit être supérieur à
+0..</p>
+<p><strong>Moteur :</strong> <code>chat</code>.</p>
+<h3 id="coi-hebergements"><code>!coi-hebergements</code></h3>
+<pre class="text"><code>!coi-hebergements</code></pre>
+<p>Commande principalement pilotée par l’interface ; aucun argument
+utilisateur supplémentaire n’est détecté dans le handler direct.</p>
+<p><strong>Moteur :</strong> <code>lodgingLibrary</code>.</p>
+<h3 id="coi-hunt-env"><code>!coi-hunt-env</code></h3>
+<pre class="text"><code>!coi-hunt-env</code></pre>
+<p>Commande principalement pilotée par l’interface ; aucun argument
+utilisateur supplémentaire n’est détecté dans le handler direct.</p>
+<p><strong>Moteur :</strong> <code>huntEnvMenu</code>.</p>
+<h3 id="coi-hunt-run"><code>!coi-hunt-run</code></h3>
+<pre class="text"><code>!coi-hunt-run</code></pre>
+<p>Commande principalement pilotée par l’interface ; aucun argument
+utilisateur supplémentaire n’est détecté dans le handler direct.</p>
+<p><strong>Moteur :</strong> <code>runHunt</code>.</p>
+<h3 id="coi-hunt-set"><code>!coi-hunt-set</code></h3>
+<pre class="text"><code>!coi-hunt-set [--character VALEUR] [--entry VALEUR] [--item VALEUR] [--sid VALEUR] [--target VALEUR] [--token VALEUR] [--value VALEUR] [sélection Roll20]</code></pre>
+<p>Flags/options observés : <code>--all</code>,
+<code>--character</code>, <code>--entry</code>, <code>--item</code>,
+<code>--name</code>, <code>--sid</code>, <code>--target</code>,
+<code>--text</code>, <code>--token</code>, <code>--value</code>.</p>
+<p>Travaille avec la sélection Roll20 dans au moins un chemin.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Le partage de butin est réservé au MJ. / Format
+inconnu. Utilise <code>!coi-butin</code>, <code>!coi-butin 120</code> ou
+<code>!coi-butin 120 PA</code>. / Le montant doit être supérieur à
+0..</p>
+<p><strong>Moteur :</strong> <code>chat</code>.</p>
+<h3 id="coi-hunt-toggle"><code>!coi-hunt-toggle</code></h3>
+<pre class="text"><code>!coi-hunt-toggle [--character VALEUR] [--entry VALEUR] [--item VALEUR] [--sid VALEUR] [--target VALEUR] [--token VALEUR] [--value VALEUR] [sélection Roll20]</code></pre>
+<p>Flags/options observés : <code>--all</code>,
+<code>--character</code>, <code>--entry</code>, <code>--item</code>,
+<code>--name</code>, <code>--sid</code>, <code>--target</code>,
+<code>--text</code>, <code>--token</code>, <code>--value</code>.</p>
+<p>Travaille avec la sélection Roll20 dans au moins un chemin.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Le partage de butin est réservé au MJ. / Format
+inconnu. Utilise <code>!coi-butin</code>, <code>!coi-butin 120</code> ou
+<code>!coi-butin 120 PA</code>. / Le montant doit être supérieur à
+0..</p>
+<p><strong>Moteur :</strong> <code>chat</code>.</p>
+<h3 id="coi-import"><code>!coi-import</code></h3>
+<pre class="text"><code>!coi-import [--cat VALEUR] [--confirm VALEUR]</code></pre>
+<p>Flags/options observés : <code>--cat</code>,
+<code>--confirm</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>importBases</code>.</p>
+<h3 id="coi-loot"><code>!coi-loot</code></h3>
+<pre class="text"><code>!coi-loot</code></pre>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : <b>🎁 Loot :</b> sélectionne un ou plusieurs
+tokens..</p>
+<p><strong>Moteur :</strong> <code>render</code>.</p>
+<h3 id="coi-loot-add"><code>!coi-loot-add</code></h3>
+<pre class="text"><code>!coi-loot-add [--token VALEUR] [sélection Roll20]</code></pre>
+<p>Flags/options observés : <code>--token</code>.</p>
+<p>Travaille avec la sélection Roll20 dans au moins un chemin.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Sélectionne exactement un token..</p>
+<p><strong>Moteur :</strong> <code>add</code>.</p>
+<h3 id="coi-loot-clear"><code>!coi-loot-clear</code></h3>
+<pre class="text"><code>!coi-loot-clear [--token VALEUR] [sélection Roll20]</code></pre>
+<p>Flags/options observés : <code>--token</code>.</p>
+<p>Travaille avec la sélection Roll20 dans au moins un chemin.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Sélectionne au moins un token..</p>
+<p><strong>Moteur :</strong> <code>clear</code>.</p>
+<h3 id="coi-loot-details"><code>!coi-loot-details</code></h3>
+<pre class="text"><code>!coi-loot-details [--sid VALEUR]</code></pre>
+<p>Flags/options observés : <code>--sid</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>details</code>.</p>
+<h3 id="coi-loot-give"><code>!coi-loot-give</code></h3>
+<pre class="text"><code>!coi-loot-give [--entry VALEUR] [--sid VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--entry</code>, <code>--sid</code>,
+<code>--target</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>giveEntry</code>.</p>
+<h3 id="coi-loot-give-item"><code>!coi-loot-give-item</code></h3>
+<pre class="text"><code>!coi-loot-give-item [--item VALEUR] [--sid VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--item</code>, <code>--sid</code>,
+<code>--target</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>giveItem</code>.</p>
+<h3 id="coi-loot-help"><code>!coi-loot-help</code></h3>
+<pre class="text"><code>!coi-loot-help</code></pre>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>help</code>.</p>
+<h3 id="coi-loot-money"><code>!coi-loot-money</code></h3>
+<pre class="text"><code>!coi-loot-money [--sid VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--sid</code>,
+<code>--target</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>money</code>.</p>
+<h3 id="coi-loot-reset"><code>!coi-loot-reset</code></h3>
+<pre class="text"><code>!coi-loot-reset [--token VALEUR] [sélection Roll20]</code></pre>
+<p>Flags/options observés : <code>--token</code>.</p>
+<p>Travaille avec la sélection Roll20 dans au moins un chemin.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Sélectionne au moins un token..</p>
+<p><strong>Moteur :</strong> <code>reset</code>.</p>
+<h3 id="coi-loot-show"><code>!coi-loot-show</code></h3>
+<pre class="text"><code>!coi-loot-show [--sid VALEUR]</code></pre>
+<p>Flags/options observés : <code>--sid</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>showPlayers</code>.</p>
+<h3 id="coi-loot-take"><code>!coi-loot-take</code></h3>
+<pre class="text"><code>!coi-loot-take [--entry VALEUR] [--sid VALEUR]</code></pre>
+<p>Flags/options observés : <code>--entry</code>,
+<code>--sid</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Impossible de retirer ce loot..</p>
+<p><strong>Moteur :</strong> <code>takeEntry</code>.</p>
+<h3 id="coi-loot-take-all"><code>!coi-loot-take-all</code></h3>
+<pre class="text"><code>!coi-loot-take-all [--sid VALEUR]</code></pre>
+<p>Flags/options observés : <code>--sid</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>takeAll</code>.</p>
+<h3 id="coi-new"><code>!coi-new</code></h3>
+<pre class="text"><code>!coi-new</code></pre>
+<p>Flags/options observés : <code>--name</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>match</code>.</p>
+<h3 id="coi-new-conso"><code>!coi-new-conso</code></h3>
+<pre class="text"><code>!coi-new-conso</code></pre>
+<p>Flags/options observés : <code>--name</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>match</code>.</p>
+<h3 id="coi-new-hebergement"><code>!coi-new-hebergement</code></h3>
+<pre class="text"><code>!coi-new-hebergement [--character VALEUR] [--entry VALEUR] [--item VALEUR] [--sid VALEUR] [--target VALEUR] [--token VALEUR] [--value VALEUR] [sélection Roll20]</code></pre>
+<p>Flags/options observés : <code>--all</code>,
+<code>--character</code>, <code>--entry</code>, <code>--item</code>,
+<code>--name</code>, <code>--sid</code>, <code>--target</code>,
+<code>--text</code>, <code>--token</code>, <code>--value</code>.</p>
+<p>Travaille avec la sélection Roll20 dans au moins un chemin.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Le partage de butin est réservé au MJ. / Format
+inconnu. Utilise <code>!coi-butin</code>, <code>!coi-butin 120</code> ou
+<code>!coi-butin 120 PA</code>. / Le montant doit être supérieur à
+0..</p>
+<p><strong>Moteur :</strong> <code>chat</code>.</p>
+<h3 id="coi-objets"><code>!coi-objets</code></h3>
+<pre class="text"><code>!coi-objets</code></pre>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>library</code>.</p>
+<h3 id="coi-pause"><code>!coi-pause</code></h3>
+<pre class="text"><code>!coi-pause</code></pre>
+<p>Contrôles utiles : Impossible de faire une pause pendant un combat. /
+Personnage invalide pour une pause..</p>
+<p><strong>Moteur :</strong> <code>pause</code>.</p>
+<h3 id="coi-prmax"><code>!coi-prmax</code></h3>
+<pre class="text"><code>!coi-prmax [--character VALEUR] [--value VALEUR]</code></pre>
+<p>Flags/options observés : <code>--all</code>,
+<code>--character</code>, <code>--value</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Personnage invalide..</p>
+<p><strong>Moteur :</strong> <code>setPRMax</code>.</p>
+<h3 id="coi-quality"><code>!coi-quality</code></h3>
+<pre class="text"><code>!coi-quality [--family VALEUR] [--group VALEUR] [--item VALEUR] [--page VALEUR] [--value VALEUR]</code></pre>
+<p>Flags/options observés : <code>--family</code>, <code>--group</code>,
+<code>--item</code>, <code>--page</code>, <code>--value</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>changeQuality</code>.</p>
+<h3 id="coi-refresh-bases"><code>!coi-refresh-bases</code></h3>
+<pre class="text"><code>!coi-refresh-bases [--confirm VALEUR]</code></pre>
+<p>Flags/options observés : <code>--confirm</code>.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p><strong>Moteur :</strong> <code>refreshImportedBases</code>.</p>
+<h3 id="coi-repos"><code>!coi-repos</code></h3>
+<pre class="text"><code>!coi-repos</code></pre>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Impossible de lancer un repos long pendant un
+combat..</p>
+<p><strong>Moteur :</strong> <code>restMenu</code>.</p>
+<h3 id="coi-rest-bivouac"><code>!coi-rest-bivouac</code></h3>
+<pre class="text"><code>!coi-rest-bivouac</code></pre>
+<p>Commande principalement pilotée par l’interface ; aucun argument
+utilisateur supplémentaire n’est détecté dans le handler direct.</p>
+<p><strong>Moteur :</strong> <code>bivouacMenu</code>.</p>
+<h3 id="coi-rest-camp-prepare"><code>!coi-rest-camp-prepare</code></h3>
+<pre class="text"><code>!coi-rest-camp-prepare</code></pre>
+<p>Commande principalement pilotée par l’interface ; aucun argument
+utilisateur supplémentaire n’est détecté dans le handler direct.</p>
+<p><strong>Moteur :</strong> <code>prepareCamp</code>.</p>
+<h3 id="coi-rest-final"><code>!coi-rest-final</code></h3>
+<pre class="text"><code>!coi-rest-final</code></pre>
+<p>Contrôles utiles : Impossible de valider pendant un combat. /
+Paiement devenu impossible pour.</p>
+<p><strong>Moteur :</strong> <code>finalizeRest</code>.</p>
+<h3 id="coi-rest-food-confirm"><code>!coi-rest-food-confirm</code></h3>
+<pre class="text"><code>!coi-rest-food-confirm [--character VALEUR] [--entry VALEUR] [--item VALEUR] [--sid VALEUR] [--target VALEUR] [--token VALEUR] [--value VALEUR] [sélection Roll20]</code></pre>
+<p>Flags/options observés : <code>--all</code>,
+<code>--character</code>, <code>--entry</code>, <code>--item</code>,
+<code>--name</code>, <code>--sid</code>, <code>--target</code>,
+<code>--text</code>, <code>--token</code>, <code>--value</code>.</p>
+<p>Travaille avec la sélection Roll20 dans au moins un chemin.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Le partage de butin est réservé au MJ. / Format
+inconnu. Utilise <code>!coi-butin</code>, <code>!coi-butin 120</code> ou
+<code>!coi-butin 120 PA</code>. / Le montant doit être supérieur à
+0..</p>
+<p><strong>Moteur :</strong> <code>chat</code>.</p>
+<h3 id="coi-rest-food-menu"><code>!coi-rest-food-menu</code></h3>
+<pre class="text"><code>!coi-rest-food-menu</code></pre>
+<p>Commande principalement pilotée par l’interface ; aucun argument
+utilisateur supplémentaire n’est détecté dans le handler direct.</p>
+<p><strong>Moteur :</strong> <code>foodMenu</code>.</p>
+<h3 id="coi-rest-food-toggle"><code>!coi-rest-food-toggle</code></h3>
+<pre class="text"><code>!coi-rest-food-toggle</code></pre>
+<p>Commande principalement pilotée par l’interface ; aucun argument
+utilisateur supplémentaire n’est détecté dans le handler direct.</p>
+<p><strong>Moteur :</strong> <code>foodToggle</code>.</p>
+<h3 id="coi-rest-hunt-confirm"><code>!coi-rest-hunt-confirm</code></h3>
+<pre class="text"><code>!coi-rest-hunt-confirm</code></pre>
+<p>Commande principalement pilotée par l’interface ; aucun argument
+utilisateur supplémentaire n’est détecté dans le handler direct.</p>
+<p><strong>Moteur :</strong> <code>prepareHuntCamp</code>.</p>
+<h3 id="coi-rest-lodging"><code>!coi-rest-lodging</code></h3>
+<pre class="text"><code>!coi-rest-lodging [--character VALEUR] [--entry VALEUR] [--item VALEUR] [--sid VALEUR] [--target VALEUR] [--token VALEUR] [--value VALEUR] [sélection Roll20]</code></pre>
+<p>Flags/options observés : <code>--all</code>,
+<code>--character</code>, <code>--entry</code>, <code>--item</code>,
+<code>--name</code>, <code>--sid</code>, <code>--target</code>,
+<code>--text</code>, <code>--token</code>, <code>--value</code>.</p>
+<p>Travaille avec la sélection Roll20 dans au moins un chemin.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Le partage de butin est réservé au MJ. / Format
+inconnu. Utilise <code>!coi-butin</code>, <code>!coi-butin 120</code> ou
+<code>!coi-butin 120 PA</code>. / Le montant doit être supérieur à
+0..</p>
+<p><strong>Moteur :</strong> <code>chat</code>.</p>
+<h3
+id="coi-rest-lodging-direct"><code>!coi-rest-lodging-direct</code></h3>
+<pre class="text"><code>!coi-rest-lodging-direct [--character VALEUR] [--entry VALEUR] [--item VALEUR] [--sid VALEUR] [--target VALEUR] [--token VALEUR] [--value VALEUR] [sélection Roll20]</code></pre>
+<p>Flags/options observés : <code>--all</code>,
+<code>--character</code>, <code>--entry</code>, <code>--item</code>,
+<code>--name</code>, <code>--sid</code>, <code>--target</code>,
+<code>--text</code>, <code>--token</code>, <code>--value</code>.</p>
+<p>Travaille avec la sélection Roll20 dans au moins un chemin.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Le partage de butin est réservé au MJ. / Format
+inconnu. Utilise <code>!coi-butin</code>, <code>!coi-butin 120</code> ou
+<code>!coi-butin 120 PA</code>. / Le montant doit être supérieur à
+0..</p>
+<p><strong>Moteur :</strong> <code>chat</code>.</p>
+<h3 id="coi-rest-lodging-food"><code>!coi-rest-lodging-food</code></h3>
+<pre class="text"><code>!coi-rest-lodging-food [--character VALEUR] [--entry VALEUR] [--item VALEUR] [--sid VALEUR] [--target VALEUR] [--token VALEUR] [--value VALEUR] [sélection Roll20]</code></pre>
+<p>Flags/options observés : <code>--all</code>,
+<code>--character</code>, <code>--entry</code>, <code>--item</code>,
+<code>--name</code>, <code>--sid</code>, <code>--target</code>,
+<code>--text</code>, <code>--token</code>, <code>--value</code>.</p>
+<p>Travaille avec la sélection Roll20 dans au moins un chemin.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Le partage de butin est réservé au MJ. / Format
+inconnu. Utilise <code>!coi-butin</code>, <code>!coi-butin 120</code> ou
+<code>!coi-butin 120 PA</code>. / Le montant doit être supérieur à
+0..</p>
+<p><strong>Moteur :</strong> <code>chat</code>.</p>
+<h3 id="coi-rest-lodgings"><code>!coi-rest-lodgings</code></h3>
+<pre class="text"><code>!coi-rest-lodgings</code></pre>
+<p>Commande principalement pilotée par l’interface ; aucun argument
+utilisateur supplémentaire n’est détecté dans le handler direct.</p>
+<p><strong>Moteur :</strong> <code>lodgingList</code>.</p>
+<h3 id="coi-rest-pay"><code>!coi-rest-pay</code></h3>
+<pre class="text"><code>!coi-rest-pay [--character VALEUR] [--entry VALEUR] [--item VALEUR] [--sid VALEUR] [--target VALEUR] [--token VALEUR] [--value VALEUR] [sélection Roll20]</code></pre>
+<p>Flags/options observés : <code>--all</code>,
+<code>--character</code>, <code>--entry</code>, <code>--item</code>,
+<code>--name</code>, <code>--sid</code>, <code>--target</code>,
+<code>--text</code>, <code>--token</code>, <code>--value</code>.</p>
+<p>Travaille avec la sélection Roll20 dans au moins un chemin.</p>
+<p>Contient un contrôle MJ/GM dans au moins un chemin.</p>
+<p>Contrôles utiles : Le partage de butin est réservé au MJ. / Format
+inconnu. Utilise <code>!coi-butin</code>, <code>!coi-butin 120</code> ou
+<code>!coi-butin 120 PA</code>. / Le montant doit être supérieur à
+0..</p>
+<p><strong>Moteur :</strong> <code>chat</code>.</p>
+<h3 id="coi-show"><code>!coi-show</code></h3>
+<pre class="text"><code>!coi-show</code></pre>
+<p>Commande principalement pilotée par l’interface ; aucun argument
+utilisateur supplémentaire n’est détecté dans le handler direct.</p>
+<p><strong>Moteur :</strong> <code>showItem</code>.</p>
+<h3 id="coi-transfer-armor"><code>!coi-transfer-armor</code></h3>
+<pre class="text"><code>!coi-transfer-armor [--character VALEUR] [--label VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--character</code>,
+<code>--label</code>, <code>--target</code>.</p>
+<p><strong>Moteur :</strong> <code>transferEquipment</code>.</p>
+<h3 id="coi-transfer-bag"><code>!coi-transfer-bag</code></h3>
+<pre class="text"><code>!coi-transfer-bag [--attr VALEUR] [--character VALEUR] [--qty VALEUR] [--row VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--attr</code>,
+<code>--character</code>, <code>--qty</code>, <code>--row</code>,
+<code>--target</code>.</p>
+<p><strong>Moteur :</strong> <code>moveInventory</code>.</p>
+<h3 id="coi-transfer-belt"><code>!coi-transfer-belt</code></h3>
+<pre class="text"><code>!coi-transfer-belt [--attr VALEUR] [--character VALEUR] [--qty VALEUR] [--row VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--attr</code>,
+<code>--character</code>, <code>--qty</code>, <code>--row</code>,
+<code>--target</code>.</p>
+<p><strong>Moteur :</strong> <code>moveInventory</code>.</p>
+<h3 id="coi-transfer-weapon"><code>!coi-transfer-weapon</code></h3>
+<pre class="text"><code>!coi-transfer-weapon [--character VALEUR] [--label VALEUR] [--target VALEUR]</code></pre>
+<p>Flags/options observés : <code>--character</code>,
+<code>--label</code>, <code>--target</code>.</p>
+<p><strong>Moteur :</strong> <code>transferEquipment</code>.</p>
+<h3 id="coi-use-conso"><code>!coi-use-conso</code></h3>
+<pre class="text"><code>!coi-use-conso [--attr VALEUR] [--row VALEUR] [--target VALEUR] [--victim VALEUR]</code></pre>
+<p>Flags/options observés : <code>--attr</code>, <code>--row</code>,
+<code>--target</code>, <code>--victim</code>.</p>
+<p><strong>Moteur :</strong> <code>useConsumable</code>.</p>
+</body>
+</html>
