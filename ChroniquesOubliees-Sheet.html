@@ -1,5 +1,7 @@
+<!-- Audit intégration FINAL : Monster Creator + CoFItem + COFantasy — 30/09/2026 -->
 <div class="mainBg"> <!-- FDP -->
   <input type="hidden" name="attr_version" value="5.05"/>
+  <input type="hidden" name="attr_cof_doctor_tick" value="0"/>
   <!-- INPUT HIDDEN TYPE DE JETS -->
   <input type="hidden" name="attr_jetnormal" value="1d@{ETATDE}" />
   <input type="hidden" name="attr_jetsup" value="2d@{ETATDE}kh1" />
@@ -32,7 +34,7 @@
         <div style="vertical-align: middle;text-align: center;">
           <img style="width:70%;"  
                title="Version 5.04 - 10/05/2024
-Cette feuille de personnage utilise des marques déposées et des droits d’auteurs qui sont la propriété de Black Book Editions comme l’y autorisent les conditions d’utilisation de Black Book Editions. Cette feuille de personnage n’est pas publiée par Black Book Editions et n’a pas reçu son aval ni une quelconque approbation de sa part. Pour de plus amples informations sur Black Book Editions, consultez ww.black-book-editions.fr." 
+Cette feuille de personnage utilise des marques déposées et des droits d’auteurs qui sont la propriété de Black Book Editions comme l’y autorisent les conditions d’utilisation de Black Book Editions. Cette feuille de personnage n’est pas publiée par Black Book Editions et n’a pas reçu son aval ni une quelconque approbation de sa part. Pour de plus amples informations sur Black Book Editions, consultez www.black-book-editions.fr." 
           src="https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/ChroniquesOubliees/CO_Logo3.png"/>
           <span style="display:inline-block; width:20px"></span>
           <img width="70px" height="70px" name="attr_character_token" />
@@ -140,7 +142,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
         </div>
         <div style="vertical-align: middle;text-align: center;">
           <!--
-            <img style="width:135px;"  title="Version 5.04 - 10/05/2024" src="https://www.black-book-editions.fr/contenu/image/Images_divers/JDR_Terres%20dArran/Tampon_TerredArran_v1.jpg"/><br>
+            <img style="width:135px;"  title="Version 5.04 - 10/05/2024" src="https://wwww.black-book-editions.fr/contenu/image/Images_divers/JDR_Terres%20dArran/Tampon_TerredArran_v1.jpg"/><br>
           -->
           <img title="Logo supprimé à la demande de BBE" src="https://via.placeholder.com/250x100.png?text=Logo+supprime+a+la+demande+de+BBE" alt="Logo des Terres d'Arran supprimé &#13; à la demande de Black Book Edition"/><br>
         </div>
@@ -421,7 +423,6 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
                       <td class="boxtitre-pv"><button class="boxtitre-pv" type="roll" title="Jet de Récupération (1DV+CON+NIVEAU)" name="roll_RECUP"  value="@{jets_caches}&{template:co1} {{perso=@{displayname}}} {{name=Récupération}} {{subtags=Vitalité}} {{DV=[[1d@{DV}+[[@{CON}]]+@{niveau}]]}}"> PR</button></td>
                       <td class="boxinput-pv co-pr-inline">
                         <span class="co-pr-values"><input type="number" class="pv" name="attr_pr" min="0" title="Points de récupération (pause rapide)" value="3" /> <span class="input">/</span> <input type="number" class="pv" name="attr_pr_max" min="0" value="3" title="Maximum de PR (modifiable)" /></span>
-                        <button type="roll" class="co-pr-pause" name="roll_coi_pause" value="!coi-pause --character @{character_id}" title="Pause de 5 minutes : dépense 1 PR et récupère des PV uniquement">Pause 5 min</button>
                       </td>
                     </tr>
                   </table>
@@ -508,7 +509,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
                           <td class="boxtitre-chance">Épuisement</td>
                           <td class="boxinput-chance">
                             <input type="number" class="chance" name="attr_epuisement" value="0" title="Épuisement magique (page 180)" />
-                            <button type="roll" class="chance" title="@roll{roll_epmag} Jet d'épuisement magique" class="neutre" name="roll_epmag" value="@{jets_caches}&{template:co1} {{perso=@{displayname}}} {{name=Épuisement}} {subtags=Magie} {{carac=[[(1d@{ETATDE}[Dé] + [[@{ATKMAG}]][Bonus])]] > [[@{epuisement}]]}}"/>
+                            <button type="roll" class="chance neutre" title="@roll{roll_epmag} Jet d'épuisement magique" name="roll_epmag" value="@{jets_caches}&{template:co1} {{perso=@{displayname}}} {{name=Épuisement}} {{subtags=Magie}} {{carac=[[(1d@{ETATDE}[Dé] + [[@{ATKMAG}]][Bonus])]] > [[@{epuisement}]]}}"/>
                           </td>
                         </tr>
                       </table>
@@ -659,9 +660,12 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
                   <td>
                     <button type="roll" class="atk" name="roll_Arme" value="@{jets_caches}&{template:co1} {{perso=@{displayname}}} {{name=@{armenom}}} {{subtags=Attaque}} {{attaque=[[ @{armeattnbde}d@{armeattde}@{armeattrollmod}cs>@{armecrit}cf1 + [[@{armeatk}]] + @{armeatkdiv} +@{bonus_attaque_option} +@{armebonusoption}]]}} @{armereussiteauto} @{armepoudre} @{armedegats} {{special=@{armespec}}} {{degats2=@{bonus_dm_option}}} {{dmtemp=@{armedmtemp}}}" />
                   </td>
-                  <td class="boxinputleft-atk" style="min-width:150px;">
-                    <input type="text" class="atk" style="width:16px; text-align:center; font-size:10px;" name="attr_armelabel" value=0>
-                    <input type="text" class="atk" name="attr_armenom" style="font-weight: bold;width:90%;margin-left:-6px;" placeholder="Arme/attaque"/>
+                  <td class="boxinputleft-atk co-weapon-name-cell" style="min-width:150px;">
+                    <div class="co-weapon-name-wrap">
+                      <input type="text" class="atk co-weapon-label" style="width:16px; text-align:center; font-size:10px;" name="attr_armelabel" value=0>
+                      <input type="text" class="atk co-weapon-name" name="attr_armenom" style="font-weight:bold;" placeholder="Arme/attaque"/>
+                      <button type="roll" class="co-equipment-trade co-weapon-trade" name="roll_echanger_arme" title="Échanger cette arme avec un autre PJ" value="!coi-transfer-weapon --character @{character_id} --label @{armelabel} --target @{target|Destinataire|token_id}">↔</button>
+                    </div>
                   </td>
                   <td class="boxinputleft-atk">
                     <select class="carac-atk" style="width: 72px;" name="attr_armeatk" size="1">
@@ -701,7 +705,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
                 </tr>
               </table>
             </div>
-            <div class="options" style="margin-bottm:6px; margin-top:-2px;">
+            <div class="options" style="margin-bottom:6px; margin-top:-2px;">
               <table class="tabsep">
                 <tr>
                   <td style="width:18px; text-align:center;">
@@ -721,27 +725,33 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
                     <textarea name="attr_armemodificateurs" class="atk ligne" placeholder="Liste de modificateurs" spellcheck="false" title="Modificateurs d'attaque, séparés par des virgules&#10; avantage: garde le meilleur de 2 dés&#10; avecd12: utilise le d12 en attaque&#10; auto: réussite automatique&#10; choc: peut faire des attaques non léthales sans malus&#10; désavantage: garde le moins bon de 2 dés&#10; explodeMax: dés de dégâts explosifs&#10; pasDeDmg: l'attaque ne fait pas de dégât&#10; poudre: arme à poudre&#10; reroll1: relance les 1 des dé de DM&#10; tempDmg: fait toujours des attaques non léthales"></textarea>
                   </td>
                   <td class="boxinputleft-atk">
-                    <select class="carac-atk type-degats-atk" name="attr_armetypedegats" title="Type des dégâts — Physiques, affinités et types spéciaux.">
-                       <optgroup label="Physiques">
-                       <option value="tranchant">tranchant</option>
-                       <option value="contondant">contondant</option>
-                       <option value="percant">perçant</option>
-                     </optgroup>
-                     <optgroup label="Affinités">
-                       <option value="feu">feu</option>
-                       <option value="eau">eau</option>
-                       <option value="air">air</option>
-                       <option value="terre">terre</option>
-                       <option value="ombre">ombre</option>
-                       <option value="lumiere">lumière</option>
-                       <option value="force">force magique</option>
-                     </optgroup>
-                     <optgroup label="Spéciaux">
-                       <option value="toxique">toxique</option>
-                       <option value="psychique">psychique</option>
-                       <option value="drain">drain</option>
-                     </optgroup>
-                     </select>
+                    <select class="carac-atk type-degats-atk" name="attr_armetypedegats" title="Type des dégâts">
+                      <option value="tranchant">tranchant</option>
+                      <option value="contondant">contondant</option>
+                      <option value="percant">perçant</option>
+                      <option value="mental">mental</option>
+                      <option value="feu">feu</option>
+                      <option value="air">air</option>
+                      <option value="eau">eau</option>
+                      <option value="terre">terre</option>
+                      <option value="ombre">ombre</option>
+                      <option value="lumiere">lumière</option>
+                      <option value="force">force</option>
+                      <option value="toxique">toxique</option>
+                      <option value="psychique">psychique</option>
+                      <option value="nature">nature</option>
+                      <option value="necrotique">nécrotique</option>
+                      <option value="radiant">radiant</option>
+                      <option value="arcane">arcane</option>
+                      <option value="acide">acide</option>
+                      <option value="electrique">électrique</option>
+                      <option value="froid">froid</option>
+                      <option value="sonique">sonique</option>
+                      <option value="poison">poison</option>
+                      <option value="magique">magique (compatibilité)</option>
+                      <option value="maladie">maladie (affliction)</option>
+                      <option value="drain">drain (affliction)</option>
+                    </select>
                   </td>
                   <td class="boxinputleft-atk" style="width:100%;">
                     <textarea name="attr_armeoptions" class="atk ligne" placeholder="Options d'attaque avec argument" spellcheck="false" title="Options d'attaque"></textarea>
@@ -2247,7 +2257,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
                   <option value="@{dex_test}">DEX</option>
                   <option value="@{con_test}">CON</option>
                   <option value="@{int_test}">INT</option>
-                  <option value="@{sag_text}">SAG</option>
+                  <option value="@{sag_test}">SAG</option>
                   <option value="@{cha_test}">CHA</option>
                 </optgroup>
               </select>+<input type="number" style="width:32px;" name="attr_jetcapadiv" value="0" title="Bonus divers" />
@@ -2289,25 +2299,60 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
           <input type="text" name="attr_BOURSE" class="co-wallet-extra" placeholder="Gemmes / monnaies spéciales (optionnel)" />
         </section>
 
-        <section class="co-card">
-          <div class="co-card-title">Consommables</div>
+        <section class="co-card co-belt-card">
+          <div class="co-card-title co-card-title-with-meta">
+            <span>Objets à la ceinture</span>
+            <span class="co-belt-counter" title="Emplacements utilisés / capacité de ceinture">
+              <input type="number" name="attr_ceinture_utilises" value="0" readonly /> / <input type="number" name="attr_ceinture_capacite" value="3" readonly />
+            </span>
+          </div>
+          <input type="hidden" name="attr_ceinture_bonus_slots" value="0" />
+          <div class="co-card-help">3 objets au total par défaut. Chaque unité occupe 1 emplacement : une pile de 3 potions remplit donc toute la ceinture.</div>
           <fieldset class="repeating_equipement co-repeating-clean">
-            <div class="co-consumable-row">
-              <input type="hidden" name="attr_equip_attrid" value="" />
+            <div class="co-consumable-row co-belt-row">
+              <input type="hidden" name="attr_equip_rowid" value="" />
               <input type="hidden" name="attr_equip_usage" value="" />
-              <input class="co-consumable-name" type="text" name="attr_equip_nom" placeholder="Nom du consommable" />
+              <input type="hidden" name="attr_equip_item_id" value="" />
+              <input class="co-consumable-name" type="text" name="attr_equip_nom" placeholder="Objet à la ceinture" />
               <label class="co-consumable-qty">Qté <input type="number" name="attr_equip_qte" min="0" value="1" /></label>
-              <button type="roll" class="co-consumable-use" name="roll_utiliser_consommable" title="Utiliser ce consommable (puis cibler le token de ce personnage)" value="!coi-use-conso --target @{target|Token du personnage|token_id} --attr @{equip_attrid}">Utiliser</button>
-              <button type="roll" class="co-consumable-delete" name="roll_supprimer_consommable" title="Supprimer définitivement ce consommable de cette fiche" value="!coi-delete-conso --character @{character_id} --attr @{equip_attrid}">✕</button>
+              <button type="roll" class="co-consumable-delete" name="roll_supprimer_consommable" title="Supprimer définitivement cet objet de cette fiche" value="!coi-delete-conso --character @{character_id} --row @{equip_rowid} --current @{equip_qte}">✕</button>
+              <div class="co-inventory-actions co-belt-actions">
+                <button type="roll" class="co-consumable-use" name="roll_utiliser_consommable" title="Utiliser cet objet (puis cibler le token de ce personnage)" value="!coi-use-conso --target @{target|Token du personnage|token_id} --row @{equip_rowid} --current @{equip_qte}">Utiliser</button>
+                <button type="roll" class="co-inventory-move" name="roll_ranger_dans_sac" title="Choisir combien d’objets ranger dans le sac" value="!coi-belt-to-bag --character @{character_id} --row @{equip_rowid} --current @{equip_qte} --qty ?{Quantité à mettre dans le sac (max @{equip_qte})|1}">Sac</button>
+                <button type="roll" class="co-inventory-trade" name="roll_echanger_ceinture" title="Donner une quantité de cet objet à un autre PJ" value="!coi-transfer-belt --character @{character_id} --row @{equip_rowid} --current @{equip_qte} --target @{target|Destinataire|token_id} --qty ?{Quantité à donner|1}">Échanger</button>
+              </div>
               <input class="options-flag" name="attr_equipoptflag" type="checkbox" title="Afficher la commande / effet" /><span>y</span>
               <div class="options co-consumable-effect"><textarea name="attr_equip_effet" placeholder="Commande / effet COFantasy" spellcheck="false"></textarea></div>
             </div>
           </fieldset>
         </section>
 
+        <section class="co-card co-bag-card">
+          <div class="co-card-title">Sac &amp; provisions</div>
+          <div class="co-card-help">Rations, matériel de survie et réserves d'objets utilisables. Les objets de réserve peuvent être placés à la ceinture si une place est libre.</div>
+          <fieldset class="repeating_sac co-repeating-clean">
+            <div class="co-consumable-row co-bag-row">
+              <input type="hidden" name="attr_sac_rowid" value="" />
+              <input type="hidden" name="attr_sac_usage" value="" />
+              <input type="hidden" name="attr_sac_type" value="materiel" />
+              <input type="hidden" name="attr_sac_item_id" value="" />
+              <input type="checkbox" class="co-bag-belt-flag" name="attr_sac_ceinture" value="1" />
+              <input class="co-consumable-name" type="text" name="attr_sac_nom" placeholder="Objet dans le sac" />
+              <label class="co-consumable-qty">Qté <input type="number" name="attr_sac_qte" min="0" value="1" /></label>
+              <button type="roll" class="co-consumable-delete" name="roll_supprimer_objet_sac" title="Supprimer définitivement cet objet du sac" value="!coi-delete-bag --character @{character_id} --row @{sac_rowid} --current @{sac_qte}">✕</button>
+              <div class="co-inventory-actions co-bag-actions">
+                <button type="roll" class="co-inventory-move co-bag-to-belt" name="roll_mettre_ceinture" title="Choisir combien d’objets placer à la ceinture" value="!coi-bag-to-belt --character @{character_id} --row @{sac_rowid} --current @{sac_qte} --qty ?{Quantité à mettre à la ceinture (max @{sac_qte})|1}">Ceinture</button>
+                <button type="roll" class="co-inventory-trade" name="roll_echanger_sac" title="Donner une quantité de cet objet à un autre PJ" value="!coi-transfer-bag --character @{character_id} --row @{sac_rowid} --current @{sac_qte} --target @{target|Destinataire|token_id} --qty ?{Quantité à donner|1}">Échanger</button>
+              </div>
+              <input class="options-flag" name="attr_sacoptflag" type="checkbox" title="Afficher les détails" /><span>y</span>
+              <div class="options co-consumable-effect"><textarea name="attr_sac_effet" placeholder="Description / effet conservé avec l'objet" spellcheck="false"></textarea></div>
+            </div>
+          </fieldset>
+        </section>
+
         <section class="co-card">
-          <div class="co-card-title">Divers</div>
-          <textarea name="attr_equip_div" class="co-large-textarea" spellcheck="false" placeholder="Matériel, objets non équipables, provisions..."></textarea>
+          <div class="co-card-title">Ancien divers / notes d'inventaire</div>
+          <textarea name="attr_equip_div" class="co-large-textarea" spellcheck="false" placeholder="Anciennes notes d'inventaire libres. Les nouveaux objets du catalogue sont ajoutés au sac."></textarea>
         </section>
 
         <section class="co-card">
@@ -2326,7 +2371,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
           <fieldset class="repeating_armures co-repeating-clean">
             <div class="co-equip-list-row">
               <input class="co-equip-check" type="checkbox" name="attr_equipearmure" title="Équipé ?" value="1">
-              <div class="co-object-name"><input type="hidden" name="attr_labelarmure" value="0" /><input type="text" name="attr_nomarmure" placeholder="Nom de l'objet" /></div>
+              <div class="co-object-name"><input type="hidden" name="attr_labelarmure" value="0" /><input type="text" name="attr_nomarmure" placeholder="Nom de l'objet" /><button type="roll" class="co-equipment-trade" name="roll_echanger_equipement" title="Échanger cet équipement avec un autre PJ" value="!coi-transfer-armor --character @{character_id} --label @{labelarmure} --target @{target|Destinataire|token_id}">↔</button></div>
               <select class="co-equip-slot" name="attr_typearmure" title="Emplacement">
                 <option value="Torse">Torse</option>
                 <option value="Casque">Tête / Casque</option>
@@ -2389,7 +2434,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
               </tr>
             </table>
           </div>
-          <div class="options" style="margin-bottm:6px; margin-top:-2px;">
+          <div class="options" style="margin-bottom:6px; margin-top:-2px;">
             <table class="tabsep">
               <tr>
                 <td class="boxinputleft-atk" style="width:100%;">
@@ -2669,6 +2714,20 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
     <input type="radio" name="attr_tab" class="tab tab4" value="script pnj"><span title="Script"></span>
     <img class="imghr-up" src="https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/ChroniquesOubliees/co_hr.png" />
     <div class="tab-content tab1">
+      <!-- Métadonnées Monster Creator : conservées à l'import sans alourdir la fiche PNJ. -->
+      <input type="hidden" name="attr_archetype" value="" />
+      <input type="hidden" name="attr_boss_rank" value="" />
+      <input type="hidden" name="attr_boss_type" value="" />
+      <input type="hidden" name="attr_mc_sous_famille" value="" />
+      <input type="hidden" name="attr_mc_archetype_principal" value="" />
+      <input type="hidden" name="attr_mc_archetype_physique" value="" />
+      <input type="hidden" name="attr_mc_archetype_mental" value="" />
+      <input type="hidden" name="attr_mc_archetype_mineur" value="" />
+      <input type="hidden" name="attr_mc_armure" value="" />
+      <input type="hidden" name="attr_mc_rarete_composant" value="" />
+      <input type="hidden" name="attr_element_lie" value="" />
+      <input type="hidden" name="attr_element_oppose" value="" />
+      <input type="hidden" name="attr_affinites" value="" />
       <div class="containerl">
         <div style="width:100%;">
           <table class="tabsep">
@@ -2734,6 +2793,22 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
               </td>
               <td class="boxinput-init">
                 <input type="number" class="init" name="attr_pnj_init" title="Initiative" value="10" min="1"/>
+            </tr>
+          </table>
+          <table class="tabsep">
+            <tr>
+              <td class="boxtitre-init">Mvt</td>
+              <td class="boxinput-init"><input type="number" class="init" name="attr_mouvement" title="Mouvement terrestre (m)" value="0" min="0"/></td>
+              <td class="boxtitre-init">Vol</td>
+              <td class="boxinput-init"><input type="number" class="init" name="attr_vol" title="Vitesse de vol (m)" value="0" min="0"/></td>
+              <td class="boxtitre-init">Nage</td>
+              <td class="boxinput-init"><input type="number" class="init" name="attr_nage" title="Vitesse de nage (m)" value="0" min="0"/></td>
+              <td class="boxtitre-init">Esc.</td>
+              <td class="boxinput-init"><input type="number" class="init" name="attr_escalade" title="Vitesse d'escalade (m)" value="0" min="0"/></td>
+              <td class="boxtitre-init">Fouiss.</td>
+              <td class="boxinput-init"><input type="number" class="init" name="attr_fouissement" title="Vitesse de fouissement (m)" value="0" min="0"/></td>
+              <td class="boxtitre-init">Allonge</td>
+              <td class="boxinput-init"><input type="number" class="init" name="attr_allonge" title="Allonge naturelle (m)" value="0" min="0"/></td>
             </tr>
           </table>
           <div class="containerl">
@@ -2842,7 +2917,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
                 </tr>
               </table>
             </div>
-            <div class="options" style="margin-bottm:6px; margin-top:-2px;">
+            <div class="options" style="margin-bottom:6px; margin-top:-2px;">
               <table class="tabsep">
                 <tr>
                   <td style="width:18px; text-align:center;">
@@ -2862,27 +2937,33 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
                     <textarea name="attr_armemodificateurs" class="atk ligne" placeholder="Liste de modificateurs" spellcheck="false" title="Modificateurs d'attaque, séparés par des virgules&#10; avantage: garde le meilleur de 2 dés&#10; avecd12: utilise le d12 en attaque&#10; auto: réussite automatique&#10; choc: peut faire des attaques non léthales sans malus&#10; désavantage: garde le moins bon de 2 dés&#10; explodeMax: dé de dégâts explosifs&#10; pasDeDmg: l'attaque ne fait pas de dégâts&#10; poudre: arme à poudre&#10; reroll1: relance les 1 des dés de DM&#10; tempDmg: fait toujours des attaques non léthales"></textarea>
                   </td>
                   <td class="boxinputleft-atk">
-                    <select class="carac-atk type-degats-atk" name="attr_armetypedegats" title="Type des dégâts — Physiques, affinités et types spéciaux.">
-                       <optgroup label="Physiques">
-                       <option value="tranchant">tranchant</option>
-                       <option value="contondant">contondant</option>
-                       <option value="percant">perçant</option>
-                     </optgroup>
-                     <optgroup label="Affinités">
-                       <option value="feu">feu</option>
-                       <option value="eau">eau</option>
-                       <option value="air">air</option>
-                       <option value="terre">terre</option>
-                       <option value="ombre">ombre</option>
-                       <option value="lumiere">lumière</option>
-                       <option value="force">force magique</option>
-                     </optgroup>
-                     <optgroup label="Spéciaux">
-                       <option value="toxique">toxique</option>
-                       <option value="psychique">psychique</option>
-                       <option value="drain">drain</option>
-                     </optgroup>
-                     </select>
+                    <select class="carac-atk type-degats-atk" name="attr_armetypedegats" title="Type des dégâts">
+                      <option value="tranchant">tranchant</option>
+                      <option value="contondant">contondant</option>
+                      <option value="percant">perçant</option>
+                      <option value="mental">mental</option>
+                      <option value="feu">feu</option>
+                      <option value="air">air</option>
+                      <option value="eau">eau</option>
+                      <option value="terre">terre</option>
+                      <option value="ombre">ombre</option>
+                      <option value="lumiere">lumière</option>
+                      <option value="force">force</option>
+                      <option value="toxique">toxique</option>
+                      <option value="psychique">psychique</option>
+                      <option value="nature">nature</option>
+                      <option value="necrotique">nécrotique</option>
+                      <option value="radiant">radiant</option>
+                      <option value="arcane">arcane</option>
+                      <option value="acide">acide</option>
+                      <option value="electrique">électrique</option>
+                      <option value="froid">froid</option>
+                      <option value="sonique">sonique</option>
+                      <option value="poison">poison</option>
+                      <option value="magique">magique (compatibilité)</option>
+                      <option value="maladie">maladie (affliction)</option>
+                      <option value="drain">drain (affliction)</option>
+                    </select>
                   </td>
                   <td class="boxinputleft-atk" style="width:100%;">
                     <textarea name="attr_armeoptions" class="atk ligne" placeholder="Options d'attaque avec argument" spellcheck="false" title="Options d'attaque"></textarea>
@@ -3064,7 +3145,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
               </tr>
             </table>
           </div>
-          <div class="options" style="margin-bottm:6px; margin-top:-2px;">
+          <div class="options" style="margin-bottom:6px; margin-top:-2px;">
             <table class="tabsep">
               <tr>
                 <td class="boxinputleft-atk" style="width:100%;">
@@ -3292,7 +3373,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
             <div class="co-item-field"><label>Critique</label><input type="number" name="attr_objet_arme_crit" value="20" min="2" max="20" /></div>
             <div class="co-item-field"><label>Dégâts</label><span class="co-dice-inline"><input class="co-item-small" type="number" name="attr_objet_arme_dmnbde" value="1" min="0" /> d <select class="co-item-small-select" name="attr_objet_arme_dmde"><option>3</option><option>4</option><option selected>6</option><option>8</option><option>10</option><option>12</option></select></span></div>
             <div class="co-item-field"><label>Carac. aux DM</label><select name="attr_objet_arme_dmcar"><option>FOR</option><option>DEX</option><option>CON</option><option>INT</option><option>SAG</option><option>CHA</option><option>AUCUN</option></select></div>
-            <div class="co-item-field"><label>Type dégâts</label><select name="attr_objet_arme_typedegats"><optgroup label="Physiques"><option value="tranchant">tranchant</option><option value="contondant">contondant</option><option value="percant">perçant</option></optgroup><optgroup label="Affinités"><option value="feu">feu</option><option value="eau">eau</option><option value="air">air</option><option value="terre">terre</option><option value="ombre">ombre</option><option value="lumiere">lumière</option><option value="force">force magique</option></optgroup><optgroup label="Spéciaux"><option value="toxique">toxique</option><option value="psychique">psychique</option><option value="drain">drain</option></optgroup></select></div>
+            <div class="co-item-field"><label>Type dégâts</label><select name="attr_objet_arme_typedegats"><option value="tranchant">tranchant</option><option value="contondant">contondant</option><option value="percant">perçant</option><option value="feu">feu</option><option value="air">air</option><option value="eau">eau</option><option value="terre">terre</option><option value="ombre">ombre</option><option value="lumiere">lumière</option><option value="force">force</option><option value="toxique">toxique</option><option value="psychique">psychique</option><option value="froid">froid (compat.)</option><option value="electrique">électrique (compat.)</option><option value="acide">acide (compat.)</option><option value="necrotique">nécrotique (compat.)</option><option value="radiant">radiant (compat.)</option><option value="arcane">arcane (compat.)</option><option value="poison">poison (compat.)</option><option value="maladie">maladie (compat.)</option><option value="mental">mental (compat.)</option><option value="sonique">sonique (compat.)</option><option value="magique">magique (compat.)</option><option value="drain">drain</option></select></div>
             <div class="co-item-field"><label>Portée</label><input type="text" name="attr_objet_arme_portee" placeholder="10 m" /></div>
           </div>
 
@@ -3321,7 +3402,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
             <div class="co-item-field"><label>Emplacement</label><select name="attr_objet_emplacement"><option value="Torse">Torse</option><option value="Casque">Tête / Casque</option><option value="Bouclier">Bouclier</option><option value="Autre">Autre</option></select></div>
             <div class="co-item-field"><label>DEF de base</label><input type="number" name="attr_objet_bonusarmure" value="0" /></div>
             <div class="co-item-field"><label>Malus d'armure</label><input type="number" name="attr_objet_malusarmure" value="0" /></div>
-            <div class="co-item-field"><label>DEX max</label><input type="number" name="attr_objet_dex_max" min="0" placeholder="—" /></div>
+            <div class="co-item-field"><label>DEX max</label><input type="number" name="attr_objet_dex_limite" min="0" placeholder="—" /></div>
           </div>
           <div class="co-item-help">La qualité +N augmente automatiquement la DEF de +N. Le malus et la DEX max ne changent pas.</div>
         </section>
@@ -3368,9 +3449,9 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
           <div class="co-item-field"><label>Description RP de l'hébergement</label><textarea name="attr_hebergement_description" placeholder="Chambre, repas, services, ambiance..."></textarea></div>
           <div class="co-item-section-title">Récupération après la nuit</div>
           <div class="co-lodging-grid co-lodging-recovery-grid">
-            <div class="co-recovery-box"><b>PV</b><label>Récupérations <input type="number" min="0" name="attr_hebergement_recup_pv" value="3" /></label><label class="co-inline-check"><input type="checkbox" name="attr_hebergement_pv_max" value="1" /> Maximum</label></div>
-            <div class="co-recovery-box"><b>Mana</b><label>Récupérations <input type="number" min="0" name="attr_hebergement_recup_pm" value="3" /></label><label class="co-inline-check"><input type="checkbox" name="attr_hebergement_pm_max" value="1" /> Maximum</label></div>
-            <div class="co-recovery-box"><b>PR</b><label>PR récupérés <input type="number" min="0" name="attr_hebergement_pr" value="2" /></label><label class="co-inline-check"><input type="checkbox" name="attr_hebergement_pr_max" value="1" /> Maximum</label></div>
+            <div class="co-recovery-box"><b>PV</b><label>Récupérations <input type="number" min="0" name="attr_hebergement_recup_pv" value="3" /></label><label class="co-inline-check"><input type="checkbox" name="attr_hebergement_pv_full" value="1" /> Maximum</label></div>
+            <div class="co-recovery-box"><b>Mana</b><label>Récupérations <input type="number" min="0" name="attr_hebergement_recup_pm" value="3" /></label><label class="co-inline-check"><input type="checkbox" name="attr_hebergement_pm_full" value="1" /> Maximum</label></div>
+            <div class="co-recovery-box"><b>PR</b><label>PR récupérés <input type="number" min="0" name="attr_hebergement_pr" value="2" /></label><label class="co-inline-check"><input type="checkbox" name="attr_hebergement_pr_full" value="1" /> Maximum</label></div>
           </div>
           <div class="co-item-section-title">Bonus jusqu'au prochain repos</div>
           <div class="co-lodging-grid">
@@ -3387,7 +3468,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
         <input type="checkbox" name="attr_objet_action_on" class="co-item-action-switch" id="co-item-action-switch" value="1" />
         <div class="co-item-action-toggle">
           <label for="co-item-action-switch">Cet objet possède une ou plusieurs actions</label>
-          <span class="co-item-action-hint">Les actions équipées apparaissent dans 🎒 Objets sur la fiche du porteur.</span>
+          <span class="co-item-action-hint">Les actions équipées apparaissent dans  Objets sur la fiche du porteur.</span>
         </div>
         <div class="co-item-action-panel">
           <div class="co-item-section-title">Actions de l'objet</div>
@@ -3626,10 +3707,17 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
     });
   }
 
-  on('sheet:opened', function() {
-    initialiserCompetencesParDefaut();
-    // **** Gestion transition de version
-    getAttrs(['version', 'option_setting'], function(v) {
+  function cofRunSheetMigrations() {
+    // Les migrations 1.x→5.x sont des migrations de personnage. Une fiche
+    // OBJET/CONSOMMABLE/HEBERGEMENT est migrée par CoFItem, pas par ce worker.
+    getAttrs(['type_personnage'], function(typeValues) {
+      const sheetType = String(typeValues.type_personnage || '').toUpperCase();
+      if (sheetType === 'OBJET' || sheetType === 'CONSOMMABLE' || sheetType === 'HEBERGEMENT') return;
+      initialiserCompetencesParDefaut();
+      // **** Gestion transition de version. Cette fonction est aussi déclenchée
+      // par COFantasy Doctor via attr_cof_doctor_tick afin de réutiliser les
+      // migrations officielles de la fiche au lieu de les dupliquer côté API.
+      getAttrs(['version', 'option_setting'], function(v) {
       let verfdp = parseFloat(v.version) || 0;
       if (verfdp < 5.04) {
         if (verfdp === 0) {
@@ -3637,34 +3725,34 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
           getAttrs(["FOR_SUP", "DEX_SUP", "CON_SUP", "INT_SUP", "SAG_SUP", "CHA_SUP"], function(jets) {
             var sfor, sdex, scon, sint, ssag, scha = "";
             if (jets.FOR_SUP == "2") {
-              sfor = "@{JETSUP}";
+              sfor = "@{jetsup}";
             } else {
-              sfor = "@{JETNORMAL}";
+              sfor = "@{jetnormal}";
             }
             if (jets.DEX_SUP == "2") {
-              sdex = "@{JETSUP}";
+              sdex = "@{jetsup}";
             } else {
-              sdex = "@{JETNORMAL}";
+              sdex = "@{jetnormal}";
             }
             if (jets.CON_SUP == "2") {
-              scon = "@{JETSUP}";
+              scon = "@{jetsup}";
             } else {
-              scon = "@{JETNORMAL}";
+              scon = "@{jetnormal}";
             }
             if (jets.INT_SUP == "2") {
-              sint = "@{JETSUP}";
+              sint = "@{jetsup}";
             } else {
-              sint = "@{JETNORMAL}";
+              sint = "@{jetnormal}";
             }
             if (jets.SAG_SUP == "2") {
-              ssag = "@{JETSUP}";
+              ssag = "@{jetsup}";
             } else {
-              ssag = "@{JETNORMAL}";
+              ssag = "@{jetnormal}";
             }
             if (jets.CHA_SUP == "2") {
-              scha = "@{JETSUP}";
+              scha = "@{jetsup}";
             } else {
-              scha = "@{JETNORMAL}";
+              scha = "@{jetnormal}";
             }
             setAttrs({
               for_sup: sfor,
@@ -3879,7 +3967,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
                   default:
                     {
                       let n = parseInt(t);
-                      if (isNaN(n) | n < 1) {
+                      if (isNaN(n) || n < 1) {
                         reste += ' ' + t;
                         return;
                       }
@@ -3906,7 +3994,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
                 setAttrs(sa);
               }
             }
-            if (values.option_settings != 'arran') {
+            if (values.option_setting != 'arran') {
               setAttrs({
                 mod_atktir: '',
                 mod_atkmag: '',
@@ -3991,7 +4079,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
             if (porteCasque(values)) sa.teteequipe = '-1';
             if (!sa.maingauche && porteBouclier(values)) sa.maingauche = 'b-1';
             sa.FOR = Math.floor((parseInt(values.force) - 10) / 2) || '';
-            sa.DEX = Math.floor((parseInt(values.dexterite) - 10) / 2) || '';
+            sa.DEX = Math.floor((carac - 10) / 2) || '';
             sa.CON = Math.floor((parseInt(values.constitution) - 10) / 2) || '';
             sa.INT = Math.floor((parseInt(values.intelligence) - 10) / 2) || '';
             sa.SAG = Math.floor((parseInt(values.sagesse) - 10) / 2) || '';
@@ -4094,8 +4182,10 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
           }
         });
       }
+      });
     });
-  });
+  }
+  on('sheet:opened change:cof_doctor_tick', cofRunSheetMigrations);
 
   function updateAttaques45(section, montrer) {
     getSectionIDs('repeating_' + section, function(idArray) {
@@ -4654,7 +4744,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
         if (!isNaN(bonus)) defense += bonus;
         bonus = parseInt(values.defbouclier) * parseInt(values.defbouclieron);
         if (!isNaN(bonus)) defense += bonus;
-        bonus = Math.floor((parseInt(values.dexterite) - 10) / 2);
+        bonus = Math.floor((carac - 10) / 2);
         if (!isNaN(bonus)) defense += bonus;
         setAttrs({
           DEFDIV: def - defense
@@ -4721,7 +4811,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
       if (!isNaN(bonus)) defense += bonus;
       bonus = parseInt(values.defbouclier) * parseInt(values.defbouclieron);
       if (!isNaN(bonus)) defense += bonus;
-      bonus = Math.floor((parseInt(values.dexterite) - 10) / 2);
+      bonus = Math.floor((carac - 10) / 2);
       if (!isNaN(bonus)) defense += bonus;
       setAttrs({
         DEFDIV: new_def - defense,
@@ -5337,6 +5427,24 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
     boss_type: 'boss_type',
     description: 'notes',
     special_capabilities: 'capacites_pnj',
+    predicates: 'predicats_script',
+    movement: 'mouvement',
+    flight: 'vol',
+    swim: 'nage',
+    climb: 'escalade',
+    burrow: 'fouissement',
+    reach: 'allonge',
+    subfamily: 'mc_sous_famille',
+    major_archetype: 'mc_archetype_principal',
+    physical_archetype: 'mc_archetype_physique',
+    mental_archetype: 'mc_archetype_mental',
+    minor_archetype: 'mc_archetype_mineur',
+    armor_choice: 'mc_armure',
+    component_rarity: 'mc_rarete_composant',
+    linked_element: 'element_lie',
+    opposed_element: 'element_oppose',
+    affinities: 'affinites',
+    picture: 'character_token',
   };
 
   function htmlToText(msg) {
@@ -5375,6 +5483,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
     }
     let predicats = '';
     if (values.predicats_script) predicats = values.predicats_script + ' ';
+    if (se.predicats_script) predicats += se.predicats_script + ' ';
     if (stats.category && stats.category.length > 0) {
       switch (stats.category[0].value) {
         case 'alive': //rien à faire
@@ -5469,6 +5578,18 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
         se[prefix + champ] = a[champ];
       }
     };
+    if (stats.cof_actions && Array.isArray(stats.cof_actions)) {
+      stats.cof_actions.forEach(function(action) {
+        if (!action || !action.command) return;
+        addAction({
+          rang: maxRangAction + 1,
+          titre: action.name || 'Action',
+          type: 'action',
+          montree: 1,
+          code: action.command
+        });
+      });
+    }
     if (stats.structured_capabilities) {
       for (const vid in stats.structured_capabilities) {
         let sc = stats.structured_capabilities[vid];
@@ -7895,19 +8016,19 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
     getAttrs(['repeating_armures_bonusarmure', 'repeating_armures_labelarmure', 'torseequipe', 'teteequipe', 'maingauche', 'typemaingauche'], function(value) {
       if (value.torseequipe == value.repeating_armures_labelarmure) {
         setAttrs({
-          defarmure: value.repeating_armures_bonusarmure
+          defarmure: value.repeating_armures_malusarmure
         }, {
           silent: true
         });
       } else if (value.teteequipe == value.repeating_armures_labelarmure) {
         setAttrs({
-          casque_rd: value.repeating_armures_bonusarmure
+          casque_rd: value.repeating_armures_malusarmure
         }, {
           silent: true
         });
-      } else if (value.typemaingauche == 'Bouclier' && value.maingauche == value.repeating_armures_labelarmure) {
+      } else if (value.typemaingauche == 'Bouclier' && value.maingauche == 'b' + value.repeating_armures_labelarmure) {
         setAttrs({
-          defbouclier: value.repeating_armures_bonusarmure
+          defbouclier: value.repeating_armures_malusarmure
         }, {
           silent: true
         });
@@ -7931,9 +8052,9 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
         }, {
           silent: true
         });
-      } else if (value.typemaingauche == 'Bouclier' && value.maingauche == value.repeating_armures_labelarmure) {
+      } else if (value.typemaingauche == 'Bouclier' && value.maingauche == 'b' + value.repeating_armures_labelarmure) {
         setAttrs({
-          defboucliermalus: value.repeating_armures_bonusarmure
+          defboucliermalus: value.repeating_armures_malusarmure
         }, {
           silent: true
         });
@@ -8357,7 +8478,7 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
               if (va[prefix + 'bonusarmure'] != values.defbouclier) {
                 sa.defbouclier = va[prefix + 'bonusarmure'];
               }
-              if (va[prefix + 'malusarmure'] != values.deboucliermalus) {
+              if (va[prefix + 'malusarmure'] != values.defboucliermalus) {
                 sa.defboucliermalus = va[prefix + 'malusarmure'];
               }
             }
@@ -8690,7 +8811,8 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
     getPredicates(function(pred) {
       setAttrs({
         ITEM_MOUVEMENT_BONUS: coiPredInt(pred,'bonusMouvement'),
-        ITEM_INIT_BONUS: coiPredInt(pred,'bonusInitiative')
+        ITEM_INIT_BONUS: coiPredInt(pred,'bonusInitiative'),
+        ceinture_bonus_slots: coiPredInt(pred,'bonusSlotsConsommables')
       }, silent);
     });
   }
@@ -8719,6 +8841,38 @@ Cette feuille de personnage utilise des marques déposées et des droits d’aut
       });
     });
   }
+
+  function coiSyncBeltCounter() {
+    getSectionIDs('repeating_equipement', function(ids) {
+      const fields = ['ceinture_bonus_slots'];
+      ids.forEach(function(id) { fields.push('repeating_equipement_' + id + '_equip_qte'); });
+      getAttrs(fields, function(values) {
+        let used = 0;
+        ids.forEach(function(id) {
+          const q = parseInt(values['repeating_equipement_' + id + '_equip_qte'], 10);
+          if (!isNaN(q) && q > 0) used += q;
+        });
+        let bonus = parseInt(values.ceinture_bonus_slots, 10);
+        if (isNaN(bonus)) bonus = 0;
+        setAttrs({ceinture_utilises: used, ceinture_capacite: Math.max(0, 3 + bonus)}, {silent:true});
+      });
+    });
+  }
+  on('sheet:opened change:repeating_equipement:equip_qte remove:repeating_equipement change:ceinture_bonus_slots', coiSyncBeltCounter);
+
+  function coiSyncInventoryRowIds() {
+    getSectionIDs('repeating_equipement', function(ids) {
+      let sa = {};
+      (ids || []).forEach(function(id) { sa['repeating_equipement_' + id + '_equip_rowid'] = id; });
+      if (Object.keys(sa).length) setAttrs(sa, {silent:true});
+    });
+    getSectionIDs('repeating_sac', function(ids) {
+      let sa = {};
+      (ids || []).forEach(function(id) { sa['repeating_sac_' + id + '_sac_rowid'] = id; });
+      if (Object.keys(sa).length) setAttrs(sa, {silent:true});
+    });
+  }
+  on('sheet:opened change:repeating_equipement:equip_nom change:repeating_equipement:equip_qte change:repeating_sac:sac_nom change:repeating_sac:sac_qte', coiSyncInventoryRowIds);
 
   on('sheet:opened change:predicats_script change:maindroite change:maingauche change:repeating_armures:equipearmure change:repeating_armures:effetarmure change:repeating_armes:armepredicats', coiUpdateDerivedBonuses);
   on('sheet:opened change:repeating_armures:equipearmure change:repeating_armures:nomarmure change:repeating_armures:typearmure remove:repeating_armures', coiUpdateEquippedSummary);

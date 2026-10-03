@@ -1,3 +1,4 @@
+/* Audit CLEAN 5.05 : syntaxe CSS validée, comportement conservé. */
 /* On enlève les spinners pour les inputs de nombres
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -2267,4 +2268,201 @@ textarea.statblock {
 }
 @media (max-width:720px) {
   .charsheet .co-item-action-head { grid-template-columns:1fr; }
+}
+
+/* Ceinture / Sac - COFantasy Items V5 */
+.charsheet .co-card-title-with-meta {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+.charsheet .co-belt-counter {
+  display:inline-flex;
+  align-items:center;
+  gap:2px;
+  font-size:10px;
+  font-weight:800;
+  white-space:nowrap;
+}
+.charsheet .co-belt-counter input {
+  width:28px!important;
+  min-width:28px!important;
+  height:18px!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  background:transparent!important;
+  color:inherit!important;
+  text-align:center;
+  font-weight:800;
+  box-shadow:none!important;
+}
+.charsheet .co-card-help {
+  padding:4px 8px 6px;
+  font-size:9px;
+  line-height:1.25;
+  color:#6b5a48;
+  border-bottom:1px solid #e4d5c1;
+  background:rgba(255,250,241,.55);
+}
+.charsheet .co-belt-row {
+  grid-template-columns:minmax(125px,1fr) 70px 68px 52px 58px 30px;
+}
+.charsheet .co-bag-row {
+  grid-template-columns:minmax(140px,1fr) 70px 66px 58px 30px;
+}
+.charsheet button[type='roll'].co-inventory-move {
+  height:24px;
+  margin:0;
+  padding:1px 5px;
+  border:1px solid #6d6657;
+  border-radius:5px;
+  background:linear-gradient(#8d826d,#695f4e);
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+  text-shadow:none;
+}
+.charsheet button[type='roll'].co-inventory-move::before { content:''; }
+.charsheet .co-bag-belt-flag {
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+.charsheet .co-bag-belt-flag:not(:checked) ~ button.co-bag-to-belt { display:none!important; }
+.charsheet .co-bag-belt-flag:not(:checked) ~ .co-consumable-delete { grid-column:5; }
+
+
+.charsheet button[type='roll'].co-inventory-trade {
+  height:24px;
+  margin:0;
+  padding:1px 4px;
+  border:1px solid #4e6d78;
+  border-radius:5px;
+  background:linear-gradient(#688b98,#476572);
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+  text-shadow:none;
+}
+.charsheet button[type='roll'].co-inventory-trade::before,
+.charsheet button[type='roll'].co-equipment-trade::before { content:''; }
+.charsheet .co-object-name { display:flex; gap:4px; align-items:center; }
+.charsheet .co-object-name > input[type='text'] { flex:1 1 auto; min-width:0; }
+.charsheet button[type='roll'].co-equipment-trade {
+  flex:0 0 27px;
+  width:27px;
+  height:24px;
+  margin:0;
+  padding:0;
+  border:1px solid #4e6d78;
+  border-radius:5px;
+  background:linear-gradient(#688b98,#476572);
+  color:#fff;
+  font-size:14px;
+  font-weight:900;
+  line-height:20px;
+  text-shadow:none;
+}
+.charsheet button[type='roll'].co-weapon-trade {
+  width:25px;
+  height:22px;
+  margin-left:2px;
+  vertical-align:middle;
+}
+
+/* ===== UI FIX v5.1.3 : armes + ceinture/sac ===== */
+/* Garde le bouton d'échange d'arme à l'intérieur de la cellule du nom. */
+.charsheet .co-weapon-name-cell { padding:0 2px!important; }
+.charsheet .co-weapon-name-wrap {
+  display:flex;
+  align-items:center;
+  width:100%;
+  min-width:0;
+  gap:2px;
+}
+.charsheet .co-weapon-name-wrap .co-weapon-label {
+  flex:0 0 16px;
+  width:16px!important;
+  min-width:16px!important;
+  margin:0!important;
+}
+.charsheet .co-weapon-name-wrap .co-weapon-name {
+  flex:1 1 auto;
+  width:auto!important;
+  min-width:0!important;
+  margin:0!important;
+}
+.charsheet .co-weapon-name-wrap .co-weapon-trade {
+  flex:0 0 24px;
+  width:24px!important;
+  min-width:24px!important;
+  height:20px!important;
+  margin:0!important;
+  font-size:12px!important;
+  line-height:18px!important;
+}
+
+/* Les lignes d'inventaire utilisent deux étages : contenu puis actions. */
+.charsheet .co-belt-row,
+.charsheet .co-bag-row {
+  grid-template-columns:minmax(0,1fr) 66px 30px!important;
+  column-gap:5px;
+  row-gap:4px;
+  align-items:center;
+}
+.charsheet .co-belt-row > .co-consumable-name,
+.charsheet .co-bag-row > .co-consumable-name {
+  grid-column:1;
+  grid-row:1;
+  min-width:0!important;
+}
+.charsheet .co-belt-row > .co-consumable-qty,
+.charsheet .co-bag-row > .co-consumable-qty {
+  grid-column:2;
+  grid-row:1;
+}
+.charsheet .co-belt-row > .co-consumable-delete,
+.charsheet .co-bag-row > .co-consumable-delete {
+  grid-column:3!important;
+  grid-row:1;
+  justify-self:end;
+}
+.charsheet .co-inventory-actions {
+  grid-column:1 / -1;
+  grid-row:2;
+  display:grid;
+  gap:5px;
+  width:100%;
+  min-width:0;
+}
+.charsheet .co-belt-actions { grid-template-columns:1fr 1fr 1fr; }
+.charsheet .co-bag-actions { grid-template-columns:1fr 1fr; }
+.charsheet .co-inventory-actions button[type='roll'] {
+  width:100%!important;
+  min-width:0!important;
+  margin:0!important;
+  box-sizing:border-box;
+}
+/* Une ration/non-ceinturable n'affiche que Échanger, qui prend toute la ligne. */
+.charsheet .co-bag-belt-flag:not(:checked) ~ .co-bag-actions {
+  grid-template-columns:1fr!important;
+}
+.charsheet .co-bag-belt-flag:not(:checked) ~ .co-bag-actions .co-bag-to-belt {
+  display:none!important;
+}
+/* Les détails doivent rester sous les deux rangées. */
+.charsheet .co-belt-row > .options-flag,
+.charsheet .co-bag-row > .options-flag,
+.charsheet .co-belt-row > .options-flag + span,
+.charsheet .co-bag-row > .options-flag + span {
+  z-index:6;
+}
+.charsheet .co-belt-row > .co-consumable-effect,
+.charsheet .co-bag-row > .co-consumable-effect {
+  grid-column:1 / -1!important;
+  grid-row:3;
 }

@@ -1,14 +1,40 @@
-# COFantasy Roll20 — Guide d’utilisation
+# COFantasy / CoFItem / COAlaric V2 — Manuel utilisateur complet
 
-**COFantasy + CoFItem + fiche de personnage Chroniques Oubliées**
+Cette distribution réunit la fiche **Chroniques Oubliées**, **COFantasy**, **CoFItem**, **COAlaric**, le **Catalogue d’objets magiques V2** et le **Monster Creator V2**. Le but de ce document est qu’un MJ puisse installer, configurer et utiliser le pack sans connaître son code source.
 
-Ce document est un **manuel d’utilisation**, pas un journal de modifications. Il décrit comment les deux scripts et la fiche travaillent ensemble, puis regroupe les commandes utiles et les interfaces disponibles.
+> **Ordre conseillé des scripts Roll20 :** `COFantasy-V2.0.0.js`, puis `CoFItem-V2.0.0.js`, puis `COAlaric-V2.0.0.js`. Les scripts tolèrent l’ordre de chargement de la sandbox, mais cet ordre simplifie le diagnostic.
 
-Le pack complet contient également :
+## Contenu de la distribution
 
-- `Catalogue_objet_Magique.xlsx` : catalogue des objets, affixes, matériaux d’affinité et traitements anti-famille ;
-- `Monster_Creator_Affinites.xlsx` : créateur de monstres aligné sur le même référentiel ;
-- `MIGRATION.md` : table de correspondance destinée uniquement à la migration et à la compatibilité des anciennes données.
+| Fichier | Usage |
+|---|---|
+| `COFantasy-V2.0.0.js` | Moteur principal : jets, combat, effets, états, zones, sorts, capacités, initiative, undo, etc. |
+| `CoFItem-V2.0.0.js` | Objets, affixes, inventaire, transferts, consommables, repos, hébergements et loot. |
+| `COAlaric-V2.0.0.js` | Commerce Alaric : achat, vente, marchandage, vol, ardoise et affinité commerciale. |
+| `ChroniquesOubliees-Sheet.html/.css` | Fiche Roll20. |
+| `Catalogue_Objets_Magiques_V2.xlsx` | Source humaine du catalogue et des paliers/coûts validés. |
+| `Catalogue_pricing_model.json` | Référentiel machine des prix utilisé pour contrôler CoFItem/Alaric. |
+| `Monster_Creator_V2.xlsx` | Créateur de monstres, danger réel, export Statblock et simulateur de rencontre. |
+| `docs/COMMANDES_REFERENCE.md` | Index exhaustif des commandes détectées dans les routeurs. |
+| `docs/PREDICATS_REFERENCE.md` | Index des prédicats/familles de prédicats lus par les moteurs. |
+| `docs/AFFIXES_REFERENCE.md` | Catalogue exhaustif des affixes V2. |
+| `docs/MONSTER_CREATOR.md` | Manuel détaillé du Monster Creator. |
+| `AUDIT_V2.md` | Rapport d’audit/refonte et garanties de compatibilité. |
+
+## Installation en 10 minutes
+
+1. Installer le HTML/CSS de la fiche Roll20.
+2. Créer trois scripts API et y coller les trois fichiers V2 complets.
+3. Redémarrer la sandbox Roll20.
+4. Lancer `!cof-doctor` puis, si nécessaire, `!cof-doctor --repair` sur les fiches héritées.
+5. Lancer `!cof-set-macros` côté MJ.
+6. Vérifier `!cof-options`, `!coi-equipe` et `!co-alaric diagnostic`.
+7. Importer/créer les fiches OBJET via `!coi-catalogue` ou `!coi-import` si besoin.
+8. Pour les monstres, utiliser `Monster_Creator_V2.xlsx`, puis coller l’export dans l’onglet Statblock de la fiche PNJ.
+
+## Documentation exhaustive
+
+Le corps du manuel ci-dessous explique les mécaniques et syntaxes d’usage courant. Les tables qui seraient illisibles dans un seul chapitre sont fournies comme annexes **générées depuis les sources** : commandes, prédicats et affixes. Cela évite qu’un README manuel dérive du code.
 
 ## 1. Les trois éléments du système
 
@@ -34,7 +60,7 @@ CoFItem est conçu pour être chargé à côté de COFantasy. Lorsque le pont en
 
 1. Installer `ChroniquesOubliees-Sheet.html` et `ChroniquesOubliees-Sheet.css` comme **fiche Chroniques Oubliées personnalisée** dans la partie Roll20.
 2. Ajouter `COFantasy.js` dans les scripts API Roll20.
-3. Ajouter `CoFItem.js` dans les scripts API de la même partie.
+3. Ajouter `CoFItem-V2.0.0.js` dans les scripts API de la même partie, puis `COAlaric-V2.0.0.js` si le commerce Alaric est utilisé.
 4. Sauvegarder les scripts puis ouvrir une fiche de personnage pour laisser les sheetworkers synchroniser les champs dérivés.
 5. Côté MJ, lancer `!cof-set-macros` pour créer/actualiser les macros proposées par COFantasy.
 6. Créer un handout nommé **`Equipe PJ`** lorsque les fonctions de groupe sont utilisées : tests collectifs, distributions, pause/repos et butin s’appuient sur cette notion de groupe.
@@ -199,11 +225,32 @@ Le modèle standard du catalogue est un bonus conditionnel contre la famille cor
 
 **Malachium est uniquement anti-Céleste.** Il ne donne pas automatiquement les propriétés Profane, Ombre ou une quelconque affinité.
 
-### 3.9 Monster Creator
+### 3.9 Monster Creator V2
 
-Le Monster Creator fourni avec le pack emploie les affinités **Feu, Eau, Air, Terre, Ombre, Lumière et Force** pour ses nouvelles résistances, vulnérabilités et affinités. Les familles de créatures correspondent aux catégories utilisées par les traitements anti-famille du catalogue.
+`Monster_Creator_V2.xlsx` est le classeur de création de PNJ/monstres livré avec la distribution. Il prépare un profil cohérent pour la fiche Roll20, estime son **danger réel / NC réel**, génère le **Statblock JSON**, produit les commandes COFantasy utiles et fournit un **simulateur de rencontre**.
 
-Les anciennes colonnes ou formules conservées pour compatibilité ne doivent pas servir de vocabulaire de référence pour de nouveaux monstres.
+Le flux recommandé est :
+
+1. ouvrir **Creator** et saisir nom, NC, famille/sous-famille, taille, profil, archétypes, armure, rareté de composant, éléments lié/opposé et avatar ;
+2. contrôler les caractéristiques, PV, DEF, initiative, mouvements, allonge, toucher, dégâts de référence, DD et budgets calculés ;
+3. conserver ou adapter les **signatures automatiques** issues de la famille/sous-famille ;
+4. choisir les attaques, capacités supplémentaires et sorts sans dépasser les budgets affichés ;
+5. vérifier **Danger réel** et **NC réel** ;
+6. copier l'export de **Export_Statsblock** vers l'onglet Statblock de la fiche PNJ ;
+7. au besoin, reprendre les commandes COFantasy générées pour créer des actions/abilities ;
+8. utiliser **Simulateur_Rencontre** pour comparer le danger cumulé des ennemis à la puissance du groupe.
+
+Les 18 onglets du classeur ont un rôle documenté dans [le manuel Monster Creator](docs/MONSTER_CREATOR.md). Les principaux sont `Creator`, `Moteur`, `Export_Statsblock`, `Ref_Capacites`, `Ref_Sorts`, `Ref_Danger`, `Ref_Roll20` et `Simulateur_Rencontre`.
+
+Le vocabulaire d'affinité est **Feu, Eau, Air, Terre, Ombre, Lumière et Force**, complété par les dégâts physiques/spéciaux supportés par COFantasy. Les familles de créatures sont les mêmes que celles utilisées par les traitements anti-famille du catalogue.
+
+Exemple de souffle généré :
+
+```text
+!cof-attack @{selected|token_id} @{target|token_id} Souffle élémentaire --auto --dm 2d12+1 --portee 15 --feu --cone 90 --psave DEX 13 --recharge 5 MC_SIG1
+```
+
+Le **NC de création** est une cible de conception ; le **NC réel** est un contrôle après composition du monstre. Une signature, une capacité, un sort ou une affinité peut donc faire monter ou baisser le danger réel sans que le NC saisi change. Les anciennes colonnes conservées pour compatibilité ne sont pas le vocabulaire de référence pour de nouveaux monstres.
 
 ## 4. Macros, sélection et syntaxe commune
 
@@ -374,7 +421,97 @@ Le partage simple cible les PJ principaux de **Equipe PJ** et exclut les familie
 
 Le système peut lire des blocs `[LOOT]` dans les GM Notes des tokens, afficher le contenu au MJ/joueurs, distribuer objets et monnaie, ajouter des lignes manuelles, archiver ce qui a été pris et réinitialiser un loot si nécessaire.
 
-## 9. Exemples de chaînes fiche → script
+## 9. COAlaric — commerce complet
+
+COAlaric relie la boutique web, la monnaie de la fiche, CoFItem et les tests de compétence de COFantasy. Il gère **achat direct, marchandage, vol, revente, affinité commerciale et ardoise**, avec transaction annulable par `!cof-undo`.
+
+### 9.1 Pré-requis et menu
+
+- COFantasy V2 et CoFItem V2 doivent être actifs.
+- Le personnage cible doit être un **PJ** et le joueur doit le contrôler pour les étapes joueur.
+- `!co-alaric` ouvre le menu MJ.
+- `!co-alaric diagnostic` vérifie les ponts COFantasy/CoFItem et l'état du script.
+- Les achats normaux commencent par la commande **Copier pour Roll20** générée par le site Alaric : le MJ la colle dans le chat, puis le joueur choisit acheter, marchander ou tenter un vol.
+
+### 9.2 Achat direct
+
+Le panier est importé, associé à un PJ, puis contrôlé une seconde fois au moment du paiement. COAlaric débite la monnaie (`PP/PO/PA/PC`) et demande à CoFItem de donner les objets. Si une étape échoue, l'opération est rollbackée ; après succès, `!cof-undo` peut annuler l'ensemble.
+
+Une ardoise active peut ajouter une majoration au prix. Cette majoration rembourse en même temps une partie de l'ardoise et ne peut jamais dépasser son solde restant.
+
+### 9.3 Marchandage d'achat
+
+Le joueur sélectionne les lignes à négocier et propose un prix inférieur. La remise demandée fixe le DD de **Persuasion** :
+
+| Remise demandée | DD de base |
+|---:|---:|
+| ≤ 5 % | 10 |
+| ≤ 10 % | 14 |
+| ≤ 15 % | 18 |
+| ≤ 20 % | 22 |
+| ≤ 25 % | 26 |
+| ≤ 30 % | 30 |
+
+L'**affinité** modifie le DD : une affinité positive facilite le test, une affinité négative interdit le marchandage. Au-delà de 30 % de remise, le MJ peut refuser, fixer librement le prix ou autoriser un jet avec un DD choisi. Le résultat propose ensuite au MJ plusieurs concessions ; le MJ garde toujours le dernier mot.
+
+### 9.4 Affinité commerciale
+
+L'attribut `coalaric_affinite` va de **-3 à +3** :
+
+| Valeur | Relation |
+|---:|---|
+| -3 | Rupture |
+| -2 | Mauvaise relation |
+| -1 | Méfiance |
+| 0 | Neutre |
+| +1 | Apprécié |
+| +2 | Très apprécié |
+| +3 | Favori |
+
+Le MJ la règle via `!co-alaric affinite --target <character_id>`. Elle influence le marchandage et les conséquences proposées après un vol raté. Une **affinité négative + ardoise active** suspend les achats/ventes ordinaires ; la tentative de vol reste possible.
+
+### 9.5 Ardoise
+
+L'ardoise utilise `coalaric_ardoise_initiale` et `coalaric_ardoise_restante`. Tant qu'elle existe, la majoration appliquée aux achats dépend de la part restant à rembourser :
+
+| Reste / ardoise initiale | Majoration |
+|---:|---:|
+| > 75 % | +40 % |
+| > 50 % | +30 % |
+| > 25 % | +20 % |
+| ≤ 25 % | +10 % |
+
+`!co-alaric ardoise --target <character_id>` ouvre le menu MJ : fixer/effacer le montant ou proposer le règlement au joueur. Une vente peut également être versée en monnaie ou déduite de l'ardoise.
+
+### 9.6 Vol
+
+Le joueur choisit les objets visés ; le MJ règle ensuite trois facteurs de **0 à 3** : accès, exposition et encombrement. Le DD d'Adresse vaut :
+
+```text
+DD = 10 + 2 × (accès + exposition + encombrement)
+```
+
+Le MJ peut ajouter un modificateur circonstanciel de **-4, -2, 0, +2 ou +4**. Une marge positive réussit. Une marge de `-1` à `-4` déclenche une chance de sauvetage (17+ sur 1d20). En cas d'échec, COAlaric **propose** une ardoise et une variation d'affinité ; ces conséquences restent des décisions du MJ.
+
+### 9.7 Vendre à Alaric
+
+`!co-alaric vendre --target <character_id>` ouvre l'inventaire CoFItem du PJ. L'offre de départ vaut **50 % de la valeur catalogue**. Si le prix de l'objet historique n'est pas exploitable, le MJ renseigne d'abord sa valeur catalogue.
+
+Le joueur peut accepter ou marchander. Pour la revente, la demande exprimée en pourcentage du catalogue produit les mêmes DD : **55/60/65/70/75/80 % → DD 10/14/18/22/26/30**. Une affinité négative interdit le marchandage. Après accord, l'objet est retiré par CoFItem et le produit est soit crédité en monnaie, soit utilisé pour rembourser l'ardoise.
+
+### 9.8 Commandes utiles COAlaric
+
+```text
+!co-alaric
+!co-alaric diagnostic
+!co-alaric affinite --target <character_id>
+!co-alaric ardoise --target <character_id>
+!co-alaric vendre --target <character_id>
+```
+
+Les sous-commandes de transaction (`sale-*`, `haggle-*`, `theft-*`, `select-*`, etc.) sont normalement générées par les boutons du chat : il n'est pas nécessaire de les saisir à la main. Leur liste exhaustive est dans [docs/COMMANDES_REFERENCE.md](docs/COMMANDES_REFERENCE.md).
+
+## 10. Exemples de chaînes fiche → script
 
 ### Une arme magique
 
@@ -413,11 +550,11 @@ Fiche OBJET Hébergement
   → éventuel prédicat de buff appliqué jusqu’au prochain repos
 ```
 
-## 10. Référence pratique des commandes et options COFantasy
+## 11. Référence pratique des commandes et options COFantasy
 
 Cette partie remplace l’ancienne lecture « index brut ». L’idée est de partir d’une commande utile, puis de voir ses options par famille. Les options ci-dessous sont celles que le script courant reconnaît ; les alias purement internes et les options extrêmement spécialisées restent dans l’index technique à la fin.
 
-### 10.1 `!cof-attack` — syntaxe générale
+### 11.1 `!cof-attack` — syntaxe générale
 
 ```text
 !cof-attack ATTAQUANT_ID CIBLE_ID [LABEL_OU_NOM] [options]
@@ -602,7 +739,7 @@ Les blocs conditionnels permettent d’éviter de dupliquer les attaques :
 | `--peutAgripper` | Autorise l’agrippement via l’attaque. |
 | `--ouvertureMortelle` | Résolution spéciale de coup automatique/critique et interaction avec la sournoise. |
 
-### 10.2 `!cof-effet`, `!cof-effet-temp` et `!cof-effet-combat`
+### 11.2 `!cof-effet`, `!cof-effet-temp` et `!cof-effet-combat`
 
 ```text
 !cof-effet EFFET [oui|non] [options]
@@ -627,7 +764,7 @@ Les trois commandes partagent une grande partie des options génériques. `DUREE
 | `--degainer LABEL` | Peut faire dégainer une arme dans le contexte d’une capacité. |
 | `--sansAO` | Empêche cette action magique de provoquer l’AO d’incantation sous menace. |
 
-### 10.3 `!cof-jet` — tests et compétences
+### 11.3 `!cof-jet` — tests et compétences
 
 ```text
 !cof-jet CARAC [DD] [options]
@@ -649,7 +786,7 @@ Exemple :
 !cof-jet SAG 18 --predicat controleLoupGarou --nom Résister --succes évite de se transformer
 ```
 
-### 10.4 Téléportation et invocation
+### 11.4 Téléportation et invocation
 
 **Téléportation**
 ```text
@@ -678,11 +815,11 @@ Exemple :
 | `--limiteParJour/Combat/Tour`, `--tempsRecharge` | Limites de capacité avant la création. |
 | `--sansAO` | Le lancement ne provoque pas d’AO d’incantation. |
 
-## 11. Livre de recettes — exemples de capacités
+## 12. Livre de recettes — exemples de capacités
 
 Ces recettes sont volontairement variées. Certaines reprennent des usages déjà documentés dans l’ancien manuel, d’autres sont des exemples techniques construits uniquement avec des options reconnues par les scripts. Elles servent surtout à montrer **comment combiner la fiche, les listes d’actions, COFantasy et CoFItem**.
 
-### 11.1 Charge brutale
+### 12.1 Charge brutale
 
 **Montre :** Déplacement spécial + attaque + bonus + dégâts supplémentaires.
 
@@ -692,7 +829,7 @@ Ces recettes sont volontairement variées. Certaines reprennent des usages déj�
 
 À placer dans une liste d’actions. Le moteur déplace l’attaquant pour atteindre la cible puis résout l’attaque.
 
-### 11.2 Flèche enflammée
+### 12.2 Flèche enflammée
 
 **Montre :** Attaque magique à distance + dégâts feu + FX + effet périodique + mana.
 
@@ -702,7 +839,7 @@ Ces recettes sont volontairement variées. Certaines reprennent des usages déj�
 
 Montre une attaque complètement décrite par options plutôt qu’une ligne d’arme complexe.
 
-### 11.3 Boule de feu
+### 12.3 Boule de feu
 
 **Montre :** Attaque automatique + disque + sauvegarde partielle + FX de cible.
 
@@ -712,7 +849,7 @@ Montre une attaque complètement décrite par options plutôt qu’une ligne d�
 
 Exemple de gros sort de zone. Sous menace au contact il provoque une AO, sauf ajout explicite de `--sansAO`.
 
-### 11.4 Cône de froid
+### 12.4 Cône de froid
 
 **Montre :** Cône d’affinité Eau + sauvegarde conditionnelle + ralenti ou dégâts divisés.
 
@@ -722,7 +859,7 @@ Exemple de gros sort de zone. Sous menace au contact il provoque une AO, sauf aj
 
 Montre les branches `--ifSaveFails / --else / --endif`.
 
-### 11.5 Foudre traversante
+### 12.5 Foudre traversante
 
 **Montre :** Ligne + sauvegarde partielle + affinité Air (l’effet RP est un éclair).
 
@@ -732,7 +869,7 @@ Montre les branches `--ifSaveFails / --else / --endif`.
 
 La même commande peut toucher plusieurs tokens alignés.
 
-### 11.6 Onde de choc
+### 12.6 Onde de choc
 
 **Montre :** AOE centrée sur la cible + renversement sauvegardable + alliés exclus.
 
@@ -742,7 +879,7 @@ La même commande peut toucher plusieurs tokens alignés.
 
 Exemple technique : les dégâts restent automatiques, tandis que le dernier état reçoit sa sauvegarde.
 
-### 11.7 Frappe consacrée
+### 12.7 Frappe consacrée
 
 **Montre :** Bonus conditionnel contre une catégorie de cible + affinité Lumière.
 
@@ -752,7 +889,7 @@ Exemple technique : les dégâts restent automatiques, tandis que le dernier ét
 
 Montre comment enrichir une attaque existante sans créer une seconde arme.
 
-### 11.8 Bénédiction de groupe
+### 12.8 Bénédiction de groupe
 
 **Montre :** Effet temporaire sur alliés visibles + soi.
 
@@ -762,7 +899,7 @@ Montre comment enrichir une attaque existante sans créer une seconde arme.
 
 Exemple de sélection de groupe sans jet d’attaque.
 
-### 11.9 Arme enflammée
+### 12.9 Arme enflammée
 
 **Montre :** Effet temporaire sur une cible précise avec lanceur, portée et mana.
 
@@ -772,7 +909,7 @@ Exemple de sélection de groupe sans jet d’attaque.
 
 Montre le lien entre un effet, son lanceur et la cible.
 
-### 11.10 Soins de groupe
+### 12.10 Soins de groupe
 
 **Montre :** Commande de soin spécialisée + mana.
 
@@ -782,7 +919,7 @@ Montre le lien entre un effet, son lanceur et la cible.
 
 Utilise la relation d’alliés du script au lieu de cibler les personnages un par un.
 
-### 11.11 Pouvoir limité
+### 12.11 Pouvoir limité
 
 **Montre :** Limite par combat + recharge de plusieurs tours.
 
@@ -792,7 +929,7 @@ Utilise la relation d’alliés du script au lieu de cibler les personnages un p
 
 Montre deux systèmes de ressources différents ; en pratique on choisit l’un ou l’autre selon la capacité à modéliser.
 
-### 11.12 Invocation sur une cible
+### 12.12 Invocation sur une cible
 
 **Montre :** Invocation générique + placement cible + coût de sort + durée de combat.
 
@@ -802,7 +939,7 @@ Montre deux systèmes de ressources différents ; en pratique on choisit l’un 
 
 Le modèle doit être une fiche `[INVOC] Gardiens Invoquées` avec token par défaut. Ajouter `--sansAO` si la capacité est explicitement conçue pour ne pas provoquer d’AO.
 
-### 11.13 Pas dimensionnel
+### 12.13 Pas dimensionnel
 
 **Montre :** Téléportation avec limite et FX distincts.
 
@@ -812,7 +949,7 @@ Le modèle doit être une fiche `[INVOC] Gardiens Invoquées` avec token par dé
 
 Après la commande, le joueur déplace son token vers la destination.
 
-### 11.14 Résister à une transformation
+### 12.14 Résister à une transformation
 
 **Montre :** Test de caractéristique + prédicat + message de réussite.
 
@@ -822,7 +959,7 @@ Après la commande, le joueur déplace son token vers la destination.
 
 Montre que `!cof-jet` peut assembler caractéristique, compétence/prédicat et narration.
 
-### 11.15 Potion de soin
+### 12.15 Potion de soin
 
 **Montre :** Fiche OBJET consommable → commande COFantasy.
 
@@ -832,7 +969,7 @@ Montre que `!cof-jet` peut assembler caractéristique, compétence/prédicat et 
 
 Dans le champ **Commande COFantasy à l’utilisation** de la fiche OBJET. CoFItem résout le porteur/cible et décrémente la ressource lors de l’utilisation.
 
-### 11.16 Piège de flammes
+### 12.16 Piège de flammes
 
 **Montre :** Assistant Zone/Piège + effets simples + commande avancée.
 
@@ -856,7 +993,7 @@ Ici la bonne pratique est de configurer les dégâts/états avec l’assistant ;
 | est une invocation | Modèle `[INVOC]` + `!cof-invoquer` |
 | est un piège/zone de scène | Assistant `!cof-zone` |
 
-## 12. CoFItem — syntaxes et options utiles
+## 13. CoFItem — syntaxes et options utiles
 
 | Commande / syntaxe | Usage |
 |---|---|
@@ -891,7 +1028,7 @@ Ici la bonne pratique est de configurer les dégâts/états avec l’assistant ;
 
 La fiche OBJET fournit directement **Afficher**, **Affixes** et **Catalogue**. Elle stocke aussi les prédicats générés/manuels et les commandes d’action. Une commande personnalisée d’action est prioritaire sur la commande générée ; un consommable possède son propre champ **Commande COFantasy à l’utilisation**. Cela permet à CoFItem de préparer l’objet et à COFantasy de résoudre l’effet en jeu.
 
-## 13. Aide rapide — commandes à connaître
+## 14. Aide rapide — commandes à connaître
 
 ### COFantasy
 - `!cof-attack` — Attaque et moteur d’options principal.
@@ -916,11 +1053,11 @@ La fiche OBJET fournit directement **Afficher**, **Affixes** et **Catalogue**. E
 - `!coi-butin` — Partage de monnaie.
 - `!coi-loot` / `!coi-loot-help` — Loot de tokens.
 
-## 14. Annexe technique — index exhaustif des commandes
+## 15. Annexe technique — index exhaustif des commandes
 
 Cet index sert surtout au diagnostic, à la maintenance et aux macros avancées. Pour apprendre à utiliser les scripts, il vaut mieux passer par les sections **Référence des options** et **Livre de recettes** ci-dessus.
 
-### 14.1 COFantasy
+### 15.1 COFantasy
 
 | Commande | Famille | Type |
 |---|---|---|
@@ -1175,7 +1312,7 @@ Cet index sert surtout au diagnostic, à la maintenance et aux macros avancées.
 | `!cof-zone-wizard` | Exploration / scènes | Interface / bouton |
 | `!cof-zones` | Exploration / scènes | Commande principale |
 
-### 14.2 CoFItem
+### 15.2 CoFItem
 
 | Commande | Type |
 |---|---|
@@ -1237,7 +1374,7 @@ Cet index sert surtout au diagnostic, à la maintenance et aux macros avancées.
 | `!coi-show` | Commande principale |
 | `!coi-use-conso` | Interface / bouton ou spécialisée |
 
-## 15. Dépannage
+## 16. Dépannage
 
 - **Une attaque ne réagit pas comme prévu** : vérifier d’abord le type d’attaque, la portée, les modificateurs, puis les options de la ligne d’attaque. Les options de la section 10 donnent l’ordre logique de contrôle.
 - **Une capacité complexe devient illisible** : déplacer la partie permanente dans un prédicat, laisser seulement les options contextuelles dans la liste d’actions.
@@ -1248,3 +1385,31 @@ Cet index sert surtout au diagnostic, à la maintenance et aux macros avancées.
 - **Retour arrière** : `!cof-undo` pour les opérations couvertes par l’historique commun.
 
 > Règle de conception : **la fiche décrit le personnage**, **CoFItem construit et transporte les objets**, **COFantasy résout les règles**. Une bonne capacité répartit l’information au bon endroit plutôt que de tout mettre dans une seule macro.
+
+### Marque du Traqueur
+
+`marqueduTraqueur` est gérée nativement par COFantasy. La capacité se lance simplement avec :
+
+```text
+!cof-effet-temp marqueduTraqueur toggle --target @{target|Cible|token_id} --lanceur @{selected|token_id}
+!cof-liste-actions
+```
+
+Le script pose automatiquement un Token Marker sur la cible. S'il existe dans la campagne un Token Marker personnalisé nommé `Marked`, il est utilisé ; sinon COFantasy utilise le marker Roll20 natif `archery-target`.
+
+Le script mémorise également le traqueur ayant posé la marque. Une nouvelle cible marquée par le même traqueur retire automatiquement sa marque précédente. Le bonus est appliqué automatiquement à toutes les attaques du traqueur, sans ajouter d'option aux lignes d'armes : +2 en Attaque aux rangs 1-2, +4 à partir du rang 3. Au rang 5, la cible subit en plus -2 DEF contre toutes les attaques.
+
+Le rang peut être porté par le prédicat `marqueDuTraqueur` du personnage (`1`, `3` ou `5`). En l'absence de prédicat, le rang 1 est utilisé par défaut.
+
+
+## 17. Références exhaustives V2
+
+- [Commandes COFantasy / CoFItem / COAlaric](docs/COMMANDES_REFERENCE.md)
+- [Prédicats](docs/PREDICATS_REFERENCE.md)
+- [Affixes du catalogue](docs/AFFIXES_REFERENCE.md)
+- [Monster Creator V2](docs/MONSTER_CREATOR.md)
+- [Audit et compatibilité V2](AUDIT_V2.md)
+
+### Contrôle avant diffusion
+
+Depuis un poste avec Node.js, exécuter `node tools/validate-v2.mjs`. Le validateur compile les trois scripts sans les exécuter, vérifie les JSON, compare le modèle de prix embarqué dans CoFItem au modèle externe et contrôle les fichiers V2 attendus.
